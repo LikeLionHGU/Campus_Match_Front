@@ -1,0 +1,104 @@
+.register-page {
+    min-height: calc(100vh - 108px);
+    background: #FFF;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    margin-top: 110px;
+    flex: 1;
+    display: grid;
+    place-items: center;
+}
+
+.card {
+    width: 520px;
+    max-width: 92vw;
+}
+
+.title {
+    text-align: center;
+    margin: 0 0 26px;
+    font-size: 32px;
+    font-weight: 700;
+    color: #111;
+}
+
+.form {
+    margin-top: 68px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2px;
+    gap: 8px;
+}
+
+.label {
+    position: relative;
+    display: inline-flex;
+    width: fit-content;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-size: 14px;
+}
+
+.req {
+    position: absolute;
+    top: -3px;
+    right: -5px;
+    color: #F00;
+    font-size: 12px;
+}
+
+
+.input {
+    width: 518px;
+    height: 74px;
+    border: 1px solid #000;
+    background: #fff;
+    outline: none;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 64px;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn {
+    width: 108px;
+    height: 74px;
+    border: 1px solid #000;
+    background: #eaeaea;
+    font-size: 23px;
+}
+
+.phone {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.phone-input {
+    width: 138px;
+    text-align: center;
+    padding: 0 8px;
+}
+
+.dash {
+    color: #111;
+}
+
+.submit {
+    width: 518px;
+    margin-top: 14px;
+    height: 74px;
+    border: 0;
+}
