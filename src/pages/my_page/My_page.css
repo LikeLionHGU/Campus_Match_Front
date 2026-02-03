@@ -1,0 +1,210 @@
+.mypage {
+    width: 100vw;
+    min-height: 100vh;
+    background: #f2f2f2;
+}
+
+.info {
+    background: #fff;
+    padding: 136px 229px 0px 229px;
+}
+
+.infoHeader {
+    display: flex;
+    align-items: center;
+    gap: 109px;
+}
+
+.profileWrap {
+    position: relative;
+    width: 225px;
+    height: 225px;
+}
+
+.profileCircle {
+    width: 225px;
+    height: 225px;
+    border-radius: 50%;
+    background: #e0e0e0;
+}
+
+.profileEditBtn {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: #4a90e2;
+    cursor: pointer;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.divider {
+    margin: 32px 0 0 0;
+    height: 1px;
+    background: #cfcfcf;
+}
+
+.form {
+    padding: 56px 303px 0px 303px;
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 570px 570px;
+    column-gap: 80px;
+    justify-content: center;
+}
+
+.col {
+    min-width: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label {
+    font-size: 32px;
+    color: #333;
+}
+
+.control {
+    width: 100%;
+    height: 74px;
+    border: 1px solid #999;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+.control input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 16px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.phoneRow {
+    width: 570px;
+    height: 74px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+
+.phoneRow input {
+    width: 138px;
+    height: 74px;
+    text-align: center;
+    border: 1px solid #999;
+    box-sizing: border-box;
+}
+
+.phone {
+    width: 96px;
+    height: 44px;
+    border: 1px solid #999;
+    text-align: center;
+    font-size: 34px;
+    box-sizing: border-box;
+}
+
+.dash {
+    font-size: 32px;
+}
+
+.submitRow {
+    display: flex;
+    justify-content: center;
+    margin-top: 110px;
+}
+
+.submitBtn {
+    width: 518px;
+    height: 74px;
+    background: #e0e0e0;
+    border: none;
+    font-size: 44px;
+    cursor: pointer;
+}
+
+.accordions {
+    background: #fff;
+    padding: 60px 229px 100px 229px;
+}
+
+.accordionRow {
+    display: flex;
+    flex-direction: column;
+}
+
+.accordionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 92px;
+    background: transparent;
+    border: none;
+    font-size: 44px;
+    cursor: pointer;
+}
+
+.accordionTitle {
+    font-weight: 400;
+}
+
+.chev {
+    width: 25px;
+    height: 25px;
+    transform: rotate(45deg);
+    border-right: 2px solid #000;
+    border-bottom: 2px solid #000;
+}
+
+.chev.open {
+    transform: rotate(-135deg);
+}
+
+.accordionContent {
+    padding: 24px 0;
+}
+
+.rowLine {
+    height: 1px;
+    background: #cfcfcf;
+}
+
+.rm {
+  padding: 135px 0 0 0;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+
+.rmBtn {
+    width: 229px;
+    height: 67px;
+    padding: 0 12px;
+    background: #e0e0e0;
+    border: none;
+    font-size: 40px;
+}
