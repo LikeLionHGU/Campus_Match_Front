@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# 캠퍼스 매치 (Campus Match)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 서비스 소개
+캠퍼스 매치는 대학 스포츠 동아리들이  
+타 대학 동아리와 공식적으로 교류하고,  
+경기 및 교류의 기록을 남겨  
+지속 가능한 동아리 네트워크를 만드는 웹 플랫폼입니다.
 
-## Available Scripts
+## 문제 정의
+현재 대학 스포츠 동아리 간 교류는  
+개인 인맥이나 SNS, 일회성 이벤트에 의존하고 있습니다.  
+이로 인해 교류가 끝난 뒤에는  
+관계, 평가, 기록이 남지 않으며  
+결과적으로 교류가 지속되지 못합니다.
 
-In the project directory, you can run:
+## 해결 방식
+캠퍼스 매치는 동아리 단위의 공식 매칭 구조를 제공하고,  
+경기 및 교류 결과를 기록·평가함으로써  
+일회성 교류를 축적 가능한 관계로 전환합니다.
 
-### `npm start`
+## 주요 기능
+- 종목별 대학 스포츠 동아리 탐색
+- 타 대학 동아리 매칭 요청
+- 경기 및 교류 성사 기록
+- 매너 점수 및 리뷰 시스템
+- 동아리 교류 히스토리 관리
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 기대 효과
+- 개인 인맥에 의존하지 않는 공정한 교류 구조 형성
+- 동아리 간 신뢰도 기반 매칭 가능
+- 지속 가능한 대학 스포츠 동아리 네트워크 구축
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 기술 스택
+- Frontend: React
+- Backend: Node.js, Express
+- Deployment: Render
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 프로젝트 배경
+본 프로젝트는 해커톤 주제인 **‘전환’**을 바탕으로  
+일회성 대학 동아리 교류를  
+기록되고 축적되는 지속 가능한 구조로 전환하는 것을 목표로 합니다.
