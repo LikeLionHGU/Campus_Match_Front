@@ -1,20 +1,22 @@
 import "./Header.css";
+import logo from "../../assets/긴로고-SB 1.png"
 
 const Header = () => {
-    const isLogin = true;
+    const isLogin = false;
     return (
         <>
             <header className="header">
                 <div className="inner">
                     <div className="left">
                         <div className="logo">
-                            logo
+                            <img src={logo} alt="logo"/>
+
                         </div>
-                        <nav className="nav">
+                        {/* <nav className="nav">
                             <a href="/">매치업</a>
                             <a href="/search">동아리검색</a>
                              <a href="/add">동아리추가</a>
-                        </nav>
+                        </nav> */}
                     </div>
                     
                     <nav className="user">
@@ -31,7 +33,6 @@ const Header = () => {
                             <>
                             <a href="/login">로그인</a>
                             <a href="/register">회원가입</a>
-                            
                             </>
                         )
                         } 

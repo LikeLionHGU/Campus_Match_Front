@@ -1,13 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
 import Header from './components/header/Header';
-import Club_Page from './pages/club_page/Club_page';
+import Footer from './components/footer/Footer';
+import RegisterPage from './pages/register_page/Register_page';
 
 function App() {
   return (
     <>
       <Header/>
-      <Club_Page/>
+      {/* <RegisterPage/> */}
+      <Footer/>
     </>
     
   );
