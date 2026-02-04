@@ -1,56 +1,40 @@
 .header {
   width: 100%;
-  background-color: #D9D9D9;
+  background: #FFF;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.20);
 }
 
-.inner {
-  max-width: 1920px;
-  height: 108px;
-  margin: 0 auto;
 
+.inner {
+  padding: 20px 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  padding: 0 24px;
 }
 
 .left {
   display: flex;
   align-items: center;
-  gap: 24px;
 }
 
-.logo{
-    color: #000;
-    font-family: Inter;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-.nav {
-  display: flex;
-  gap: 24px;
-  margin-left: 32px;
-}
-
-.nav a {
-  font-size: 16px;
-  font-weight: 500;
-  color: #111;
-  text-decoration: none;
+.logo img {
+  width: 244px;
+  height: 38px;
+  display: block;
 }
 
 .user {
   display: flex;
-  gap: 24px;
+  align-items: center;
+  gap: 80px;
+
 }
 
 .user a {
-    font-size: 16px;
-    font-weight: 500;
-    color: #111;
-    text-decoration: none;
+  text-decoration: none;
+  color: #000;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
 }

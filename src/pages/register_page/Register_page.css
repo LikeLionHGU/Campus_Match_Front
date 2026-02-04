@@ -1,3 +1,8 @@
+:root {
+    --primary-color: #16C0CC;
+    --secondary-color: #41DF82;
+}
+
 .register-page {
     min-height: calc(100vh - 108px);
     background: #FFF;
