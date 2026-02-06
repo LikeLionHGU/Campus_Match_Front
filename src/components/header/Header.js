@@ -1,8 +1,10 @@
 import "./Header.css";
 import logo from "../../assets/긴로고-SB 1.png"
+import settingIcon from "../../assets/setting.svg";
+import notificationIcon from "../../assets/notification.svg";
 
 const Header = () => {
-    const isLogin = false;
+    const isLogin = true;
     return (
         <>
             <header className="header">
@@ -22,11 +24,15 @@ const Header = () => {
                     <nav className="user">
                         {isLogin ? (
                             <>
-                            <a href="/mypage">마이페이지</a>
-                            <a href="/logout">로그아웃</a>
-                            <button className="bell " aria-label="알림">
-                                알림
-                                {/* <img src="/icons/bell.svg" alt="알림" /> */}
+                            <button className="setting" aria-label="설정">
+                          
+                                <img src={settingIcon} alt="설정" />
+                            </button>
+                            {/* <a href="/mypage">마이페이지</a>
+                            <a href="/logout">로그아웃</a> */}
+                            <button className="bell" aria-label="알림">
+                             
+                                <img src={notificationIcon} alt="알림" />
                             </button>
                             </>
                         ):(

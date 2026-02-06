@@ -1,5 +1,51 @@
 .footer {
-    width: 100%;
+    width: 1920px;
     height: 369px;
     background: #E1E1E1;
+}
+
+.footer-main{
+    margin-top: 50px;
+    width: 1760px;
+    height: 219px;
+    display: inline-flex;
+    padding: 50px 0px;
+    margin : 50px 80px 0px 80px;
+    align-items: flex-end;
+    gap: 986px;
+    border-top: 1px solid #000;
+}
+
+.footer-right img{
+    width: 207.4px;
+    height: 32.347px;
+    aspect-ratio: 109/17;
+}
+
+.footer-intro{
+    color: var(--Gray-4, #9E9E9E);
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 67px;
+}
+
+.phone, .email, .address{
+    color: var(--Gray-3, #BDBDBD);
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.teamname{
+    color: var(--Gray-3, #BDBDBD);
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
