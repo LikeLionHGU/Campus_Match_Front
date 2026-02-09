@@ -1,21 +1,22 @@
 .header {
-  width: 100%;
-  background: #FFF;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.20);
-  position: sticky;
+  
+  
 }
 
 
 .inner {
-  padding: 20px 80px;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.20);
+  position: sticky;
   display: flex;
+  width: 1760px;
+  padding: 25px 80px;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
+  gap: 1401px;
 }
 
 .left {
-  display: flex;
-  align-items: center;
+ 
 }
 
 .logo img {
@@ -38,4 +39,26 @@
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
+}
+
+.bell{
+  background-color: #FFF;
+  border: 0px;
+}
+
+.bell img{
+  width: 35px;
+  height: 35px;
+  aspect-ratio: 1/1;
+}
+
+.account{
+  background-color: #FFF;
+  border: 0px;
+}
+.account img{
+  width: 35px;
+  height: 35px;
+  aspect-ratio: 1/1;
+
 }
