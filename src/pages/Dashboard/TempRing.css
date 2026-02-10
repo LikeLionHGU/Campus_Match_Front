@@ -1,0 +1,49 @@
+.temp-ring {
+  position: relative;
+  width: 125px;
+  height: 125px;
+}
+
+circle {
+  fill: none;
+  stroke-width: 12;
+}
+
+
+.bg {
+  stroke: #e5e5e5;
+}
+
+.progress {
+  stroke: url(#tempGradient);
+  stroke-linecap: round;
+
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+
+  transition: stroke-dashoffset 0.6s ease;
+}
+
+.temp-text {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  pointer-events: none;
+}
+
+.temp-text span {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 2px;
+}
+
+.temp-text strong {
+  font-size: 22px;
+  font-weight: 700;
+  color: #000;
+}
