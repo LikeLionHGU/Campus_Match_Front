@@ -122,7 +122,7 @@ export default function RegisterPage() {
                 value={form.university}
                 onChange={onChange}
               />
-              <button className="btn" type="button">
+              <button className="register-btn" type="button">
                 찾기
               </button>
             </div>
