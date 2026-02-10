@@ -9,7 +9,7 @@
   --bg-color: #fbffff;
 }
 
-/* MyPage Container */
+
 .mypage-container {
   background: var(--bg-color);
   display: flex;
