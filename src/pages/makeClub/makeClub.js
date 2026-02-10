@@ -12,10 +12,10 @@ export default function MakeClub() {
     region: "",
     sportCategory: "",
   });
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
-  const [profileImage, setProfileImage] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState(null);
+  // const [profileImage, setProfileImage] = useState(null);
+  // const [previewUrl, setPreviewUrl] = useState(null);
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -26,18 +26,18 @@ export default function MakeClub() {
   const isFormValid =
     form.clubName && form.description && form.region && form.sportCategory;
 
-  const onImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setProfileImage(file);
-      // 이미지 미리보기 생성
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewUrl(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  // const onImageChange = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     setProfileImage(file);
+  //     // 이미지 미리보기 생성
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       setPreviewUrl(reader.result);
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -61,7 +61,7 @@ export default function MakeClub() {
       return;
     }
 
-    setIsLoading(true);
+    // setIsLoading(true);
 
     const userInfo = JSON.parse(userInfoStr);
 
@@ -107,7 +107,7 @@ export default function MakeClub() {
       console.error("회원가입 실패:", error);
       alert(`회원가입에 실패했습니다: ${error.message}`);
     } finally {
-      setIsLoading(false);
+      // setIsLoading(false);
     }
   };
 
@@ -123,7 +123,7 @@ export default function MakeClub() {
         <div className="profile-image-section">
           <div className="profile-image-wrapper">
             <div className="profile-circle">
-              {previewUrl ? (
+              {/* {previewUrl ? (
                 <img
                   src={previewUrl}
                   alt="프로필 미리보기"
@@ -135,7 +135,7 @@ export default function MakeClub() {
                   alt="기본 로고"
                   className="profile-logo-placeholder"
                 />
-              )}
+              )} */}
             </div>
             <label htmlFor="profile-upload" className="profile-edit-btn">
               <img
@@ -149,7 +149,7 @@ export default function MakeClub() {
             type="file"
             id="profile-upload"
             accept="image/*"
-            onChange={onImageChange}
+            // onChange={onImageChange}
             className="profile-upload-input"
           />
         </div>
