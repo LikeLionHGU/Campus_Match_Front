@@ -1,0 +1,207 @@
+:root {
+  --primary-color: #16c0cc;
+  --secondary-color: #41df82;
+  --Gray-1: #f7f7f7;
+  --Gray-2: #d6d6d6;
+  --Gray-3: #bdbdbd;
+  --Gray-4: #9e9e9e;
+  --txt-color: #1f1f1f;
+  --bg-color: #fbffff;
+}
+
+/* 전체 컨테이너 */
+.club-container {
+  margin-top: 87px;
+  margin-bottom: 95px;
+  display: grid;
+  place-items: center;
+}
+
+/* 콘텐츠 영역 */
+.club-content {
+  width: 508px;
+}
+
+/* 타이틀 영역 */
+.club-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 0 0 70px;
+  font-size: 40px;
+  font-family: Pretendard;
+  font-weight: 500;
+  color: var(--txt-color);
+  line-height: 1;
+}
+
+.club-title-logo {
+  width: 34.697px;
+  height: 35.765px;
+  margin-top: 2px;
+}
+
+/* 폼 영역 */
+.club-form {
+  width: 422px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* 필드 */
+.club-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+}
+
+/* 라벨 */
+.club-label {
+  position: relative;
+  display: inline-flex;
+  width: fit-content;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--txt-color);
+}
+
+/* 필수 표시 */
+.club-req {
+  position: absolute;
+  width: 7.871px;
+  height: 8.273px;
+  top: -1.5px;
+  right: -10px;
+  color: var(--primary-color);
+}
+
+/* 인풋 필드 */
+.club-input {
+  width: 100%;
+  height: 50px;
+  padding: 0 15px;
+  border: 1px solid var(--Gray-2);
+  background: var(--bg-color);
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: Pretendard;
+  color: var(--txt-color);
+}
+
+.club-input:focus {
+  border-color: var(--primary-color);
+}
+
+/* 텍스트 에어리어 (동아리 소개) */
+.club-textarea {
+  width: 100%;
+  min-height: 150px;
+  padding: 15px;
+  border: 1px solid var(--Gray-2);
+  background: var(--bg-color);
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: Pretendard;
+  color: var(--txt-color);
+  resize: none;
+}
+
+.club-textarea:focus {
+  border-color: var(--primary-color);
+}
+
+/* 제출 버튼 */
+.club-submit {
+  width: 100%;
+  margin-top: 20px;
+  height: 50px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--Gray-2);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--Gray-4);
+  cursor: not-allowed;
+  transition: all 0.3s ease;
+}
+
+.club-submit.active {
+  background: var(--primary-color);
+  color: #fff;
+  cursor: pointer;
+}
+
+.club-submit.active:hover {
+  background: #13a8b3;
+}
+
+/* 프로필 이미지 업로드 영역 */
+.profile-image-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.profile-image-wrapper {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.profile-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: var(--Gray-1);
+  border: 2px solid var(--Gray-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.profile-logo-placeholder {
+  width: 60px;
+  height: auto;
+  opacity: 0.4;
+  filter: grayscale(100%);
+}
+
+.profile-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-edit-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: var(--Gray-3);
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.profile-edit-btn:hover {
+  background-color: var(--primary-color);
+}
+
+.profile-upload-input {
+  display: none;
+}

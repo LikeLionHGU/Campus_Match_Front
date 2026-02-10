@@ -1,144 +1,154 @@
 :root {
-    --primary-color: #16C0CC;
-    --secondary-color: #41DF82;
-    --Gray-1: #F7F7F7;
-    --Gray-2: #D6D6D6;
-    --Gray-3: #BDBDBD;
-    --Gray-4: #9E9E9E;
-    --txt-color: #1F1F1F;
-    --bg-color: #FBFFFF;
+  --primary-color: #16c0cc;
+  --secondary-color: #41df82;
+  --Gray-1: #f7f7f7;
+  --Gray-2: #d6d6d6;
+  --Gray-3: #bdbdbd;
+  --Gray-4: #9e9e9e;
+  --txt-color: #1f1f1f;
+  --bg-color: #fbffff;
 }
 
 .container {
-    margin-top: 87px;
-    margin-bottom: 95px;
-    display: grid;
-    place-items: center;
+  margin-top: 87px;
+  margin-bottom: 95px;
+  display: grid;
+  place-items: center;
 }
 
 .content {
-    width: 508px;
+  width: 508px;
 }
 
 .title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    margin: 0 0 70px;
-    font-size: 40px;
-    font-family: Pretendard;
-    font-weight: 500;
-    color: var(--txt-color);
-    line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 0 70px;
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--txt-color);
+  line-height: 1;
 }
 
 .title-logo {
-    width: 34.697px;
-    height: 35.765px;
-    margin-top: 2px;
+  width: 34.697px;
+  height: 35.765px;
+  margin-top: 2px;
 }
 
 .form {
-    width: 422px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+  width: 422px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .field {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 7px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
 }
 
 .label {
-    position: relative;
-    display: inline-flex;
-    width: fit-content;
-    font-size: 18px;
-    font-weight: 400;
-    color: var(--txt-color);
+  position: relative;
+  display: inline-flex;
+  width: fit-content;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--txt-color);
 }
 
 .req {
-    position: absolute;
+  position: absolute;
 
-    width: 7.871px;
-    height: 8.273px;
-    top: -1.5px;
-    right: -10px;
-    color: var(--primary-color);
+  width: 7.871px;
+  height: 8.273px;
+  top: -1.5px;
+  right: -10px;
+  color: var(--primary-color);
 }
 
 .input {
-    width: 100%;
-    height: 50px;
-    border: 1px solid #000;
-    background: var(--bg-color);
-    border-color: var(--Gray-2);
-    outline: none;
-    box-sizing: border-box;
-    border-radius: 8px;
+  width: 100%;
+  height: 50px;
+  border: 1px solid #000;
+  background: var(--bg-color);
+  border-color: var(--Gray-2);
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 8px;
 }
 
 .row {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 76px;
-    column-gap: 10px;
-    align-items: center;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100% 76px;
+  column-gap: 10px;
+  align-items: center;
 }
 
 .btn {
-    width: 76px;
-    height: 50px;
-    border: 1px solid #000;
-    border-radius: 8px;
-    background: var(--Primary, #16C0CC);
-    font-size: 18px;
-    color: #FFF;
+  width: 76px;
+  height: 50px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  background: var(--Primary, #16c0cc);
+  font-size: 18px;
+  color: #fff;
 
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .phone {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 110px 20px 110px 20px 110px;
-    column-gap: 13px;
-    align-items: center;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 110px 20px 110px 20px 110px;
+  column-gap: 13px;
+  align-items: center;
 }
 
 .phone-input {
-    width: 110px;
-    height: 50px;
-    border: 1px solid #000;
-    background: var(--bg-color);
-    border-color: var(--Gray-2);
-    outline: none;
-    box-sizing: border-box;
-    text-align: center;
+  width: 110px;
+  height: 50px;
+  border: 1px solid #000;
+  background: var(--bg-color);
+  border-color: var(--Gray-2);
+  outline: none;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 .dash {
-    width: 20px;
-    height: 1.5px;
-    background: #BDBDBD;
-    justify-self: center;
+  width: 20px;
+  height: 1.5px;
+  background: #bdbdbd;
+  justify-self: center;
 }
 
 .submit {
-    width: 100%;
-    margin-top: 20px;
-    height: 50px;
-    border: 0;
+  width: 422px;
+  margin-top: 20px;
+  height: 50px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--Gray-2);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--Gray-4);
+  transition: all 0.3s ease;
+}
 
-    font-size: 20px;
-    font-weight: 600;
-    color: #FFF;
+.submit.active {
+  background: var(--primary-color);
+  color: #fff;
+  cursor: pointer;
+}
 
+.submit.active:hover {
+  background: var(--primary-color);
 }

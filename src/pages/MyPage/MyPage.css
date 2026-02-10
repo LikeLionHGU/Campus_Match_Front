@@ -1,0 +1,335 @@
+:root {
+  --primary-color: #16c0cc;
+  --secondary-color: #41df82;
+  --Gray-1: #f7f7f7;
+  --Gray-2: #d6d6d6;
+  --Gray-3: #bdbdbd;
+  --Gray-4: #9e9e9e;
+  --txt-color: #1f1f1f;
+  --bg-color: #fbffff;
+}
+
+/* MyPage Container */
+.mypage-container {
+  background: var(--bg-color);
+  display: flex;
+  justify-content: center;
+}
+
+.mypage-content {
+  margin-top: 109px;
+  margin-bottom: 92px;
+  display: flex;
+  width: 1166px;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: content-box;
+}
+
+.mypage-header {
+  display: flex;
+  align-items: center;
+  gap: 109px;
+}
+
+/* Profile Section */
+.mypage-body {
+  display: flex;
+  align-items: center;
+  gap: 51px;
+  width: 100%;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* 프로필 이미지 업로드 영역 - makeClub 기준 (126px 적용) */
+.profile-image-wrapper {
+  position: relative;
+  width: 126px;
+  height: 126px;
+}
+
+.profile-circle {
+  width: 126px;
+  height: 126px;
+  border-radius: 50%;
+  background-color: var(--Gray-1);
+  border: 2px solid var(--Gray-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.profile-logo-placeholder {
+  width: 50px;
+  height: 51.538px;
+  opacity: 0.4;
+  filter: grayscale(100%);
+}
+
+.profile-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.edit-icon-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: var(--Gray-3);
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-icon-btn:hover {
+  background-color: var(--primary-color);
+}
+
+.profile-edit-icon {
+  width: 14px;
+  height: 14px;
+  filter: brightness(0) invert(1);
+}
+
+.profile-upload-input {
+  display: none;
+}
+
+/* Title */
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--txt-color);
+  margin: 0;
+}
+
+/* Divider */
+.divider {
+  width: 100%;
+  height: 1px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background: var(--Gray-2);
+}
+
+/* Form - Register 기준 */
+.form {
+  width: 100%;
+  gap: 0;
+}
+
+.formGrid {
+  display: flex;
+  gap: 236px;
+  width: 100%;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 422px;
+}
+
+.col:last-child {
+  width: 508px;
+}
+
+/* Field - Register 기준 */
+.field {
+  width: 422px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+}
+
+.label {
+  position: relative;
+  display: inline-flex;
+  width: fit-content;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--txt-color);
+}
+
+.required {
+  position: absolute;
+  width: 7.871px;
+  height: 8.273px;
+  top: -1.5px;
+  right: -10px;
+  color: var(--primary-color);
+}
+
+/* Input - Register 기준 */
+.control {
+  width: 422px;
+  height: 50px;
+  border: 1px solid var(--Gray-2);
+  background: var(--bg-color);
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 0 15px;
+}
+
+.control input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 16px;
+  box-sizing: border-box;
+  outline: none;
+  background: transparent;
+  font-family: Pretendard;
+  color: var(--txt-color);
+}
+
+/* Input with Button (University, Club) - Register 기준 */
+.inputWithButton {
+  width: 508px;
+  display: grid;
+  grid-template-columns: 1fr 86px;
+  column-gap: 10px;
+  align-items: center;
+}
+
+.inputWithButton input {
+  width: 100%;
+  height: 50px;
+  border: 1px solid var(--Gray-2);
+  background: var(--bg-color);
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 0 15px;
+  font-size: 16px;
+  font-family: Pretendard;
+  color: var(--txt-color);
+}
+
+.inputWithButton input:focus {
+  border-color: var(--primary-color);
+}
+
+.searchBtn {
+  width: 86px;
+  height: 50px;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary-color);
+  font-size: 18px;
+  color: #fff;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.searchBtn:hover {
+  background: #13a8b3;
+}
+
+/* Phone Section - Register 기준 */
+.phoneSection {
+  margin-top: 30px;
+  margin-bottom: 145px;
+  width: 100%;
+}
+
+.phoneRow {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 110px 20px 110px 20px 110px;
+  column-gap: 13px;
+  align-items: center;
+}
+
+.phoneRow input.phone {
+  width: 110px;
+  height: 50px;
+  border: 1px solid var(--Gray-2);
+  background: var(--bg-color);
+  outline: none;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: Pretendard;
+  color: var(--txt-color);
+}
+
+.phoneRow input.phone:focus {
+  border-color: var(--primary-color);
+}
+
+.dash {
+  width: 20px;
+  height: 1.5px;
+  background-color: #bdbdbd;
+  justify-self: center;
+}
+
+/* Button Row */
+.buttonRow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.unregisterBtn {
+  padding: 10px 20px;
+  background: transparent;
+  color: var(--Gray-4);
+  border: 1.5px solid var(--Gray-3);
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.unregisterBtn:hover {
+  background: var(--Gray-1);
+  border-color: var(--Gray-3);
+}
+
+.submitBtn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 422px;
+  height: 50px;
+  border: 0;
+  border-radius: 8px;
+  color: #ffffff;
+  background: var(--Gray-2);
+  font-size: 20px;
+  font-weight: 600;
+  cursor: not-allowed;
+  transition: all 0.3s ease;
+}
+
+.submitBtn.active {
+  background: var(--primary-color);
+  color: #fff;
+  cursor: pointer;
+}
+
+.submitBtn.active:hover {
+  background: #13a8b3;
+}
