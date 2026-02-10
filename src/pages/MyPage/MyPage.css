@@ -46,7 +46,6 @@
   flex-shrink: 0;
 }
 
-/* 프로필 이미지 업로드 영역 - makeClub 기준 (126px 적용) */
 .profile-image-wrapper {
   position: relative;
   width: 126px;
@@ -108,7 +107,6 @@
   display: none;
 }
 
-/* Title */
 .title {
   font-size: 28px;
   font-weight: 600;
@@ -116,7 +114,6 @@
   margin: 0;
 }
 
-/* Divider */
 .divider {
   width: 100%;
   height: 1px;
@@ -125,8 +122,7 @@
   background: var(--Gray-2);
 }
 
-/* Form - Register 기준 */
-.form {
+.mypage-form {
   width: 100%;
   gap: 0;
 }
@@ -148,7 +144,6 @@
   width: 508px;
 }
 
-/* Field - Register 기준 */
 .field {
   width: 422px;
   display: flex;
@@ -175,7 +170,6 @@
   color: var(--primary-color);
 }
 
-/* Input - Register 기준 */
 .control {
   width: 422px;
   height: 50px;
@@ -199,7 +193,6 @@
   color: var(--txt-color);
 }
 
-/* Input with Button (University, Club) - Register 기준 */
 .inputWithButton {
   width: 508px;
   display: grid;
@@ -243,7 +236,6 @@
   background: #13a8b3;
 }
 
-/* Phone Section - Register 기준 */
 .phoneSection {
   margin-top: 30px;
   margin-bottom: 145px;
@@ -283,7 +275,6 @@
   justify-self: center;
 }
 
-/* Button Row */
 .buttonRow {
   position: relative;
   display: flex;
