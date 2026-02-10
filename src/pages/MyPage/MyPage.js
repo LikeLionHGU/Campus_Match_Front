@@ -296,7 +296,7 @@ export default function MyPage() {
 
         <div className="divider" />
 
-        <form className="form" onSubmit={onSubmit}>
+        <form className="mypage-form" onSubmit={onSubmit}>
           <div className="formGrid">
             <div className="col">
               <Field label="아이디" required>
