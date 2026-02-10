@@ -1,0 +1,32 @@
+.container{
+    display: grid;
+    grid-template-columns: 229px 1fr;
+}
+
+.right{
+    display: grid;
+    grid-template-columns: 560px 560px 361px;
+    grid-template-rows: 213px 591px;
+    gap: 25px;
+    background-color:#F7FAFA;;
+    padding: 80px 80px 83px 80px;
+}
+
+.club-intro{
+    display: grid;
+    grid-template-columns: 125px 1fr;
+    padding: 44px 43px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.05);
+    gap: 20px;
+}
+
+.club-record{
+    display: grid;
+    grid-row: 20px 1fr;
+    padding: 15px 35px;
+}
+

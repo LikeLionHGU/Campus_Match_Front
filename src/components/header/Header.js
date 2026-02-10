@@ -1,6 +1,6 @@
 import "./Header.css";
 import logo from "../../assets/긴로고-SB 1.png"
-import settingIcon from "../../assets/setting.svg";
+import accountIcon from "../../assets/account.svg";
 import notificationIcon from "../../assets/notification.svg";
 
 const Header = () => {
@@ -24,9 +24,9 @@ const Header = () => {
                     <nav className="user">
                         {isLogin ? (
                             <>
-                            <button className="setting" aria-label="설정">
+                            <button className="account" aria-label="설정">
                           
-                                <img src={settingIcon} alt="설정" />
+                                <img src={accountIcon} alt="설정" />
                             </button>
                             {/* <a href="/mypage">마이페이지</a>
                             <a href="/logout">로그아웃</a> */}
