@@ -30,7 +30,7 @@ export default function MyPage() {
     phone3: "",
   });
 
-  // const [profileImage, setProfileImage] = useState(null);
+  const [profileImage, setProfileImage] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
 
   const openModal = (
@@ -69,10 +69,10 @@ export default function MyPage() {
     const fetchUserInfo = async () => {
       try {
         const storedClubId = localStorage.getItem("clubId");
-        // if (!storedClubId) {
-        //   openModal("로그인이 필요합니다.", () => navigate("/login"));
-        //   return;
-        // }
+        if (!storedClubId) {
+          openModal("로그인이 필요합니다.", () => navigate("/login"));
+          return;
+        }
         setClubId(storedClubId);
 
         const response = await fetch(
@@ -115,7 +115,7 @@ export default function MyPage() {
   const onImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      // setProfileImage(file);
+      setProfileImage(file);
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreviewUrl(reader.result);
@@ -162,7 +162,7 @@ export default function MyPage() {
 
       openModal("수정되었습니다");
     } catch (error) {
-      openModal(`정보 수정에 실패했습니다: ${error.message}`);
+      openModal("정보 수정에 실패했습니다");
     } finally {
       setIsSubmitting(false);
     }
