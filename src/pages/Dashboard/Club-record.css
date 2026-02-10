@@ -1,4 +1,85 @@
+.club-record-top span{
+    color: var(--Text, #1F1F1F);
+    font-family: Pretendard;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 200% */
+}
+
 .club-record-bottom{
     display: grid;
-    
+    grid-template-columns: 97px 1fr;
+    gap: 35px;
+}
+
+.total-record{
+    display: grid;
+    align-items: center;
+    grid-template-rows: 20px 1fr;
+    gap: 30x;
+}
+
+.detail-record{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+}
+
+.count-title{
+    color: var(--Primary, #16C0CC);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 100% */
+    padding-top: 21px;
+}
+
+.count{
+    color: var(--Primary, #16C0CC);
+    text-align: center;
+    text-shadow: 0 0 12px rgba(22, 192, 204, 0.50);
+    font-family: Pretendard;
+    font-size: 70px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 60px; /* 85.714% */
+    padding-top: 0;
+}
+
+.win, .draw, .lose{
+
+    display: grid;
+    gap: 37px;
+    padding: 20px 45px 30px 45px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: var(--Gray-1, #F7F7F7);
+    padding: 20px 45px 30px 45px;
+    height: 102px;
+    border-radius: 10px;
+}
+
+.win p,.draw p,.lose p{
+    color: var(--Text, #1F1F1F);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 45px; /* 100% */
+    margin: 0;
+}
+
+.win span,.draw span,.lose span{
+    color: var(--Text, #1F1F1F);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 100% */
 }

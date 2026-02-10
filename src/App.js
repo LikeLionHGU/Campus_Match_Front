@@ -5,6 +5,7 @@ import MakeClub from "./pages/makeClub/makeClub";
 import LoginPage from "./pages/login_page/Login_page";
 import RegisterPage from "./pages/register_page/Register_page";
 import MyPage from "./pages/MyPage/MyPage";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/makeClub" element={<MakeClub />} />
         <Route path="/myPage" element={<MyPage />} />
+        <Route path="/dashboard" element={<Dashboard/>}/>
       </Routes>
       <Footer />
     </BrowserRouter>
