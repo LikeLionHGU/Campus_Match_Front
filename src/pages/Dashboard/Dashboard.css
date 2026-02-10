@@ -24,3 +24,9 @@
     gap: 20px;
 }
 
+.club-record{
+    display: grid;
+    grid-row: 20px 1fr;
+    padding: 15px 35px;
+}
+

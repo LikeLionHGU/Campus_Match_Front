@@ -1,4 +1,5 @@
 import "./Dashboard.css";
+import "./Club-record.css";
 import TempRing from "./TempRing";
 
 const Dashboard = () => {
@@ -12,11 +13,7 @@ const Dashboard = () => {
                     <div className="club-intro">
                         <div className="club-intro-left">
                             <div class="temp-ring">
-                                <TempRing temperature={25}/>
-                            
-
-                                
-
+                                <TempRing temperature={80}/>
                             </div>
                         </div>
                         <div className="club-intro-right">
@@ -29,7 +26,12 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div className="club-record">
+                        <div className="club-record-top">
 
+                        </div>
+                        <div className="club-record-bottom">
+
+                        </div>
                     </div>
                     <div className="club-badge">
                         
