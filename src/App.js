@@ -4,7 +4,7 @@ import Footer from "./components/footer/Footer";
 import MakeClub from "./pages/makeClub/makeClub";
 import LoginPage from "./pages/login_page/Login_page";
 import RegisterPage from "./pages/register_page/Register_page";
-import MyPage from "./pages/myPage/MyPage";
+import MyPage from "./pages/MyPage/MyPage";
 
 function App() {
   return (
