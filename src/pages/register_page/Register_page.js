@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Register_page.css";
-import mainLogo from "../../assets/mainLogo.png"
+import mainLogo from "../../assets/mainLogo.png";
+
 export default function RegisterPage() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
-    userId: "",
+    username: "",
     password: "",
     name: "",
     university: "",
-    club: "",
     phone1: "",
     phone2: "",
     phone3: "",
@@ -19,14 +21,52 @@ export default function RegisterPage() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
+  const isFormValid =
+    form.username &&
+    form.password &&
+    form.name &&
+    form.university &&
+    form.phone1 &&
+    form.phone2 &&
+    form.phone3 &&
+    form.email;
+
   const onSubmit = (e) => {
     e.preventDefault();
+
+    if (
+      !form.username ||
+      !form.password ||
+      !form.name ||
+      !form.university ||
+      !form.email
+    ) {
+      alert("모든 필수 항목을 입력해주세요.");
+      return;
+    }
+
+    if (!form.phone1 || !form.phone2 || !form.phone3) {
+      alert("전화번호를 입력해주세요.");
+      return;
+    }
+
+    const userInfo = {
+      username: form.username,
+      password: form.password,
+      name: form.name,
+      university: form.university,
+      phone: `${form.phone1}-${form.phone2}-${form.phone3}`,
+      email: form.email,
+    };
+
+    localStorage.setItem("userRegistrationInfo", JSON.stringify(userInfo));
+    console.log("개인정보 저장 완료:", userInfo);
+
+    navigate("/makeClub");
   };
 
   return (
-
     <div className="container">
-
       <div className="content">
         <div className="title">
           <img src={mainLogo} alt="mainLogo" className="title-logo" />
@@ -40,8 +80,8 @@ export default function RegisterPage() {
             </label>
             <input
               className="input"
-              name="userId"
-              value={form.userId}
+              name="username"
+              value={form.username}
               onChange={onChange}
             />
           </div>
@@ -126,16 +166,20 @@ export default function RegisterPage() {
             <input
               className="input"
               name="email"
+              type="email"
               value={form.email}
               onChange={onChange}
             />
           </div>
 
-          <button className="submit" type="submit">
-            회원가입
+          <button
+            className={`submit ${isFormValid ? "active" : ""}`}
+            type="submit"
+          >
+            다음
           </button>
         </form>
       </div>
-    </div >
+    </div>
   );
 }
