@@ -66,32 +66,32 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="container">
-      <div className="content">
-        <div className="title">
-          <img src={mainLogo} alt="mainLogo" className="title-logo" />
+    <div className="register-container">
+      <div className="register-content">
+        <div className="register-title">
+          <img src={mainLogo} alt="mainLogo" className="register-title-logo" />
           <span>회원가입</span>
         </div>
 
-        <form className="form" onSubmit={onSubmit}>
-          <div className="field">
-            <label className="label">
-              아이디<span className="req">*</span>
+        <form className="register-form" onSubmit={onSubmit}>
+          <div className="register-field">
+            <label className="register-label">
+              아이디<span className="register-req">*</span>
             </label>
             <input
-              className="input"
+              className="register-input"
               name="username"
               value={form.username}
               onChange={onChange}
             />
           </div>
 
-          <div className="field">
-            <label className="label">
-              비밀번호<span className="req">*</span>
+          <div className="register-field">
+            <label className="register-label">
+              비밀번호<span className="register-req">*</span>
             </label>
             <input
-              className="input"
+              className="register-input"
               type="password"
               name="password"
               value={form.password}
@@ -99,25 +99,25 @@ export default function RegisterPage() {
             />
           </div>
 
-          <div className="field">
-            <label className="label">
-              이름<span className="req">*</span>
+          <div className="register-field">
+            <label className="register-label">
+              이름<span className="register-req">*</span>
             </label>
             <input
-              className="input"
+              className="register-input"
               name="name"
               value={form.name}
               onChange={onChange}
             />
           </div>
 
-          <div className="field">
-            <label className="label">
-              대학<span className="req">*</span>
+          <div className="register-field">
+            <label className="register-label">
+              대학<span className="register-req">*</span>
             </label>
             <div className="row">
               <input
-                className="input"
+                className="register-input"
                 name="university"
                 value={form.university}
                 onChange={onChange}
@@ -128,13 +128,13 @@ export default function RegisterPage() {
             </div>
           </div>
 
-          <div className="field">
-            <label className="label">
-              전화번호<span className="req">*</span>
+          <div className="register-field">
+            <label className="register-label">
+              전화번호<span className="register-req">*</span>
             </label>
             <div className="phone">
               <input
-                className="input phone-input"
+                className="register-input phone-input"
                 name="phone1"
                 value={form.phone1}
                 onChange={onChange}
@@ -142,7 +142,7 @@ export default function RegisterPage() {
               />
               <span className="dash"></span>
               <input
-                className="input phone-input"
+                className="register-input phone-input"
                 name="phone2"
                 value={form.phone2}
                 onChange={onChange}
@@ -150,7 +150,7 @@ export default function RegisterPage() {
               />
               <span className="dash"></span>
               <input
-                className="input phone-input"
+                className="register-input phone-input"
                 name="phone3"
                 value={form.phone3}
                 onChange={onChange}
@@ -159,12 +159,12 @@ export default function RegisterPage() {
             </div>
           </div>
 
-          <div className="field">
-            <label className="label">
-              이메일<span className="req">*</span>
+          <div className="register-field">
+            <label className="register-label">
+              이메일<span className="register-req">*</span>
             </label>
             <input
-              className="input"
+              className="register-input"
               name="email"
               type="email"
               value={form.email}
