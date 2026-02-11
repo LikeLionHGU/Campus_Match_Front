@@ -30,7 +30,7 @@ export default function MyPage() {
     phone3: "",
   });
 
-  const [profileImage, setProfileImage] = useState(null);
+  // const [profileImage, setProfileImage] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
 
   const openModal = (
@@ -115,7 +115,7 @@ export default function MyPage() {
   const onImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setProfileImage(file);
+      // setProfileImage(file);
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreviewUrl(reader.result);
@@ -313,7 +313,6 @@ export default function MyPage() {
                   name="password"
                   value={form.password}
                   onChange={onChange}
-                  placeholder="변경 시 입력"
                 />
               </Field>
 
