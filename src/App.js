@@ -6,6 +6,7 @@ import LoginPage from "./pages/login_page/Login_page";
 import RegisterPage from "./pages/register_page/Register_page";
 import MyPage from "./pages/MyPage/MyPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
+
 function App() {
   return (
     <BrowserRouter>

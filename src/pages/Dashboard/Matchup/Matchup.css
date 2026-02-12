@@ -1,0 +1,92 @@
+.matchup-frame{
+    display: grid;
+    grid-template-rows: 170px 170px 170px;
+    gap: 20px;
+    padding: 20px;
+}
+
+.matchup-top{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:20px;
+}
+
+.matchup-top-left-header, .matchup-top-right-header{
+    display: flex;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    background: #16C0CC;
+}
+
+
+
+.matchup-middle-header,.matchup-bottom-header{
+    display: flex;
+    height: 35px;
+  
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    background: #16C0CC;
+}
+
+.matchup-middle-header span,.matchup-bottom-header span, .matchup-top span{
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px; /* 133.333% */
+}
+      
+.matchup-middle,.matchup-bottom, .matchup-top-left, .matchup-top-right{
+    border-radius: 10px;
+    border: 2px solid var(--Primary, #16C0CC);
+    overflow: hidden;
+
+}
+.matchup-middle-content , .matchup-bottom-content,.matchup-top-left-content,.matchup-top-right-content{
+    color: var(--Text, #1F1F1F);
+    font-family: Pretendard;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    background: #FFF;
+}
+
+.matchup-middle-content table thead, .matchup-bottom-content table thead ,.matchup-top table thead{
+    height: 23px;
+    
+    padding: 0px;
+    margin: 0px;
+} 
+
+.matchup-frame table {
+    
+    border-collapse: collapse;
+}
+
+.matchup-frame table tbody tr, .matchup-bottom-content table tbody tr{
+    height: 28px;
+    padding: 0px;
+}
+
+.matchup-frame table th, .matchup-bottom-content table th{
+    width: 130px;
+}
+.matchup-top table th{
+    width: 125px;
+}
+
+.matchup-first-row{
+    background: #ECFEFA;
+}
+
+.matchup-bottom:hover,.matchup-middle:hover,.matchup-top-left:hover,.matchup-top-right:hover{
+    box-shadow: 0 0 15px 0 rgba(22, 192, 204, 0.35);
+}
