@@ -6,6 +6,7 @@ import empty_badge from "../../assets/empty_badge.png";
 import { useState } from "react";
 import Calender from "./Calendaer/Calender";
 import Matchup from "./Matchup/Matchup";
+import Gallery from "./Gallery/Gallery"
 
 const Dashboard = () => {
     const [openModal, setOpenModal] = useState(null);
@@ -95,7 +96,7 @@ const Dashboard = () => {
                         <Calender/>
                     </div>
                     <div className="club-gallery">
-
+                        <Gallery/>
                     </div>
                 </div>
             </div>

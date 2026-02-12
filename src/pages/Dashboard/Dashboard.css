@@ -134,12 +134,13 @@
 }
 
 .club-gallery{
+    position: relative;
     background-color: #fff;
     border-radius: 20px;
-    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 12px rgba(0,0,0,0.05);
+    overflow: hidden;
 }
 
-.club-gallery:hover{
-    
-    box-shadow: 0 0 15px 0 rgba(22, 192, 204, 0.35);
+.club-gallery:hover .gallery-img-overlay{
+    opacity: 1.0;
 }
