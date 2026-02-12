@@ -69,11 +69,10 @@ function LoginPage() {
       const accessToken = authResponse.headers.get("Authorization");
       localStorage.setItem("Authorization", accessToken);
 
-      console.log("로그인 성공!");
       alert("로그인 성공!");
       navigate("/");
     } catch (error) {
-      console.error("로그인 실패:", error);
+      console.error(error);
       alert(`로그인에 실패했습니다: ${error.message}`);
     } finally {
       setIsLoading(false);
