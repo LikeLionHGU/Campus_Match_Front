@@ -19,9 +19,18 @@
   display: inline-flex;
   padding: 100px 50px 50px 50px;
   flex-direction: column;
-  
+  position: relative; 
   border-radius: 20px;
   background: #FFF;
+}
+.badge-modal-close {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+
+  width: 18.5px;
+  height: 18.5px;
+  cursor: pointer;
 }
 
 .badge-modal-text{
@@ -31,4 +40,5 @@
   font-style: normal;
   font-weight: 500;
   line-height: 20px; /* 100% */
+  margin-bottom: 20px;
 }

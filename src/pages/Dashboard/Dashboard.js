@@ -5,6 +5,7 @@ import TempRing from "./Temperture/TempRing";
 import empty_badge from "../../assets/empty_badge.png";
 import { useState } from "react";
 import Calender from "./Calendaer/Calender";
+import Matchup from "./Matchup/Matchup";
 
 const Dashboard = () => {
     const [openModal, setOpenModal] = useState(null);
@@ -28,7 +29,7 @@ const Dashboard = () => {
                                 동아리 소개
                             </span>
                             <p>
-                                asdasdasd
+                                우리는 멋쟁이 사자처럼 달려나가 상대를 물어뜯는 축구 동아리 입니다. 우리는 멋쟁이 사자처럼 달려나가 상대를 물어뜯는 축구 동아리 입니다. 우리는 멋쟁이 
                             </p>
                         </div>
                     </div>
@@ -88,7 +89,7 @@ const Dashboard = () => {
                         
                     </div>
                     <div className="club-matchup">
-
+                        <Matchup/>
                     </div>
                     <div className="club-calender">
                         <Calender/>
