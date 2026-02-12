@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./MyPage.css";
 import mainLogo from "../../assets/mainLogo.png";
 import editIcon from "../../assets/Edit.svg";
+import Modal from "../../components/Modal/Modal";
 
 export default function MyPage() {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ export default function MyPage() {
     phone3: "",
   });
 
-  // const [profileImage, setProfileImage] = useState(null);
+  const [profileImage, setProfileImage] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
 
   const openModal = (
@@ -58,13 +59,6 @@ export default function MyPage() {
     });
   };
 
-  const handleModalConfirm = () => {
-    if (modal.onConfirm) {
-      modal.onConfirm();
-    }
-    closeModal();
-  };
-
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
@@ -86,7 +80,6 @@ export default function MyPage() {
         );
 
         const data = await response.json();
-        console.log("내 정보 조회 성공:", data);
 
         setForm({
           username: data.username || "",
@@ -97,7 +90,7 @@ export default function MyPage() {
           clubName: data.clubName || "",
         });
       } catch (error) {
-        console.error("내 정보 조회 실패:", error);
+        console.error(error);
         openModal(`정보를 불러오는데 실패했습니다: ${error.message}`);
       } finally {
         setIsLoading(false);
@@ -112,10 +105,18 @@ export default function MyPage() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
+  // 필수 입력 필드 검증
+  const isFormValid =
+    form.username &&
+    form.name &&
+    form.email &&
+    form.university &&
+    form.clubName;
+
   const onImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      // setProfileImage(file);
+      setProfileImage(file);
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreviewUrl(reader.result);
@@ -135,14 +136,47 @@ export default function MyPage() {
     setIsSubmitting(true);
 
     try {
+      let uploadedImageUrl = null;
+
+      // 1단계: 새 이미지가 있으면 먼저 업로드
+      if (profileImage) {
+        const imageFormData = new FormData();
+        imageFormData.append("profileImage", profileImage);
+
+        const imageResponse = await fetch(
+          `${process.env.REACT_APP_HOST_URL}/api/club/upload-profile-image`,
+          {
+            method: "POST",
+            body: imageFormData,
+          },
+        );
+
+        if (!imageResponse.ok) {
+          throw new Error("이미지 업로드에 실패했습니다");
+        }
+
+        const imageResult = await imageResponse.json();
+        uploadedImageUrl = imageResult.imageUrl;
+      }
+
+      // 2단계: 정보 수정 (JSON으로 전송)
       const updateData = {
         name: form.name,
         username: form.username,
-        password: form.password,
         university: form.university,
         clubName: form.clubName,
         email: form.email,
       };
+
+      // 비밀번호가 입력된 경우에만 추가
+      if (form.password) {
+        updateData.password = form.password;
+      }
+
+      // 업로드된 이미지 URL이 있으면 추가
+      if (uploadedImageUrl) {
+        updateData.profileImageUrl = uploadedImageUrl;
+      }
 
       const response = await fetch(
         `${process.env.REACT_APP_HOST_URL}/api/club/setting/${clubId}`,
@@ -155,14 +189,20 @@ export default function MyPage() {
         },
       );
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "정보 수정에 실패했습니다.");
+      const result = await response.json();
+
+      // 응답에서 이미지 URL이 있으면 미리보기 업데이트
+      if (result.profileImageUrl) {
+        setPreviewUrl(result.profileImageUrl);
       }
 
-      openModal("수정되었습니다");
+      // 업로드 성공 후 profileImage state 초기화
+      setProfileImage(null);
+
+      openModal("수정되었습니다", closeModal);
     } catch (error) {
-      openModal("정보 수정에 실패했습니다");
+      console.error(error);
+      openModal("정보 수정에 실패했습니다", closeModal);
     } finally {
       setIsSubmitting(false);
     }
@@ -211,13 +251,6 @@ export default function MyPage() {
     // TODO: 동아리 검색 모달 구현
   };
 
-  const isFormValid =
-    form.username &&
-    form.name &&
-    form.email &&
-    form.university &&
-    form.clubName;
-
   if (isLoading) {
     return (
       <div className="mypage-container">
@@ -230,29 +263,14 @@ export default function MyPage() {
 
   return (
     <div className="mypage-container">
-      {modal.isOpen && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <p className="modal-message">{modal.message}</p>
-            {modal.subtitle && (
-              <p className="modal-subtitle">{modal.subtitle}</p>
-            )}
-            <div className="modal-buttons">
-              {modal.showCancel && (
-                <button className="modal-btn cancel" onClick={closeModal}>
-                  취소
-                </button>
-              )}
-              <button
-                className="modal-btn confirm"
-                onClick={handleModalConfirm}
-              >
-                확인
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <Modal
+        isOpen={modal.isOpen}
+        message={modal.message}
+        subtitle={modal.subtitle}
+        onConfirm={modal.onConfirm}
+        onCancel={closeModal}
+        showCancel={modal.showCancel}
+      />
 
       <div className="mypage-content">
         <div className="mypage-header"></div>
@@ -403,7 +421,7 @@ export default function MyPage() {
             <button
               className={`submitBtn ${isFormValid ? "active" : ""}`}
               type="submit"
-              disabled={isSubmitting}
+              disabled={!isFormValid || isSubmitting}
             >
               {isSubmitting ? "수정 중..." : "수정하기"}
             </button>

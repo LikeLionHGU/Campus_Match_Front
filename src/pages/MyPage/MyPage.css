@@ -9,78 +9,6 @@
   --bg-color: #fbffff;
 }
 
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000000b2;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  margin-top: 147px;
-  background: white;
-  border-radius: 12px;
-  padding: 40px 50px;
-  min-width: 400px;
-  max-width: 500px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  text-align: center;
-}
-
-.modal-message {
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--txt-color);
-  margin: 0 0 10px 0;
-}
-
-.modal-subtitle {
-  font-size: 14px;
-  color: var(--Gray-4);
-  margin: 0 0 30px 0;
-}
-
-.modal-buttons {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-.modal-btn {
-  padding: 12px 30px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.modal-btn.confirm {
-  background: var(--primary-color);
-  color: white;
-}
-
-.modal-btn.confirm:hover {
-  opacity: 0.85;
-}
-
-.modal-btn.cancel {
-  background: var(--Gray-2);
-  color: var(--Gray-4);
-}
-
-.modal-btn.cancel:hover {
-  background: var(--Gray-3);
-}
-
 .mypage-container {
   background: var(--bg-color);
   display: flex;
@@ -178,8 +106,8 @@
 }
 
 .title {
-  font-size: 28px;
-  font-weight: 600;
+  font-size: 30px;
+  font-weight: 400;
   color: var(--txt-color);
   margin: 0;
 }

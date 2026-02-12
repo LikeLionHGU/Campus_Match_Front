@@ -3,19 +3,29 @@ import { useNavigate } from "react-router-dom";
 import "./makeClub.css";
 import mainLogo from "../../assets/mainLogo.png";
 import editIcon from "../../assets/Edit.svg";
+import Modal from "../../components/Modal/Modal";
+import CustomSelect from "../../components/Dropdown/Dropdown";
 
 export default function MakeClub() {
   const navigate = useNavigate();
+  const [modal, setModal] = useState({
+    isOpen: false,
+    message: "",
+    subtitle: "",
+    onConfirm: null,
+  });
+
   const [form, setForm] = useState({
     clubName: "",
     description: "",
     region: "",
     sportCategory: "",
   });
-  // const [isLoading, setIsLoading] = useState(false);
+  // eslint-disable-next-line
+  const [isLoading, setIsLoading] = useState(false);
 
-  // const [profileImage, setProfileImage] = useState(null);
-  // const [previewUrl, setPreviewUrl] = useState(null);
+  const [profileImage, setProfileImage] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -26,18 +36,18 @@ export default function MakeClub() {
   const isFormValid =
     form.clubName && form.description && form.region && form.sportCategory;
 
-  // const onImageChange = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file) {
-  //     setProfileImage(file);
-  //     // 이미지 미리보기 생성
-  //     const reader = new FileReader();
-  //     reader.onloadend = () => {
-  //       setPreviewUrl(reader.result);
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // };
+  const onImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setProfileImage(file);
+      // 이미지 미리보기 생성
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreviewUrl(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -49,32 +59,68 @@ export default function MakeClub() {
       !form.region ||
       !form.sportCategory
     ) {
-      alert("모든 필수 항목을 입력해주세요.");
+      setModal({
+        isOpen: true,
+        message: "모든 필수 항목을 입력해주세요.",
+      });
       return;
     }
 
     // localStorage에서 개인정보 가져오기
     const userInfoStr = localStorage.getItem("userRegistrationInfo");
     if (!userInfoStr) {
-      alert("개인정보가 없습니다. 회원가입 첫 단계부터 다시 진행해주세요.");
-      navigate("/register");
+      setModal({
+        isOpen: true,
+        message: "개인정보가 없습니다.",
+        subtitle: "회원가입 첫 단계부터 다시 진행해주세요.",
+        onConfirm: () => navigate("/register"),
+      });
       return;
     }
 
-    // setIsLoading(true);
-
-    const userInfo = JSON.parse(userInfoStr);
-
-    // 전체 데이터 준비 (개인정보 + 동아리 정보)
-    const registrationData = {
-      ...userInfo,
-      clubName: form.clubName,
-      description: form.description,
-      region: form.region,
-      sportCategory: form.sportCategory,
-    };
+    setIsLoading(true);
 
     try {
+      let uploadedImageUrl = null;
+
+      // 1단계: 프로필 이미지가 있으면 먼저 업로드
+      if (profileImage) {
+        const imageFormData = new FormData();
+        imageFormData.append("profileImage", profileImage);
+
+        const imageResponse = await fetch(
+          `${process.env.REACT_APP_HOST_URL}/api/club/upload-profile-image`,
+          {
+            method: "POST",
+            body: imageFormData,
+          },
+        );
+
+        if (imageResponse.ok) {
+          const imageResult = await imageResponse.json();
+          uploadedImageUrl = imageResult.imageUrl;
+          console.log("이미지 업로드 성공:", uploadedImageUrl);
+        } else {
+          console.warn("이미지 업로드 실패, 이미지 없이 진행합니다.");
+        }
+      }
+
+      // 2단계: 회원가입 데이터 준비
+      const userInfo = JSON.parse(userInfoStr);
+
+      const registrationData = {
+        ...userInfo,
+        clubName: form.clubName,
+        description: form.description,
+        region: form.region,
+        sportCategory: form.sportCategory,
+      };
+
+      // 이미지 URL이 있으면 추가
+      if (uploadedImageUrl) {
+        registrationData.profileImageUrl = uploadedImageUrl;
+      }
+
       console.log("회원가입 요청 데이터:", registrationData);
 
       const response = await fetch(
@@ -88,42 +134,65 @@ export default function MakeClub() {
         },
       );
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "회원가입에 실패했습니다.");
+      const data = await response.json();
+      console.log("회원가입 성공 응답:", data);
+
+      if (response.ok) {
+        localStorage.removeItem("userRegistrationInfo");
+        localStorage.setItem("clubId", data.clubId);
+        setModal({
+          isOpen: true,
+          message: "동아리 등록이 완료되었습니다!",
+          onConfirm: () => navigate("/myPage"),
+        });
+      } else {
+        setModal({
+          isOpen: true,
+          message: "동아리 등록이 실패했습니다!",
+          subtitle: data.message || "다시 시도해주세요.",
+        });
       }
-
-      const result = await response.json();
-      console.log("회원가입 성공:", result);
-
-      // localStorage 정리
-      localStorage.removeItem("userRegistrationInfo");
-
-      alert("회원가입이 완료되었습니다!");
-
-      // 성공 시 로그인 페이지로 이동
-      navigate("/login");
     } catch (error) {
-      console.error("회원가입 실패:", error);
-      alert(`회원가입에 실패했습니다: ${error.message}`);
+      console.error("회원가입 요청 실패:", error);
+      setModal({
+        isOpen: true,
+        message: "동아리 등록이 실패했습니다!",
+        subtitle: "로그인이 필요해요",
+        onConfirm: () => navigate("/login"),
+      });
     } finally {
-      // setIsLoading(false);
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="club-container">
+      <Modal
+        isOpen={modal.isOpen}
+        message={modal.message}
+        subtitle={modal.subtitle}
+        onConfirm={
+          modal.onConfirm ||
+          (() =>
+            setModal({
+              isOpen: false,
+              message: "",
+              subtitle: "",
+              onConfirm: null,
+            }))
+        }
+      />
+
       <div className="club-content">
         <div className="club-title">
           <img src={mainLogo} alt="mainLogo" className="club-title-logo" />
           <span>동아리 생성</span>
         </div>
 
-        {/* 프로필 이미지 업로드 영역 */}
         <div className="profile-image-section">
           <div className="profile-image-wrapper">
             <div className="profile-circle">
-              {/* {previewUrl ? (
+              {previewUrl ? (
                 <img
                   src={previewUrl}
                   alt="프로필 미리보기"
@@ -135,7 +204,7 @@ export default function MakeClub() {
                   alt="기본 로고"
                   className="profile-logo-placeholder"
                 />
-              )} */}
+              )}
             </div>
             <label htmlFor="profile-upload" className="profile-edit-btn">
               <img
@@ -149,7 +218,7 @@ export default function MakeClub() {
             type="file"
             id="profile-upload"
             accept="image/*"
-            // onChange={onImageChange}
+            onChange={onImageChange}
             className="profile-upload-input"
           />
         </div>
@@ -182,60 +251,52 @@ export default function MakeClub() {
             />
           </div>
 
-          <div className="club-field">
-            <label className="club-label">
-              지역<span className="club-req">*</span>
-            </label>
-            <select
-              className="club-input"
+          <div className="club-field-row">
+            <CustomSelect
+              label="지역"
               name="region"
               value={form.region}
               onChange={onChange}
-            >
-              <option value="">지역을 선택하세요</option>
-              <option value="서울">서울</option>
-              <option value="경기">경기</option>
-              <option value="인천">인천</option>
-              <option value="부산">부산</option>
-              <option value="대구">대구</option>
-              <option value="광주">광주</option>
-              <option value="대전">대전</option>
-              <option value="울산">울산</option>
-              <option value="세종">세종</option>
-              <option value="강원">강원</option>
-              <option value="충북">충북</option>
-              <option value="충남">충남</option>
-              <option value="전북">전북</option>
-              <option value="전남">전남</option>
-              <option value="경북">경북</option>
-              <option value="경남">경남</option>
-              <option value="제주">제주</option>
-            </select>
-          </div>
+              required={true}
+              options={[
+                { value: "", label: "지역 선택" },
+                { value: "강원", label: "강원" },
+                { value: "경기", label: "경기" },
+                { value: "경남", label: "경남" },
+                { value: "경북", label: "경북" },
+                { value: "대전", label: "대전" },
+                { value: "부산", label: "부산" },
+                { value: "서울", label: "서울" },
+                { value: "세종", label: "세종" },
+                { value: "전남", label: "전남" },
+                { value: "전북", label: "전북" },
+                { value: "제주", label: "제주" },
+                { value: "충남", label: "충남" },
+              ]}
+            />
 
-          <div className="club-field">
-            <label className="club-label">
-              운동 종목<span className="club-req">*</span>
-            </label>
-            <select
-              className="club-input"
+            <CustomSelect
+              label="운동 종목"
               name="sportCategory"
               value={form.sportCategory}
               onChange={onChange}
-            >
-              <option value="">운동 종목을 선택하세요</option>
-              <option value="축구">축구</option>
-              <option value="농구">농구</option>
-              <option value="야구">야구</option>
-              <option value="배구">배구</option>
-              <option value="테니스">테니스</option>
-              <option value="배드민턴">배드민턴</option>
-              <option value="탁구">탁구</option>
-              <option value="수영">수영</option>
-              <option value="런닝">런닝</option>
-              <option value="클라이밍">클라이밍</option>
-              <option value="기타">기타</option>
-            </select>
+              required={true}
+              options={[
+                { value: "", label: "종목 선택" },
+                { value: "축구", label: "축구" },
+                { value: "미식축구", label: "미식축구" },
+                { value: "탁구", label: "탁구" },
+                { value: "농구", label: "농구" },
+                { value: "티볼", label: "티볼" },
+                { value: "유도", label: "유도" },
+                { value: "주짓수", label: "주짓수" },
+                { value: "야구", label: "야구" },
+                { value: "테니스", label: "테니스" },
+                { value: "러닝", label: "러닝" },
+                { value: "등산", label: "등산" },
+                { value: "E스포츠", label: "E스포츠" },
+              ]}
+            />
           </div>
 
           <button

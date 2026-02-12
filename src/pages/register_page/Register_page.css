@@ -10,7 +10,7 @@
 }
 
 .register-container {
-  margin-top: 87px;
+  margin-top: 102px;
   margin-bottom: 95px;
   display: grid;
   place-items: center;
@@ -26,15 +26,15 @@
   justify-content: center;
   gap: 10px;
   margin: 0 0 70px;
-  font-size: 40px;
-  font-weight: 500;
+  font-size: 25px;
+  font-weight: 400;
   color: var(--txt-color);
   line-height: 1;
 }
 
 .register-title-logo {
-  width: 34.697px;
-  height: 35.765px;
+  width: 24.254px;
+  height: 25px;
   margin-top: 2px;
 }
 

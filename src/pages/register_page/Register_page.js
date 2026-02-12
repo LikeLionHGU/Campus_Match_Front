@@ -2,9 +2,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Register_page.css";
 import mainLogo from "../../assets/mainLogo.png";
+import Modal from "../../components/Modal/Modal";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
+  const [modal, setModal] = useState({
+    isOpen: false,
+    message: "",
+  });
+
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -41,12 +47,12 @@ export default function RegisterPage() {
       !form.university ||
       !form.email
     ) {
-      alert("모든 필수 항목을 입력해주세요.");
+      setModal({ isOpen: true, message: "모든 필수 항목을 입력해주세요." });
       return;
     }
 
     if (!form.phone1 || !form.phone2 || !form.phone3) {
-      alert("전화번호를 입력해주세요.");
+      setModal({ isOpen: true, message: "전화번호를 입력해주세요." });
       return;
     }
 
@@ -60,13 +66,18 @@ export default function RegisterPage() {
     };
 
     localStorage.setItem("userRegistrationInfo", JSON.stringify(userInfo));
-    console.log("개인정보 저장 완료:", userInfo);
 
     navigate("/makeClub");
   };
 
   return (
     <div className="register-container">
+      <Modal
+        isOpen={modal.isOpen}
+        message={modal.message}
+        onConfirm={() => setModal({ isOpen: false, message: "" })}
+      />
+
       <div className="register-content">
         <div className="register-title">
           <img src={mainLogo} alt="mainLogo" className="register-title-logo" />
@@ -175,6 +186,7 @@ export default function RegisterPage() {
           <button
             className={`submit ${isFormValid ? "active" : ""}`}
             type="submit"
+            disabled={!isFormValid}
           >
             다음
           </button>
