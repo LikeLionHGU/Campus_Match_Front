@@ -1,0 +1,5 @@
+.match-frame{
+    display: grid;
+    grid-template-rows: 170px 170px 170px;
+    gap: 20px
+}

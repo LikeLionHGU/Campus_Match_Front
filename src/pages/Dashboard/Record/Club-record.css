@@ -1,10 +1,10 @@
 .club-record-top span{
     color: var(--Text, #1F1F1F);
     font-family: Pretendard;
-    font-size: 10px;
+    font-size: 12px;
     font-style: normal;
-    font-weight: 500;
-    line-height: 20px; /* 200% */
+    font-weight: 600;
+    line-height: 20px; /* 166.667% */
 }
 
 .club-record-bottom{
@@ -61,6 +61,13 @@
     padding: 20px 45px 30px 45px;
     height: 102px;
     border-radius: 10px;
+}
+
+.win{
+    background: #F2FFFC;
+}
+.lose{
+    background: #FFF5F2;
 }
 
 .win p,.draw p,.lose p{

@@ -1,9 +1,15 @@
 import "./Dashboard.css";
-import "./Club-record.css";
-import TempRing from "./TempRing";
-import empty_badge from "../../assets/empty_badge.png"
+import "./Record/Club-record.css";
+import BadgeModal from "./Badge/BadgeModal";
+import TempRing from "./Temperture/TempRing";
+import empty_badge from "../../assets/empty_badge.png";
+import { useState } from "react";
+import Calender from "./Calendaer/Calender";
 
 const Dashboard = () => {
+    const [openModal, setOpenModal] = useState(null);
+
+    
     return(
         <>
             <div className="container">
@@ -51,31 +57,31 @@ const Dashboard = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="club-badge">
+                    <div className="club-badge" onClick={() => setOpenModal("badge")}>
                         <div className="badge-frame">
                             <div>
                                 <img src={empty_badge} alt="empty"/>
-                                <span>asd</span>
+                                
                             </div>
                             <div>
                                 <img src={empty_badge} alt="empty"/>
-                                <span>asd</span>
+                                
                             </div>
                             <div>
                                 <img src={empty_badge} alt="empty"/>
-                                <span>asd</span>
+                                
                             </div>
                             <div>
                                 <img src={empty_badge} alt="empty"/>
-                                <span>asd</span>
+                                
                             </div>
                             <div>
                                 <img src={empty_badge} alt="empty"/>
-                                <span>asd</span>
+                                
                             </div>
                             <div>
                                 <img src={empty_badge} alt="empty"/>
-                                <span>asd</span>
+                                
                             </div>
                             
                         </div>
@@ -85,15 +91,23 @@ const Dashboard = () => {
 
                     </div>
                     <div className="club-calender">
-
+                        <Calender/>
                     </div>
                     <div className="club-gallery">
 
                     </div>
                 </div>
             </div>
+            {openModal === "badge" && (
+            <BadgeModal onClose={() => setOpenModal(null)} />
+            )}
         </>
+        
+
+        
     );
+
+    
 }
 
 export default Dashboard;
