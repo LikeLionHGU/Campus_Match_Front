@@ -16,10 +16,6 @@ const Calender = () => {
   const lastDate = new Date(year, month + 1, 0).getDate();
   const startDay = firstDay.getDay();
 
-  /* =========================
-     ✅ 이벤트 날짜 (년/월/일 포함)
-     month는 0부터 시작
-  ========================= */
 
   const filledDates = [
     { year: 2026, month: 1, day: 8 },

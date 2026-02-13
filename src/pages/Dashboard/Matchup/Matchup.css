@@ -50,13 +50,14 @@
 
 }
 .matchup-middle-content , .matchup-bottom-content,.matchup-top-left-content,.matchup-top-right-content{
+    overflow: hidden;
     color: var(--Text, #1F1F1F);
-    font-family: Pretendard;
+    text-overflow: ellipsis;
+    font-family: Inter;
     font-size: 12px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     line-height: normal;
-    background: #FFF;
 }
 
 .matchup-middle-content table thead, .matchup-bottom-content table thead ,.matchup-top table thead{

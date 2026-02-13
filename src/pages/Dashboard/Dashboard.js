@@ -7,18 +7,20 @@ import { useState } from "react";
 import Calender from "./Calendaer/Calender";
 import Matchup from "./Matchup/Matchup";
 import Gallery from "./Gallery/Gallery"
+import { useNavigate } from "react-router-dom";
+import Sidebar from "../../components/SideBar/SideBar";
 
 const Dashboard = () => {
     const [openModal, setOpenModal] = useState(null);
-
+    const navigate = useNavigate();
     
     return(
         <>
             <div className="container">
-                <div className="left">
-
+                <div className="siderbar">
+                    <Sidebar />
                 </div>
-                <div className="right">
+                <div className="dashboard-right">
                     <div className="club-intro">
                         <div className="club-intro-left">
                             <div class="temp-ring">
@@ -34,7 +36,7 @@ const Dashboard = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="club-record">
+                    <div className="club-record" onClick={() => navigate("/dashboard/record")}>
                         <div className="club-record-top">
                             <span>매치업 히스토리</span>
                         </div>
@@ -89,13 +91,13 @@ const Dashboard = () => {
                         </div>
                         
                     </div>
-                    <div className="club-matchup">
+                    <div className="club-matchup" onClick={() => navigate("/dashboard/matchup")}>
                         <Matchup/>
                     </div>
-                    <div className="club-calender">
+                    <div className="club-calender" onClick={() => navigate("/dashboard/calender")}>
                         <Calender/>
                     </div>
-                    <div className="club-gallery">
+                    <div className="club-gallery" onClick={() => navigate("/dashboard/gallery")}>
                         <Gallery/>
                     </div>
                 </div>

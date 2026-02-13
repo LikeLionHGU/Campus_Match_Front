@@ -4,7 +4,7 @@ import "./TempRing.css";
 const TempRing = ({ temperature = 75 }) => {
   const maxTemp = 100;
 
-  const radius = 56.5;
+  const radius = 53.5;
   const circumference = 2 * Math.PI * radius;
 
   const percent = temperature / maxTemp;

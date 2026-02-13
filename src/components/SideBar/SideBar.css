@@ -1,0 +1,90 @@
+.sidebar-main{
+    padding: 81px 22px;
+    display: grid;
+    gap: 30px;
+}
+
+.sidebar-top{
+    text-align: center;
+    align-items: center;
+    padding: 20px 30px;
+    width: 126px;
+    height: 196px;
+    background-color: #EAFDFF;
+}
+
+.sidebar-top-logo{
+    width: 126px;
+    height: 126px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.sidebar-top-name{
+    color: var(--Text, #1F1F1F);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px; /* 100% */
+    
+}
+.sidebar-top-logout{
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px; 
+}
+
+
+.sidebar-top-logout span{
+    color: var(--Text, #1F1F1F);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 10px; /* 66.667% */
+}
+
+.sidebar-top-logout img{
+    width: 15px;
+    height: 15px;
+    aspect-ratio: 1/1;
+}
+
+.sidebar-bottom{
+    display: grid;
+    gap: 5px;
+}
+
+.sidebar-bottom div {
+    border-radius: 10px;
+    background: #fff;
+    padding: 15px 10px 15px 30px;
+    width: 146px;
+    height: 20px;
+
+    color: #1F1F1F;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 20px;
+
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-bottom div:hover {
+    background: #EAFDFF;
+}
+
+.sidebar-bottom div.active {
+    background: #16C0CC;
+    color: #fff;
+}
+
+

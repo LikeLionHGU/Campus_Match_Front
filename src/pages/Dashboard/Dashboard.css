@@ -4,7 +4,7 @@
 
 }
 
-.right{
+.dashboard-right{
     display: grid;
     grid-template-columns: 560px 560px 361px;
     grid-template-rows: 213px 591px;

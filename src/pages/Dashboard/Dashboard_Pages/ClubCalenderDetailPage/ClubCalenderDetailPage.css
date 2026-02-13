@@ -1,0 +1,30 @@
+.container{
+    display: grid;
+    grid-template-columns: 229px 1fr;
+
+}
+
+.calender-detail-header{
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    position :absolute;
+    left:78px;
+    top:34px;
+}
+.calender-detail-header img{
+    width: 20px;
+    height: 20px;
+    aspect-ratio: 1/1;
+}
+.calender-detail-header span{
+    color: var(--Text, #1F1F1F);
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}

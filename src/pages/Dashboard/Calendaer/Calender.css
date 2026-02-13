@@ -67,6 +67,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 
   color: var(--Primary, #424041);
     text-align: center;
