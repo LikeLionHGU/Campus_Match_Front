@@ -1,7 +1,7 @@
 import Sidebar from "../../components/SideBar/SideBar";
-import "./Matchup_Board_Page.css";
+import "./ClubBoardPage.css";
 
-const Matchup_Board_Page = () => {
+const ClubBoardPage = () => {
     return(
         <>
             <div className="container">
@@ -16,4 +16,4 @@ const Matchup_Board_Page = () => {
     );
 }
 
-export default Matchup_Board_Page;
+export default ClubBoardPage;

@@ -10,8 +10,8 @@ import DetailGallery from "./pages/Dashboard/Dashboard_Pages/ClubGalleryDetailPa
 import DetailRecord from "./pages/Dashboard/Dashboard_Pages/ClubRecordDetailPage/ClubRecordDetailPage";
 import DetailCalender from "./pages/Dashboard/Dashboard_Pages/ClubCalenderDetailPage/ClubCalenderDetailPage";
 import DetailMatchup from "./pages/Dashboard/Dashboard_Pages/ClubMatchupDetailPage/ClubMatchupDetailPage";
-import Matchup_Board_Page from "./pages/Matchup_Board_Page/Matchup_Board_Page";
-import Club_Board_Page from "./pages/Club_Board_Page/Club_Board_Page";
+import MatchupBoardPage from "./pages/Matchup_Board_Page/MatchupBoardPage";
+import ClubBoardPage from "./pages/Club_Board_Page/ClubBoardPage";
 
 function App() {
   return (
@@ -28,8 +28,8 @@ function App() {
         <Route path="/dashboard/matchup" element={<DetailMatchup />} />
         <Route path="/dashboard/calender" element={<DetailCalender />} />
         <Route path="/dashboard/gallery" element={<DetailGallery />} />
-        <Route path="/matchup-board" element={<Matchup_Board_Page />} />
-        <Route path="/club-board" element={<Club_Board_Page />} />
+        <Route path="/matchup-board" element={<MatchupBoardPage />} />
+        <Route path="/club-board" element={<ClubBoardPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
