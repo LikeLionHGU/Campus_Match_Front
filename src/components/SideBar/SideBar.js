@@ -13,7 +13,7 @@ const Sidebar = () =>{
 
         if (path.startsWith("/dashboard")) return "dashboard";
         if (path.startsWith("/club-board")) return "club";
-        if (path.startsWith("/match-board")) return "match";
+        if (path.startsWith("/matchup-board")) return "match";
         if (path.startsWith("/finish-matchup")) return "finish";
 
         return "";

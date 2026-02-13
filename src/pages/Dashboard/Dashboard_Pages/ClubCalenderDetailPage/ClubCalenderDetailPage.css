@@ -3,6 +3,9 @@
     grid-template-columns: 229px 1fr;
 
 }
+.calender-detail-container {
+    position: relative;
+}
 
 .calender-detail-header{
     display: grid;
