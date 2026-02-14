@@ -47,13 +47,19 @@ function LoginPage() {
         throw new Error("아이디 또는 비밀번호가 올바르지 않습니다.");
       }
 
-      const refreshToken = loginResponse.headers.get("RefreshToken");
+      const loginData = await loginResponse.json().catch(() => ({}));
+      const refreshToken =
+        loginData.RefreshToken || loginResponse.headers.get("RefreshToken");
 
       if (!refreshToken || refreshToken === "" || Number(refreshToken) <= 0) {
         throw new Error("계정이 존재하지 않거나 잘못된 정보입니다.");
       }
 
       localStorage.setItem("RefreshToken", refreshToken);
+
+      if (loginData.clubId) {
+        localStorage.setItem("clubId", loginData.clubId);
+      }
 
       const authResponse = await fetch(
         `${process.env.REACT_APP_HOST_URL}/api/auth`,
@@ -66,14 +72,45 @@ function LoginPage() {
         },
       );
 
-      const accessToken = authResponse.headers.get("Authorization");
-      localStorage.setItem("Authorization", accessToken);
+      if (!authResponse.ok) {
+        throw new Error("사용자 정보를 불러오는데 실패했습니다.");
+      }
+
+      const authData = await authResponse.json().catch(() => ({}));
+
+      const accessToken =
+        authResponse.headers.get("Authorization") || authData.Authorization;
+
+      if (accessToken) {
+        localStorage.setItem("Authorization", accessToken);
+
+        try {
+          const clubResponse = await fetch(
+            `${process.env.REACT_APP_HOST_URL}/api/club/clubId`,
+            {
+              method: "GET",
+              headers: {
+                Authorization: accessToken,
+              },
+            },
+          );
+
+          if (clubResponse.ok) {
+            const clubData = await clubResponse.json();
+
+            if (clubData.clubId) {
+              localStorage.setItem("clubId", clubData.clubId);
+            } else if (clubData && typeof clubData === "number") {
+              localStorage.setItem("clubId", clubData);
+            }
+          }
+        } catch (error) {}
+      }
 
       alert("로그인 성공!");
-      navigate("/");
+      navigate("/mypage");
     } catch (error) {
-      console.error(error);
-      alert(`로그인에 실패했습니다: ${error.message}`);
+      alert("로그인 실패!");
     } finally {
       setIsLoading(false);
     }

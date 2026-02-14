@@ -63,10 +63,7 @@ export default function MyPage() {
     const fetchUserInfo = async () => {
       try {
         const storedClubId = localStorage.getItem("clubId");
-        if (!storedClubId) {
-          openModal("로그인이 필요합니다.", () => navigate("/login"));
-          return;
-        }
+
         setClubId(storedClubId);
 
         const response = await fetch(
@@ -75,11 +72,35 @@ export default function MyPage() {
             method: "GET",
             headers: {
               "Content-Type": "application/json; charset=utf-8",
+              Authorization: localStorage.getItem("Authorization"),
             },
           },
         );
 
         const data = await response.json();
+
+        let p1 = "";
+        let p2 = "";
+        let p3 = "";
+
+        if (data.phone) {
+          if (data.phone.includes("-")) {
+            const parts = data.phone.split("-");
+            if (parts.length === 3) {
+              p1 = parts[0];
+              p2 = parts[1];
+              p3 = parts[2];
+            }
+          } else if (data.phone.length === 11) {
+            p1 = data.phone.substring(0, 3);
+            p2 = data.phone.substring(3, 7);
+            p3 = data.phone.substring(7, 11);
+          } else if (data.phone.length === 10) {
+            p1 = data.phone.substring(0, 3);
+            p2 = data.phone.substring(3, 6);
+            p3 = data.phone.substring(6, 10);
+          }
+        }
 
         setForm({
           username: data.username || "",
@@ -88,10 +109,12 @@ export default function MyPage() {
           email: data.email || "",
           university: data.university || "",
           clubName: data.clubName || "",
+          phone1: p1,
+          phone2: p2,
+          phone3: p3,
         });
       } catch (error) {
-        console.error(error);
-        openModal(`정보를 불러오는데 실패했습니다: ${error.message}`);
+        openModal("정보를 불러오는데 실패했습니다.");
       } finally {
         setIsLoading(false);
       }
@@ -105,7 +128,6 @@ export default function MyPage() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  // 필수 입력 필드 검증
   const isFormValid =
     form.username &&
     form.name &&
@@ -128,17 +150,11 @@ export default function MyPage() {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    // if (!clubId) {
-    //   openModal("로그인이 필요합니다.", () => navigate("/login"));
-    //   return;
-    // }
-
     setIsSubmitting(true);
 
     try {
       let uploadedImageUrl = null;
 
-      // 1단계: 새 이미지가 있으면 먼저 업로드
       if (profileImage) {
         const imageFormData = new FormData();
         imageFormData.append("profileImage", profileImage);
@@ -147,6 +163,9 @@ export default function MyPage() {
           `${process.env.REACT_APP_HOST_URL}/api/club/upload-profile-image`,
           {
             method: "POST",
+            headers: {
+              Authorization: localStorage.getItem("Authorization"),
+            },
             body: imageFormData,
           },
         );
@@ -159,21 +178,21 @@ export default function MyPage() {
         uploadedImageUrl = imageResult.imageUrl;
       }
 
-      // 2단계: 정보 수정 (JSON으로 전송)
+      const phoneCombined = `${form.phone1}-${form.phone2}-${form.phone3}`;
+
       const updateData = {
         name: form.name,
         username: form.username,
         university: form.university,
         clubName: form.clubName,
         email: form.email,
+        phone: phoneCombined,
       };
 
-      // 비밀번호가 입력된 경우에만 추가
       if (form.password) {
         updateData.password = form.password;
       }
 
-      // 업로드된 이미지 URL이 있으면 추가
       if (uploadedImageUrl) {
         updateData.profileImageUrl = uploadedImageUrl;
       }
@@ -184,6 +203,7 @@ export default function MyPage() {
           method: "PUT",
           headers: {
             "Content-Type": "application/json; charset=utf-8",
+            Authorization: localStorage.getItem("Authorization"),
           },
           body: JSON.stringify(updateData),
         },
@@ -191,17 +211,14 @@ export default function MyPage() {
 
       const result = await response.json();
 
-      // 응답에서 이미지 URL이 있으면 미리보기 업데이트
       if (result.profileImageUrl) {
         setPreviewUrl(result.profileImageUrl);
       }
 
-      // 업로드 성공 후 profileImage state 초기화
       setProfileImage(null);
 
       openModal("수정되었습니다", closeModal);
     } catch (error) {
-      console.error(error);
       openModal("정보 수정에 실패했습니다", closeModal);
     } finally {
       setIsSubmitting(false);
@@ -216,6 +233,7 @@ export default function MyPage() {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json; charset=utf-8",
+            Authorization: localStorage.getItem("Authorization"),
           },
         },
       );
@@ -230,12 +248,12 @@ export default function MyPage() {
 
       openModal(
         "탈퇴가 완료되었습니다",
-        () => navigate("/"),
+        () => navigate("/login"),
         false,
         "지금까지 이용해 주셔서 감사합니다",
       );
     } catch (error) {
-      openModal(`회원 탈퇴에 실패했습니다: ${error.message}`);
+      openModal("회원 탈퇴에 실패했습니다.");
     }
   };
 
@@ -243,13 +261,9 @@ export default function MyPage() {
     openModal("정말 캠퍼스 매치를 탈퇴 하시겠습니까?", executeUnregister, true);
   };
 
-  const onSearchUniversity = () => {
-    // TODO: 대학 검색 모달 구현
-  };
+  const onSearchUniversity = () => {};
 
-  const onSearchClub = () => {
-    // TODO: 동아리 검색 모달 구현
-  };
+  const onSearchClub = () => {};
 
   if (isLoading) {
     return (

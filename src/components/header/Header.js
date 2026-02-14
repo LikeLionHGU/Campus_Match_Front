@@ -11,7 +11,9 @@ const Header = () => {
         <div className="inner">
           <div className="left">
             <div className="logo">
-              <img src={logo} alt="logo" />
+              <a href="/dashboard">
+                <img src={logo} alt="logo" />
+              </a>
             </div>
           </div>
 
