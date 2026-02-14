@@ -1,4 +1,4 @@
-import "./BadgeModal.css";
+ import "./BadgeModal.css";
 import Badge_list from "../../../assets/badge_list.svg";
 import closeIcon from "../../../assets/close.svg"
 
