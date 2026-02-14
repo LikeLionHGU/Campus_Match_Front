@@ -25,11 +25,11 @@
 }
 .badge-modal-close {
   position: absolute;
-  top: 28px;
-  right: 28px;
+  top: 20px;
+  right: 20px;
 
-  width: 18.5px;
-  height: 18.5px;
+  width: 15.8px;
+  height: 15.8px;
   cursor: pointer;
 }
 
