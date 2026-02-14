@@ -39,7 +39,7 @@ const AddCalenderModal = ({ onClose, date, clubId }) => {
       startTime,
       endTime
     };
-    const example =1;
+
     try {
       const res = await fetch(
         `${process.env.REACT_APP_HOST_URL}/api/schedule`,
