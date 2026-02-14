@@ -32,7 +32,6 @@ export default function MakeClub() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  // 필수 입력값 체크
   const isFormValid =
     form.clubName && form.description && form.region && form.sportCategory;
 
@@ -40,7 +39,6 @@ export default function MakeClub() {
     const file = e.target.files[0];
     if (file) {
       setProfileImage(file);
-      // 이미지 미리보기 생성
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreviewUrl(reader.result);
@@ -52,7 +50,6 @@ export default function MakeClub() {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    // 필수 입력값 검증
     if (
       !form.clubName ||
       !form.description ||
@@ -66,7 +63,6 @@ export default function MakeClub() {
       return;
     }
 
-    // localStorage에서 개인정보 가져오기
     const userInfoStr = localStorage.getItem("userRegistrationInfo");
     if (!userInfoStr) {
       setModal({
@@ -83,7 +79,6 @@ export default function MakeClub() {
     try {
       let uploadedImageUrl = null;
 
-      // 1단계: 프로필 이미지가 있으면 먼저 업로드
       if (profileImage) {
         const imageFormData = new FormData();
         imageFormData.append("profileImage", profileImage);
@@ -99,13 +94,10 @@ export default function MakeClub() {
         if (imageResponse.ok) {
           const imageResult = await imageResponse.json();
           uploadedImageUrl = imageResult.imageUrl;
-          console.log("이미지 업로드 성공:", uploadedImageUrl);
         } else {
-          console.warn("이미지 업로드 실패, 이미지 없이 진행합니다.");
         }
       }
 
-      // 2단계: 회원가입 데이터 준비
       const userInfo = JSON.parse(userInfoStr);
 
       const registrationData = {
@@ -116,12 +108,9 @@ export default function MakeClub() {
         sportCategory: form.sportCategory,
       };
 
-      // 이미지 URL이 있으면 추가
       if (uploadedImageUrl) {
         registrationData.profileImageUrl = uploadedImageUrl;
       }
-
-      console.log("회원가입 요청 데이터:", registrationData);
 
       const response = await fetch(
         `${process.env.REACT_APP_HOST_URL}/api/club/signup`,
@@ -134,12 +123,13 @@ export default function MakeClub() {
         },
       );
 
-      const data = await response.json();
-      console.log("회원가입 성공 응답:", data);
+      const data = await response.json().catch(() => ({}));
 
       if (response.ok) {
         localStorage.removeItem("userRegistrationInfo");
-        localStorage.setItem("clubId", data.clubId);
+        if (data.clubId) {
+          localStorage.setItem("clubId", data.clubId);
+        }
         setModal({
           isOpen: true,
           message: "동아리 등록이 완료되었습니다!",
@@ -153,7 +143,6 @@ export default function MakeClub() {
         });
       }
     } catch (error) {
-      console.error("회원가입 요청 실패:", error);
       setModal({
         isOpen: true,
         message: "동아리 등록이 실패했습니다!",
