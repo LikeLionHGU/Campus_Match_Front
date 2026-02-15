@@ -15,7 +15,7 @@
 }
 
 .success-modal {
-    transform: translateY(-300px);
+    transform: translateY(-500px);
     position: relative;
     background: #fff;
     padding: 20px;
@@ -23,4 +23,39 @@
     height: 85px;
     padding: 45px 70px 20px 70px;
     border-radius: 10px;
+    align-items: center;
+    justify-items: center;
+}
+
+.success-modal-close{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    width: 15.8px;
+    height: 15.8px;
+    cursor: pointer;
+}
+
+.success-modal-text{
+    color: var(--Text, #1F1F1F);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 20px */
+    margin-bottom: 30px;
+}
+
+.success-modal-button{
+    border: 0px;
+    width: 66px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background: var(--Primary, #16C0CC);
+    color: #fff; 
 }

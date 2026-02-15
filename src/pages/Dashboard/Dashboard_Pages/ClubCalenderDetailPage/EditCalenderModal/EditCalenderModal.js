@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./EditCalenderModal.css";
 import closeIcon from "../../../../../assets/close.svg";
 
-const EditCalenderModal = ({ onClose, scheduleId }) => {
+const EditCalenderModal = ({ onClose, onSuccess, onDelete, scheduleId }) => {
 
   const [title, setTitle] = useState("");
 
@@ -14,27 +14,40 @@ const EditCalenderModal = ({ onClose, scheduleId }) => {
 
   const [loading, setLoading] = useState(true);
 
-  /* ✅ 모달 열릴 때 일정 상세 조회 */
+  const formatDate = (dateStr) => {
+    if (!dateStr) return "";
+    return dateStr.slice(0, 10);
+  };
+
+  const formatTime = (timeStr) => {
+    if (!timeStr) return "";
+    return timeStr.slice(0, 5);
+  };
+
   useEffect(() => {
     if (!scheduleId) return;
 
     const fetchScheduleDetail = async () => {
       try {
         const res = await fetch(
-          `${process.env.REACT_APP_HOST_URL}/api/schedule/detail/${scheduleId}`
+          `${process.env.REACT_APP_HOST_URL}/api/schedule/detail/${scheduleId}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": localStorage.getItem("Authorization"),
+            },
+          }
         );
 
-        if (!res.ok) {
-          throw new Error("일정 조회 실패");
-        }
+        if (!res.ok) throw new Error();
 
         const data = await res.json();
 
-        setTitle(data.title);
-        setStartDate(data.startDate);
-        setEndDate(data.endDate);
-        setStartTime(data.startTime);
-        setEndTime(data.endTime);
+        setTitle(data.title || "");
+        setStartDate(formatDate(data.startDate));
+        setEndDate(formatDate(data.endDate));
+        setStartTime(formatTime(data.startTime));
+        setEndTime(formatTime(data.endTime));
 
       } catch (err) {
         console.error(err);
@@ -46,6 +59,74 @@ const EditCalenderModal = ({ onClose, scheduleId }) => {
 
     fetchScheduleDetail();
   }, [scheduleId]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!title.trim()) {
+      alert("제목을 입력해주세요.");
+      return;
+    }
+
+    try {
+      const res = await fetch(
+        `${process.env.REACT_APP_HOST_URL}/api/schedule/${scheduleId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": localStorage.getItem("Authorization"),
+          },
+          body: JSON.stringify({
+            title,
+            startDate,
+            endDate,
+            startTime,
+            endTime,
+          }),
+        }
+      );
+
+      if (!res.ok) throw new Error();
+
+
+      onSuccess();
+
+
+
+    } catch (err) {
+      console.error(err);
+      alert("수정 중 오류가 발생했습니다.");
+    }
+  };
+
+  const handleDelete = async () => {
+
+
+    try {
+      const res = await fetch(
+        `${process.env.REACT_APP_HOST_URL}/api/schedule/${scheduleId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Authorization": localStorage.getItem("Authorization"),
+          },
+        }
+      );
+
+      if (!res.ok) throw new Error();
+
+
+      onDelete();
+      
+
+
+
+    } catch (err) {
+      console.error(err);
+      alert("삭제 중 오류가 발생했습니다.");
+    }
+  };
 
   if (loading) return null;
 
@@ -67,7 +148,10 @@ const EditCalenderModal = ({ onClose, scheduleId }) => {
             <span>일정 수정</span>
           </div>
 
-          <form className="edit-calender-modal-detail">
+          <form
+            className="edit-calender-modal-detail"
+            onSubmit={handleSubmit}
+          >
 
             <div className="edit-calender-modal-detail-name">
               <span>이름</span>
@@ -106,7 +190,19 @@ const EditCalenderModal = ({ onClose, scheduleId }) => {
               />
             </div>
 
-            <button type="submit">저장</button>
+            <div className="edit-calender-modal-buttons">
+              <button
+                type="button"
+                className="edit-calender-delete-button"
+                onClick={handleDelete}
+              >
+                삭제
+              </button>
+
+              <button className="edit-calender-edit-button" type="submit">
+                저장
+              </button>
+            </div>
 
           </form>
         </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BackArrow from "../../../../assets/arrow_left.svg";
 import "./ClubCalenderDetailPage.css";
 import Sidebar from "../../../../components/SideBar/SideBar";
@@ -9,11 +9,12 @@ import BorderCircle from "../../../../assets/border_circle.svg";
 import FilledCircle from "../../../../assets/filled_circle.svg";
 import TodayRectangle from "../../../../assets/today_rectangle.svg";
 import AddIcon from "../../../../assets/add_icon.svg";
-
+import { useNavigate } from "react-router-dom";
 import AddCalenderModal from "./AddCalenderModal/AddCalenderModal";
 import EditCalenderModal from "./EditCalenderModal/EditCalenderModal";
 import MatchupCalenderModal from "./MatchupCalenderModal/MatchupCalenderModal";
 import SuccessModal from "./SuccessModal/SuccessModal";
+import EditIcon from "../../../../assets/edit_gray.svg"
 
 const ClubCalenderDetailPage = () => {
 
@@ -22,6 +23,9 @@ const ClubCalenderDetailPage = () => {
 
     const [modalType, setModalType] = useState(null);
     const [selectedDate, setSelectedDate] = useState(null);
+    const [selectedScheduleId, setSelectedScheduleId] = useState(null);
+
+    const [greenSchedules, setGreenSchedules] = useState([]);
 
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
@@ -41,13 +45,32 @@ const ClubCalenderDetailPage = () => {
         "2026-02-11"
     ];
 
-    const greenDates = [
-        "2026-02-21",
-        "2026-02-28"
-    ];
+    const fetchSchedules = async () => {
+        try {
+            const res = await fetch(
+                `${process.env.REACT_APP_HOST_URL}/api/schedule`,
+                {
+                    headers: {
+                        "Authorization": localStorage.getItem("Authorization"),
+                    },
+                }
+            );
 
-    const prevMonthLastDate =
-        new Date(year, month, 0).getDate();
+            const data = await res.json();
+            setGreenSchedules(Array.isArray(data) ? data : data.List || []);
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
+    useEffect(() => {
+        fetchSchedules();
+    }, []);
+
+    
+    const navigate = useNavigate();
+
+    const prevMonthLastDate = new Date(year, month, 0).getDate();
 
     const dates = [];
 
@@ -86,44 +109,55 @@ const ClubCalenderDetailPage = () => {
         return `${y}-${mm}-${dd}`;
     };
 
-    /* ✅ 날짜 클릭 시 모달 분기 */
     const handleCellClick = (dateKey) => {
-
         setSelectedDate(dateKey);
-
-        // 매치업 일정
-        if (outlineDates.includes(dateKey)) {
-            setModalType("matchup");
-            return;
-        }
-
-        // 일반 일정
-        if (greenDates.includes(dateKey)) {
-            setModalType("edit");
-            return;
-        }
-
-        // 일정 없음
         setModalType("add");
     };
 
-    return(
+    const handleScheduleClick = (scheduleId, e) => {
+        e.stopPropagation();
+        setSelectedScheduleId(scheduleId);
+        setModalType("edit");
+    };
+
+    const currentMonthSchedules = greenSchedules
+    .filter((schedule) => {
+        const start = new Date(schedule.startDate);
+        const end = new Date(schedule.endDate);
+
+        const monthStart = new Date(year, month, 1);
+        const monthEnd = new Date(year, month + 1, 0);
+
+        return end >= monthStart && start <= monthEnd;
+    })
+    .sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+
+    const getDayOfWeek = (dateString) => {
+        const days = ["일", "월", "화", "수", "목", "금", "토"];
+        const date = new Date(dateString);
+        return days[date.getDay()];
+    };
+
+    const getDayNumber = (dateString) => {
+        return new Date(dateString).getDate();
+    };
+
+    return (
         <>
             <div className="container">
                 <div className="sidebar">
-                    <Sidebar/>
+                    <Sidebar />
                 </div>
 
                 <div className="calender-detail-container">
 
-                    <div className="calender-detail-header">
+                    <div className="calender-detail-header" onClick={() => navigate(-1)}>
                         <img src={BackArrow} alt="back-arrow" />
                         <span>스케줄</span>
                     </div>
 
                     <div className="calender-detail-main">
 
-                        {/* LEFT */}
                         <div className="calender-detail-left">
 
                             <div className="calender-detail-left-header">
@@ -141,17 +175,15 @@ const ClubCalenderDetailPage = () => {
                             <div className="calender-detail-left-grid">
                                 {dates.map((item, idx) => {
 
+                                    const cellDate = new Date(year, month, item.date);
                                     const dateKey = makeDateKey(year, month, item.date);
+
 
                                     const isToday =
                                         item.isCurrentMonth &&
                                         item.date === today.getDate() &&
                                         month === today.getMonth() &&
                                         year === today.getFullYear();
-
-                                    const green =
-                                        item.isCurrentMonth &&
-                                        greenDates.includes(dateKey);
 
                                     const filled =
                                         item.isCurrentMonth &&
@@ -161,6 +193,15 @@ const ClubCalenderDetailPage = () => {
                                         item.isCurrentMonth &&
                                         outlineDates.includes(dateKey);
 
+                                    const daySchedules = greenSchedules.filter((schedule) => {
+                                        if (!item.isCurrentMonth) return false;
+
+                                        const start = new Date(schedule.startDate);
+                                        const end = new Date(schedule.endDate);
+                                        const current = new Date(dateKey);
+
+                                        return current >= start && current <= end;
+                                    });
                                     return (
                                         <div
                                             key={idx}
@@ -169,15 +210,23 @@ const ClubCalenderDetailPage = () => {
                                                 ${isToday ? 'today' : ""}
                                                 ${!item.isCurrentMonth ? "other-month" : ""}
                                             `}
-                                            onClick={() =>
-                                                item.isCurrentMonth &&
-                                                handleCellClick(dateKey)
-                                            }
+                                            onClick={(e) => {
+
+                                                const scheduleElement = e.target.closest(".schedule-item");
+
+                                                if (scheduleElement && e.currentTarget.contains(scheduleElement)) {
+                                                    return;
+                                                }
+
+                                                if (item.isCurrentMonth) {
+                                                    handleCellClick(dateKey);
+                                                }
+                                            }}
                                         >
+
                                             <div
                                                 className={`
                                                     calender-detail-left-date
-                                                    ${green  ? "green" : ""}
                                                     ${filled ? "filled" : ""}
                                                     ${outline ? "outline" : ""}
                                                 `}
@@ -185,19 +234,50 @@ const ClubCalenderDetailPage = () => {
                                                 {item.date}
                                             </div>
 
-                                            <img
-                                                className="calender-detail-left-add"
-                                                src={AddIcon}
-                                                alt="add_icon"
-                                            />
+                                            <div className="calender-detail-left-schedules">
+                                                {daySchedules.slice(0,4).map((schedule) => (
+                                                    <div
+                                                        key={schedule.scheduleId}
+                                                        className="schedule-item green"
+                                                        style={{
+                                                            cursor: schedule.myClub ? "pointer" : "default",
+                                                            opacity: schedule.myClub ? 1 : 0.6
+                                                        }}
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            if (!schedule.myClub) return;
+                                                            handleScheduleClick(schedule.scheduleId, e);
+                                                        }}
+                                                    >
+                                                        <img
+                                                            src={GreenCircle}
+                                                            alt="green_circle"
+                                                            className="schedule-item-icon"
+                                                        />
+                                                        <span>{schedule.title}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+
+                                            <div className="calender-detail-left-add-wrapper">
+                                                <img
+                                                    src={AddIcon}
+                                                    alt="add_icon"
+                                                    className="calender-detail-left-add add-icon"
+                                                />
+
+                                                <img
+                                                    src={EditIcon}
+                                                    alt="edit_icon"
+                                                    className="calender-detail-left-add edit-icon"
+                                                />
+                                            </div>
                                         </div>
                                     );
                                 })}
                             </div>
-
                         </div>
 
-                        {/* RIGHT */}
                         <div className="calender-detail-right">
                             <div className="calender-detail-right-top">
                                 <div>
@@ -219,9 +299,42 @@ const ClubCalenderDetailPage = () => {
                             </div>
 
                             <div className="calender-detail-right-bottom">
-                                <div className="calender-detail-right-bottom-first"></div>
-                                <div className="calender-detail-right-bottom-second"></div>
-                                <div className="calender-detail-right-bottom-third"></div>
+                                <div className="calender-detail-right-bottom-first">
+                                    <div className="calender-detail-right-bottom-first-title">
+                                        <span >동아리 일정</span>
+                                    </div>
+                                    
+                                    <div className="calender-detail-right-bottom-first-item">
+                                        {currentMonthSchedules.map((schedule) => (
+                                            <div
+                                                key={schedule.scheduleId}
+                                                className="right-schedule-item"
+                                            >
+                                                <span>
+                                                    {getDayNumber(schedule.startDate)}
+                                                </span>
+
+                                                <span>
+                                                    &nbsp;{getDayOfWeek(schedule.startDate)}요일 -&nbsp;
+                                                </span>
+
+                                                <span>
+                                                    {schedule.title}
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="calender-detail-right-bottom-second">
+                                    <div className="calender-detail-right-bottom-second-title">
+                                        <span >매치업 가능</span>
+                                    </div>
+                                </div>
+                                <div className="calender-detail-right-bottom-third">
+                                    <div className="calender-detail-right-bottom-third-title">
+                                        <span >매치업</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -229,35 +342,50 @@ const ClubCalenderDetailPage = () => {
                 </div>
             </div>
 
-            {/* ✅ ADD */}
             {modalType === "add" && (
                 <AddCalenderModal
                     date={selectedDate}
                     onClose={() => setModalType(null)}
-                    onSuccess={() => setModalType("success")}
+                    onSuccess={() => {
+                        setModalType("success-add");
+                        fetchSchedules(); 
+                    }}
                 />
             )}
 
-            {/* ✅ EDIT */}
             {modalType === "edit" && (
                 <EditCalenderModal
-                    date={selectedDate}
-                    onClose={() => setModalType(null)}
+                    scheduleId={selectedScheduleId}
+                    onClose={() => {setModalType(null)}}
+                    onSuccess={() => {
+                        setModalType("success-edit");
+                        fetchSchedules();   
+                    }}
+                    onDelete={() => {
+                        setModalType("success-delete");
+                        fetchSchedules();   
+                    }}
+
                 />
             )}
 
-            {/* ✅ MATCHUP */}
-            {modalType === "matchup" && (
-                <MatchupCalenderModal
-                    date={selectedDate}
-                    onClose={() => setModalType(null)}
-                />
-            )}
-
-            {/* ✅ SUCCESS */}
-            {modalType === "success" && (
+            {modalType === "success-add" && (
                 <SuccessModal
-                    message="성공적으로 저장되었습니다."
+                    message="저장되었습니다"
+                    onConfirm={() => setModalType(null)}
+                />
+            )}
+
+            {modalType === "success-edit" && (
+                <SuccessModal
+                    message="수정되었습니다"
+                    onConfirm={() => setModalType(null)}
+                />
+            )}
+
+            {modalType === "success-delete" && (
+                <SuccessModal
+                    message="삭제되었습니다"
                     onConfirm={() => setModalType(null)}
                 />
             )}

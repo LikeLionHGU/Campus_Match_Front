@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./AddCalenderModal.css";
 import closeIcon from "../../../../../assets/close.svg";
 
-const AddCalenderModal = ({ onClose, date, clubId }) => {
+const AddCalenderModal = ({ onClose, date, onSuccess }) => {
 
   const [title, setTitle] = useState("");
   const [titleError, setTitleError] = useState("");
@@ -39,6 +39,7 @@ const AddCalenderModal = ({ onClose, date, clubId }) => {
       startTime,
       endTime
     };
+    console.log(body);
 
     try {
       const res = await fetch(
@@ -46,6 +47,7 @@ const AddCalenderModal = ({ onClose, date, clubId }) => {
         {
           method: "POST",
           headers: {
+            "Authorization" : localStorage.getItem("Authorization"),
             "Content-Type": "application/json",
           },
           body: JSON.stringify(body),
@@ -56,14 +58,15 @@ const AddCalenderModal = ({ onClose, date, clubId }) => {
         throw new Error("일정 저장 실패");
       }
 
-      alert("일정이 저장되었습니다.");
-      onClose();
+      onSuccess();
 
     } catch (err) {
       console.error(err);
       alert("저장 중 오류가 발생했습니다.");
     }
   };
+
+  
 
   return (
     <div className="add-calender-modal-backdrop" onClick={onClose}>
@@ -119,6 +122,7 @@ const AddCalenderModal = ({ onClose, date, clubId }) => {
 
               <input
                 type="time"
+                lang="ko-KR"
                 value={startTime}
                 onChange={(e) => setStartTime(e.target.value)}
               />
@@ -136,12 +140,13 @@ const AddCalenderModal = ({ onClose, date, clubId }) => {
 
               <input
                 type="time"
+                lang="ko-KR"
                 value={endTime}
                 onChange={(e) => setEndTime(e.target.value)}
               />
             </div>
 
-            <button type="submit">저장</button>
+            <button type="submit" >저장</button>
           </form>
         </div>
       </div>

@@ -41,7 +41,7 @@
 
 
 .sidebar-top-logout span{
-    color: var(--Text, #1F1F1F);
+    color: var(--Gray-4, #9E9E9E);
     text-align: center;
     font-family: Pretendard;
     font-size: 15px;
@@ -51,6 +51,7 @@
 }
 
 .sidebar-top-logout img{
+    color: var(--Gray-4, #9E9E9E);
     width: 15px;
     height: 15px;
     aspect-ratio: 1/1;
