@@ -12,7 +12,7 @@ import AddIcon from "../../../../assets/add_icon.svg";
 import { useNavigate } from "react-router-dom";
 import AddCalenderModal from "./AddCalenderModal/AddCalenderModal";
 import EditCalenderModal from "./EditCalenderModal/EditCalenderModal";
-import MatchupCalenderModal from "./MatchupCalenderModal/MatchupCalenderModal";
+// import MatchupCalenderModal from "./MatchupCalenderModal/MatchupCalenderModal";
 import SuccessModal from "./SuccessModal/SuccessModal";
 import EditIcon from "../../../../assets/edit_gray.svg"
 
@@ -175,7 +175,7 @@ const ClubCalenderDetailPage = () => {
                             <div className="calender-detail-left-grid">
                                 {dates.map((item, idx) => {
 
-                                    const cellDate = new Date(year, month, item.date);
+                                    // const cellDate = new Date(year, month, item.date);
                                     const dateKey = makeDateKey(year, month, item.date);
 
 
