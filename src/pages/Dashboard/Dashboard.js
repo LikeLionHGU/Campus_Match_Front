@@ -91,7 +91,7 @@ const Dashboard = () => {
                         </div>
                         
                     </div>
-                    <div className="club-matchup" onClick={() => navigate("/dashboard/matchup")}>
+                    <div className="club-matchup" >
                         <Matchup/>
                     </div>
                     <div className="club-calender" onClick={() => navigate("/dashboard/calender")}>

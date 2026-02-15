@@ -1,11 +1,13 @@
 import "./Matchup.css";
+import { useNavigate } from "react-router-dom";
 
 const Matchup = () => {
+    const navigate = useNavigate();
     return(
         <>
             <div className="matchup-frame">
                 <div className="matchup-top">
-                    <div className="matchup-top-left">
+                    <div className="matchup-top-left" onClick={() => navigate("/dashboard/upcoming-matchup")}>
                         <div className="matchup-top-left-header">
                             <span>예정된 매치업</span>
                         </div>
