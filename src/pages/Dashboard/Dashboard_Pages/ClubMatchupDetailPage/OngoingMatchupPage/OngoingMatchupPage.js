@@ -1,5 +1,5 @@
 import Sidebar from "../../../../../components/SideBar/SideBar";
-import "./UpcomingMatchupPage.css";
+import "./OngoingMatchupPage.css";
 import { useNavigate } from "react-router-dom";
 import BackArrow from "../../../../../assets/arrow_left.svg";
 import { useState,useEffect } from "react";
@@ -8,17 +8,16 @@ import ArrowLeftDouble from "../../../../../assets/arrow_left_double.svg";
 import ArrowRight from "../../../../../assets/arrow_right.svg";
 import ArrowRightDouble from "../../../../../assets/arrow_right_double.svg";
 import ArrowDown from "../../../../../assets/arrow_down.svg";
-import MatchupCancelModal from "../Modal/MatchupCancelModal/MatchupCancelModal";
 import MatchupDetailModal from "../Modal/MatchupDetailModal/MatchupDetailModal";
+import MatchupFinishModal from "../Modal/MatchupFinishModal/MatchupFinishModal";
 import SuccessModal from "../../ClubCalenderDetailPage/SuccessModal/SuccessModal";
-
-const UpcomingMatchupPage = () =>{ 
+const OngoingMatchupPage = () =>{
     const navigate = useNavigate();
     const [matchups, setMatchups] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [dateOrder, setDateOrder] = useState("asc");
     const [detailModalOpen, setDetailModalOpen] = useState(false);
-    const [cancelModalOpen, setCancelModalOpen] = useState(false);
+    const [finishModalOpen, setFinishModalOpen] = useState(false);
     const [selectedMatch, setSelectedMatch] = useState(null);
     const [selectedMatchId, setSelectedMatchId] = useState(null);
     const [successModalOpen, setSuccessModalOpen] = useState(false);
@@ -33,12 +32,12 @@ const UpcomingMatchupPage = () =>{
     });
 
     const pageSize = 10;
-    const fetchUpcoming = async () => {
+    const fetchOngoing = async () => {
             try {
                 const clubId = localStorage.getItem("clubId");
 
                 const res = await fetch(
-                    `${process.env.REACT_APP_HOST_URL}/api/matchPost/upcoming/${clubId}`,
+                    `${process.env.REACT_APP_HOST_URL}/api/matchPost/ongoing/${clubId}`,
                     {
                         headers: {
                             "Authorization": localStorage.getItem("Authorization"),
@@ -49,7 +48,7 @@ const UpcomingMatchupPage = () =>{
                 if (!res.ok) throw new Error();
 
                 const data = await res.json();
-
+                
                 setMatchups(Array.isArray(data) ? data : data.List || []);
 
             } catch (e) {
@@ -57,7 +56,7 @@ const UpcomingMatchupPage = () =>{
             }
         };
     useEffect(() => {
-    fetchUpcoming();
+    fetchOngoing();
     }, []);
     const totalPages = Math.max(1, Math.ceil(matchups.length / pageSize));
 
@@ -87,14 +86,14 @@ const UpcomingMatchupPage = () =>{
                 <div className="sidebar">
                     <Sidebar/>
                 </div>
-                <div className="upcoming-matchup-container">
-                    <div className="upcoming-matchup-header" onClick={() => navigate(-1)}>
+                <div className="ongoing-matchup-container">
+                    <div className="ongoing-matchup-header" onClick={() => navigate(-1)}>
                         <img src={BackArrow} alt="back-arrow" />
-                        <span>예정된 매치업</span>
+                        <span>진행중인 매치업</span>
                     </div>
-                    <div className="upcoming-match-main">
-                        <div className="upcoming-match-content">
-                            <div className="upcoming-match-table-wrapper">
+                    <div className="ongoing-match-main">
+                        <div className="ongoing-match-content">
+                            <div className="ongoing-match-table-wrapper">
                                 <table>
                                     <thead>
                                         <tr>
@@ -138,9 +137,9 @@ const UpcomingMatchupPage = () =>{
                                                         <button
                                                             onClick={() => {
                                                                 setSelectedMatchId(item.matchPostId);
-                                                                setCancelModalOpen(true);
+                                                                setFinishModalOpen(true);
                                                             }}
-                                                        >취소하기</button>
+                                                        >종료하기</button>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -149,10 +148,10 @@ const UpcomingMatchupPage = () =>{
                                 </table>
                             </div>
                             
-                            <div className="upcoming-pagination">
+                            <div className="ongoing-pagination">
                                 <div className="pagination-move">
-                                    <img className="upcoming-pagination-double" src={ArrowLeftDouble} alt="<<" onClick={goFirstBlock} disabled={currentPage === 1} />
-                                    <img className="upcoming-pagination-mono" src={ArrowLeft} alt="<" onClick={goPrev} disabled={currentPage === 1}/>
+                                    <img className="ongoing-pagination-double" src={ArrowLeftDouble} alt="<<" onClick={goFirstBlock} disabled={currentPage === 1} />
+                                    <img className="ongoing-pagination-mono" src={ArrowLeft} alt="<" onClick={goPrev} disabled={currentPage === 1}/>
                                 </div>
                     
                                 
@@ -169,8 +168,8 @@ const UpcomingMatchupPage = () =>{
                                     ))}
                                 </div>
                                 <div className="pagination-move">
-                                    <img className="upcoming-pagination-mono" src={ArrowRight} alt=">"  onClick={goNext} disabled={currentPage === totalPages} />
-                                    <img className="upcoming-pagination-double" src={ArrowRightDouble} alt=">>" onClick={goLastBlock} disabled={currentPage === totalPages} />
+                                    <img className="ongoing-pagination-mono" src={ArrowRight} alt=">"  onClick={goNext} disabled={currentPage === totalPages} />
+                                    <img className="ongoing-pagination-double" src={ArrowRightDouble} alt=">>" onClick={goLastBlock} disabled={currentPage === totalPages} />
                                 </div>
                                 
                             
@@ -189,17 +188,17 @@ const UpcomingMatchupPage = () =>{
                 />
             )}
 
-            {cancelModalOpen && (
-                <MatchupCancelModal
+            {finishModalOpen && (
+                <MatchupFinishModal
                     matchPostId={selectedMatchId}
-                    onClose={() => setCancelModalOpen(false)}
+                    onClose={() => setFinishModalOpen(false)}
                     onSuccess={() => {
-                        setCancelModalOpen(false);
+                        setFinishModalOpen(false);
                         setSuccessModalOpen(true);
-                        fetchUpcoming();
+                        fetchOngoing();
                     }}
                 />
-            )}
+            )} 
 
             {successModalOpen && (
                 <SuccessModal
@@ -210,6 +209,7 @@ const UpcomingMatchupPage = () =>{
             )}
         </>
     );
+
 }
 
-export default UpcomingMatchupPage;
+export default OngoingMatchupPage;

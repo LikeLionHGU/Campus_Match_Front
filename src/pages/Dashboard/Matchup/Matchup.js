@@ -38,7 +38,7 @@ const Matchup = () => {
                             </table>
                         </div>
                     </div>
-                    <div className="matchup-top-right">
+                    <div className="matchup-top-right" onClick={() => navigate("/dashboard/ongoing-matchup")}>
                         <div className="matchup-top-right-header">
                             <span>진행중인 매치업</span>
                         </div>
@@ -70,7 +70,7 @@ const Matchup = () => {
                         </div>
                     </div>
                 </div>
-                <div className="matchup-middle">
+                <div className="matchup-middle" onClick={() => navigate("/dashboard/receive-matchup")}>
                     <div className="matchup-middle-header">
                         <span>제안받은 매치업</span>
                     </div>

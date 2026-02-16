@@ -90,7 +90,6 @@ const AddCalenderModal = ({ onClose, date, onSuccess }) => {
             className="add-calender-modal-detail"
             onSubmit={handleSubmit}
           >
-            {/* 제목 */}
             <div className="add-calender-modal-detail-name">
               <span>이름</span>
 
@@ -110,7 +109,6 @@ const AddCalenderModal = ({ onClose, date, onSuccess }) => {
               />
             </div>
 
-            {/* 시작 */}
             <div className="add-calender-modal-detail-start">
               <span>시작</span>
 
@@ -128,7 +126,6 @@ const AddCalenderModal = ({ onClose, date, onSuccess }) => {
               />
             </div>
 
-            {/* 종료 */}
             <div className="add-calender-modal-detail-end">
               <span>종료</span>
 

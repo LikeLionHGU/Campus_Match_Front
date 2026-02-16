@@ -12,6 +12,7 @@ import DetailCalender from "./pages/Dashboard/Dashboard_Pages/ClubCalenderDetail
 import MatchupBoardPage from "./pages/Matchup_Board_Page/MatchupBoardPage";
 import ClubBoardPage from "./pages/Club_Board_Page/ClubBoardPage";
 import UpcomingMatchupPage from "./pages/Dashboard/Dashboard_Pages/ClubMatchupDetailPage/UpcomingMatchupPage/UpcomingMatchupPage";
+import OngoingMatchupPage from "./pages/Dashboard/Dashboard_Pages/ClubMatchupDetailPage/OngoingMatchupPage/OngoingMatchupPage";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/dashboard/record" element={<DetailRecord />} />
         <Route path="/dashboard/upcoming-matchup" element={<UpcomingMatchupPage />} />
+        <Route path="/dashboard/ongoing-matchup" element={<OngoingMatchupPage />} />
         <Route path="/dashboard/calender" element={<DetailCalender />} />
         <Route path="/dashboard/gallery" element={<DetailGallery />} />
         <Route path="/matchup-board" element={<MatchupBoardPage />} />

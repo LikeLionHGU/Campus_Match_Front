@@ -12,7 +12,7 @@ import MatchupCancelModal from "../Modal/MatchupCancelModal/MatchupCancelModal";
 import MatchupDetailModal from "../Modal/MatchupDetailModal/MatchupDetailModal";
 import SuccessModal from "../../ClubCalenderDetailPage/SuccessModal/SuccessModal";
 
-const UpcomingMatchupPage = () =>{ 
+const ReceiveMatchupPage = () =>{
     const navigate = useNavigate();
     const [matchups, setMatchups] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -33,12 +33,12 @@ const UpcomingMatchupPage = () =>{
     });
 
     const pageSize = 10;
-    const fetchUpcoming = async () => {
+    const fetchReceive = async () => {
             try {
                 const clubId = localStorage.getItem("clubId");
 
                 const res = await fetch(
-                    `${process.env.REACT_APP_HOST_URL}/api/matchPost/upcoming/${clubId}`,
+                    `${process.env.REACT_APP_HOST_URL}/api/matchPost/receive/${clubId}`,
                     {
                         headers: {
                             "Authorization": localStorage.getItem("Authorization"),
@@ -57,7 +57,7 @@ const UpcomingMatchupPage = () =>{
             }
         };
     useEffect(() => {
-    fetchUpcoming();
+    fetchReceive();
     }, []);
     const totalPages = Math.max(1, Math.ceil(matchups.length / pageSize));
 
@@ -87,14 +87,14 @@ const UpcomingMatchupPage = () =>{
                 <div className="sidebar">
                     <Sidebar/>
                 </div>
-                <div className="upcoming-matchup-container">
-                    <div className="upcoming-matchup-header" onClick={() => navigate(-1)}>
+                <div className="receive-matchup-container">
+                    <div className="receive-matchup-header" onClick={() => navigate(-1)}>
                         <img src={BackArrow} alt="back-arrow" />
                         <span>예정된 매치업</span>
                     </div>
-                    <div className="upcoming-match-main">
-                        <div className="upcoming-match-content">
-                            <div className="upcoming-match-table-wrapper">
+                    <div className="receive-match-main">
+                        <div className="receive-match-content">
+                            <div className="receive-match-table-wrapper">
                                 <table>
                                     <thead>
                                         <tr>
@@ -109,7 +109,7 @@ const UpcomingMatchupPage = () =>{
                                             <th>지역</th>
                                             <th>장소</th>
                                             <th>매치온도</th>
-                                            <th>세부 정보 / 매치업 취소</th>
+                                            <th>세부 정보 / 거절 / 수락</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -134,25 +134,32 @@ const UpcomingMatchupPage = () =>{
                                                                 setDetailModalOpen(true);
                                                             }}
                                                         >세부정보</button>
-                                                        &nbsp;/&nbsp;
+                                                        /
                                                         <button
                                                             onClick={() => {
                                                                 setSelectedMatchId(item.matchPostId);
                                                                 setCancelModalOpen(true);
                                                             }}
-                                                        >취소하기</button>
+                                                        >거절</button>
+                                                        /
+                                                        <button
+                                                            onClick={() => {
+                                                                setSelectedMatchId(item.matchPostId);
+                                                                setCancelModalOpen(true);
+                                                            }}
+                                                        >수락</button>
                                                     </div>
                                                 </td>
                                             </tr>
                                         ))}
                                     </tbody>
                                 </table>
-                            </div>
+                            </div>    
                             
-                            <div className="upcoming-pagination">
+                            <div className="receive-pagination">
                                 <div className="pagination-move">
-                                    <img className="upcoming-pagination-double" src={ArrowLeftDouble} alt="<<" onClick={goFirstBlock} disabled={currentPage === 1} />
-                                    <img className="upcoming-pagination-mono" src={ArrowLeft} alt="<" onClick={goPrev} disabled={currentPage === 1}/>
+                                    <img className="receive-pagination-double" src={ArrowLeftDouble} alt="<<" onClick={goFirstBlock} disabled={currentPage === 1} />
+                                    <img className="receive-pagination-mono" src={ArrowLeft} alt="<" onClick={goPrev} disabled={currentPage === 1}/>
                                 </div>
                     
                                 
@@ -169,8 +176,8 @@ const UpcomingMatchupPage = () =>{
                                     ))}
                                 </div>
                                 <div className="pagination-move">
-                                    <img className="upcoming-pagination-mono" src={ArrowRight} alt=">"  onClick={goNext} disabled={currentPage === totalPages} />
-                                    <img className="upcoming-pagination-double" src={ArrowRightDouble} alt=">>" onClick={goLastBlock} disabled={currentPage === totalPages} />
+                                    <img className="receive-pagination-mono" src={ArrowRight} alt=">"  onClick={goNext} disabled={currentPage === totalPages} />
+                                    <img className="receive-pagination-double" src={ArrowRightDouble} alt=">>" onClick={goLastBlock} disabled={currentPage === totalPages} />
                                 </div>
                                 
                             
@@ -212,4 +219,4 @@ const UpcomingMatchupPage = () =>{
     );
 }
 
-export default UpcomingMatchupPage;
+export default ReceiveMatchupPage;
