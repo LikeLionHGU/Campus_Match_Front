@@ -59,69 +59,82 @@ export default function MyPage() {
     });
   };
 
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      try {
-        const storedClubId = localStorage.getItem("clubId");
+  const toAbsoluteUrl = (url) => {
+    if (!url) return null;
+    if (url.startsWith("http://") || url.startsWith("https://")) return url;
+    return `${process.env.REACT_APP_HOST_URL}${url}`;
+  };
 
-        setClubId(storedClubId);
+  const fetchUserInfo = async (id) => {
+    const response = await fetch(
+      `${process.env.REACT_APP_HOST_URL}/api/club/setting/${id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Authorization: localStorage.getItem("Authorization"),
+        },
+      },
+    );
 
-        const response = await fetch(
-          `${process.env.REACT_APP_HOST_URL}/api/club/setting/${storedClubId}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json; charset=utf-8",
-              Authorization: localStorage.getItem("Authorization"),
-            },
-          },
-        );
+    if (!response.ok) throw new Error("정보를 불러오는데 실패했습니다.");
 
-        const data = await response.json();
+    const data = await response.json();
 
-        let p1 = "";
-        let p2 = "";
-        let p3 = "";
+    let p1 = "";
+    let p2 = "";
+    let p3 = "";
 
-        if (data.phone) {
-          if (data.phone.includes("-")) {
-            const parts = data.phone.split("-");
-            if (parts.length === 3) {
-              p1 = parts[0];
-              p2 = parts[1];
-              p3 = parts[2];
-            }
-          } else if (data.phone.length === 11) {
-            p1 = data.phone.substring(0, 3);
-            p2 = data.phone.substring(3, 7);
-            p3 = data.phone.substring(7, 11);
-          } else if (data.phone.length === 10) {
-            p1 = data.phone.substring(0, 3);
-            p2 = data.phone.substring(3, 6);
-            p3 = data.phone.substring(6, 10);
-          }
+    if (data.phone) {
+      if (data.phone.includes("-")) {
+        const parts = data.phone.split("-");
+        if (parts.length === 3) {
+          p1 = parts[0];
+          p2 = parts[1];
+          p3 = parts[2];
         }
+      } else if (data.phone.length === 11) {
+        p1 = data.phone.substring(0, 3);
+        p2 = data.phone.substring(3, 7);
+        p3 = data.phone.substring(7, 11);
+      } else if (data.phone.length === 10) {
+        p1 = data.phone.substring(0, 3);
+        p2 = data.phone.substring(3, 6);
+        p3 = data.phone.substring(6, 10);
+      }
+    }
 
-        setForm({
-          username: data.username || "",
-          password: "",
-          name: data.name || "",
-          email: data.email || "",
-          university: data.university || "",
-          clubName: data.clubName || "",
-          phone1: p1,
-          phone2: p2,
-          phone3: p3,
-        });
+    const imageFromData = toAbsoluteUrl(data.imageUrl);
+    if (imageFromData) setPreviewUrl(imageFromData);
+
+    setForm({
+      username: data.username,
+      password: data.password,
+      name: data.name,
+      email: data.email,
+      university: data.university,
+      clubName: data.clubName,
+      phone1: p1,
+      phone2: p2,
+      phone3: p3,
+    });
+  };
+
+  useEffect(() => {
+    const storedClubId = localStorage.getItem("clubId");
+    setClubId(storedClubId);
+
+    (async () => {
+      try {
+        await fetchUserInfo(storedClubId);
       } catch (error) {
         openModal("정보를 불러오는데 실패했습니다.");
       } finally {
         setIsLoading(false);
       }
-    };
-
-    fetchUserInfo();
-  }, [navigate]);
+    })();
+    // eslint-disable-next-line
+  }, []);
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -140,44 +153,16 @@ export default function MyPage() {
     if (file) {
       setProfileImage(file);
       const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewUrl(reader.result);
-      };
+      reader.onloadend = () => setPreviewUrl(reader.result);
       reader.readAsDataURL(file);
     }
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
     setIsSubmitting(true);
 
     try {
-      let uploadedImageUrl = null;
-
-      if (profileImage) {
-        const imageFormData = new FormData();
-        imageFormData.append("profileImage", profileImage);
-
-        const imageResponse = await fetch(
-          `${process.env.REACT_APP_HOST_URL}/api/club/upload-profile-image`,
-          {
-            method: "POST",
-            headers: {
-              Authorization: localStorage.getItem("Authorization"),
-            },
-            body: imageFormData,
-          },
-        );
-
-        if (!imageResponse.ok) {
-          throw new Error("이미지 업로드에 실패했습니다");
-        }
-
-        const imageResult = await imageResponse.json();
-        uploadedImageUrl = imageResult.imageUrl;
-      }
-
       const phoneCombined = `${form.phone1}-${form.phone2}-${form.phone3}`;
 
       const updateData = {
@@ -189,12 +174,17 @@ export default function MyPage() {
         phone: phoneCombined,
       };
 
-      if (form.password) {
-        updateData.password = form.password;
-      }
+      if (form.password) updateData.password = form.password;
 
-      if (uploadedImageUrl) {
-        updateData.profileImageUrl = uploadedImageUrl;
+      const formData = new FormData();
+      const requestBlob = new Blob([JSON.stringify(updateData)], {
+        type: "application/json",
+      });
+
+      formData.append("request", requestBlob, "request.json");
+
+      if (profileImage) {
+        formData.append("image", profileImage);
       }
 
       const response = await fetch(
@@ -202,20 +192,20 @@ export default function MyPage() {
         {
           method: "PUT",
           headers: {
-            "Content-Type": "application/json; charset=utf-8",
             Authorization: localStorage.getItem("Authorization"),
           },
-          body: JSON.stringify(updateData),
+          body: formData,
         },
       );
 
-      const result = await response.json();
-
-      if (result.profileImageUrl) {
-        setPreviewUrl(result.profileImageUrl);
+      if (!response.ok) {
+        throw new Error(`정보 수정 실패: ${response.status}`);
       }
 
+      await response.json();
+
       setProfileImage(null);
+      await fetchUserInfo(clubId);
 
       openModal("수정되었습니다", closeModal);
     } catch (error) {
@@ -225,7 +215,7 @@ export default function MyPage() {
     }
   };
 
-  const executeUnregister = async () => {
+  const deleteMem = async () => {
     try {
       const response = await fetch(
         `${process.env.REACT_APP_HOST_URL}/api/club/setting/${clubId}`,
@@ -239,10 +229,11 @@ export default function MyPage() {
       );
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "회원 탈퇴에 실패했습니다.");
+        throw new Error(`회원 탈퇴에 실패했습니다: ${response.status}`);
       }
 
+      localStorage.removeItem("Authorization");
+      localStorage.removeItem("RefreshToken");
       localStorage.removeItem("clubId");
       localStorage.removeItem("userInfo");
 
@@ -253,16 +244,15 @@ export default function MyPage() {
         "지금까지 이용해 주셔서 감사합니다",
       );
     } catch (error) {
-      openModal("회원 탈퇴에 실패했습니다.");
+      openModal(error.message || "회원 탈퇴에 실패했습니다.");
     }
   };
 
-  const onUnregister = () => {
-    openModal("정말 캠퍼스 매치를 탈퇴 하시겠습니까?", executeUnregister, true);
+  const onDelete = () => {
+    openModal("정말 캠퍼스 매치를 탈퇴 하시겠습니까?", deleteMem, true);
   };
 
   const onSearchUniversity = () => {};
-
   const onSearchClub = () => {};
 
   if (isLoading) {
@@ -425,11 +415,7 @@ export default function MyPage() {
           </div>
 
           <div className="buttonRow">
-            <button
-              type="button"
-              className="unregisterBtn"
-              onClick={onUnregister}
-            >
+            <button type="button" className="unregisterBtn" onClick={onDelete}>
               회원 탈퇴
             </button>
             <button
