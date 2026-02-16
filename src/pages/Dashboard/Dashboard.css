@@ -1,146 +1,137 @@
-.container{
-    display: grid;
-    grid-template-columns: 229px 1fr;
-
+.container {
+  display: grid;
+  grid-template-columns: 229px 1fr;
 }
 
-.dashboard-right{
-    display: grid;
-    grid-template-columns: 560px 560px 361px;
-    grid-template-rows: 213px 591px;
-    gap: 25px;
-    background-color:#F7FAFA;;
-    padding: 80px 80px 83px 80px;
+.dashboard-right {
+  display: grid;
+  grid-template-columns: 560px 560px 361px;
+  grid-template-rows: 213px 591px;
+  gap: 25px;
+  background-color: #fbffff;
+  padding: 80px 80px 83px 80px;
 }
 
-.club-intro{
-    display: grid;
-    grid-template-columns: 125px 1fr;
-    padding: 44px 43px;
-    justify-content: center;
-    
-    border-radius: 20px;
-    background: #FFF;
-    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.05);
-    gap: 20px;
+.club-intro {
+  display: grid;
+  grid-template-columns: 125px 1fr;
+  padding: 44px 43px;
+  justify-content: center;
 
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.05);
+  gap: 20px;
 }
-.club-intro:hover{
-    box-shadow: 0 0 15px 0 rgba(22, 192, 204, 0.35);
-}
-
-.club-record{
-    display: grid;
-    grid-row: 20px 1fr;
-    padding: 15px 35px;
-    background-color: #FFF;
-    border-radius: 20px;
-    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.05);
-    gap:10px;
+.club-intro:hover {
+  box-shadow: 0 0 15px 0 rgba(22, 192, 204, 0.35);
 }
 
-.club-record:hover{
-    box-shadow: 0 0 15px 0 rgba(22, 192, 204, 0.35);
+.club-record {
+  display: grid;
+  grid-row: 20px 1fr;
+  padding: 15px 35px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.05);
+  gap: 10px;
 }
 
-.club-badge{
-    display: grid;
-    padding: 24px 48px;
-    background-color: #FFF;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.05);
+.club-record:hover {
+  box-shadow: 0 0 15px 0 rgba(22, 192, 204, 0.35);
 }
 
-.club-badge:hover{
-    box-shadow: 0 0 15px 0 rgba(22, 192, 204, 0.35);
-    
+.club-badge {
+  display: grid;
+  padding: 24px 48px;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.05);
 }
 
-.badge-frame{
-    display: grid;
-    grid-template-rows: 72.47px 72.47px;
-    grid-template-columns: 67px 67px 67px;
-    justify-content: center;
-    align-items: center;
-     align-content: center; 
-    
-    width: 100%;
-    height: 100%;
-    row-gap: 20px;
-    column-gap: 34px;
+.club-badge:hover {
+  box-shadow: 0 0 15px 0 rgba(22, 192, 204, 0.35);
+}
 
+.badge-frame {
+  display: grid;
+  grid-template-rows: 72.47px 72.47px;
+  grid-template-columns: 67px 67px 67px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  width: 100%;
+  height: 100%;
+  row-gap: 20px;
+  column-gap: 34px;
 }
 
 .badge-frame div {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .badge-frame div img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-
-
-
-.club-intro-right{
-    display: grid;
-    grid-template-rows: 20px 1fr;
-    gap:10px
+.club-intro-right {
+  display: grid;
+  grid-template-rows: 20px 1fr;
+  gap: 10px;
 }
-.club-intro-right span{
-    color: #1F1F1F;
-    font-family: Pretendard;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 20px; /* 100% */
+.club-intro-right span {
+  color: #1f1f1f;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 100% */
 }
 
-.club-intro-right p{
-    overflow: hidden;
-    color: var(--Text, #1F1F1F);
-    text-overflow: ellipsis;
-    font-family: Inter;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 180%; /* 27px */
-    margin: 0;
+.club-intro-right p {
+  overflow: hidden;
+  color: var(--Text, #1f1f1f);
+  text-overflow: ellipsis;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 180%; /* 27px */
+  margin: 0;
 }
 
-.club-matchup{
-    border-radius: 20px;
-    background: linear-gradient(180deg, #EEFFF5 0%, #EAFDFF 100%);
-    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.05);
+.club-matchup {
+  border-radius: 20px;
+  background: linear-gradient(180deg, #eefff5 0%, #eafdff 100%);
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.05);
 }
 
-
-
-.club-calender{
-    border-radius: 20px;
-    padding: 41px 50px;
-    background-color: #fff;
-    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.05);
+.club-calender {
+  border-radius: 20px;
+  padding: 41px 50px;
+  background-color: #fff;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.05);
 }
 
-.club-calender:hover{
-    box-shadow: 0 0 15px 0 rgba(22, 192, 204, 0.35);
+.club-calender:hover {
+  box-shadow: 0 0 15px 0 rgba(22, 192, 204, 0.35);
 }
 
-.club-gallery{
-    position: relative;
-    background-color: #fff;
-    border-radius: 20px;
-    box-shadow: 0 0 12px rgba(0,0,0,0.05);
-    overflow: hidden;
+.club-gallery {
+  position: relative;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
 }
 
-.club-gallery:hover .gallery-img-overlay{
-    opacity: 1.0;
+.club-gallery:hover .gallery-img-overlay {
+  opacity: 1;
 }
