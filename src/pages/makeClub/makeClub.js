@@ -77,27 +77,6 @@ export default function MakeClub() {
     setIsLoading(true);
 
     try {
-      let uploadedImageUrl = null;
-
-      if (profileImage) {
-        const imageFormData = new FormData();
-        imageFormData.append("profileImage", profileImage);
-
-        const imageResponse = await fetch(
-          `${process.env.REACT_APP_HOST_URL}/api/club/upload-profile-image`,
-          {
-            method: "POST",
-            body: imageFormData,
-          },
-        );
-
-        if (imageResponse.ok) {
-          const imageResult = await imageResponse.json();
-          uploadedImageUrl = imageResult.imageUrl;
-        } else {
-        }
-      }
-
       const userInfo = JSON.parse(userInfoStr);
 
       const registrationData = {
@@ -108,18 +87,25 @@ export default function MakeClub() {
         sportCategory: form.sportCategory,
       };
 
-      if (uploadedImageUrl) {
-        registrationData.profileImageUrl = uploadedImageUrl;
+      const formData = new FormData();
+      const requestBlob = new Blob([JSON.stringify(registrationData)], {
+        type: "application/json",
+      });
+      formData.append("request", requestBlob, "request.json");
+
+      if (profileImage) {
+        formData.append("profileImage", profileImage);
       }
 
+      const token = localStorage.getItem("Authorization");
       const response = await fetch(
         `${process.env.REACT_APP_HOST_URL}/api/club/signup`,
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json; charset=utf-8",
+            Authorization: token || "",
           },
-          body: JSON.stringify(registrationData),
+          body: formData,
         },
       );
 

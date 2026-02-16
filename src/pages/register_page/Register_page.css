@@ -101,19 +101,18 @@
   height: 50px;
   border-radius: 8px;
   border: none;
-  background: var(--Primary, #16c0cc);
+  background: #16c0cc;
   font-size: 18px;
   color: #fff;
 }
 
 .register-btn:hover {
   cursor: pointer;
-  opacity: 0.7;
+  background: #9ce2e7;
 }
 
 .register-btn:active {
-  opacity: 1;
-  filter: brightness(0.85);
+  background: #007f88;
 }
 
 .phone {
@@ -151,16 +150,20 @@
   background: var(--Gray-2);
   font-size: 20px;
   font-weight: 600;
-  color: var(--Gray-4);
+  color: #fff;
   transition: all 0.3s ease;
 }
 
 .submit.active {
-  background: var(--primary-color);
+  background: #16c0cc;
   color: #fff;
   cursor: pointer;
 }
 
 .submit.active:hover {
-  background: var(--primary-color);
+  background: #9ce2e7;
+}
+
+.submit.active:active {
+  background: #007f88;
 }
