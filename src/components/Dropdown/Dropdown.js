@@ -38,7 +38,7 @@ export default function CustomSelect({
       </label>
       <div className="custom-select" ref={ref}>
         <div
-          className="custom-select-trigger"
+          className={`custom-select-trigger ${isOpen ? "open" : ""}`}
           onClick={() => setIsOpen(!isOpen)}
         >
           <span>{selected ? selected.label : "선택하세요"}</span>
