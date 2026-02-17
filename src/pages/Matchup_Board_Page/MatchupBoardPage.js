@@ -8,7 +8,7 @@ const MatchupBoardPage = () => {
                 <div className="sidebar">
                     <Sidebar />
                 </div>
-                <div>
+                <div className="matchup-board-container">
 
                 </div>
             </div>

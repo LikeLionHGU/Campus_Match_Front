@@ -19,7 +19,6 @@ const UpcomingMatchupPage = () =>{
     const [dateOrder, setDateOrder] = useState("asc");
     const [detailModalOpen, setDetailModalOpen] = useState(false);
     const [cancelModalOpen, setCancelModalOpen] = useState(false);
-    const [selectedMatch, setSelectedMatch] = useState(null);
     const [selectedMatchId, setSelectedMatchId] = useState(null);
     const [successModalOpen, setSuccessModalOpen] = useState(false);
 

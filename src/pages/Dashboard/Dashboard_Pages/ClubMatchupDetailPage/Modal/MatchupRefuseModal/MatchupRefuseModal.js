@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./MatchupRefuseModal.css";
 import closeIcon from "../../../../../../assets/close.svg";
 

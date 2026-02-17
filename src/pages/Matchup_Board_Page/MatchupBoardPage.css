@@ -3,3 +3,11 @@
     grid-template-columns: 229px 1fr;
 
 }
+
+.matchup-board-container {
+    display: grid;
+    grid-template-rows: 50px 1fr;
+    background-color: #F7FAFA;
+    padding: 34px 80px 106px 78px;
+    gap: 50px;
+}
