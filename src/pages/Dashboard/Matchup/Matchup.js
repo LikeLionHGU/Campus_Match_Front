@@ -107,7 +107,7 @@ const Matchup = () => {
                         </table>
                     </div>
                 </div>
-                <div className="matchup-bottom">
+                <div className="matchup-bottom"  onClick={() => navigate("/dashboard/send-matchup")}>
                     <div className="matchup-bottom-header">
                         <span>제안한 매치업</span>
                     </div>

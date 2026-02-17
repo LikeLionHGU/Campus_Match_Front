@@ -1,5 +1,5 @@
 import Sidebar from "../../../../../components/SideBar/SideBar";
-import "./UpcomingMatchupPage.css";
+import "./ReceiveMatchupPage.css";
 import { useNavigate } from "react-router-dom";
 import BackArrow from "../../../../../assets/arrow_left.svg";
 import { useState,useEffect } from "react";
@@ -8,9 +8,10 @@ import ArrowLeftDouble from "../../../../../assets/arrow_left_double.svg";
 import ArrowRight from "../../../../../assets/arrow_right.svg";
 import ArrowRightDouble from "../../../../../assets/arrow_right_double.svg";
 import ArrowDown from "../../../../../assets/arrow_down.svg";
-import MatchupCancelModal from "../Modal/MatchupCancelModal/MatchupCancelModal";
+import MatchupRefuseModal from "../Modal/MatchupRefuseModal/MatchupRefuseModal";
 import MatchupDetailModal from "../Modal/MatchupDetailModal/MatchupDetailModal";
 import SuccessModal from "../../ClubCalenderDetailPage/SuccessModal/SuccessModal";
+import MatchupAcceptModal from "../Modal/MatchupAcceptModal/MatchupAcceptModal";
 
 const ReceiveMatchupPage = () =>{
     const navigate = useNavigate();
@@ -21,6 +22,7 @@ const ReceiveMatchupPage = () =>{
     const [cancelModalOpen, setCancelModalOpen] = useState(false);
     const [selectedMatch, setSelectedMatch] = useState(null);
     const [selectedMatchId, setSelectedMatchId] = useState(null);
+    const [acceptModalOpen, setAcceptModalOpen] = useState(false);
     const [successModalOpen, setSuccessModalOpen] = useState(false);
 
     const sortedMatchups = [...matchups].sort((a, b) => {
@@ -38,7 +40,7 @@ const ReceiveMatchupPage = () =>{
                 const clubId = localStorage.getItem("clubId");
 
                 const res = await fetch(
-                    `${process.env.REACT_APP_HOST_URL}/api/matchPost/receive/${clubId}`,
+                    `${process.env.REACT_APP_HOST_URL}/api/matchRequest/receive/${clubId}`,
                     {
                         headers: {
                             "Authorization": localStorage.getItem("Authorization"),
@@ -90,7 +92,7 @@ const ReceiveMatchupPage = () =>{
                 <div className="receive-matchup-container">
                     <div className="receive-matchup-header" onClick={() => navigate(-1)}>
                         <img src={BackArrow} alt="back-arrow" />
-                        <span>예정된 매치업</span>
+                        <span>제안받은 매치업</span>
                     </div>
                     <div className="receive-match-main">
                         <div className="receive-match-content">
@@ -130,22 +132,24 @@ const ReceiveMatchupPage = () =>{
                                                     <div>
                                                         <button
                                                             onClick={() => {
-                                                                setSelectedMatchId(item.matchPostId);
+                                                                setSelectedMatchId(item.matchRequestId);
                                                                 setDetailModalOpen(true);
                                                             }}
-                                                        >세부정보</button>
-                                                        /
+                                                        >세부 정보</button>
+                                                        &nbsp;/&nbsp;
                                                         <button
+                                                            className="refuse-button"
                                                             onClick={() => {
-                                                                setSelectedMatchId(item.matchPostId);
+                                                                setSelectedMatchId(item.matchRequestId);
                                                                 setCancelModalOpen(true);
                                                             }}
                                                         >거절</button>
-                                                        /
+                                                        &nbsp;/&nbsp;
                                                         <button
+                                                            className="receive-button"
                                                             onClick={() => {
-                                                                setSelectedMatchId(item.matchPostId);
-                                                                setCancelModalOpen(true);
+                                                                setSelectedMatchId(item.matchRequestId);
+                                                                setAcceptModalOpen(true);
                                                             }}
                                                         >수락</button>
                                                     </div>
@@ -192,25 +196,36 @@ const ReceiveMatchupPage = () =>{
             {detailModalOpen && (
                 <MatchupDetailModal
                     matchPostId={selectedMatchId}
+                    matchType="matchRequest"
+                    type="receive"
                     onClose={() => setDetailModalOpen(false)}
                 />
             )}
 
             {cancelModalOpen && (
-                <MatchupCancelModal
+                <MatchupRefuseModal
                     matchPostId={selectedMatchId}
+                    type="receive"
                     onClose={() => setCancelModalOpen(false)}
+                    message="해당 매치업을 거절하시겠습니까?"
                     onSuccess={() => {
                         setCancelModalOpen(false);
                         setSuccessModalOpen(true);
-                        fetchUpcoming();
+                        fetchReceive();
                     }}
+                />
+            )}
+
+            {acceptModalOpen && (
+                <MatchupAcceptModal
+                    matchPostId={selectedMatchId}
+                    onConfirm={() => setAcceptModalOpen(false)}
                 />
             )}
 
             {successModalOpen && (
                 <SuccessModal
-                    message="취소 요청이 완료되었습니다"
+                    message="거절이 완료되었습니다"
                     onConfirm={() => setSuccessModalOpen(false)}
                     
                 />

@@ -185,6 +185,8 @@ const UpcomingMatchupPage = () =>{
             {detailModalOpen && (
                 <MatchupDetailModal
                     matchPostId={selectedMatchId}
+                    matchType="matchPost"
+                    type="upcoming"
                     onClose={() => setDetailModalOpen(false)}
                 />
             )}

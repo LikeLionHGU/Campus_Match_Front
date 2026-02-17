@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
-import "./MatchupCancelModal.css";
+import "./MatchupRefuseModal.css";
 import closeIcon from "../../../../../../assets/close.svg";
 
-const MatchupCancelModal = ({onClose ,onSuccess,matchPostId,message}) =>{
+const MatchupRefuseModal = ({onClose,onSuccess,type,matchPostId,message}) => {
     const [reason, setReason] = useState("");
+    console.log("1");
     const handleCancelConfirm = async () => {
         try {
             const res = await fetch(
-                `${process.env.REACT_APP_HOST_URL}/api/matchPost/upcoming/${matchPostId}`,
+                `${process.env.REACT_APP_HOST_URL}/api/matchRequest/${type}/${matchPostId}`,
                 {
                     method: "DELETE",
                     headers: {
@@ -21,7 +22,7 @@ const MatchupCancelModal = ({onClose ,onSuccess,matchPostId,message}) =>{
             );
 
             if (!res.ok) throw new Error();
-
+            
             onSuccess();
 
         } catch (e) {
@@ -40,7 +41,7 @@ const MatchupCancelModal = ({onClose ,onSuccess,matchPostId,message}) =>{
                     />
                     <div className="matchup-cancel-modal-main">
                         <div className="matchup-cancel-modal-header">
-                            <span>해당 매치업을 취소 요청 하시겠습니까?</span>
+                            <span>{message}</span>
                         </div>
                         <div className="matchup-cancel-modal-body">
                             <span>사유</span>
@@ -67,4 +68,5 @@ const MatchupCancelModal = ({onClose ,onSuccess,matchPostId,message}) =>{
         </>
     );
 }
-export default MatchupCancelModal;
+
+export default MatchupRefuseModal;

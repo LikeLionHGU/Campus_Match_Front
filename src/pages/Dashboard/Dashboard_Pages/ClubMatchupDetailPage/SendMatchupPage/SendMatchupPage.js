@@ -1,5 +1,5 @@
 import Sidebar from "../../../../../components/SideBar/SideBar";
-import "./OngoingMatchupPage.css";
+import "./SendMatchupPage.css";
 import { useNavigate } from "react-router-dom";
 import BackArrow from "../../../../../assets/arrow_left.svg";
 import { useState,useEffect } from "react";
@@ -8,18 +8,21 @@ import ArrowLeftDouble from "../../../../../assets/arrow_left_double.svg";
 import ArrowRight from "../../../../../assets/arrow_right.svg";
 import ArrowRightDouble from "../../../../../assets/arrow_right_double.svg";
 import ArrowDown from "../../../../../assets/arrow_down.svg";
+import MatchupRefuseModal from "../Modal/MatchupRefuseModal/MatchupRefuseModal";
 import MatchupDetailModal from "../Modal/MatchupDetailModal/MatchupDetailModal";
-import MatchupFinishModal from "../Modal/MatchupFinishModal/MatchupFinishModal";
 import SuccessModal from "../../ClubCalenderDetailPage/SuccessModal/SuccessModal";
-const OngoingMatchupPage = () =>{
+
+
+const SendMatchupPage = () =>{
     const navigate = useNavigate();
     const [matchups, setMatchups] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [dateOrder, setDateOrder] = useState("asc");
     const [detailModalOpen, setDetailModalOpen] = useState(false);
-    const [finishModalOpen, setFinishModalOpen] = useState(false);
+    const [cancelModalOpen, setCancelModalOpen] = useState(false);
     const [selectedMatch, setSelectedMatch] = useState(null);
     const [selectedMatchId, setSelectedMatchId] = useState(null);
+    const [acceptModalOpen, setAcceptModalOpen] = useState(false);
     const [successModalOpen, setSuccessModalOpen] = useState(false);
 
     const sortedMatchups = [...matchups].sort((a, b) => {
@@ -32,12 +35,12 @@ const OngoingMatchupPage = () =>{
     });
 
     const pageSize = 10;
-    const fetchOngoing = async () => {
+    const fetchSend = async () => {
             try {
                 const clubId = localStorage.getItem("clubId");
 
                 const res = await fetch(
-                    `${process.env.REACT_APP_HOST_URL}/api/matchPost/ongoing/${clubId}`,
+                    `${process.env.REACT_APP_HOST_URL}/api/matchRequest/send/${clubId}`,
                     {
                         headers: {
                             "Authorization": localStorage.getItem("Authorization"),
@@ -48,7 +51,7 @@ const OngoingMatchupPage = () =>{
                 if (!res.ok) throw new Error();
 
                 const data = await res.json();
-                
+
                 setMatchups(Array.isArray(data) ? data : data.List || []);
 
             } catch (e) {
@@ -56,7 +59,7 @@ const OngoingMatchupPage = () =>{
             }
         };
     useEffect(() => {
-    fetchOngoing();
+    fetchSend();
     }, []);
     const totalPages = Math.max(1, Math.ceil(matchups.length / pageSize));
 
@@ -86,14 +89,14 @@ const OngoingMatchupPage = () =>{
                 <div className="sidebar">
                     <Sidebar/>
                 </div>
-                <div className="ongoing-matchup-container">
-                    <div className="ongoing-matchup-header" onClick={() => navigate(-1)}>
+                <div className="send-matchup-container">
+                    <div className="send-matchup-header" onClick={() => navigate(-1)}>
                         <img src={BackArrow} alt="back-arrow" />
-                        <span>진행중인 매치업</span>
+                        <span>제안한 매치업</span>
                     </div>
-                    <div className="ongoing-match-main">
-                        <div className="ongoing-match-content">
-                            <div className="ongoing-match-table-wrapper">
+                    <div className="send-match-main">
+                        <div className="send-match-content">
+                            <div className="send-match-table-wrapper">
                                 <table>
                                     <thead>
                                         <tr>
@@ -129,29 +132,31 @@ const OngoingMatchupPage = () =>{
                                                     <div>
                                                         <button
                                                             onClick={() => {
-                                                                setSelectedMatchId(item.matchPostId);
+                                                                setSelectedMatchId(item.matchRequestId);
                                                                 setDetailModalOpen(true);
                                                             }}
-                                                        >세부정보</button>
+                                                        >세부 정보</button>
                                                         &nbsp;/&nbsp;
                                                         <button
+                                                            className="cancel-button"
                                                             onClick={() => {
-                                                                setSelectedMatchId(item.matchPostId);
-                                                                setFinishModalOpen(true);
+                                                                setSelectedMatchId(item.matchRequestId);
+                                                                setCancelModalOpen(true);
                                                             }}
-                                                        >종료하기</button>
+                                                        >취소하기</button>
+                                                        
                                                     </div>
                                                 </td>
                                             </tr>
                                         ))}
                                     </tbody>
                                 </table>
-                            </div>
+                            </div>    
                             
-                            <div className="ongoing-pagination">
+                            <div className="send-pagination">
                                 <div className="pagination-move">
-                                    <img className="ongoing-pagination-double" src={ArrowLeftDouble} alt="<<" onClick={goFirstBlock} disabled={currentPage === 1} />
-                                    <img className="ongoing-pagination-mono" src={ArrowLeft} alt="<" onClick={goPrev} disabled={currentPage === 1}/>
+                                    <img className="send-pagination-double" src={ArrowLeftDouble} alt="<<" onClick={goFirstBlock} disabled={currentPage === 1} />
+                                    <img className="send-pagination-mono" src={ArrowLeft} alt="<" onClick={goPrev} disabled={currentPage === 1}/>
                                 </div>
                     
                                 
@@ -168,8 +173,8 @@ const OngoingMatchupPage = () =>{
                                     ))}
                                 </div>
                                 <div className="pagination-move">
-                                    <img className="ongoing-pagination-mono" src={ArrowRight} alt=">"  onClick={goNext} disabled={currentPage === totalPages} />
-                                    <img className="ongoing-pagination-double" src={ArrowRightDouble} alt=">>" onClick={goLastBlock} disabled={currentPage === totalPages} />
+                                    <img className="send-pagination-mono" src={ArrowRight} alt=">"  onClick={goNext} disabled={currentPage === totalPages} />
+                                    <img className="send-pagination-double" src={ArrowRightDouble} alt=">>" onClick={goLastBlock} disabled={currentPage === totalPages} />
                                 </div>
                                 
                             
@@ -183,35 +188,37 @@ const OngoingMatchupPage = () =>{
             </div>
             {detailModalOpen && (
                 <MatchupDetailModal
-                    matchPostId={selectedMatchId}
-                    matchType="matchPost"
-                    type="ongoing"
+                    matchPostId={selectedMatchId}   
+                    matchType="matchRequest"
+                    type="send"
                     onClose={() => setDetailModalOpen(false)}
                 />
             )}
 
-            {finishModalOpen && (
-                <MatchupFinishModal
+            {cancelModalOpen && (
+                <MatchupRefuseModal
                     matchPostId={selectedMatchId}
-                    onClose={() => setFinishModalOpen(false)}
+                    message="해당 매치업 제안을 취소하시겠습니까?"
+                    type="send"
+                    onClose={() => setCancelModalOpen(false)}
                     onSuccess={() => {
-                        setFinishModalOpen(false);
+                        setCancelModalOpen(false);
                         setSuccessModalOpen(true);
-                        fetchOngoing();
+                        fetchSend();
                     }}
                 />
-            )} 
+            )}
+ 
 
             {successModalOpen && (
                 <SuccessModal
-                    message="취소 요청이 완료되었습니다"
+                    message="매치업 제안이 취소되었습니다"
                     onConfirm={() => setSuccessModalOpen(false)}
                     
                 />
             )}
         </>
     );
-
 }
 
-export default OngoingMatchupPage;
+export default SendMatchupPage;

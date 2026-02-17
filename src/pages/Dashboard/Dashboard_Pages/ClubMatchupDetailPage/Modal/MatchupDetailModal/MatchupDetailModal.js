@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./MatchupDetailModal.css";
 import closeIcon from "../../../../../../assets/close.svg";
 
-const MatchupDetailModal = ({onClose, matchPostId}) =>{
+const MatchupDetailModal = ({onClose,type, matchPostId,matchType}) =>{
     const [detail, setDetail] = useState(null);
     useEffect(() => {
         const fetchDetail = async () => {
@@ -10,7 +10,7 @@ const MatchupDetailModal = ({onClose, matchPostId}) =>{
                 const clubId = localStorage.getItem("clubId");
 
                 const res = await fetch(
-                    `${process.env.REACT_APP_HOST_URL}/api/matchPost/upcoming/detail/${clubId}?matchPostId=${matchPostId}`,
+                    `${process.env.REACT_APP_HOST_URL}/api/${matchType}/${type}/detail/${clubId}?${matchType+'Id'}=${matchPostId}`,
                     {
                         headers: {
                             Authorization: localStorage.getItem("Authorization"),
@@ -21,6 +21,7 @@ const MatchupDetailModal = ({onClose, matchPostId}) =>{
                 if (!res.ok) throw new Error();
 
                 const data = await res.json();
+                console.log(matchPostId);
                 setDetail(data);
 
             } catch (e) {
