@@ -1,4 +1,4 @@
-.success-modal-backdrop {
+.accept-modal-backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -14,20 +14,20 @@
   z-index: 2000;
 }
 
-.success-modal {
+.accept-modal {
     transform: translateY(-500px);
     position: relative;
     background: #fff;
     padding: 20px;
-    width: 250px;
-    height: 85px;
+    width: 213px;
+    height: 108px;
     padding: 45px 70px 20px 70px;
     border-radius: 10px;
     align-items: center;
     justify-items: center;
 }
 
-.success-modal-close{
+.accept-modal-close{
     position: absolute;
     top: 20px;
     right: 20px;
@@ -37,7 +37,7 @@
     cursor: pointer;
 }
 
-.success-modal-text{
+.accept-modal-text{
     color: var(--Text, #1F1F1F);
     text-align: center;
     font-family: Pretendard;
@@ -45,10 +45,21 @@
     font-style: normal;
     font-weight: 500;
     line-height: 100%; /* 20px */
+    margin-bottom: 8px;
+}
+
+.accept-modal-text-sub{
+    color: var(--Text, #1F1F1F);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 15px */
     margin-bottom: 30px;
 }
 
-.success-modal-button{
+.accept-modal-button{
     border: 0px;
     width: 66px;
     height: 35px;
@@ -57,5 +68,6 @@
     align-items: center;
     border-radius: 5px;
     background: var(--Primary, #16C0CC);
-    color: #fff; 
+    color: #fff;
+    cursor: pointer;
 }
