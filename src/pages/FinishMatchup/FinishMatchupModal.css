@@ -12,14 +12,14 @@
 }
 
 .finish-modal-content {
-  background: white;
+  background: #fff;
   width: 480px;
   max-width: 90%;
   border-radius: 16px;
   padding: 30px;
   position: relative;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  background-color: #fff0f0;
+  background-color: #fff;
   text-align: center;
 }
 
@@ -99,13 +99,6 @@
   gap: 16px;
 }
 
-.form-row {
-  display: flex;
-  align-items: center;
-  /* justify-content: space-between; */
-  gap: 16px;
-}
-
 .form-label {
   width: 80px;
   font-size: 14px;
@@ -131,7 +124,7 @@
 .radio-group {
   display: flex;
   gap: 16px;
-  flex: 1;
+  width: calc(100% - 96px);
 }
 
 .radio-label {
@@ -168,14 +161,45 @@
 }
 
 .save-btn {
-  background-color: #16c0cc; /* Primary Default */
+  background-color: #16c0cc;
   color: white;
 }
 
 .save-btn:hover {
-  background-color: #9ce2e7; /* Hover */
+  background-color: #9ce2e7;
 }
 
 .save-btn:active {
-  background-color: #007f88; /* Pressed */
+  background-color: #007f88;
+}
+
+.finish-confirm-content {
+  background: #fff;
+  width: 400px;
+  max-width: 90%;
+  border-radius: 16px;
+  padding: 30px;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.confirm-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin: 20px 0 8px;
+}
+
+.confirm-subtitle {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.form-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
 }

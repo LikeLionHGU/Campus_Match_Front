@@ -12,7 +12,7 @@
 }
 
 .detail-modal-content {
-  background: white;
+  background: #fff;
   width: 500px;
   max-width: 90%;
   border-radius: 20px;
@@ -21,7 +21,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
-  background-color: #fff0f0; /* Light pink background from screenshot */
+  background-color: #fff;
 }
 
 .detail-modal-title {
@@ -59,7 +59,7 @@
 .detail-value-box {
   flex: 1;
   background-color: transparent;
-  border: 1px solid #dcdcdc; /* Or a darker pink border? */
+  border: 1px solid #dcdcdc;
   border-radius: 8px;
   padding: 10px 16px;
   font-size: 15px;

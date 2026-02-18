@@ -3,10 +3,12 @@ import "./FinishMatchupModal.css";
 
 const FinishMatchupModal = ({ onClose, match }) => {
   const [title, setTitle] = useState("");
-  const [result, setResult] = useState("match");
+  const [matchCategory, setMatchCategory] = useState("");
+  const [result, setResult] = useState("");
   const [temperature, setTemperature] = useState("up");
   const [rematch, setRematch] = useState("yes");
   const [images, setImages] = useState([]);
+  const [step, setStep] = useState("form");
 
   const handleImageChange = (e) => {
     if (e.target.files) {
@@ -18,13 +20,26 @@ const FinishMatchupModal = ({ onClose, match }) => {
     }
   };
 
-  const handleSubmit = async () => {
+  const handleSaveClick = () => {
     if (images.length === 0) {
+      alert("사진을 1장 이상 올려주세요.");
       return;
     }
+    if (!matchCategory) {
+      alert("결과를 선택해주세요.");
+      return;
+    }
+    if (matchCategory === "경기" && !result) {
+      alert("승/패/무를 선택해주세요.");
+      return;
+    }
+    setStep("confirm");
+  };
 
+  const handleConfirm = async () => {
     try {
       const token = localStorage.getItem("Authorization");
+      const clubId = localStorage.getItem("clubId");
       const matchDate = match
         ? match.matchDate
         : new Date().toISOString().split("T")[0];
@@ -49,7 +64,7 @@ const FinishMatchupModal = ({ onClose, match }) => {
         formData.append("images", image);
       });
 
-      const response = await fetch(
+      const galleryResponse = await fetch(
         `${process.env.REACT_APP_HOST_URL}/api/gallery`,
         {
           method: "POST",
@@ -60,14 +75,98 @@ const FinishMatchupModal = ({ onClose, match }) => {
         },
       );
 
-      if (response.ok) {
-        onClose();
-        window.location.reload();
+      const historyBody = {
+        clubId: Number(clubId),
+        oppositionClubId: match.oppositionClubId,
+        matchDate: matchDate,
+        location: match.location || "",
+        matchType: matchCategory !== "교류",
+        result: matchCategory === "교류" ? "교류" : result,
+      };
+
+      const historyResponse = await fetch(
+        `${process.env.REACT_APP_HOST_URL}/api/matchHistory`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token || "",
+          },
+          body: JSON.stringify(historyBody),
+        },
+      );
+
+      if (galleryResponse.ok && historyResponse.ok) {
+        setStep("success");
+      } else {
+        alert("저장에 실패했습니다.");
+        setStep("form");
       }
     } catch (error) {
       console.error("Error submitting finish matchup:", error);
+      alert("오류가 발생했습니다.");
+      setStep("form");
     }
   };
+
+  const handleSuccessClose = () => {
+    onClose();
+    window.location.reload();
+  };
+
+  if (step === "confirm") {
+    return (
+      <div className="finish-modal-overlay" onClick={() => setStep("form")}>
+        <div
+          className="finish-confirm-content"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            className="finish-modal-close"
+            onClick={() => setStep("form")}
+          >
+            &times;
+          </button>
+          <h2 className="confirm-title">매치업을 마무리하시겠습니까</h2>
+          <div className="modal-footer">
+            <button
+              className="modal-btn cancel-btn"
+              onClick={() => setStep("form")}
+            >
+              취소
+            </button>
+            <button className="modal-btn save-btn" onClick={handleConfirm}>
+              확인
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (step === "success") {
+    return (
+      <div className="finish-modal-overlay" onClick={handleSuccessClose}>
+        <div
+          className="finish-confirm-content"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button className="finish-modal-close" onClick={handleSuccessClose}>
+            &times;
+          </button>
+          <h2 className="confirm-title">매치업이 마무리 되었습니다</h2>
+          <p className="confirm-subtitle">
+            작성한 글은 대시보드&gt;매치업 히스토리에서 확인 가능합니다
+          </p>
+          <div className="modal-footer">
+            <button className="modal-btn save-btn" onClick={handleSuccessClose}>
+              확인
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="finish-modal-overlay" onClick={onClose}>
@@ -95,7 +194,7 @@ const FinishMatchupModal = ({ onClose, match }) => {
               <div className="upload-placeholder-content">
                 <span className="upload-icon"></span>
                 <span className="upload-text">사진 올리기</span>
-                <span className="upload-text">0/5</span>
+                <span className="upload-text">{images.length}/5</span>
               </div>
             )}
             <input
@@ -125,18 +224,60 @@ const FinishMatchupModal = ({ onClose, match }) => {
               <label className="radio-label">
                 <input
                   type="radio"
-                  name="result"
-                  checked={result === "match"}
-                  onChange={() => setResult("match")}
+                  name="matchCategory"
+                  checked={matchCategory === "경기"}
+                  onChange={() => {
+                    setMatchCategory("경기");
+                    setResult("");
+                  }}
                 />
                 경기
               </label>
+              {matchCategory === "경기" && (
+                <>
+                  <label className="radio-label">
+                    <input
+                      type="radio"
+                      name="result"
+                      checked={result === "승"}
+                      onChange={() => setResult("승")}
+                    />
+                    승
+                  </label>
+                  <label className="radio-label">
+                    <input
+                      type="radio"
+                      name="result"
+                      checked={result === "패"}
+                      onChange={() => setResult("패")}
+                    />
+                    패
+                  </label>
+                  <label className="radio-label">
+                    <input
+                      type="radio"
+                      name="result"
+                      checked={result === "무"}
+                      onChange={() => setResult("무")}
+                    />
+                    무
+                  </label>
+                </>
+              )}
+            </div>
+            <div
+              className="radio-group"
+              style={{ marginTop: "8px", marginLeft: "96px" }}
+            >
               <label className="radio-label">
                 <input
                   type="radio"
-                  name="result"
-                  checked={result === "exchange"}
-                  onChange={() => setResult("exchange")}
+                  name="matchCategory"
+                  checked={matchCategory === "교류"}
+                  onChange={() => {
+                    setMatchCategory("교류");
+                    setResult("교류");
+                  }}
                 />
                 단순 교류
               </label>
@@ -196,7 +337,7 @@ const FinishMatchupModal = ({ onClose, match }) => {
           <button className="modal-btn cancel-btn" onClick={onClose}>
             취소
           </button>
-          <button className="modal-btn save-btn" onClick={handleSubmit}>
+          <button className="modal-btn save-btn" onClick={handleSaveClick}>
             저장
           </button>
         </div>
