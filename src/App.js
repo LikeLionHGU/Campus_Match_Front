@@ -7,7 +7,7 @@ import RegisterPage from "./pages/register_page/Register_page";
 import MyPage from "./pages/MyPage/MyPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import DetailGallery from "./pages/Dashboard/Dashboard_Pages/ClubGalleryDetailPage/ClubGalleryDetailPage";
-import DetailRecord from "./pages/Dashboard/Dashboard_Pages/ClubRecordDetailPage/ClubRecordDetailPage";
+import DetailRecord from "./pages/Dashboard/Dashboard_Pages/MatchupHistory/MatchupHistoryPage";
 import DetailCalender from "./pages/Dashboard/Dashboard_Pages/ClubCalenderDetailPage/ClubCalenderDetailPage";
 import MatchupBoardPage from "./pages/Matchup_Board_Page/MatchupBoardPage";
 import ClubSearchBoardPage from "./pages/ClubSearchBoardPage/ClubSearchBoardPage";
