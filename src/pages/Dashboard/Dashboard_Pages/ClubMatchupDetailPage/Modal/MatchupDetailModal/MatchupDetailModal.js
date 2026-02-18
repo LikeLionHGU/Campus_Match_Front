@@ -30,7 +30,7 @@ const MatchupDetailModal = ({onClose,type, matchPostId,matchType}) =>{
         };
 
         if (matchPostId) fetchDetail();
-    }, [matchPostId]);
+    }, [matchPostId,matchType, type]);
 
     const formatTime = (time) => {
         if (!time) return "";
