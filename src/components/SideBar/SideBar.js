@@ -69,7 +69,14 @@ const Sidebar = () => {
               alt="club-logo"
             />
             <span className="sidebar-top-name">{clubInfo.name}</span>
-            <div className="sidebar-top-logout">
+            <div
+              className="sidebar-top-logout"
+              onClick={() => {
+                localStorage.clear();
+                navigate("/login");
+              }}
+              style={{ cursor: "pointer" }}
+            >
               <span>로그아웃</span>
               <img src={LogoutIcon} alt="logout" />
             </div>
