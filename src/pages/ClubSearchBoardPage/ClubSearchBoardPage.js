@@ -1,6 +1,6 @@
 import Sidebar from "../../components/SideBar/SideBar";
 import "./ClubSearchBoardPage.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import ArrowLeft from "../../assets/arrow_left.svg";
 import ArrowLeftDouble from "../../assets/arrow_left_double.svg";
 import ArrowRight from "../../assets/arrow_right.svg";
@@ -16,15 +16,14 @@ const ClubSearchBoardPage = () => {
 
     const [matchups, setMatchups] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [dateOrder, setDateOrder] = useState("asc");
+    const [dateOrder] = useState("asc");
 
-    const [detailModalOpen, setDetailModalOpen] = useState(false);
+    // const [detailModalOpen, setDetailModalOpen] = useState(false);
 
-    const [selectedMatchId, setSelectedMatchId] = useState(null);
+    // const [selectedMatchId, setSelectedMatchId] = useState(null);
 
     const [searchModalOpen, setSearchModalOpen] = useState(false);
 
-    const [filter, setFilter] = useState("all");
     const [keyword, setKeyword] = useState("");
 
     const [filters, setFilters] = useState({
@@ -62,13 +61,9 @@ const ClubSearchBoardPage = () => {
 
     const pageSize = 10;
 
-    const fetchMatchups = async () => {
+    const fetchMatchups = useCallback(async () => {
         try {
             const params = new URLSearchParams();
-
-            if (filter !== "all") {
-                params.append("type", filter);
-            }
 
             if (keyword.trim() !== "") {
                 params.append("keyword", keyword);
@@ -92,7 +87,6 @@ const ClubSearchBoardPage = () => {
 
             const res = await fetch(
                 `${process.env.REACT_APP_HOST_URL}/api/matchPost`,
-                // ?${params.toString()}
                 {
                     headers: {
                         Authorization: localStorage.getItem("Authorization"),
@@ -110,11 +104,11 @@ const ClubSearchBoardPage = () => {
         } catch (e) {
             console.error("matchup load fail", e);
         }
-    };
+    }, [keyword, filters]);
 
     useEffect(() => {
         fetchMatchups();
-    }, [filter, keyword, filters]);
+    }, [fetchMatchups]);
 
     const totalPages = Math.max(1, Math.ceil(matchups.length / pageSize));
 
@@ -266,8 +260,8 @@ const ClubSearchBoardPage = () => {
                                                     <div>
                                                         <button
                                                             onClick={() => {
-                                                                setSelectedMatchId(item.matchPostId);
-                                                                setDetailModalOpen(true);
+                                                                // setSelectedMatchId(item.matchPostId);
+                                                                // setDetailModalOpen(true);
                                                             }}
                                                         > 
                                                             방문하기

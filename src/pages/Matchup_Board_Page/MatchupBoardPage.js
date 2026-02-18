@@ -1,6 +1,6 @@
 import Sidebar from "../../components/SideBar/SideBar";
 import "./MatchupBoardPage.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import ArrowLeft from "../../assets/arrow_left.svg";
 import ArrowLeftDouble from "../../assets/arrow_left_double.svg";
 import ArrowRight from "../../assets/arrow_right.svg";
@@ -21,8 +21,8 @@ const MatchupBoardPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [dateOrder, setDateOrder] = useState("asc");
 
-    const [detailModalOpen, setDetailModalOpen] = useState(false);
-    const [selectedMatchId, setSelectedMatchId] = useState(null);
+    // const [detailModalOpen, setDetailModalOpen] = useState(false);
+    // const [selectedMatchId, setSelectedMatchId] = useState(null);
     const [successModalOpen, setSuccessModalOpen] = useState(false);
 
     const [searchModalOpen, setSearchModalOpen] = useState(false);
@@ -67,7 +67,7 @@ const MatchupBoardPage = () => {
 
     const pageSize = 10;
 
-    const fetchMatchups = async () => {
+    const fetchMatchups = useCallback(async () => {
         try {
             const params = new URLSearchParams();
 
@@ -97,7 +97,6 @@ const MatchupBoardPage = () => {
 
             const res = await fetch(
                 `${process.env.REACT_APP_HOST_URL}/api/matchPost`,
-                // ?${params.toString()}
                 {
                     headers: {
                         Authorization: localStorage.getItem("Authorization"),
@@ -108,18 +107,18 @@ const MatchupBoardPage = () => {
             if (!res.ok) throw new Error();
 
             const data = await res.json();
-            console.log(data);
+
             setMatchups(Array.isArray(data) ? data : data.List || []);
             setCurrentPage(1);
 
         } catch (e) {
             console.error("matchup load fail", e);
         }
-    };
+    }, [filter, keyword, filters]);
 
     useEffect(() => {
         fetchMatchups();
-    }, [filter, keyword, filters]);
+    }, [fetchMatchups]);
 
     const totalPages = Math.max(1, Math.ceil(matchups.length / pageSize));
 
@@ -338,10 +337,10 @@ const MatchupBoardPage = () => {
                                                 <td>
                                                     <div>
                                                         <button
-                                                            onClick={() => {
-                                                                setSelectedMatchId(item.matchPostId);
-                                                                setDetailModalOpen(true);
-                                                            }}
+                                                            // onClick={() => {
+                                                            //     setSelectedMatchId(item.matchPostId);
+                                                            //     setDetailModalOpen(true);
+                                                            // }}
                                                         >
                                                             세부정보
                                                         </button>
@@ -418,6 +417,16 @@ const MatchupBoardPage = () => {
                     }}
                 />
             )}
+            {/* {detailModalOpen && (
+                <AddMatchupModal              
+                    onClose={() => setAddModalOpen(false)}
+                    onSuccess={()=>{
+                        setAddModalOpen(false);
+                        setSuccessModalOpen(true);
+                        fetchMatchups();
+                    }}
+                />
+            )} */}
             {successModalOpen && (
                 <SuccessModal
                     message="매치업이 등록되었습니다"
