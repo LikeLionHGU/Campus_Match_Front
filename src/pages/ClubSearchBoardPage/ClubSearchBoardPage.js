@@ -12,7 +12,7 @@ import ArrowDownGray from "../../assets/arrow_down_gray.svg";
 import ResetIcon from "../../assets/reset.svg";
 import CloseIcon from "../../assets/close.svg"
 
-const MatchupBoardPage = () => {
+const ClubSearchBoardPage = () => {
 
     const [matchups, setMatchups] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -371,4 +371,4 @@ const MatchupBoardPage = () => {
     );
 };
 
-export default MatchupBoardPage;
+export default ClubSearchBoardPage;

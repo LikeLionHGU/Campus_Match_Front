@@ -10,7 +10,7 @@ import DetailGallery from "./pages/Dashboard/Dashboard_Pages/ClubGalleryDetailPa
 import DetailRecord from "./pages/Dashboard/Dashboard_Pages/ClubRecordDetailPage/ClubRecordDetailPage";
 import DetailCalender from "./pages/Dashboard/Dashboard_Pages/ClubCalenderDetailPage/ClubCalenderDetailPage";
 import MatchupBoardPage from "./pages/Matchup_Board_Page/MatchupBoardPage";
-import ClubBoardPage from "./pages/Club_Board_Page/ClubBoardPage";
+import ClubBoardPage from "./pages/ClubSearchBoardPage/ClubSearchBoardPage";
 import UpcomingMatchupPage from "./pages/Dashboard/Dashboard_Pages/ClubMatchupDetailPage/UpcomingMatchupPage/UpcomingMatchupPage";
 import OngoingMatchupPage from "./pages/Dashboard/Dashboard_Pages/ClubMatchupDetailPage/OngoingMatchupPage/OngoingMatchupPage";
 import ReceiveMatchupPage from "./pages/Dashboard/Dashboard_Pages/ClubMatchupDetailPage/RecieveMatchupPage/ReceiveMatchupPage";
@@ -35,7 +35,7 @@ function App() {
         <Route path="/dashboard/calender" element={<DetailCalender />} />
         <Route path="/dashboard/gallery" element={<DetailGallery />} />
         <Route path="/matchup-board" element={<MatchupBoardPage />} />
-        <Route path="/club-board" element={<ClubBoardPage />} />
+        <Route path="/club-board" element={<ClubSearchBoardPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
