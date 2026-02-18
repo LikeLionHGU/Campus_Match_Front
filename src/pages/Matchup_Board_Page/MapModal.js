@@ -85,7 +85,7 @@ const MapModal = ({ onClose, onSelectLocation }) => {
 
                 <div className="map-modal-header">
                     <span>위치 선택</span>
-                    <img src={closeIcon} onClick={onClose}/>
+                    <img src={closeIcon} alt="close" onClick={onClose}/>
                 </div>
 
                 <div className="map-search">
