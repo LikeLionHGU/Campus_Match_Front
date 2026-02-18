@@ -14,7 +14,6 @@ const FinishMatchupDetailModal = ({ match, onClose }) => {
           {
             method: "GET",
             headers: {
-              "Content-Type": "application/json",
               Authorization: token || "",
             },
           },
@@ -79,9 +78,7 @@ const FinishMatchupDetailModal = ({ match, onClose }) => {
             </div>
 
             <div className="map-placeholder">
-              {/* Placeholder for Map - replaced with actual map if available */}
-              <div className="map-fallback">지도 보기 (준비중)</div>
-              {/* <img src="/path/to/map/image" alt="Map" className="map-img" /> */}
+              <div className="map-fallback">api 대기중...</div>
             </div>
           </>
         ) : (

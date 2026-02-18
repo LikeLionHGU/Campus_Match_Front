@@ -1,12 +1,13 @@
 .finish-matchup-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 229px 1fr;
   background-color: #fbffff;
   min-height: 100vh;
 }
 
 .finish-matchup-content {
   flex: 1;
-  padding: 80px 79px 72.72px 79px;
+  padding: 80px 79px 77.86px 79px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,7 +17,6 @@
   text-align: center;
   gap: 10px;
   margin-bottom: 40px;
-
   display: flex;
   flex-direction: column;
 }
@@ -43,16 +43,17 @@
 
 .matchup-list-container {
   width: 100%;
-  background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   overflow: hidden;
-  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .matchup-table {
   width: 100%;
   border-collapse: collapse;
+  border: 1px solid #ccc;
 }
 
 .matchup-table thead {
@@ -107,46 +108,32 @@
 
 .action-buttons {
   display: flex;
-  gap: 8px;
+  align-items: center;
   justify-content: center;
+  gap: 6px;
+}
+
+.separator {
+  color: #ccc;
+  font-size: 12px;
 }
 
 .detail-btn,
 .finish-btn {
-  padding: 6px 12px;
+  padding: 4px 10px;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 11px;
   cursor: pointer;
   border: none;
+  font-weight: 500;
   transition: background-color 0.2s;
+  background-color: #eee;
+  color: #555;
 }
 
-.detail-btn {
-  background-color: #e0e0e0;
-  color: #333;
-}
-
-.detail-btn:hover {
-  background-color: #d0d0d0;
-}
-
-.finish-btn {
-  background-color: #16c0cc; /* Primary Default */
-  color: white;
-}
-
+.detail-btn:hover,
 .finish-btn:hover {
-  background-color: #9ce2e7; /* Hover */
-}
-
-.finish-btn:active {
-  background-color: #007f88; /* Pressed */
-}
-
-.empty-state {
-  text-align: center;
-  padding: 60px;
-  color: #888;
+  background-color: #e0e0e0;
 }
 
 .pagination {

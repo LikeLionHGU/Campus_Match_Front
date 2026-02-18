@@ -40,10 +40,22 @@
   background-color: #fff;
   border: 0px;
   padding: 0;
+  position: relative;
+  cursor: pointer;
 }
 
 .bell img {
   width: 35px;
   height: 35px;
   aspect-ratio: 1/1;
+}
+
+.bell-dot {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  background: #ff4d4f;
+  border-radius: 50%;
 }
