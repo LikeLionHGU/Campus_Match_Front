@@ -347,3 +347,16 @@
     border: none;
     cursor: pointer;
 }
+.club-small-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+.matchup-board-table-wrapper td div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}

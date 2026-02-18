@@ -3,7 +3,7 @@ import "./Record/Club-record.css";
 import BadgeModal from "./Badge/BadgeModal";
 import TempRing from "./Temperture/TempRing";
 import empty_badge from "../../assets/empty_badge.png";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Calender from "./Calendaer/Calender";
 import Matchup from "./Matchup/Matchup";
 import Gallery from "./Gallery/Gallery"
@@ -13,6 +13,35 @@ import Sidebar from "../../components/SideBar/SideBar";
 const Dashboard = () => {
     const [openModal, setOpenModal] = useState(null);
     const navigate = useNavigate();
+
+    const fetchClubDashboard = async () => {
+        try {
+            const clubId = localStorage.getItem("clubId");
+
+            const res = await fetch(
+                `${process.env.REACT_APP_HOST_URL}/api/club/dashboard/${clubId}`,
+                {
+                    method: "GET",
+                    headers: {
+                        Authorization: localStorage.getItem("Authorization"),
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+
+            if (!res.ok) throw new Error("dashboard load fail");
+
+            const data = await res.json();
+            console.log(data);
+            return data;
+
+        } catch (e) {
+            console.error(e);
+        }
+    };
+    useEffect(() => {
+        fetchClubDashboard();
+    }, []);
     
     return(
         <>

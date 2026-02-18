@@ -19,8 +19,9 @@
     background: #fff;
     padding: 70px 60px 60px 60px;
     width: 422px;
-    height: 422px;
+    height: 644px;
     border-radius: 20px;
+    display: flex;
 }
 
 .add-matchup-modal-close {
@@ -35,7 +36,7 @@
 
 .add-matchup-modal-main{
     display:grid;
-    grid-template-rows: 20px 267px 35px;
+    grid-template-rows: 20px 494px 35px;
     gap:50px;
     align-items: center;
     justify-content: center;
@@ -53,6 +54,7 @@
     display:grid;
     grid-template-rows: 34px 34px 34px 34px 273px; 
     gap:20px;
+    align-items: center;
 }
 .add-matchup-modal-body span{
     color: var(--Text, #1F1F1F);
@@ -132,4 +134,111 @@
     font-weight: 600;
     line-height: 100%; /* 15px */
     cursor: pointer;
+}
+.add-matchup-modal-category,
+.add-matchup-modal-date{
+    display: grid;
+    grid-template-columns: 93px 215px;
+    gap: 40px;
+    color: var(--Text, #1F1F1F);
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    align-items: center;
+}
+.add-matchup-modal-date input{
+    border-radius: 8px;
+    border: 1.5px solid var(--Gray-2, #D6D6D6);
+    background: var(--white, #FFF);
+    padding: 8px 15px;
+    width: 185px;
+    height: 18px;
+}
+.add-matchup-modal-place{
+    display: grid;
+    grid-template-columns: 93px 290px;
+    gap: 40px;
+    color: var(--Text, #1F1F1F);
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    align-items: center;
+}
+.add-matchup-modal-place div{
+    display: grid;
+    grid-template-columns: 215px 64px;
+    gap: 10px;
+}
+.add-matchup-modal-place button{
+    cursor: pointer;
+    border-radius: 4.857px;
+    background: var(--Primary, #16C0CC);
+    border: 1.5px solid #16C0CC;
+    color:#FFF;
+}
+.add-matchup-modal-place input{
+    border-radius: 8px;
+    border: 1.5px solid var(--Gray-2, #D6D6D6);
+    background: var(--white, #FFF);
+    padding: 8px 15px;
+    width: 185px;
+    height: 18px;
+    
+}
+.add-matchup-sport-dropdown {
+    position: relative;
+}
+.add-matchup-sport-dropdown-list {
+    position: absolute;
+    max-height: 200px;
+    overflow-y: auto;
+}
+.add-matchup-modal-time{
+    
+    display: grid;
+    grid-template-columns: 93px 170px;
+    gap:40px;
+    align-items: center;
+    
+}
+.add-matchup-modal-time div{
+    display: grid;
+    grid-template-columns: 129px 13px 129px;
+    gap:10px;
+    align-items: center;
+
+}
+.add-matchup-modal-time div span{
+    
+    color: var(--Text, #1F1F1F);
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.add-matchup-modal-time div input{
+    border-radius: 8px;
+    border: 1.5px solid var(--Gray-2, #D6D6D6);
+    background: var(--white, #FFF);
+    padding: 8px 15px;
+    width: 99px;
+    height: 18px;
+    color: var(--Text, #1F1F1F);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.add-matchup-modal-content{
+    display: grid;
+    grid-template-rows: 20px 1fr;
+    gap: 10px;
+    align-items: center;
 }

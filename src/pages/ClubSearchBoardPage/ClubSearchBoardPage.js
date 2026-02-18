@@ -5,12 +5,12 @@ import ArrowLeft from "../../assets/arrow_left.svg";
 import ArrowLeftDouble from "../../assets/arrow_left_double.svg";
 import ArrowRight from "../../assets/arrow_right.svg";
 import ArrowRightDouble from "../../assets/arrow_right_double.svg";
-import ArrowDown from "../../assets/arrow_down_primary.svg";
 import MatchupSearchModal from "../Matchup_Board_Page/MatchupSearchModal";
 import SearchIcon from "../../assets/search.svg";
 import ArrowDownGray from "../../assets/arrow_down_gray.svg";
 import ResetIcon from "../../assets/reset.svg";
 import CloseIcon from "../../assets/close.svg"
+import DefaultClubIcon from "../../assets/Main_Icon_Gray.svg"
 
 const ClubSearchBoardPage = () => {
 
@@ -19,12 +19,10 @@ const ClubSearchBoardPage = () => {
     const [dateOrder, setDateOrder] = useState("asc");
 
     const [detailModalOpen, setDetailModalOpen] = useState(false);
-    const [cancelModalOpen, setCancelModalOpen] = useState(false);
+
     const [selectedMatchId, setSelectedMatchId] = useState(null);
-    const [successModalOpen, setSuccessModalOpen] = useState(false);
 
     const [searchModalOpen, setSearchModalOpen] = useState(false);
-    const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const [filter, setFilter] = useState("all");
     const [keyword, setKeyword] = useState("");
@@ -255,7 +253,7 @@ const ClubSearchBoardPage = () => {
                                                 <td>{item.university}</td>
                                                 <td>
                                                     <div>
-                                                        <img src={item.clubImage} alt="club-icon" />
+                                                        <img className="club-small-icon" src={item.imageUrl || DefaultClubIcon} alt="club-icon" />
                                                         <span>
                                                             {item.clubName}
                                                         </span>

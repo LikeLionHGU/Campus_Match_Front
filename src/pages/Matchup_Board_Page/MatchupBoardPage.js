@@ -10,7 +10,10 @@ import MatchupSearchModal from "./MatchupSearchModal";
 import SearchIcon from "../../assets/search.svg";
 import ArrowDownGray from "../../assets/arrow_down_gray.svg";
 import ResetIcon from "../../assets/reset.svg";
-import CloseIcon from "../../assets/close.svg"
+import CloseIcon from "../../assets/close.svg";
+import DefaultClubIcon from "../../assets/Main_Icon_Gray.svg";
+import AddMatchupModal from "./AddMatchupModal";
+import SuccessModal from "../Dashboard/Dashboard_Pages/ClubCalenderDetailPage/SuccessModal/SuccessModal";
 
 const MatchupBoardPage = () => {
 
@@ -19,11 +22,11 @@ const MatchupBoardPage = () => {
     const [dateOrder, setDateOrder] = useState("asc");
 
     const [detailModalOpen, setDetailModalOpen] = useState(false);
-    const [cancelModalOpen, setCancelModalOpen] = useState(false);
     const [selectedMatchId, setSelectedMatchId] = useState(null);
     const [successModalOpen, setSuccessModalOpen] = useState(false);
 
     const [searchModalOpen, setSearchModalOpen] = useState(false);
+    const [addModalOpen, setAddModalOpen] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const [filter, setFilter] = useState("all");
@@ -105,7 +108,7 @@ const MatchupBoardPage = () => {
             if (!res.ok) throw new Error();
 
             const data = await res.json();
-
+            console.log(data);
             setMatchups(Array.isArray(data) ? data : data.List || []);
             setCurrentPage(1);
 
@@ -140,6 +143,7 @@ const MatchupBoardPage = () => {
     const goLastBlock = () => {
         setCurrentPage((prev) => Math.min(totalPages, prev + 10));
     };
+    
 
     return (
         <>
@@ -279,7 +283,7 @@ const MatchupBoardPage = () => {
                         </div>
 
                         <div className="matchup-board-header-add">
-                            <button onClick={null}>매치업 등록</button>
+                            <button onClick={()=>setAddModalOpen(true)}>매치업 등록</button>
                         </div>
                     </div>
 
@@ -322,7 +326,7 @@ const MatchupBoardPage = () => {
                                                 <td>{item.sportCategory}</td>
                                                 <td>
                                                     <div>
-                                                        <img src={item.clubImage} alt="club-icon" />
+                                                        <img className="club-small-icon" src={item.imageUrl || DefaultClubIcon} alt="club-icon" />
                                                         <span>
                                                             {item.clubName}/{item.university}
                                                         </span>
@@ -404,11 +408,23 @@ const MatchupBoardPage = () => {
                     onClose={() => setSearchModalOpen(false)}
                 />
             )}
-            {/* {addModalOpen && (
+            {addModalOpen && (
                 <AddMatchupModal              
-                    onClose={() => setSearchModalOpen(false)}
+                    onClose={() => setAddModalOpen(false)}
+                    onSuccess={()=>{
+                        setAddModalOpen(false);
+                        setSuccessModalOpen(true);
+                        fetchMatchups();
+                    }}
                 />
-            )} */}
+            )}
+            {successModalOpen && (
+                <SuccessModal
+                    message="매치업이 등록되었습니다"
+                    onConfirm={() => setSuccessModalOpen(false)}
+                    
+                />
+            )} 
         </>
     );
 };
