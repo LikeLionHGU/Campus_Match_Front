@@ -4,25 +4,23 @@
 
 }
 
-.matchup-board-container {
+.clubsearch-board-container {
     display: grid;
     grid-template-rows: 50px 1fr;
     background-color: #F7FAFA;
     padding: 34px 80px 106px 78px;
     gap: 50px;
 }
-.matchup-board-header{
-    display:grid;
-    grid-template-columns: 1239px 123px;
-    gap:171px;
+.clubsearch-board-header{
+    
 }
-.matchup-board-header-search{
+.clubsearch-board-header-search{
      display: grid;
-     grid-template-columns: 355px 355px 1128px;
+     grid-template-columns: 355px 1128px;
      gap: 50px;
 }
 
-.matchup-board-header-search-input input{
+.clubsearch-board-header-search-input input{
     width: 315px;
     height: 15px;
     padding: 17.5px 20px;
@@ -31,17 +29,17 @@
     background: #FFF;
 }
 
-.matchup-board-header-search-input input:focus{
+.clubsearch-board-header-search-input input:focus{
     box-shadow: 0 0 0 2px rgba(22,192,204,0.15);
     border: 1.5px solid var(--Primary, #16C0CC);
     outline: none;
 }
 
-.matchup-board-header-search-input {
+.clubsearch-board-header-search-input {
     position: relative;
 }
 
-.matchup-board-header-search-input img {
+.clubsearch-board-header-search-input img {
     position: absolute;
     right: 12px;
     top: 50%;
@@ -51,8 +49,8 @@
     pointer-events: none;
 }
 
-.matchup-board-search-condition{
-    width: 541px;
+.clubsearch-board-search-condition{
+    width: 1085px;
     padding: 12px 20px;
     border-radius: 8px;
     border: 1.5px solid var(--Primary, #16C0CC);
@@ -60,11 +58,11 @@
     justify-content: center;
     align-items: center;
     display: grid;
-    grid-template-columns: 82px 342px 68px ;
+    grid-template-columns: 82px 884px 68px ;
     gap: 25px;
 }
 
-.matchup-board-search-condition-left{
+.clubsearch-board-search-condition-left{
     color: var(--Gray-4, #9E9E9E);
     font-family: Pretendard;
     font-size: 15px;
@@ -75,12 +73,12 @@
     display: flex;
     align-items: center;
 }
-.matchup-board-search-condition-left img{
+.clubsearch-board-search-condition-left img{
     margin-left: 12px;
     margin-bottom: 1px;
 }
 
-.matchup-board-search-condition-right{
+.clubsearch-board-search-condition-right{
     display: flex;
     color: var(--Gray-4, #9E9E9E);
     font-family: Pretendard;
@@ -93,41 +91,38 @@
     cursor: pointer;
 }
 
-.matchup-board-search-condition-right img{
+.clubsearch-board-search-condition-right img{
     margin-left: 2px;
     width: 12px;
     height: 12px;
 }
 
-.matchup-board-content{
+.clubsearch-board-content{
     display: flex;
     flex-direction: column;
     height: 813px;
     width:1533px;
 }
 
-.matchup-board-table-wrapper {
+.clubsearch-board-table-wrapper {
     flex: 1;
     overflow-y: auto;
     border-radius: 8px;
     width: 1533px;
 }
-.upcoming-match-table-wrapper table th{
-    
-    
-}
-.matchup-board-table-wrapper table tr{
+
+.clubsearch-board-table-wrapper table tr{
 
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.08);
 }
 
-.matchup-board-table-wrapper table{
+.clubsearch-board-table-wrapper table{
     width: 1533px;
     border-collapse: collapse;
     overflow: hidden;
     
 }
-.matchup-board-table-wrapper thead{
+.clubsearch-board-table-wrapper thead{
     background: var(--Primary, #16C0CC);
     
     
@@ -141,11 +136,11 @@
     font-weight: 600;
     line-height: normal;
 }
-.matchup-board-table-wrapper table thead tr{
+.clubsearch-board-table-wrapper table thead tr{
     height: 61px;
     
 }
-.matchup-board-table-wrapper table tbody{
+.clubsearch-board-table-wrapper table tbody{
     
     color: var(--Text, #1F1F1F);
     font-family: Pretendard;
@@ -154,20 +149,20 @@
     font-weight: 500;
     line-height: normal;
 }
-.matchup-board-table-wrapper table tbody td{
+.clubsearch-board-table-wrapper table tbody td{
     height: 58px;
     width: 219px;
     text-align: center;
     
 }
-.matchup-board-table-wrapper tbody tr:nth-child(odd) {
+.clubsearch-board-table-wrapper tbody tr:nth-child(odd) {
   background-color: #ffffff;
 }
 
-.matchup-board-table-wrapper tbody tr:nth-child(even) {
+.clubsearch-board-table-wrapper tbody tr:nth-child(even) {
   background-color: #F2F2F2;
 }
-.matchup-board-table-wrapper tbody button{
+.clubsearch-board-table-wrapper tbody button{
     border: none;
     border-radius: 2px;
     background: #D6FBFF;
@@ -181,17 +176,17 @@
     line-height: normal;
     cursor: pointer;
 }
-.matchup-board-pagination {
+.clubsearch-board-pagination {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.matchup-board-pagination-double{
+.clubsearch-board-pagination-double{
     width: 11px;
     height: 11px;
     margin-top: 2.8px;
 }
-.matchup-board-pagination-mono{
+.clubsearch-board-pagination-mono{
     width: 16px;
     height: 16px;
 }
@@ -204,7 +199,7 @@
     display: flex;
     gap: 15px;
 }
-.matchup-board-pagination button {
+.clubsearch-board-pagination button {
     border: none;
     background: none;
     cursor: pointer;
@@ -217,7 +212,7 @@
     line-height: normal;
 }
 
-.matchup-board-pagination button.active {
+.clubsearch-board-pagination button.active {
     color: #16C0CC;
     font-weight: 600;
 }
@@ -235,10 +230,10 @@
 .thead-date img.rotate {
     transform: rotate(180deg);
 }
-.matchup-board-table-wrapper table {
+.clubsearch-board-table-wrapper table {
   table-layout: fixed;
 }
-.matchup-board-filter-chip{
+.clubsearch-board-filter-chip{
   width: 70px;
   height: 20px;
   border-radius: 2px;
@@ -256,7 +251,7 @@
   justify-content: center;
   padding: 5px;
 }
-.matchup-board-filter-chip img{
+.clubsearch-board-filter-chip img{
   width: 8px;
   height: 8px;
   display: flex;
@@ -264,7 +259,7 @@
   justify-content: center;
   cursor: pointer;
 }
-.matchup-board-search-condition-middle{
+.clubsearch-board-search-condition-middle{
     display: flex;
     align-items: center;
     gap: 5px;

@@ -279,7 +279,7 @@ const MatchupBoardPage = () => {
                         </div>
 
                         <div className="matchup-board-header-add">
-                            <button>매치업 등록</button>
+                            <button onClick={null}>매치업 등록</button>
                         </div>
                     </div>
 
@@ -311,7 +311,7 @@ const MatchupBoardPage = () => {
                                             <th>지역</th>
                                             <th>장소</th>
                                             <th>매치온도</th>
-                                            <th>세부 정보 / 매치업 취소</th>
+                                            <th>세부 정보</th>
                                         </tr>
                                     </thead>
 
@@ -340,15 +340,6 @@ const MatchupBoardPage = () => {
                                                             }}
                                                         >
                                                             세부정보
-                                                        </button>
-                                                        &nbsp;/&nbsp;
-                                                        <button
-                                                            onClick={() => {
-                                                                setSelectedMatchId(item.matchPostId);
-                                                                setCancelModalOpen(true);
-                                                            }}
-                                                        >
-                                                            취소하기
                                                         </button>
                                                     </div>
                                                 </td>
@@ -413,6 +404,11 @@ const MatchupBoardPage = () => {
                     onClose={() => setSearchModalOpen(false)}
                 />
             )}
+            {/* {addModalOpen && (
+                <AddMatchupModal              
+                    onClose={() => setSearchModalOpen(false)}
+                />
+            )} */}
         </>
     );
 };

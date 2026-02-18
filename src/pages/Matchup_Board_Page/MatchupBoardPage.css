@@ -330,3 +330,20 @@
     justify-content: flex-start;
     overflow-x: auto;
 }
+.matchup-board-header-add button{
+    width: 123px;
+    height: 52px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    background: var(--Primary, #16C0CC);
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 100%; /* 18px */
+    border: none;
+    cursor: pointer;
+}

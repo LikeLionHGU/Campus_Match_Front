@@ -1,12 +1,12 @@
 import Sidebar from "../../components/SideBar/SideBar";
-import "./MatchupBoardPage.css";
+import "./ClubSearchBoardPage.css";
 import { useState, useEffect } from "react";
 import ArrowLeft from "../../assets/arrow_left.svg";
 import ArrowLeftDouble from "../../assets/arrow_left_double.svg";
 import ArrowRight from "../../assets/arrow_right.svg";
 import ArrowRightDouble from "../../assets/arrow_right_double.svg";
 import ArrowDown from "../../assets/arrow_down_primary.svg";
-import MatchupSearchModal from "./MatchupSearchModal";
+import MatchupSearchModal from "../Matchup_Board_Page/MatchupSearchModal";
 import SearchIcon from "../../assets/search.svg";
 import ArrowDownGray from "../../assets/arrow_down_gray.svg";
 import ResetIcon from "../../assets/reset.svg";
@@ -148,12 +148,12 @@ const ClubSearchBoardPage = () => {
                     <Sidebar />
                 </div>
 
-                <div className="matchup-board-container">
-                    <div className="matchup-board-header">
-                        <div className="matchup-board-header-search">
+                <div className="clubsearch-board-container">
+                    <div className="clubsearch-board-header">
+                        <div className="clubsearch-board-header-search">
 
 
-                            <div className="matchup-board-header-search-input">
+                            <div className="clubsearch-board-header-search-input">
                                 <input
                                     type="text"
                                     placeholder="검색"
@@ -164,19 +164,19 @@ const ClubSearchBoardPage = () => {
                             </div>
 
                             <div
-                                className="matchup-board-search-condition"
+                                className="clubsearch-board-search-condition"
                                 
                             >
-                                <div className="matchup-board-search-condition-left"
+                                <div className="clubsearch-board-search-condition-left"
                                     onClick={() => setSearchModalOpen(true)}
                                 >
                                     검색조건
                                     <img src={ArrowDownGray} alt="arrow_down" />
                                 </div>
 
-                                <div className="matchup-board-search-condition-middle">
+                                <div className="clubsearch-board-search-condition-middle">
                                     {displayFilters.map((item, idx) => (
-                                        <div className="matchup-board-filter-chip" key={idx}>
+                                        <div className="clubsearch-board-filter-chip" key={idx}>
                                             <span className="filter-chip-text">{item.label}</span>
 
                                             <div
@@ -214,7 +214,7 @@ const ClubSearchBoardPage = () => {
                                 </div>
 
                                 <div
-                                    className="matchup-board-search-condition-right"
+                                    className="clubsearch-board-search-condition-right"
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         setFilters({
@@ -231,60 +231,39 @@ const ClubSearchBoardPage = () => {
                             </div>
 
                         </div>
-
-                        <div className="matchup-board-header-add">
-                            <button>매치업 등록</button>
-                        </div>
                     </div>
 
-                    <div className="matchup-board-main">
-                        <div className="matchup-board-content">
-                            <div className="matchup-board-table-wrapper">
+                    <div className="clubsearch-board-main">
+                        <div className="clubsearch-board-content">
+                            <div className="clubsearch-board-table-wrapper">
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th>
-                                                <div
-                                                    className="thead-date"
-                                                    onClick={() =>
-                                                        setDateOrder((prev) =>
-                                                            prev === "asc" ? "desc" : "asc"
-                                                        )
-                                                    }
-                                                >
-                                                    <span>날짜</span>
-                                                    <img
-                                                        className={dateOrder === "desc" ? "rotate" : ""}
-                                                        src={ArrowDown}
-                                                        alt="down_arrow"
-                                                    />
-                                                </div>
-                                            </th>
-                                            <th>종목</th>
-                                            <th>동아리/대학</th>
                                             <th>지역</th>
-                                            <th>장소</th>
+                                            <th>대학교</th>
+                                            <th>동아리</th>
+                                            <th>종목</th>
                                             <th>매치온도</th>
-                                            <th>세부 정보 / 매치업 취소</th>
+                                            <th>방문하기</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
                                         {pagedMatchups.map((item) => (
                                             <tr key={item.matchId}>
-                                                <td>{item.matchDate}</td>
-                                                <td>{item.sportCategory}</td>
+                                                <td>{item.region}</td>
+                                                <td>{item.university}</td>
                                                 <td>
                                                     <div>
                                                         <img src={item.clubImage} alt="club-icon" />
                                                         <span>
-                                                            {item.clubName}/{item.university}
+                                                            {item.clubName}
                                                         </span>
                                                     </div>
                                                 </td>
-                                                <td>{item.region}</td>
-                                                <td>{item.location}</td>
+                                                <td>{item.sportCategory}</td>
                                                 <td>{item.mannerScore}°C</td>
+                                                
                                                 <td>
                                                     <div>
                                                         <button
@@ -292,17 +271,8 @@ const ClubSearchBoardPage = () => {
                                                                 setSelectedMatchId(item.matchPostId);
                                                                 setDetailModalOpen(true);
                                                             }}
-                                                        >
-                                                            세부정보
-                                                        </button>
-                                                        &nbsp;/&nbsp;
-                                                        <button
-                                                            onClick={() => {
-                                                                setSelectedMatchId(item.matchPostId);
-                                                                setCancelModalOpen(true);
-                                                            }}
-                                                        >
-                                                            취소하기
+                                                        > 
+                                                            방문하기
                                                         </button>
                                                     </div>
                                                 </td>
@@ -312,16 +282,16 @@ const ClubSearchBoardPage = () => {
                                 </table>
                             </div>
 
-                            <div className="matchup-board-pagination">
+                            <div className="clubsearch-board-pagination">
                                 <div className="pagination-move">
                                     <img
-                                        className="matchup-board-pagination-double"
+                                        className="clubsearch-board-pagination-double"
                                         src={ArrowLeftDouble}
                                         alt="<<"
                                         onClick={goFirstBlock}
                                     />
                                     <img
-                                        className="matchup-board-pagination-mono"
+                                        className="clubsearch-board-pagination-mono"
                                         src={ArrowLeft}
                                         alt="<"
                                         onClick={goPrev}
@@ -342,13 +312,13 @@ const ClubSearchBoardPage = () => {
 
                                 <div className="pagination-move">
                                     <img
-                                        className="matchup-board-pagination-mono"
+                                        className="clubsearch-board-pagination-mono"
                                         src={ArrowRight}
                                         alt=">"
                                         onClick={goNext}
                                     />
                                     <img
-                                        className="matchup-board-pagination-double"
+                                        className="clubsearch-board-pagination-double"
                                         src={ArrowRightDouble}
                                         alt=">>"
                                         onClick={goLastBlock}
