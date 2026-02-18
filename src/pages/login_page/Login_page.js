@@ -97,12 +97,7 @@ function LoginPage() {
 
           if (clubResponse.ok) {
             const clubData = await clubResponse.json();
-
-            if (clubData.clubId) {
-              localStorage.setItem("clubId", clubData.clubId);
-            } else if (clubData && typeof clubData === "number") {
-              localStorage.setItem("clubId", clubData);
-            }
+            localStorage.setItem("clubId", clubData);
           }
         } catch (error) {}
       }
