@@ -11,6 +11,7 @@ const GalleryUploadModal = ({
   const [title, setTitle] = useState(defaultTitle);
   const [matchDate, setMatchDate] = useState(defaultDate);
   const [images, setImages] = useState([]);
+  const [step, setStep] = useState("form");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,10 +38,9 @@ const GalleryUploadModal = ({
       });
 
       const token = localStorage.getItem("Authorization");
-      const clubId = localStorage.getItem("clubId");
 
       const response = await fetch(
-        `${process.env.REACT_APP_HOST_URL}/api/gallery/${clubId}`,
+        `${process.env.REACT_APP_HOST_URL}/api/gallery`,
         {
           method: "POST",
           headers: {
@@ -51,17 +51,42 @@ const GalleryUploadModal = ({
       );
 
       if (response.ok) {
-        onSuccess();
+        setStep("success");
+      } else {
+        alert("저장에 실패했습니다.");
       }
     } catch (error) {
       console.error("Gallery Create Error:", error);
+      alert("오류가 발생했습니다.");
     }
   };
+
+  const handleSuccessClose = () => {
+    onSuccess();
+  };
+
+  if (step === "success") {
+    return (
+      <div className="modal-overlay" onClick={handleSuccessClose}>
+        <div
+          className="modal-success-content"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button className="close-btn" onClick={handleSuccessClose}>
+            &times;
+          </button>
+          <h3 className="success-title">저장되었습니다</h3>
+          <button className="submit-btn" onClick={handleSuccessClose}>
+            확인
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <h3>{isOfficial ? "매치업 마무리하기" : "갤러리 생성"}</h3>
         <button className="close-btn" onClick={onClose}>
           &times;
         </button>
@@ -82,10 +107,8 @@ const GalleryUploadModal = ({
             ) : (
               <div className="upload-placeholder">
                 <div className="camera-icon"></div>
-                <span>사진을 등록해주세요</span>
-                <span style={{ fontSize: "12px", color: "#bbb" }}>
-                  (최대 5장)
-                </span>
+                <span>사진 올리기</span>
+                <span style={{ fontSize: "12px", color: "#bbb" }}>0/5</span>
               </div>
             )}
 
@@ -93,12 +116,29 @@ const GalleryUploadModal = ({
               type="file"
               multiple
               accept="image/*"
-              onChange={(e) => setImages(e.target.files)}
+              onChange={(e) => {
+                if (e.target.files.length > 5) {
+                  alert("사진은 최대 5장까지 올릴 수 있습니다.");
+                  e.target.value = "";
+                  return;
+                }
+                setImages(e.target.files);
+              }}
               className="file-input"
             />
           </div>
 
           <div className="row-group">
+            <div className="input-group">
+              <label>날짜</label>
+              <input
+                type="text"
+                value={matchDate}
+                onChange={(e) => setMatchDate(e.target.value)}
+                placeholder="0000.00.00"
+                readOnly={isOfficial}
+              />
+            </div>
             <div className="input-group">
               <label>이름</label>
               <input
@@ -106,17 +146,7 @@ const GalleryUploadModal = ({
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="제목을 입력하세요"
-                readOnly={isOfficial} // Prevent editing if official match data
-              />
-            </div>
-            <div className="input-group">
-              <label>날짜</label>
-              <input
-                type="text"
-                value={matchDate}
-                onChange={(e) => setMatchDate(e.target.value)}
-                placeholder="YYYY-MM-DD"
-                readOnly={isOfficial} // Prevent editing if official match data
+                readOnly={isOfficial}
               />
             </div>
           </div>

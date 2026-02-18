@@ -150,3 +150,27 @@
 .submit-btn:active {
   background-color: #007f88;
 }
+
+/* 저장 완료 모달 */
+.modal-success-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 360px;
+  max-width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+  text-align: center;
+}
+
+.success-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin: 20px 0 24px;
+}
+
+.modal-success-content .submit-btn {
+  width: auto;
+  padding: 10px 32px;
+}
