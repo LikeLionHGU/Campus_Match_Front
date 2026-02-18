@@ -14,7 +14,7 @@
   z-index: 2000;
 }
 .add-matchup-modal {
-    transform: translateY(-150px);
+    transform: translateY(-80px);
     position: relative;
     background: #fff;
     padding: 70px 60px 60px 60px;
@@ -155,6 +155,17 @@
     padding: 8px 15px;
     width: 185px;
     height: 18px;
+    color: var(--Text, #1F1F1F);
+
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.add-matchup-modal input:focus{
+    border-color: #16C0CC;
+    outline: none;
 }
 .add-matchup-modal-place{
     display: grid;
@@ -171,7 +182,7 @@
 .add-matchup-modal-place div{
     display: grid;
     grid-template-columns: 215px 64px;
-    gap: 10px;
+    gap: 14px;
 }
 .add-matchup-modal-place button{
     cursor: pointer;
@@ -241,4 +252,76 @@
     grid-template-rows: 20px 1fr;
     gap: 10px;
     align-items: center;
+}
+.add-matchup-sport-dropdown{
+    position: relative;
+
+    display: flex;
+    width: 185px;
+    height: 18px;
+    padding: 8px 15px;
+
+    border-radius: 8px;
+    border: 1.5px solid var(--Gray-2, #D6D6D6);
+    background: #FFF;
+}
+.add-matchup-sport-dropdown-selected{
+    display: flex;
+    width: 100%; 
+    color: var(--Gray-2, #D6D6D6);
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.add-matchup-sport-dropdown-selected img{
+    width: 15px;
+    height: 15px;
+    transition: transform 0.2s ease;
+}
+.add-matchup-sport-dropdown-list{
+    position: absolute;
+    top: calc(100% + 6px); 
+    border-radius: 8px;
+    border: 1.5px solid var(--Gray-2, #D6D6D6);
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10);
+    color: var(--Gray-4, #9E9E9E);
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    width: 100%; 
+    background: white;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 9999;
+    left: -1px;
+}
+.add-matchup-sport-dropdown.open{
+    box-shadow: 0 0 0 2px rgba(22,192,204,0.15);
+    border: 1.5px solid var(--Primary, #16C0CC);
+    outline: none;
+}
+.add-matchup-sport-dropdown-list li {
+    height: 49px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    cursor: pointer;
+}
+.add-matchup-sport-dropdown-list li:hover {
+    background-color: #EAFDFF;
+    color: #000;
+}
+.add-matchup-sport-dropdown-selected.selected {
+    color: #000;
+}
+.add-matchup-sport-dropdown-selected img.open {
+    transform: rotate(180deg);
 }

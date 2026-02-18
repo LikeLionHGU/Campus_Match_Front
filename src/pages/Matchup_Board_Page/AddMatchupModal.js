@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./AddMatchupModal.css";
 import closeIcon from "../../assets/close.svg";
 import ArrowDown from "../../assets/arrow_down_gray.svg"
+import MapModal from "./MapModal";
 
 const AddMatchupModal = ({ onClose, onSuccess }) => {
     const [sportCategory, setSportCategory] = useState("");
@@ -11,6 +12,7 @@ const AddMatchupModal = ({ onClose, onSuccess }) => {
     const [endTime, setEndTime] = useState("");
     const [reason, setReason] = useState("");
     const [sportDropdownOpen, setSportDropdownOpen] = useState(false);
+    const [mapModalOpen,setMapModalOpen] = useState(false);
     
     const sportList = [
         "골프","검도","당구","등산",
@@ -69,13 +71,15 @@ const AddMatchupModal = ({ onClose, onSuccess }) => {
                             <div className="add-matchup-modal-category">
                                 <span>종목</span>
 
-                                <div className="add-matchup-sport-dropdown">
+                                <div className={`add-matchup-sport-dropdown ${sportDropdownOpen ? "open" : ""}`}>
                                     <div
-                                        className="add-matchup-sport-dropdown-selected"
+                                        className={`add-matchup-sport-dropdown-selected ${
+                                            sportCategory ? "selected" : ""
+                                        }`}
                                         onClick={() => setSportDropdownOpen(prev => !prev)}
                                     >
-                                        {sportCategory || "종목 선택"}
-                                        <img src={ArrowDown} alt="arrow" />
+                                        {sportCategory || "선택"}
+                                        <img src={ArrowDown} alt="arrow" className={sportDropdownOpen ? "open" : ""}/>
                                     </div>
 
                                     {sportDropdownOpen && (
@@ -113,7 +117,7 @@ const AddMatchupModal = ({ onClose, onSuccess }) => {
                                         onChange={(e) => setLocation(e.target.value)}
                                         readOnly
                                     />
-                                    <button>찾기</button>
+                                    <button onClick={() => setMapModalOpen(true)}>찾기</button>
                                 </div>
                                 
                             </div>
@@ -156,6 +160,12 @@ const AddMatchupModal = ({ onClose, onSuccess }) => {
                     </div>
                 </div>
             </div>
+            {mapModalOpen && (
+                <MapModal
+                    onClose={() => setMapModalOpen(false)}
+                    onSelectLocation={(address) => setLocation(address)}
+                />
+            )}
         </>
     );
 };
