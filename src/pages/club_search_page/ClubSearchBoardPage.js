@@ -152,52 +152,6 @@ const MatchupBoardPage = () => {
                     <div className="matchup-board-header">
                         <div className="matchup-board-header-search">
 
-                            <div className="matchup-board-header-dropdown">
-                                <div
-                                    className={`dropdown-selected ${dropdownOpen ? "open" : ""}`}
-                                    onClick={() => setDropdownOpen(prev => !prev)}
-                                >
-                                    {filter === "all" && "전체"}
-                                    {filter === "mine" && "내가 쓴 매치업"}
-                                    {filter === "others" && "다른 사람이 쓴 매치업"}
-                                    <img
-                                        src={ArrowDown}
-                                        alt="arrow"
-                                        className={`dropdown-arrow ${dropdownOpen ? "open" : ""}`}
-                                    />
-                                </div>
-
-                                {dropdownOpen && (
-                                    <ul className="dropdown-list">
-                                        <li
-                                            onClick={() => {
-                                                setFilter("all");
-                                                setDropdownOpen(false);
-                                            }}
-                                        >
-                                            전체
-                                        </li>
-
-                                        <li
-                                            onClick={() => {
-                                                setFilter("mine");
-                                                setDropdownOpen(false);
-                                            }}
-                                        >
-                                            내가 쓴 매치업
-                                        </li>
-
-                                        <li
-                                            onClick={() => {
-                                                setFilter("others");
-                                                setDropdownOpen(false);
-                                            }}
-                                        >
-                                            다른 사람이 쓴 매치업
-                                        </li>
-                                    </ul>
-                                )}
-                            </div>
 
                             <div className="matchup-board-header-search-input">
                                 <input
