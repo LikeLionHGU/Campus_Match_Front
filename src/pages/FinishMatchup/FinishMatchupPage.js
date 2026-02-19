@@ -4,6 +4,7 @@ import FinishMatchupModal from "./FinishMatchupModal";
 import FinishMatchupDetailModal from "./FinishMatchupDetailModal";
 import "./FinishMatchupPage.css";
 import arrow from "../../assets/arrow.svg";
+import DefaultLogo from "../../assets/Main_Icon_Gray.svg";
 
 const FinishMatchupPage = () => {
   const [matchups, setMatchups] = useState([]);
@@ -119,7 +120,7 @@ const FinishMatchupPage = () => {
                         <td>
                           <div className="opponent-cell">
                             <img
-                              src={match.logo}
+                              src={match.logo || DefaultLogo}
                               alt="logo"
                               className="opponent-logo"
                             />
