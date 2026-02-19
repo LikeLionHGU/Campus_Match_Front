@@ -56,6 +56,6 @@
   right: 2px;
   width: 8px;
   height: 8px;
-  background: #ff4d4f;
+  fill: var(--Orange-Red, #fe5a35);
   border-radius: 50%;
 }

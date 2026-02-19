@@ -7,6 +7,7 @@ import "./MatchupHistoryPage.css";
 import arrowIcon from "../../../../assets/arrow.svg";
 import backIcon from "../../../../assets/arrow_left.svg";
 import searchIcon from "../../../../assets/search.svg";
+import DefaultLogo from "../../../../assets/Main_Icon_Gray.svg";
 
 const MatchupHistoryPage = () => {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ const MatchupHistoryPage = () => {
         setHistoryList(data.List || data);
       }
     } catch (error) {
-      console.error("Error fetching match history:", error);
+      console.error("오류:", error);
     }
   }, []);
 
@@ -222,13 +223,13 @@ const MatchupHistoryPage = () => {
               </tr>
             </thead>
             <tbody>
-              {currentItems.map((item) => (
-                <tr key={item.historyMatchId}>
+              {currentItems.map((item, index) => (
+                <tr key={item.historyMatchId || item.matchHistoryId || index}>
                   <td>{item.matchDate}</td>
                   <td>
                     <div className="history-club-cell">
                       <img
-                        src={item.logo || "/default-logo.png"}
+                        src={item.logo || DefaultLogo}
                         alt="logo"
                         className="history-club-logo"
                       />

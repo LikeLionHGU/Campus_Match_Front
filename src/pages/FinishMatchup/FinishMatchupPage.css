@@ -95,15 +95,17 @@
 .opponent-cell {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
+  justify-content: flex-start;
+  padding-left: 10px;
+  gap: 25px;
 }
 
 .opponent-logo {
-  width: 24px;
-  height: 24px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   object-fit: cover;
+  flex-shrink: 0;
 }
 
 .action-buttons {

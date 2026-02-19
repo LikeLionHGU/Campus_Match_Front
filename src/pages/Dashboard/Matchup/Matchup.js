@@ -108,7 +108,7 @@ const Matchup = ({
                         ? `${item.clubName || ""}/${item.university || ""}`
                         : ""}
                     </th>
-                    <th>{item?.sportsType || ""}</th>
+                    <th>{item?.sportCategory || ""}</th>
                     <th>{item?.mannerScore ? `${item.mannerScore}°C` : ""}</th>
                   </tr>
                 ))}
@@ -142,7 +142,7 @@ const Matchup = ({
                         ? `${item.clubName || ""}/${item.university || ""}`
                         : ""}
                     </th>
-                    <th>{item?.sportsType || ""}</th>
+                    <th>{item?.sportCategory || ""}</th>
                     <th>{item?.mannerScore ? `${item.mannerScore}°C` : ""}</th>
                   </tr>
                 ))}
