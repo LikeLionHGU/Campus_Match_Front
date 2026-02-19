@@ -21,26 +21,33 @@ const ClubGalleryDetailPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
-  const fetchGallery = useCallback(async () => {
+  const fetchGallery = useCallback(async (currentFilter) => {
     try {
       const clubId = localStorage.getItem("clubId");
       const token = localStorage.getItem("Authorization");
 
       if (!clubId) return;
 
-      const response = await fetch(
-        `${process.env.REACT_APP_HOST_URL}/api/gallery/${clubId}`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: token || "",
-          },
+      let url = `${process.env.REACT_APP_HOST_URL}/api/gallery/${clubId}`;
+
+      if (currentFilter === "our") {
+        url = `${process.env.REACT_APP_HOST_URL}/api/gallery/myClub/${clubId}`;
+      } else if (currentFilter === "matchup") {
+        url = `${process.env.REACT_APP_HOST_URL}/api/gallery/match/${clubId}`;
+      }
+
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          Authorization: token || "",
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({}),
+      });
 
       if (response.ok) {
         const data = await response.json();
-        setGalleryItems(data);
+        setGalleryItems(Array.isArray(data) ? data : data.List || []);
       } else if (response.status === 403) {
         console.error("403 Forbidden: Check token or clubId");
       }
@@ -50,8 +57,8 @@ const ClubGalleryDetailPage = () => {
   }, []);
 
   useEffect(() => {
-    fetchGallery();
-  }, [fetchGallery]);
+    fetchGallery(filter);
+  }, [fetchGallery, filter]);
 
   const handleCardClick = async (item) => {
     try {
@@ -171,12 +178,6 @@ const ClubGalleryDetailPage = () => {
 
         {(() => {
           let filteredItems = galleryItems;
-
-          if (filter === "our") {
-            filteredItems = filteredItems.filter((item) => !item.isOfficial);
-          } else if (filter === "matchup") {
-            filteredItems = filteredItems.filter((item) => item.isOfficial);
-          }
 
           if (searchTerm) {
             filteredItems = filteredItems.filter((item) =>
