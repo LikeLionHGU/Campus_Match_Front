@@ -6,7 +6,7 @@
 }
 
 .gallery-detail-container {
-  padding: 34px 80px 72.72px 80px;
+  padding: 34px 80px 92.72px 80px;
   display: flex;
   flex-direction: column;
 }
@@ -172,7 +172,7 @@
   gap: 27px;
   row-gap: 50px;
   overflow-y: visible;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .gallery-card {
