@@ -1,0 +1,42 @@
+.club-intro-temp-ring {
+  position: relative;
+  width: 183px;
+  height: 183px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: -13px 0 -13px -13px; /* Compensate for shadow padding (Top, Left, Bottom) */
+}
+
+/* SVG fills the container */
+.club-intro-temp-ring svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible; /* Ensure shadows aren't clipped if they extend slightly? But viewBox handles it. */
+}
+
+.club-intro-temp-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  pointer-events: none;
+}
+
+.club-intro-temp-text strong {
+  font-family: Pretendard;
+  font-weight: 700;
+  color: #1f1f1f;
+  /* Scaled font size: 36.6px was for 213px. For 183px, usage 36.6 * (183/213) = 31.4px? 
+     Or keep 36.6px if it fits? 
+     Let's use ~32px to be safe. */
+  font-size: 32px;
+  text-align: center;
+  line-height: normal;
+}
