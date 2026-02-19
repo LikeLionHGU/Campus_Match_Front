@@ -1,6 +1,6 @@
 import Sidebar from "../../components/SideBar/SideBar";
 import "./MatchupBoardPage.css";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, Fragment } from "react";
 import ArrowLeft from "../../assets/arrow_left.svg";
 import ArrowLeftDouble from "../../assets/arrow_left_double.svg";
 import ArrowRight from "../../assets/arrow_right.svg";
@@ -8,12 +8,10 @@ import ArrowRightDouble from "../../assets/arrow_right_double.svg";
 import ArrowDown from "../../assets/arrow_down_primary.svg";
 import MatchupSearchModal from "./MatchupSearchModal";
 import SearchIcon from "../../assets/search.svg";
-import ArrowDownGray from "../../assets/arrow_down_gray.svg";
-import ResetIcon from "../../assets/reset.svg";
-import CloseIcon from "../../assets/close.svg";
 import DefaultClubIcon from "../../assets/Main_Icon_Gray.svg";
-import AddMatchupModal from "./AddMatchupModal";
+import AddMatchupModal from "./AddMatchupModal/AddMatchupModal";
 import SuccessModal from "../Dashboard/Dashboard_Pages/ClubCalenderDetailPage/SuccessModal/SuccessModal";
+import DeleteMatchupModal from "./DeleteMatchupModal/DeleteMatchupModal";
 
 const MatchupBoardPage = () => {
 
@@ -21,16 +19,20 @@ const MatchupBoardPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [dateOrder, setDateOrder] = useState("asc");
 
-    // const [detailModalOpen, setDetailModalOpen] = useState(false);
-    // const [selectedMatchId, setSelectedMatchId] = useState(null);
     const [successModalOpen, setSuccessModalOpen] = useState(false);
-
     const [searchModalOpen, setSearchModalOpen] = useState(false);
     const [addModalOpen, setAddModalOpen] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const [filter, setFilter] = useState("all");
     const [keyword, setKeyword] = useState("");
+
+    const [openMatchId, setOpenMatchId] = useState(null);
+    const [detailData, setDetailData] = useState(null);
+    const [detailLoading, setDetailLoading] = useState(false);
+    const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+    const [deleteTargetId, setDeleteTargetId] = useState(null);
+    const [deleteSuccessModalOpen, setDeleteSuccessModalOpen] = useState(false);
 
     const [filters, setFilters] = useState({
         regions: [],
@@ -39,62 +41,33 @@ const MatchupBoardPage = () => {
         endDate: null,
     });
 
-    const displayFilters = [
-        ...filters.regions.map(r => ({
-            type: "region",
-            label: r,
-            value: r
-        })),
-        ...filters.sports.map(s => ({
-            type: "sport",
-            label: s,
-            value: s
-        })),
-        ...(filters.startDate || filters.endDate
-            ? [{ type: "date", label: "날짜" }]
-            : []
-        )
-    ];
+    // const displayFilters = [
+    //     ...filters.regions.map(r => ({
+    //         type: "region",
+    //         label: r,
+    //         value: r
+    //     })),
+    //     ...filters.sports.map(s => ({
+    //         type: "sport",
+    //         label: s,
+    //         value: s
+    //     })),
+    //     ...(filters.startDate || filters.endDate
+    //         ? [{ type: "date", label: "날짜" }]
+    //         : []
+    //     )
+    // ];
 
     const sortedMatchups = [...matchups].sort((a, b) => {
         const dateA = new Date(a.matchDate);
         const dateB = new Date(b.matchDate);
-
-        return dateOrder === "asc"
-            ? dateA - dateB
-            : dateB - dateA;
+        return dateOrder === "asc" ? dateA - dateB : dateB - dateA;
     });
 
     const pageSize = 10;
 
     const fetchMatchups = useCallback(async () => {
         try {
-            const params = new URLSearchParams();
-
-            if (filter !== "all") {
-                params.append("type", filter);
-            }
-
-            if (keyword.trim() !== "") {
-                params.append("keyword", keyword);
-            }
-
-            if (filters.regions.length > 0) {
-                params.append("regions", filters.regions.join(","));
-            }
-
-            if (filters.sports.length > 0) {
-                params.append("sports", filters.sports.join(","));
-            }
-
-            if (filters.startDate) {
-                params.append("startDate", filters.startDate);
-            }
-
-            if (filters.endDate) {
-                params.append("endDate", filters.endDate);
-            }
-
             const res = await fetch(
                 `${process.env.REACT_APP_HOST_URL}/api/matchPost`,
                 {
@@ -105,20 +78,85 @@ const MatchupBoardPage = () => {
             );
 
             if (!res.ok) throw new Error();
-
             const data = await res.json();
-
             setMatchups(Array.isArray(data) ? data : data.List || []);
             setCurrentPage(1);
 
         } catch (e) {
             console.error("matchup load fail", e);
         }
-    }, [filter, keyword, filters]);
+    }, []);
 
     useEffect(() => {
         fetchMatchups();
     }, [fetchMatchups]);
+
+    const handleToggleDetail = async (matchPostId) => {
+        if (openMatchId === matchPostId) {
+            setOpenMatchId(null);
+            setDetailData(null);
+            return;
+        }
+
+        setOpenMatchId(matchPostId);
+        setDetailLoading(true);
+
+        try {
+            const res = await fetch(
+                `${process.env.REACT_APP_HOST_URL}/api/matchPost/${matchPostId}`,
+                {
+                    headers: {
+                        Authorization: localStorage.getItem("Authorization"),
+                    },
+                }
+            );
+
+            if (!res.ok) throw new Error();
+            const data = await res.json();
+            setDetailData(data);
+            console.log(data);
+        } catch (e) {
+            console.error("detail load fail", e);
+            setDetailData(null);
+        } finally {
+            setDetailLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        if (!openMatchId) return;
+        if (!window.kakao || !window.kakao.maps) return;
+
+        window.kakao.maps.load(() => {
+            const container = document.getElementById(
+                `detail-map-${openMatchId}`
+            );
+            if (!container) return;
+
+            const geocoder = new window.kakao.maps.services.Geocoder();
+            console.log(detailData.locationDetail);
+            geocoder.addressSearch(detailData.locationDetail, function (result, status) {
+                if (status === window.kakao.maps.services.Status.OK) {
+
+                    const coords = new window.kakao.maps.LatLng(
+                        result[0].y,
+                        result[0].x
+                    );
+
+                    const map = new window.kakao.maps.Map(container, {
+                        center: coords,
+                        level: 3,
+                    });
+
+                    new window.kakao.maps.Marker({
+                        map: map,
+                        position: coords,
+                    });
+                }
+            });
+        });
+
+    }, [detailData,openMatchId]);
 
     const totalPages = Math.max(1, Math.ceil(matchups.length / pageSize));
 
@@ -142,7 +180,6 @@ const MatchupBoardPage = () => {
     const goLastBlock = () => {
         setCurrentPage((prev) => Math.min(totalPages, prev + 10));
     };
-    
 
     return (
         <>
@@ -172,30 +209,13 @@ const MatchupBoardPage = () => {
 
                                 {dropdownOpen && (
                                     <ul className="dropdown-list">
-                                        <li
-                                            onClick={() => {
-                                                setFilter("all");
-                                                setDropdownOpen(false);
-                                            }}
-                                        >
+                                        <li onClick={() => { setFilter("all"); setDropdownOpen(false); }}>
                                             전체
                                         </li>
-
-                                        <li
-                                            onClick={() => {
-                                                setFilter("mine");
-                                                setDropdownOpen(false);
-                                            }}
-                                        >
+                                        <li onClick={() => { setFilter("mine"); setDropdownOpen(false); }}>
                                             내가 쓴 매치업
                                         </li>
-
-                                        <li
-                                            onClick={() => {
-                                                setFilter("others");
-                                                setDropdownOpen(false);
-                                            }}
-                                        >
+                                        <li onClick={() => { setFilter("others"); setDropdownOpen(false); }}>
                                             다른 사람이 쓴 매치업
                                         </li>
                                     </ul>
@@ -210,73 +230,6 @@ const MatchupBoardPage = () => {
                                     onChange={(e) => setKeyword(e.target.value)}
                                 />
                                 <img src={SearchIcon} alt="search" />
-                            </div>
-
-                            <div
-                                className="matchup-board-search-condition"
-                                
-                            >
-                                <div className="matchup-board-search-condition-left"
-                                    onClick={() => setSearchModalOpen(true)}
-                                >
-                                    검색조건
-                                    <img src={ArrowDownGray} alt="arrow_down" />
-                                </div>
-
-                                <div className="matchup-board-search-condition-middle">
-                                    {displayFilters.map((item, idx) => (
-                                        <div className="matchup-board-filter-chip" key={idx}>
-                                            <span className="filter-chip-text">{item.label}</span>
-
-                                            <div
-                                                className="filter-chip-remove"
-                                                onClick={(e) => {
-                                                e.stopPropagation();
-
-                                                if (item.type === "region") {
-                                                    setFilters(prev => ({
-                                                    ...prev,
-                                                    regions: prev.regions.filter(r => r !== item.value)
-                                                    }));
-                                                }
-
-                                                if (item.type === "sport") {
-                                                    setFilters(prev => ({
-                                                    ...prev,
-                                                    sports: prev.sports.filter(s => s !== item.value)
-                                                    }));
-                                                }
-
-                                                if (item.type === "date") {
-                                                    setFilters(prev => ({
-                                                    ...prev,
-                                                    startDate: null,
-                                                    endDate: null
-                                                    }));
-                                                }
-                                                }}
-                                            >
-                                                <img src={CloseIcon} alt="remove" />
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <div
-                                    className="matchup-board-search-condition-right"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        setFilters({
-                                            regions: [],
-                                            sports: [],
-                                            startDate: null,
-                                            endDate: null,
-                                        });
-                                    }}
-                                >
-                                    검색초기화
-                                    <img src={ResetIcon} alt="reset" />
-                                </div>
                             </div>
 
                         </div>
@@ -319,36 +272,110 @@ const MatchupBoardPage = () => {
                                     </thead>
 
                                     <tbody>
-                                        {pagedMatchups.map((item) => (
-                                            <tr key={item.matchId}>
-                                                <td>{item.matchDate}</td>
-                                                <td>{item.sportCategory}</td>
-                                                <td>
-                                                    <div>
-                                                        <img className="club-small-icon" src={item.imageUrl || DefaultClubIcon} alt="club-icon" />
-                                                        <span>
-                                                            {item.clubName}/{item.university}
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td>{item.region}</td>
-                                                <td>{item.location}</td>
-                                                <td>{item.mannerScore}°C</td>
-                                                <td>
-                                                    <div>
-                                                        <button
-                                                            // onClick={() => {
-                                                            //     setSelectedMatchId(item.matchPostId);
-                                                            //     setDetailModalOpen(true);
-                                                            // }}
-                                                        >
-                                                            세부정보
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        ))}
+                                        {pagedMatchups.map((item) => {
+                                            const isOpen = openMatchId === item.matchPostId;
+
+                                            return (
+                                                <Fragment key={item.matchPostId}>
+                                                    <tr>
+                                                        <td>{item.matchDate}</td>
+                                                        <td>{item.sportCategory}</td>
+                                                        <td>
+                                                            <div>
+                                                                <img
+                                                                    className="club-small-icon"
+                                                                    src={item.imageUrl || DefaultClubIcon}
+                                                                    alt="club-icon"
+                                                                />
+                                                                <span>
+                                                                    {item.clubName}/{item.university}
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td>{item.region}</td>
+                                                        <td>{item.location}</td>
+                                                        <td>{item.mannerScore}°C</td>
+                                                        <td>
+                                                            <button
+                                                                onClick={() =>
+                                                                    handleToggleDetail(item.matchPostId)
+                                                                }
+                                                            >
+                                                                세부정보
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+
+                                                    {isOpen && (
+                                                        <tr className="accordion-row">
+                                                            <td colSpan="7">
+                                                                {detailLoading ? (
+                                                                    <div>불러오는 중...</div>
+                                                                ) : detailData && (
+                                                                    <div className="accordion-content">
+
+                                                                        <div className="accordion-content-left">
+                                                                            <span className="place-name">
+                                                                                {detailData.location}
+                                                                            </span>
+                                                                            <div
+                                                                                id={`detail-map-${openMatchId}`}
+                                                                                className="detail-map"
+                                                                            />
+                                                                        </div>
+
+                                                                        <div className="accordion-content-middle">
+
+                                                                            <div className="accordion-content-middle-time">
+                                                                                <span>가능시간</span>
+                                                                                <div>
+                                                                                    <input readOnly value={detailData.startTime || ""} />
+                                                                                    <span>~</span>
+                                                                                    <input readOnly value={detailData.endTime || ""} />
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div className="accordion-content-middle-phone">
+                                                                                <span>전화번호</span>
+                                                                                <input readOnly value={detailData.phone || ""} />
+                                                                            </div>
+
+                                                                            <div className="accordion-content-middle-content">
+                                                                                <span>상세내용</span>
+                                                                                <textarea readOnly value={detailData.content || ""} />
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                        <div className="accordion-content-right">
+                                                                            {detailData.isMine ? (
+                                                                                <div className="accordion-content-right-buttons">
+                                                                                    <button className="accordion-edit-button">수정하기</button>
+                                                                                    <button 
+                                                                                        className="accordion-delete-button"
+                                                                                        onClick={() => {
+                                                                                            setDeleteTargetId(openMatchId);
+                                                                                            console.log(deleteTargetId);
+                                                                                            setDeleteModalOpen(true);
+                                                                                        }}
+                                                                                    >삭제하기</button>
+                                                                                </div>
+                                                                            ) : (
+                                                                                <button className="accordion-apply-button">신청하기</button>
+                                                                            )}
+                                                                        </div>
+
+                                                                    </div>
+                                                                )}
+                                                            </td>
+                                                        </tr>
+                                                    )}
+
+                                                </Fragment>
+                                            );
+                                        })}
                                     </tbody>
+
                                 </table>
                             </div>
 
@@ -407,8 +434,9 @@ const MatchupBoardPage = () => {
                     onClose={() => setSearchModalOpen(false)}
                 />
             )}
+
             {addModalOpen && (
-                <AddMatchupModal              
+                <AddMatchupModal
                     onClose={() => setAddModalOpen(false)}
                     onSuccess={()=>{
                         setAddModalOpen(false);
@@ -417,23 +445,33 @@ const MatchupBoardPage = () => {
                     }}
                 />
             )}
-            {/* {detailModalOpen && (
-                <AddMatchupModal              
-                    onClose={() => setAddModalOpen(false)}
-                    onSuccess={()=>{
-                        setAddModalOpen(false);
-                        setSuccessModalOpen(true);
+            {deleteModalOpen && (
+                <DeleteMatchupModal
+                    matchPostId={deleteTargetId}
+                    onClose={() => setDeleteModalOpen(false)}
+                    onSuccess={() => {
+                        setDeleteModalOpen(false);
+                        setDeleteSuccessModalOpen(true);
+                        setOpenMatchId(null);
+                        setDetailData(null);
                         fetchMatchups();
                     }}
                 />
-            )} */}
+            )}
+
+            {deleteSuccessModalOpen && (
+                <SuccessModal
+                    message="매치업이 삭제되었습니다"
+                    onConfirm={() => setDeleteSuccessModalOpen(false)}
+                />
+            )}
+
             {successModalOpen && (
                 <SuccessModal
                     message="매치업이 등록되었습니다"
                     onConfirm={() => setSuccessModalOpen(false)}
-                    
                 />
-            )} 
+            )}
         </>
     );
 };

@@ -1,19 +1,23 @@
 import { useState } from "react";
 import "./AddMatchupModal.css";
-import closeIcon from "../../assets/close.svg";
-import ArrowDown from "../../assets/arrow_down_gray.svg"
-import MapModal from "./MapModal";
+import closeIcon from "../../../assets/close.svg";
+import ArrowDown from "../../../assets/arrow_down_gray.svg";
+import MapModal from "../MapModal/MapModal";
 
 const AddMatchupModal = ({ onClose, onSuccess }) => {
     const [sportCategory, setSportCategory] = useState("");
     const [matchDate, setMatchDate] = useState("");
     const [location, setLocation] = useState("");
+    const [locationDetail, setLocationDetail] = useState("");
     const [startTime, setStartTime] = useState("");
     const [endTime, setEndTime] = useState("");
     const [reason, setReason] = useState("");
+
     const [sportDropdownOpen, setSportDropdownOpen] = useState(false);
-    const [mapModalOpen,setMapModalOpen] = useState(false);
-    
+    const [mapModalOpen, setMapModalOpen] = useState(false);
+
+    const [errors, setErrors] = useState({});
+
     const sportList = [
         "골프","검도","당구","등산",
         "레슬링","러닝","무에타이","복싱",
@@ -23,7 +27,23 @@ const AddMatchupModal = ({ onClose, onSuccess }) => {
         "풋살","농구","배구","미식축구",
         "e스포츠","MMA"
     ];
+
     const handleAddConfirm = async () => {
+
+        const newErrors = {
+            sportCategory: !sportCategory,
+            matchDate: !matchDate,
+            location: !location,
+            startTime: !startTime,
+            endTime: !endTime,
+            reason: !reason,
+        };
+
+        setErrors(newErrors);
+
+        const hasError = Object.values(newErrors).some(Boolean);
+        if (hasError) return;
+
         try {
             const res = await fetch(
                 `${process.env.REACT_APP_HOST_URL}/api/matchPost`,
@@ -34,11 +54,12 @@ const AddMatchupModal = ({ onClose, onSuccess }) => {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        sportCategory: sportCategory,
-                        matchDate: matchDate,
-                        location: location,
-                        startTime: startTime,
-                        endTime: endTime,
+                        sportCategory,
+                        matchDate,
+                        location,
+                        locationDetail,
+                        startTime,
+                        endTime,
                         content: reason,
                     }),
                 }
@@ -49,7 +70,7 @@ const AddMatchupModal = ({ onClose, onSuccess }) => {
             onSuccess();
 
         } catch (e) {
-            console.error("cancel fail", e);
+            console.error("등록 실패", e);
         }
     };
 
@@ -57,21 +78,30 @@ const AddMatchupModal = ({ onClose, onSuccess }) => {
         <>
             <div className="add-matchup-modal-backdrop" onClick={onClose}>
                 <div className="add-matchup-modal" onClick={(e) => e.stopPropagation()}>
+
                     <img
                         src={closeIcon}
                         alt="close"
                         className="add-matchup-modal-close"
                         onClick={onClose}
                     />
+
                     <div className="add-matchup-modal-main">
+
                         <div className="add-matchup-modal-header">
-                            <span>매치업 등록하기 </span>
+                            <span>매치업 등록하기</span>
                         </div>
+
                         <div className="add-matchup-modal-body">
+
                             <div className="add-matchup-modal-category">
                                 <span>종목</span>
 
-                                <div className={`add-matchup-sport-dropdown ${sportDropdownOpen ? "open" : ""}`}>
+                                <div
+                                    className={`add-matchup-sport-dropdown 
+                                    ${sportDropdownOpen ? "open" : ""} 
+                                    ${errors.sportCategory ? "error" : ""}`}
+                                >
                                     <div
                                         className={`add-matchup-sport-dropdown-selected ${
                                             sportCategory ? "selected" : ""
@@ -79,7 +109,11 @@ const AddMatchupModal = ({ onClose, onSuccess }) => {
                                         onClick={() => setSportDropdownOpen(prev => !prev)}
                                     >
                                         {sportCategory || "선택"}
-                                        <img src={ArrowDown} alt="arrow" className={sportDropdownOpen ? "open" : ""}/>
+                                        <img
+                                            src={ArrowDown}
+                                            alt="arrow"
+                                            className={sportDropdownOpen ? "open" : ""}
+                                        />
                                     </div>
 
                                     {sportDropdownOpen && (
@@ -90,6 +124,7 @@ const AddMatchupModal = ({ onClose, onSuccess }) => {
                                                     onClick={() => {
                                                         setSportCategory(sport);
                                                         setSportDropdownOpen(false);
+                                                        setErrors(prev => ({ ...prev, sportCategory: false }));
                                                     }}
                                                 >
                                                     {sport}
@@ -105,7 +140,11 @@ const AddMatchupModal = ({ onClose, onSuccess }) => {
                                 <input
                                     type="date"
                                     value={matchDate}
-                                    onChange={(e) => setMatchDate(e.target.value)}
+                                    onChange={(e) => {
+                                        setMatchDate(e.target.value);
+                                        setErrors(prev => ({ ...prev, matchDate: false }));
+                                    }}
+                                    className={errors.matchDate ? "error-input" : ""}
                                 />
                             </div>
 
@@ -114,12 +153,13 @@ const AddMatchupModal = ({ onClose, onSuccess }) => {
                                 <div>
                                     <input
                                         value={location}
-                                        onChange={(e) => setLocation(e.target.value)}
                                         readOnly
+                                        className={errors.location ? "error-input" : ""}
                                     />
-                                    <button onClick={() => setMapModalOpen(true)}>찾기</button>
+                                    <button onClick={() => setMapModalOpen(true)}>
+                                        찾기
+                                    </button>
                                 </div>
-                                
                             </div>
 
                             <div className="add-matchup-modal-time">
@@ -128,42 +168,66 @@ const AddMatchupModal = ({ onClose, onSuccess }) => {
                                     <input
                                         type="time"
                                         value={startTime}
-                                        onChange={(e) => setStartTime(e.target.value)}
+                                        onChange={(e) => {
+                                            setStartTime(e.target.value);
+                                            setErrors(prev => ({ ...prev, startTime: false }));
+                                        }}
+                                        className={errors.startTime ? "error-input" : ""}
                                     />
                                     <span>~</span>
                                     <input
                                         type="time"
                                         value={endTime}
-                                        onChange={(e) => setEndTime(e.target.value)}
+                                        onChange={(e) => {
+                                            setEndTime(e.target.value);
+                                            setErrors(prev => ({ ...prev, endTime: false }));
+                                        }}
+                                        className={errors.endTime ? "error-input" : ""}
                                     />
                                 </div>
-                                
                             </div>
+
                             <div className="add-matchup-modal-content">
                                 <span>상세 내용</span>
                                 <div>
                                     <textarea
                                         value={reason}
-                                        onChange={(e) => setReason(e.target.value)}
+                                        onChange={(e) => {
+                                            setReason(e.target.value);
+                                            setErrors(prev => ({ ...prev, reason: false }));
+                                        }}
                                         maxLength={200}
+                                        className={errors.reason ? "error-input" : ""}
                                     />
                                     <div className="typing-count">
                                         {reason.length} / 200
                                     </div>
                                 </div>
                             </div>
+
                         </div>
+
                         <div className="add-matchup-modal-button">
-                            <button className="add-matchup-left-button" onClick={onClose}>취소</button>
-                            <button className="add-matchup-right-button" onClick={handleAddConfirm}>확인</button>
+                            <button className="add-matchup-left-button" onClick={onClose}>
+                                취소
+                            </button>
+                            <button className="add-matchup-right-button" onClick={handleAddConfirm}>
+                                확인
+                            </button>
                         </div>
+
                     </div>
                 </div>
             </div>
+
             {mapModalOpen && (
                 <MapModal
                     onClose={() => setMapModalOpen(false)}
-                    onSelectLocation={(address) => setLocation(address)}
+                    onSelectLocation={(data) => {
+                        setLocation(data.locationName);
+                        setLocationDetail(data.locationDetail);
+                        setErrors(prev => ({ ...prev, location: false }));
+                    }}
                 />
             )}
         </>

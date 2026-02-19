@@ -242,7 +242,7 @@
     color: var(--Text, #1F1F1F);
     text-align: center;
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -324,4 +324,11 @@
 }
 .add-matchup-sport-dropdown-selected img.open {
     transform: rotate(180deg);
+}
+.error-input {
+    border: 1.5px solid #FF4D4F !important;
+}
+
+.add-matchup-sport-dropdown.error {
+    border: 1.5px solid #FF4D4F !important;
 }

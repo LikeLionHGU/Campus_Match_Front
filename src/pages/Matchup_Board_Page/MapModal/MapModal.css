@@ -87,7 +87,7 @@
 }
 
 .map-footer {
-    height: 60px;
+    height: 100px;
     padding: 0 20px;
     display: flex;
     justify-content: space-between;
@@ -96,7 +96,7 @@
 }
 
 .map-footer button {
-    width: 90px;
+    width: 66px;
     height: 36px;
     background: #16C0CC;
     color: white;
@@ -108,4 +108,12 @@
 .map-footer button:disabled {
     background: #ccc;
     cursor: not-allowed;
+}
+.map-modal button{
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 100%; /* 15px */
 }

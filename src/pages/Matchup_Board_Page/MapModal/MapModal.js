@@ -1,16 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import "./MapModal.css";
-import closeIcon from "../../assets/close.svg"
+import closeIcon from "../../../assets/close.svg";
 
 const MapModal = ({ onClose, onSelectLocation }) => {
     const mapRef = useRef(null);
     const mapInstance = useRef(null);
     const markerRef = useRef(null);
     const placesRef = useRef(null);
-    const geocoderRef = useRef(null);
 
     const [keyword, setKeyword] = useState("");
     const [searchResults, setSearchResults] = useState([]);
+
+    const [selectedPlaceName, setSelectedPlaceName] = useState("");
     const [selectedAddress, setSelectedAddress] = useState("");
 
     useEffect(() => {
@@ -34,28 +35,6 @@ const MapModal = ({ onClose, onSelectLocation }) => {
             const places = new kakao.maps.services.Places();
             placesRef.current = places;
 
-            const geocoder = new kakao.maps.services.Geocoder();
-            geocoderRef.current = geocoder;
-
-            kakao.maps.event.addListener(map, "click", function (mouseEvent) {
-                const latlng = mouseEvent.latLng;
-
-                marker.setPosition(latlng);
-
-                geocoder.coord2Address(
-                    latlng.getLng(),
-                    latlng.getLat(),
-                    function (result, status) {
-                        if (status === kakao.maps.services.Status.OK) {
-                            const address =
-                                result[0].road_address?.address_name ||
-                                result[0].address.address_name;
-
-                            setSelectedAddress(address);
-                        }
-                    }
-                );
-            });
         });
     }, []);
 
@@ -70,22 +49,23 @@ const MapModal = ({ onClose, onSelectLocation }) => {
 
     const moveToPlace = (place) => {
         const kakao = window.kakao;
-
         const latlng = new kakao.maps.LatLng(place.y, place.x);
 
         mapInstance.current.setCenter(latlng);
         markerRef.current.setPosition(latlng);
 
-        setSelectedAddress(place.road_address_name || place.address_name);
+        setSelectedPlaceName(place.place_name);
+        setSelectedAddress(
+            place.road_address_name || place.address_name
+        );
     };
 
     return (
         <div className="map-modal-backdrop" onClick={onClose}>
             <div className="map-modal" onClick={(e) => e.stopPropagation()}>
-
                 <div className="map-modal-header">
                     <span>위치 선택</span>
-                    <img src={closeIcon} alt="close" onClick={onClose}/>
+                    <img src={closeIcon} alt="close" onClick={onClose} />
                 </div>
 
                 <div className="map-search">
@@ -107,9 +87,12 @@ const MapModal = ({ onClose, onSelectLocation }) => {
                                 key={item.id}
                                 onClick={() => moveToPlace(item)}
                             >
-                                <div className="place-name">{item.place_name}</div>
+                                <div className="place-name">
+                                    {item.place_name}
+                                </div>
                                 <div className="place-address">
-                                    {item.road_address_name || item.address_name}
+                                    {item.road_address_name ||
+                                        item.address_name}
                                 </div>
                             </li>
                         ))}
@@ -119,18 +102,27 @@ const MapModal = ({ onClose, onSelectLocation }) => {
                 <div ref={mapRef} className="map-container" />
 
                 <div className="map-footer">
-                    <span>{selectedAddress || "지도를 클릭하거나 검색하여 위치를 선택하세요."}</span>
+                    <div>
+                        <strong>{selectedPlaceName}</strong>
+                        <div>
+                            {selectedAddress ||
+                                "검색 후 장소를 선택하세요."}
+                        </div>
+                    </div>
+
                     <button
                         disabled={!selectedAddress}
                         onClick={() => {
-                            onSelectLocation(selectedAddress);
+                            onSelectLocation({
+                                locationName: selectedPlaceName,
+                                locationDetail: selectedAddress,
+                            });
                             onClose();
                         }}
                     >
                         선택
                     </button>
                 </div>
-
             </div>
         </div>
     );
