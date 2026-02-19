@@ -12,6 +12,12 @@ import DefaultClubIcon from "../../assets/Main_Icon_Gray.svg";
 import AddMatchupModal from "./AddMatchupModal/AddMatchupModal";
 import SuccessModal from "../Dashboard/Dashboard_Pages/ClubCalenderDetailPage/SuccessModal/SuccessModal";
 import DeleteMatchupModal from "./DeleteMatchupModal/DeleteMatchupModal";
+import ArrowDownGray from "../../assets/arrow_down_gray.svg";
+import ResetIcon from "../../assets/reset.svg";
+import CloseIcon from "../../assets/close.svg";
+import EditMatchupModal from "./EditMatchupModal/EditMatchupModal";
+import ApplyMatchupModal from "./ApplyMatchupModal/ApplyMatchupModal";
+import ApplySuccessModal from "./ApplySuccessModal/ApplySuccessModal";
 
 const MatchupBoardPage = () => {
 
@@ -32,6 +38,11 @@ const MatchupBoardPage = () => {
     const [detailLoading, setDetailLoading] = useState(false);
     const [deleteModalOpen, setDeleteModalOpen] = useState(false);
     const [deleteTargetId, setDeleteTargetId] = useState(null);
+    const [editModalOpen, setEditModalOpen] = useState(false);
+    const [editTargetId, setEditTargetId] = useState(null);
+    const [applyModalOpen, setApplyModalOpen] = useState(false);
+    const [applySuccessModalOpen, setApplySuccessModalOpen] = useState(false);
+    const [editSuccessModalOpen, setEditSuccessModalOpen] = useState(false);
     const [deleteSuccessModalOpen, setDeleteSuccessModalOpen] = useState(false);
 
     const [filters, setFilters] = useState({
@@ -41,67 +52,71 @@ const MatchupBoardPage = () => {
         endDate: null,
     });
 
-    // const displayFilters = [
-    //     ...filters.regions.map(r => ({
-    //         type: "region",
-    //         label: r,
-    //         value: r
-    //     })),
-    //     ...filters.sports.map(s => ({
-    //         type: "sport",
-    //         label: s,
-    //         value: s
-    //     })),
-    //     ...(filters.startDate || filters.endDate
-    //         ? [{ type: "date", label: "날짜" }]
-    //         : []
-    //     )
-    // ];
-
-    const sortedMatchups = [...matchups].sort((a, b) => {
-        const dateA = new Date(a.matchDate);
-        const dateB = new Date(b.matchDate);
-        return dateOrder === "asc" ? dateA - dateB : dateB - dateA;
-    });
-
-    const pageSize = 10;
-
     const fetchMatchups = useCallback(async () => {
+
+        let endpoint = "/api/matchPost/list";
+
+        if (filter === "mine") endpoint = "/api/matchPost/mine";
+        if (filter === "others") endpoint = "/api/matchPost/other";
+
         try {
+
             const res = await fetch(
-                `${process.env.REACT_APP_HOST_URL}/api/matchPost`,
+                `${process.env.REACT_APP_HOST_URL}${endpoint}`,
                 {
+                    method: "POST",
                     headers: {
                         Authorization: localStorage.getItem("Authorization"),
+                        "Content-Type": "application/json",
                     },
+                    body: JSON.stringify({
+                        sportCategoryList: filters.sports,
+                        regionList: filters.regions,
+                        startDate: filters.startDate,
+                        endDate: filters.endDate,
+                        keyword: keyword
+                    })
                 }
             );
-
+            console.log(filters);
             if (!res.ok) throw new Error();
+
             const data = await res.json();
+
             setMatchups(Array.isArray(data) ? data : data.List || []);
             setCurrentPage(1);
 
-        } catch (e) {
-            console.error("matchup load fail", e);
         }
-    }, []);
+        catch (e) {
+
+            console.error("matchup load fail", e);
+
+        }
+
+    }, [filters, keyword, filter]);
+
 
     useEffect(() => {
+
         fetchMatchups();
+
     }, [fetchMatchups]);
 
     const handleToggleDetail = async (matchPostId) => {
+
         if (openMatchId === matchPostId) {
+
             setOpenMatchId(null);
             setDetailData(null);
             return;
+
         }
 
         setOpenMatchId(matchPostId);
         setDetailLoading(true);
 
         try {
+
             const res = await fetch(
                 `${process.env.REACT_APP_HOST_URL}/api/matchPost/${matchPostId}`,
                 {
@@ -112,36 +127,44 @@ const MatchupBoardPage = () => {
             );
 
             if (!res.ok) throw new Error();
+
             const data = await res.json();
+
             setDetailData(data);
-            console.log(data);
-        } catch (e) {
+
+        }
+        catch (e) {
+
             console.error("detail load fail", e);
             setDetailData(null);
-        } finally {
+
+        }
+        finally {
+
             setDetailLoading(false);
+
         }
     };
 
     useEffect(() => {
+
         if (!openMatchId) return;
+        if (!detailData?.locationDetail) return;
         if (!window.kakao || !window.kakao.maps) return;
 
         window.kakao.maps.load(() => {
-            const container = document.getElementById(
-                `detail-map-${openMatchId}`
-            );
+
+            const container = document.getElementById(`detail-map-${openMatchId}`);
+
             if (!container) return;
 
             const geocoder = new window.kakao.maps.services.Geocoder();
-            console.log(detailData.locationDetail);
+
             geocoder.addressSearch(detailData.locationDetail, function (result, status) {
+
                 if (status === window.kakao.maps.services.Status.OK) {
 
-                    const coords = new window.kakao.maps.LatLng(
-                        result[0].y,
-                        result[0].x
-                    );
+                    const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
 
                     const map = new window.kakao.maps.Map(container, {
                         center: coords,
@@ -149,37 +172,67 @@ const MatchupBoardPage = () => {
                     });
 
                     new window.kakao.maps.Marker({
-                        map: map,
+                        map,
                         position: coords,
                     });
+
                 }
+
             });
+
         });
 
-    }, [detailData,openMatchId]);
+    }, [detailData, openMatchId]);
+
+
+
+    const sortedMatchups = [...matchups].sort((a, b) => {
+
+        const dateA = new Date(a.matchDate);
+        const dateB = new Date(b.matchDate);
+
+        return dateOrder === "asc"
+            ? dateA - dateB
+            : dateB - dateA;
+
+    });
+    const pageSize = 10;
 
     const totalPages = Math.max(1, Math.ceil(matchups.length / pageSize));
+
 
     const pagedMatchups = sortedMatchups.slice(
         (currentPage - 1) * pageSize,
         currentPage * pageSize
     );
 
-    const goFirstBlock = () => {
-        setCurrentPage((prev) => Math.max(1, prev - 10));
-    };
 
-    const goPrev = () => {
-        setCurrentPage((prev) => Math.max(1, prev - 1));
-    };
+    const goFirstBlock = () => setCurrentPage(prev => Math.max(1, prev - 10));
+    const goPrev = () => setCurrentPage(prev => Math.max(1, prev - 1));
+    const goNext = () => setCurrentPage(prev => Math.min(totalPages, prev + 1));
+    const goLastBlock = () => setCurrentPage(prev => Math.min(totalPages, prev + 10));
 
-    const goNext = () => {
-        setCurrentPage((prev) => Math.min(totalPages, prev + 1));
-    };
 
-    const goLastBlock = () => {
-        setCurrentPage((prev) => Math.min(totalPages, prev + 10));
-    };
+
+    const displayFilters = [
+
+        ...filters.regions.map(r => ({
+            type: "region",
+            label: r,
+            value: r
+        })),
+
+        ...filters.sports.map(s => ({
+            type: "sport",
+            label: s,
+            value: s
+        })),
+
+        ...(filters.startDate || filters.endDate
+            ? [{ type: "date", label: "날짜" }]
+            : [])
+
+    ];
 
     return (
         <>
@@ -231,7 +284,73 @@ const MatchupBoardPage = () => {
                                 />
                                 <img src={SearchIcon} alt="search" />
                             </div>
+                            
+                            <div
+                                className="matchup-board-search-condition"
+                                
+                            >
+                                <div className="matchup-board-search-condition-left"
+                                    onClick={() => setSearchModalOpen(true)}
+                                >
+                                    검색조건
+                                    <img src={ArrowDownGray} alt="arrow_down" />
+                                </div>
 
+                                <div className="matchup-board-search-condition-middle">
+                                    {displayFilters.map((item, idx) => (
+                                        <div className="matchup-board-filter-chip" key={idx}>
+                                            <span className="filter-chip-text">{item.label}</span>
+
+                                            <div
+                                                className="filter-chip-remove"
+                                                onClick={(e) => {
+                                                e.stopPropagation();
+
+                                                if (item.type === "region") {
+                                                    setFilters(prev => ({
+                                                    ...prev,
+                                                    regions: prev.regions.filter(r => r !== item.value)
+                                                    }));
+                                                }
+
+                                                if (item.type === "sport") {
+                                                    setFilters(prev => ({
+                                                    ...prev,
+                                                    sports: prev.sports.filter(s => s !== item.value)
+                                                    }));
+                                                }
+
+                                                if (item.type === "date") {
+                                                    setFilters(prev => ({
+                                                    ...prev,
+                                                    startDate: null,
+                                                    endDate: null
+                                                    }));
+                                                }
+                                                }}
+                                            >
+                                                <img src={CloseIcon} alt="remove" />
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div
+                                    className="matchup-board-search-condition-right"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setFilters({
+                                            regions: [],
+                                            sports: [],
+                                            startDate: null,
+                                            endDate: null,
+                                        });
+                                    }}
+                                >
+                                    검색초기화
+                                    <img src={ResetIcon} alt="reset" />
+                                </div>
+                            </div>
                         </div>
 
                         <div className="matchup-board-header-add">
@@ -350,7 +469,14 @@ const MatchupBoardPage = () => {
                                                                         <div className="accordion-content-right">
                                                                             {detailData.isMine ? (
                                                                                 <div className="accordion-content-right-buttons">
-                                                                                    <button className="accordion-edit-button">수정하기</button>
+                                                                                    <button 
+                                                                                        className="accordion-edit-button"
+                                                                                        onClick={() => {
+                                                                                            setEditTargetId(openMatchId);
+                                                                                            console.log(editTargetId);
+                                                                                            setEditModalOpen(true);
+                                                                                        }}    
+                                                                                    >수정하기</button>
                                                                                     <button 
                                                                                         className="accordion-delete-button"
                                                                                         onClick={() => {
@@ -361,7 +487,10 @@ const MatchupBoardPage = () => {
                                                                                     >삭제하기</button>
                                                                                 </div>
                                                                             ) : (
-                                                                                <button className="accordion-apply-button">신청하기</button>
+                                                                                <button
+                                                                                    className="accordion-apply-button"
+                                                                                    onClick={()=>setApplyModalOpen(true)}
+                                                                                 >신청하기</button>
                                                                             )}
                                                                         </div>
 
@@ -465,6 +594,46 @@ const MatchupBoardPage = () => {
                     onConfirm={() => setDeleteSuccessModalOpen(false)}
                 />
             )}
+            {editModalOpen && (
+                <EditMatchupModal
+                    matchPostId={openMatchId}
+                    matchData={detailData}
+                    onClose={() => setEditModalOpen(false)}
+                    onSuccess={() => {
+                        setEditModalOpen(false);
+                        setEditSuccessModalOpen(true);
+                        setOpenMatchId(null);
+                        setDetailData(null);
+                        fetchMatchups();
+                    }}
+                />
+            )}
+
+            {editSuccessModalOpen && (
+                <SuccessModal
+                    message="매치업이 수정되었습니다"
+                    onConfirm={() => setEditSuccessModalOpen(false)}
+                />
+            )}
+
+            {applyModalOpen && (
+                <ApplyMatchupModal
+                    matchPostId={openMatchId}
+                    onClose={() => setApplyModalOpen(false)}
+                    onSuccess={() => {
+                        setApplyModalOpen(false);
+                        setApplySuccessModalOpen(true);
+                        fetchMatchups();
+                    }}
+                />
+            )}
+
+            {applySuccessModalOpen && (
+                <ApplySuccessModal
+                    onConfirm={() => setApplySuccessModalOpen(false)}
+                />
+            )}
+            
 
             {successModalOpen && (
                 <SuccessModal

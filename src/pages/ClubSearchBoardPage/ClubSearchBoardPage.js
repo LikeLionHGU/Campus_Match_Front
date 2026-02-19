@@ -5,7 +5,7 @@ import ArrowLeft from "../../assets/arrow_left.svg";
 import ArrowLeftDouble from "../../assets/arrow_left_double.svg";
 import ArrowRight from "../../assets/arrow_right.svg";
 import ArrowRightDouble from "../../assets/arrow_right_double.svg";
-import MatchupSearchModal from "../Matchup_Board_Page/MatchupSearchModal";
+import ClubSearchModal from "./ClubSearchModal/ClubSearchModal";
 import SearchIcon from "../../assets/search.svg";
 import ArrowDownGray from "../../assets/arrow_down_gray.svg";
 import ResetIcon from "../../assets/reset.svg";
@@ -29,8 +29,6 @@ const ClubSearchBoardPage = () => {
     const [filters, setFilters] = useState({
         regions: [],
         sports: [],
-        startDate: null,
-        endDate: null,
     });
 
     const displayFilters = [
@@ -44,10 +42,6 @@ const ClubSearchBoardPage = () => {
             label: s,
             value: s
         })),
-        ...(filters.startDate || filters.endDate
-            ? [{ type: "date", label: "날짜" }]
-            : []
-        )
     ];
 
     const sortedMatchups = [...matchups].sort((a, b) => {
@@ -77,25 +71,25 @@ const ClubSearchBoardPage = () => {
                 params.append("sports", filters.sports.join(","));
             }
 
-            if (filters.startDate) {
-                params.append("startDate", filters.startDate);
-            }
-
-            if (filters.endDate) {
-                params.append("endDate", filters.endDate);
-            }
 
             const res = await fetch(
-                `${process.env.REACT_APP_HOST_URL}/api/matchPost`,
+                `${process.env.REACT_APP_HOST_URL}/api/club`,
                 {
+                    method:"POST",
                     headers: {
                         Authorization: localStorage.getItem("Authorization"),
+                        "Content-Type": "application/json",
                     },
+                    body: JSON.stringify({
+                        sportCategoryList: filters.sports,
+                        regionList: filters.regions,
+                        keyword: keyword
+                    })
                 }
             );
 
             if (!res.ok) throw new Error();
-
+            console.log(filters);
             const data = await res.json();
 
             setMatchups(Array.isArray(data) ? data : data.List || []);
@@ -323,7 +317,7 @@ const ClubSearchBoardPage = () => {
             </div>
 
             {searchModalOpen && (
-                <MatchupSearchModal
+                <ClubSearchModal
                     filters={filters}
                     setFilters={setFilters}
                     onClose={() => setSearchModalOpen(false)}
