@@ -4,7 +4,7 @@ import BadgeModal from "./Badge/BadgeModal";
 import TempRing from "./Temperture/TempRing";
 import ClubIntroModal from "./ClubIntro/ClubIntroModal";
 import empty_badge from "../../assets/empty_badge.png";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Calender from "./Calendaer/Calender";
 import Matchup from "./Matchup/Matchup";
 import Gallery from "./Gallery/Gallery";
@@ -18,7 +18,7 @@ const Dashboard = () => {
 
   const clubId = localStorage.getItem("clubId");
 
-  const fetchClubDashboard = async () => {
+  const fetchClubDashboard = useCallback(async () => {
     try {
       const res = await fetch(
         `${process.env.REACT_APP_HOST_URL}/api/club/dashboard/${clubId}`,
@@ -34,16 +34,15 @@ const Dashboard = () => {
       if (!res.ok) throw new Error("dashboard load fail");
 
       const data = await res.json();
-      console.log("Dashboard data:", data);
       setDashboardData(data);
     } catch (e) {
       console.error(e);
     }
-  };
+  }, [clubId]);
 
   useEffect(() => {
     fetchClubDashboard();
-  }, []);
+  }, [fetchClubDashboard]);
 
   return (
     <>

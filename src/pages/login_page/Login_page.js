@@ -83,23 +83,6 @@ function LoginPage() {
 
       if (accessToken) {
         localStorage.setItem("Authorization", accessToken);
-
-        try {
-          const clubResponse = await fetch(
-            `${process.env.REACT_APP_HOST_URL}/api/club/clubId`,
-            {
-              method: "GET",
-              headers: {
-                Authorization: accessToken,
-              },
-            },
-          );
-
-          if (clubResponse.ok) {
-            const clubData = await clubResponse.json();
-            localStorage.setItem("clubId", clubData);
-          }
-        } catch (error) {}
       }
 
       alert("로그인 성공!");

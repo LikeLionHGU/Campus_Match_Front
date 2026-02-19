@@ -122,12 +122,39 @@ export default function MyPage() {
 
   useEffect(() => {
     const storedClubId = localStorage.getItem("clubId");
-    setClubId(storedClubId);
 
     (async () => {
       try {
-        await fetchUserInfo(storedClubId);
+        let currentClubId = storedClubId;
+
+        if (!currentClubId) {
+          const infoRes = await fetch(
+            `${process.env.REACT_APP_HOST_URL}/api/club/info`,
+            {
+              method: "GET",
+              headers: {
+                Authorization: localStorage.getItem("Authorization"),
+                "Content-Type": "application/json",
+              },
+            },
+          );
+          if (infoRes.ok) {
+            const infoData = await infoRes.json();
+            currentClubId = infoData.clubId;
+            if (currentClubId) {
+              localStorage.setItem("clubId", currentClubId);
+            }
+          }
+        }
+
+        if (currentClubId) {
+          setClubId(currentClubId);
+          await fetchUserInfo(currentClubId);
+        } else {
+          throw new Error("Club ID not found");
+        }
       } catch (error) {
+        // console.error(error);
         openModal("정보를 불러오는데 실패했습니다.");
       } finally {
         setIsLoading(false);

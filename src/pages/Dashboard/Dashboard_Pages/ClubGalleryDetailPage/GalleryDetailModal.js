@@ -28,7 +28,7 @@ const GalleryDetailModal = ({ item, onClose, onUpdate }) => {
     try {
       const token = localStorage.getItem("Authorization");
       const response = await fetch(
-        `${process.env.REACT_APP_HOST_URL}/api/image/${item.galleryId}`,
+        `${process.env.REACT_APP_HOST_URL}/api/gallery/${item.galleryId}`,
         {
           method: "DELETE",
           headers: {
