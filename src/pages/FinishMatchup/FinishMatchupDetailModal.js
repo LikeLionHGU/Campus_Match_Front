@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./FinishMatchupDetailModal.css";
 
 const FinishMatchupDetailModal = ({ match, onClose }) => {
   const [detailData, setDetailData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const mapRef = useRef(null);
 
   useEffect(() => {
     const fetchDetail = async () => {
@@ -36,6 +37,46 @@ const FinishMatchupDetailModal = ({ match, onClose }) => {
       fetchDetail();
     }
   }, [match]);
+
+  useEffect(() => {
+    if (!detailData || !mapRef.current) return;
+    if (!window.kakao || !window.kakao.maps) return;
+
+    const locationName = detailData.location || match.location;
+    if (!locationName) return;
+
+    window.kakao.maps.load(() => {
+      const kakao = window.kakao;
+
+      const container = mapRef.current;
+      const options = {
+        center: new kakao.maps.LatLng(36.019, 129.3435),
+        level: 3,
+      };
+
+      const map = new kakao.maps.Map(container, options);
+
+      const places = new kakao.maps.services.Places();
+      places.keywordSearch(locationName, (data, status) => {
+        if (status === kakao.maps.services.Status.OK && data.length > 0) {
+          const place = data[0];
+          const latlng = new kakao.maps.LatLng(place.y, place.x);
+
+          map.setCenter(latlng);
+
+          const marker = new kakao.maps.Marker({
+            map: map,
+            position: latlng,
+          });
+
+          const infowindow = new kakao.maps.InfoWindow({
+            content: `<div style="padding:5px;font-size:12px;white-space:nowrap;">${place.place_name}</div>`,
+          });
+          infowindow.open(map, marker);
+        }
+      });
+    });
+  }, [detailData, match]);
 
   return (
     <div className="detail-modal-overlay" onClick={onClose}>
@@ -78,7 +119,15 @@ const FinishMatchupDetailModal = ({ match, onClose }) => {
             </div>
 
             <div className="map-placeholder">
-              <div className="map-fallback">api 대기중...</div>
+              <div ref={mapRef} className="map-embed" />
+            </div>
+            <div className="detail-content-section">
+              <span className="detail-content-label">상세 내용</span>
+              <div className="detail-content-box">
+                {detailData.content ||
+                  detailData.detail ||
+                  "상세 내용이 없습니다."}
+              </div>
             </div>
           </>
         ) : (
