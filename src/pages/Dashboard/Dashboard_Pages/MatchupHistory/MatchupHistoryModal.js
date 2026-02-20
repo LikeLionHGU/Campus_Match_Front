@@ -31,7 +31,7 @@ const MatchupHistoryModal = ({ mode, historyData, onClose, onSuccess }) => {
           }
         : {
             clubId: Number(clubId),
-            oppositionClubId: 1,
+            // oppositionClubId: 1,
             matchDate: matchDate,
             location: location,
             clubName: opponentClub,
