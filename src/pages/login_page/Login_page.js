@@ -86,7 +86,7 @@ function LoginPage() {
       }
 
       alert("로그인 성공!");
-      navigate("/mypage");
+      navigate("/dashboard");
     } catch (error) {
       alert("로그인 실패!");
     } finally {

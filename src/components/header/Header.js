@@ -4,8 +4,10 @@ import logo from "../../assets/긴로고-SB 1.png";
 import accountIcon from "../../assets/account.svg";
 import notificationIcon from "../../assets/notification.svg";
 import NotificationModal from "../Notification/NotificationModal";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   const isLogin = !!localStorage.getItem("Authorization");
   const [isNotiOpen, setIsNotiOpen] = useState(false);
   const [hasNew, setHasNew] = useState(false);
@@ -47,9 +49,18 @@ const Header = () => {
         <div className="inner">
           <div className="left">
             <div className="logo">
-              <a href="/dashboard">
+              <div
+                className="logo-clickable"
+                onClick={() => {
+                  if (isLogin) {
+                    navigate("/dashboard");
+                  } else {
+                    navigate("/login");
+                  }
+                }}
+              >
                 <img src={logo} alt="logo" />
-              </a>
+              </div>
             </div>
           </div>
 

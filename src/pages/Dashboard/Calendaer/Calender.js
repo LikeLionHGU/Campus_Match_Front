@@ -4,7 +4,11 @@ import "./Calender.css";
 import leftArrow from "../../../assets/arrow_left.svg";
 import rightArrow from "../../../assets/arrow_right.svg";
 
-const Calender = ({ schedules = [], upcomingMatches = [] }) => {
+const Calender = ({ schedules = [],
+  upcomingMatches = [],
+  ongoingMatches = [],
+  matchRequests = []
+ }) => {
 
   const today = new Date();
   const [currentDate, setCurrentDate] = useState(today);
@@ -17,7 +21,7 @@ const Calender = ({ schedules = [], upcomingMatches = [] }) => {
   const startDay = firstDay.getDay();
 
 
-  const filledDates = upcomingMatches.map(match => {
+  const filledDates = [...upcomingMatches, ...ongoingMatches].map(match => {
     const date = new Date(match.matchDate);
 
     return {
@@ -27,10 +31,17 @@ const Calender = ({ schedules = [], upcomingMatches = [] }) => {
     };
   });
 
-  const outlineDates = [
-    { year: 2026, month: 1, day: 9 },
-    { year: 2026, month: 1, day: 11 },
-  ];
+
+  const outlineDates = matchRequests.map(match => {
+    const date = new Date(match.matchDate);
+
+    return {
+      year: date.getFullYear(),
+      month: date.getMonth(),
+      day: date.getDate(),
+    };
+  });
+
 
   const scheduleDates = schedules.flatMap(schedule => {
     const start = new Date(schedule.startDate);

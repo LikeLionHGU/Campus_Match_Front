@@ -36,8 +36,9 @@ const Dashboard = () => {
       );
 
       if (!res.ok) throw new Error("dashboard load fail");
-
+      
       const data = await res.json();
+      console.log(data);
       setDashboardData(data);
     } catch (e) {
       console.error(e);
@@ -150,6 +151,8 @@ const Dashboard = () => {
             <Calender 
               schedules={dashboardData?.scheduleResDtoList || []}
               upcomingMatches={dashboardData?.upcomingResDtoList || []}
+              ongoingMatches={dashboardData?.ongoingResDtoList || []}
+              matchRequests={dashboardData?.matchResDtoList || []}
             />
           </div>
           <div
