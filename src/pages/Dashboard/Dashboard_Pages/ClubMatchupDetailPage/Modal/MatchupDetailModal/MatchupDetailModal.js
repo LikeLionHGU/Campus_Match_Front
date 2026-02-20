@@ -2,32 +2,48 @@ import { useState, useEffect } from "react";
 import "./MatchupDetailModal.css";
 import closeIcon from "../../../../../../assets/close.svg";
 
-const MatchupDetailModal = ({ onClose, type, matchPostId, matchType }) => {
+const MatchupDetailModal = ({
+  onClose,
+  type,
+  matchPostId,
+  matchRequestId,
+  matchType,
+}) => {
   const [detail, setDetail] = useState(null);
   useEffect(() => {
     const fetchDetail = async () => {
       try {
-        const res = await fetch(
-          `${process.env.REACT_APP_HOST_URL}/api/matchRequest/receive/detail/${matchPostId}`,
-          {
-            headers: {
-              Authorization: localStorage.getItem("Authorization"),
-            },
+        let url = "";
+        if (type === "receive") {
+          url = `${process.env.REACT_APP_HOST_URL}/api/matchRequest/receive/${matchRequestId}`;
+        } else if (type === "send") {
+          url = `${process.env.REACT_APP_HOST_URL}/api/matchRequest/send/${matchRequestId}`;
+        } else if (type === "ongoing") {
+          url = `${process.env.REACT_APP_HOST_URL}/api/matchPost/ongoing/${matchPostId}`;
+        } else if (type === "upcoming") {
+          url = `${process.env.REACT_APP_HOST_URL}/api/matchPost/upcoming/${matchPostId}`;
+        }
+
+        if (!url) return;
+
+        const res = await fetch(url, {
+          headers: {
+            Authorization: localStorage.getItem("Authorization"),
           },
-        );
+        });
 
         if (!res.ok) throw new Error();
 
         const data = await res.json();
-        console.log(matchPostId);
+        console.log(matchPostId || matchRequestId);
         setDetail(data);
       } catch (e) {
         console.error("detail load fail", e);
       }
     };
 
-    if (matchPostId) fetchDetail();
-  }, [matchPostId, matchType, type]);
+    if (matchPostId || matchRequestId) fetchDetail();
+  }, [matchPostId, matchRequestId, matchType, type]);
 
   const formatTime = (time) => {
     if (!time) return "";

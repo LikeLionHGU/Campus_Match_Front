@@ -32,10 +32,8 @@ const OngoingMatchupPage = () => {
   const pageSize = 10;
   const fetchOngoing = async () => {
     try {
-      const clubId = localStorage.getItem("clubId");
-
       const res = await fetch(
-        `${process.env.REACT_APP_HOST_URL}/api/matchPost/ongoing/${clubId}`,
+        `${process.env.REACT_APP_HOST_URL}/api/matchPost/ongoing`,
         {
           headers: {
             Authorization: localStorage.getItem("Authorization"),

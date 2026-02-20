@@ -33,10 +33,8 @@ const SendMatchupPage = () => {
   const pageSize = 10;
   const fetchSend = async () => {
     try {
-      const clubId = localStorage.getItem("clubId");
-
       const res = await fetch(
-        `${process.env.REACT_APP_HOST_URL}/api/matchRequest/send/${clubId}`,
+        `${process.env.REACT_APP_HOST_URL}/api/matchRequest/send`,
         {
           headers: {
             Authorization: localStorage.getItem("Authorization"),
@@ -219,7 +217,7 @@ const SendMatchupPage = () => {
       </div>
       {detailModalOpen && (
         <MatchupDetailModal
-          matchPostId={selectedMatchId}
+          matchRequestId={selectedMatchId}
           matchType="matchRequest"
           type="send"
           onClose={() => setDetailModalOpen(false)}

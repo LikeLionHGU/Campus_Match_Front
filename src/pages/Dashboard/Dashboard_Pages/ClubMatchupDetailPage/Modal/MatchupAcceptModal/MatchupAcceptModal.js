@@ -1,7 +1,7 @@
 import "./MatchupAcceptModal.css";
 import closeIcon from "../../../../../../assets/close.svg";
 
-const MatchupAcceptModal = ({ onConfirm, matchPostId }) => {
+const MatchupAcceptModal = ({ onConfirm, onClose, matchPostId }) => {
   const handleAccept = async () => {
     try {
       const res = await fetch(
@@ -31,7 +31,7 @@ const MatchupAcceptModal = ({ onConfirm, matchPostId }) => {
           src={closeIcon}
           alt="close"
           className="accept-modal-close"
-          onClick={handleAccept}
+          onClick={onClose}
         />
 
         <div className="accept-modal-text">수락되었습니다</div>

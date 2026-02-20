@@ -14,7 +14,7 @@ const MatchupRefuseModal = ({
     try {
       const url =
         type === "send"
-          ? `${process.env.REACT_APP_HOST_URL}/api/matchRequest/${matchRequestId}`
+          ? `${process.env.REACT_APP_HOST_URL}/api/matchRequest/send/${matchRequestId}`
           : `${process.env.REACT_APP_HOST_URL}/api/matchRequest/receive/${matchRequestId}`;
 
       const res = await fetch(url, {
