@@ -17,7 +17,7 @@ const LandingPage = () => {
         });
       },
       {
-        threshold: 0.4, // 40% 보이면 활성화
+        threshold: 0.4,
       }
     );
 

@@ -19,7 +19,6 @@
     transform 0.7s ease;
 }
 
-/* 활성화 */
 .landing-section.active {
   opacity: 1;
   transform: translateY(0);
