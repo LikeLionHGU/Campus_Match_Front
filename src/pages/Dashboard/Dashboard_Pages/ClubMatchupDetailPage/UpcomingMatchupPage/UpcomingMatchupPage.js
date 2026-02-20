@@ -225,7 +225,7 @@ const UpcomingMatchupPage = () => {
 
       {cancelModalOpen && (
         <MatchupCancelModal
-          matchRequestId={selectedMatchId}
+          matchPostId={selectedMatchId}
           onClose={() => setCancelModalOpen(false)}
           onSuccess={() => {
             setCancelModalOpen(false);
