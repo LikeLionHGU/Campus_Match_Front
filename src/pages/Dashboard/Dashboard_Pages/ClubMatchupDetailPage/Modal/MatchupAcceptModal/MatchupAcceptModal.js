@@ -1,11 +1,11 @@
 import "./MatchupAcceptModal.css";
 import closeIcon from "../../../../../../assets/close.svg";
 
-const MatchupAcceptModal = ({ onConfirm, onClose, matchPostId }) => {
+const MatchupAcceptModal = ({ onConfirm, onClose, matchRequestId }) => {
   const handleAccept = async () => {
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_HOST_URL}/api/matchRequest/receive/${matchPostId}`,
+        `${process.env.REACT_APP_HOST_URL}/api/matchRequest/receive/${matchRequestId}`,
         {
           method: "PUT",
           headers: {

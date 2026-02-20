@@ -134,7 +134,7 @@ const MatchupBoardPage = () => {
       if (!container) return;
 
       const options = {
-        center: new window.kakao.maps.LatLng(36.019, 129.3435), // fallback
+        center: new window.kakao.maps.LatLng(36.019, 129.3435),
         level: 3,
       };
 
