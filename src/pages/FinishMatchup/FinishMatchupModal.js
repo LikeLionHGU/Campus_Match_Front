@@ -39,20 +39,15 @@ const FinishMatchupModal = ({ onClose, match }) => {
   const handleConfirm = async () => {
     try {
       const token = localStorage.getItem("Authorization");
-      const clubId = localStorage.getItem("clubId");
-      const matchDate = match
-        ? match.matchDate
-        : new Date().toISOString().split("T")[0];
 
       const formData = new FormData();
 
       const requestData = {
         title: title,
-        matchDate: matchDate,
-        isOfficial: true,
-        result: result,
-        temperature: temperature,
-        rematch: rematch,
+        matchType: matchCategory !== "교류",
+        result: matchCategory === "교류" ? "교류" : result,
+        mannerScore: temperature === "up",
+        rematch: rematch === "yes",
       };
 
       const jsonBlob = new Blob([JSON.stringify(requestData)], {
@@ -64,8 +59,8 @@ const FinishMatchupModal = ({ onClose, match }) => {
         formData.append("images", image);
       });
 
-      const galleryResponse = await fetch(
-        `${process.env.REACT_APP_HOST_URL}/api/gallery`,
+      const response = await fetch(
+        `${process.env.REACT_APP_HOST_URL}/api/matchHistory/finish/${match.matchPostId}`,
         {
           method: "POST",
           headers: {
@@ -75,28 +70,7 @@ const FinishMatchupModal = ({ onClose, match }) => {
         },
       );
 
-      const historyBody = {
-        clubId: Number(clubId),
-        oppositionClubId: match.oppositionClubId,
-        matchDate: matchDate,
-        location: match.location || "",
-        matchType: matchCategory !== "교류",
-        result: matchCategory === "교류" ? "교류" : result,
-      };
-
-      const historyResponse = await fetch(
-        `${process.env.REACT_APP_HOST_URL}/api/matchHistory`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: token || "",
-          },
-          body: JSON.stringify(historyBody),
-        },
-      );
-
-      if (galleryResponse.ok && historyResponse.ok) {
+      if (response.ok) {
         setStep("success");
       } else {
         alert("저장에 실패했습니다.");
