@@ -6,7 +6,9 @@ const Section1 = () => {
   return (
     <>  
         <div className="section1">
+            <img className="section1-bottom-background" src={Background} alt="background" />
             <div className="section1-top">
+                
                 <span className="section1-top-main">
                 흩어지는 땀방울, 기록되는 역사
                 </span>
@@ -17,8 +19,9 @@ const Section1 = () => {
             </div>
             <div className="section1-bottom">
                 <img className="section1-bottom-notebook" src={Notebook} alt="notebook" />
-                <img className="section1-bottom-background" src={Background} alt="background" />
+                
             </div>
+            
         </div>
         
     </>
