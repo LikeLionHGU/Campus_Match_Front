@@ -8,7 +8,7 @@ import { useState, useEffect, useCallback } from "react";
 import Calender from "./Calendaer/Calender";
 import Matchup from "./Matchup/Matchup";
 import Gallery from "./Gallery/Gallery";
-import { useNavigate , useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Sidebar from "../../components/SideBar/SideBar";
 
 const Dashboard = () => {
@@ -36,7 +36,7 @@ const Dashboard = () => {
       );
 
       if (!res.ok) throw new Error("dashboard load fail");
-      
+
       const data = await res.json();
       console.log(data);
       setDashboardData(data);
@@ -148,7 +148,7 @@ const Dashboard = () => {
               }
             }}
           >
-            <Calender 
+            <Calender
               schedules={dashboardData?.scheduleResDtoList || []}
               upcomingMatches={dashboardData?.upcomingResDtoList || []}
               ongoingMatches={dashboardData?.ongoingResDtoList || []}
@@ -164,7 +164,7 @@ const Dashboard = () => {
             }}
             style={{ cursor: isMyDashboard ? "pointer" : "default" }}
           >
-            <Gallery />
+            <Gallery galleryList={dashboardData?.galleryResDtoList || []} />
           </div>
         </div>
       </div>

@@ -1,11 +1,8 @@
-
-
-.gallery-img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .gallery-img-overlay {
@@ -27,17 +24,17 @@
   transition: opacity 0.3s ease;
 }
 
-.gallery-img-overlay-empty{
-  color: #FFF;
+.gallery-img-overlay-empty {
+  color: #fff;
   text-align: center;
   font-family: Pretendard;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
-  line-height: 50px; /* 250% */
+  line-height: 50px;
 }
 
-.gallery-img-overlay img{
+.gallery-img-overlay img {
   position: absolute;
   top: 30px;
   right: 30px;
@@ -46,23 +43,23 @@
   height: 36px;
 }
 
-.gallery-img-overlay-main{
+.gallery-img-overlay-main {
   position: absolute;
-  left:30px;
+  left: 30px;
   bottom: 128px;
-  color: #FFF;
+  color: #fff;
   font-family: Pretendard;
   font-size: 30px;
   font-style: normal;
   font-weight: 500;
-  line-height: 50px; /* 166.667% */
+  line-height: 50px;
 }
 
-.gallery-img-overlay-date{
+.gallery-img-overlay-date {
   position: absolute;
-  left:30px;
+  left: 30px;
   bottom: 64px;
-  color: #FFF;
+  color: #fff;
   font-family: Inter;
   font-size: 20px;
   font-style: normal;
@@ -70,15 +67,14 @@
   line-height: normal;
 }
 
-.gallery-img-overlay-name{
+.gallery-img-overlay-name {
   position: absolute;
-  left:30px;
+  left: 30px;
   bottom: 30px;
-  color: #FFF;
+  color: #fff;
   font-family: Inter;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
-
