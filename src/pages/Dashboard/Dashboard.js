@@ -8,7 +8,7 @@ import { useState, useEffect, useCallback } from "react";
 import Calender from "./Calendaer/Calender";
 import Matchup from "./Matchup/Matchup";
 import Gallery from "./Gallery/Gallery";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , useParams } from "react-router-dom";
 import Sidebar from "../../components/SideBar/SideBar";
 
 const Dashboard = () => {
@@ -16,7 +16,11 @@ const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState(null);
   const navigate = useNavigate();
 
-  const clubId = localStorage.getItem("clubId");
+  const { clubId: paramClubId } = useParams();
+
+  const clubId = paramClubId || localStorage.getItem("clubId");
+
+  const isMyDashboard = !paramClubId;
 
   const fetchClubDashboard = useCallback(async () => {
     try {
@@ -69,8 +73,11 @@ const Dashboard = () => {
             </div>
           </div>
           <div
-            className="club-record"
-            onClick={() => navigate("/dashboard/record")}
+            className={`club-record ${!isMyDashboard ? "disabled-section" : ""}`}
+            onClick={() => {
+              if (!isMyDashboard) return;
+              navigate("/dashboard/record");
+            }}
           >
             <div className="club-record-top">
               <span>매치업 히스토리</span>
@@ -120,7 +127,9 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="club-matchup">
+          <div
+            className={`club-matchup ${!isMyDashboard ? "disabled-section" : ""}`}
+          >
             <Matchup
               upcomingList={dashboardData?.upcomingResDtoList || []}
               ongoingList={dashboardData?.ongoingResDtoList || []}
@@ -130,13 +139,27 @@ const Dashboard = () => {
           </div>
           <div
             className="club-calender"
-            onClick={() => navigate("/dashboard/calender")}
+            onClick={() => {
+              if (isMyDashboard) {
+                navigate("/dashboard/calender");
+              } else {
+                navigate(`/club-board/dashboard/${clubId}/calender`);
+              }
+            }}
           >
-            <Calender />
+            <Calender 
+              schedules={dashboardData?.scheduleResDtoList || []}
+              upcomingMatches={dashboardData?.upcomingResDtoList || []}
+            />
           </div>
           <div
             className="club-gallery"
-            onClick={() => navigate("/dashboard/gallery")}
+            onClick={() => {
+              if (!isMyDashboard) return;
+
+              navigate("/dashboard/gallery");
+            }}
+            style={{ cursor: isMyDashboard ? "pointer" : "default" }}
           >
             <Gallery />
           </div>

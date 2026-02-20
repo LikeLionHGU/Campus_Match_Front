@@ -79,8 +79,8 @@
     text-transform: capitalize;
 }
 
-.today {
-  background: var(--Secondary, #41DF82);;
+.date-circle.schedule {
+  background-color: #41DF82;
   color: white;
 }
 

@@ -38,6 +38,8 @@ function App() {
         <Route path="/matchup-board" element={<MatchupBoardPage />} />
         <Route path="/club-board" element={<ClubSearchBoardPage />} />
         <Route path="/finish-matchup" element={<FinishMatchupPage />} />
+        <Route path="/club-board/dashboard/:clubId" element={<Dashboard />} />
+        <Route path="/club-board/dashboard/:clubId/calender" element={<DetailCalender />} />
       </Routes>
       <Footer />
     </BrowserRouter>

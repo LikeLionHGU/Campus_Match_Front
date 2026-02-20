@@ -11,13 +11,14 @@ import ArrowDownGray from "../../assets/arrow_down_gray.svg";
 import ResetIcon from "../../assets/reset.svg";
 import CloseIcon from "../../assets/close.svg"
 import DefaultClubIcon from "../../assets/Main_Icon_Gray.svg"
+import { useNavigate } from "react-router-dom";
 
 const ClubSearchBoardPage = () => {
 
     const [matchups, setMatchups] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [dateOrder] = useState("asc");
-
+    const navigate = useNavigate();
     // const [detailModalOpen, setDetailModalOpen] = useState(false);
 
     // const [selectedMatchId, setSelectedMatchId] = useState(null);
@@ -254,10 +255,9 @@ const ClubSearchBoardPage = () => {
                                                     <div>
                                                         <button
                                                             onClick={() => {
-                                                                // setSelectedMatchId(item.matchPostId);
-                                                                // setDetailModalOpen(true);
+                                                                navigate(`/club-board/dashboard/${item.clubId}`);
                                                             }}
-                                                        > 
+                                                        >
                                                             방문하기
                                                         </button>
                                                     </div>

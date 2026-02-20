@@ -4,7 +4,7 @@ import "./Calender.css";
 import leftArrow from "../../../assets/arrow_left.svg";
 import rightArrow from "../../../assets/arrow_right.svg";
 
-const Calender = () => {
+const Calender = ({ schedules = [], upcomingMatches = [] }) => {
 
   const today = new Date();
   const [currentDate, setCurrentDate] = useState(today);
@@ -17,16 +17,40 @@ const Calender = () => {
   const startDay = firstDay.getDay();
 
 
-  const filledDates = [
-    { year: 2026, month: 1, day: 8 },
-    { year: 2026, month: 1, day: 19 },
-    { year: 2026, month: 1, day: 20 },
-  ];
+  const filledDates = upcomingMatches.map(match => {
+    const date = new Date(match.matchDate);
+
+    return {
+      year: date.getFullYear(),
+      month: date.getMonth(),
+      day: date.getDate(),
+    };
+  });
 
   const outlineDates = [
     { year: 2026, month: 1, day: 9 },
     { year: 2026, month: 1, day: 11 },
   ];
+
+  const scheduleDates = schedules.flatMap(schedule => {
+    const start = new Date(schedule.startDate);
+    const end = new Date(schedule.endDate);
+
+    const dates = [];
+    const current = new Date(start);
+
+    while (current <= end) {
+      dates.push({
+        year: current.getFullYear(),
+        month: current.getMonth(),
+        day: current.getDate(),
+      });
+
+      current.setDate(current.getDate() + 1);
+    }
+
+    return dates;
+  });
 
   
 
@@ -109,11 +133,6 @@ const Calender = () => {
           const date = item.day;
           const isCurrentMonth = item.isCurrentMonth;
 
-          const isToday =
-            isCurrentMonth &&
-            date === today.getDate() &&
-            month === today.getMonth() &&
-            year === today.getFullYear();
 
           const filled =
             isCurrentMonth &&
@@ -123,6 +142,15 @@ const Calender = () => {
                 d.month === month &&
                 d.day === date
             );
+
+          const hasSchedule =
+            isCurrentMonth &&
+            scheduleDates.some(
+              (d) =>
+                d.year === year &&
+                d.month === month &&
+                d.day === date
+            );  
 
           const outline =
             isCurrentMonth &&
@@ -140,7 +168,7 @@ const Calender = () => {
                 className={`
                   date-circle
                   ${!isCurrentMonth ? "other-month" : ""}
-                  ${isToday ? "today" : ""}
+                  ${hasSchedule ? "schedule" : ""}
                   ${filled ? "filled" : ""}
                   ${outline ? "outline" : ""}
                 `}

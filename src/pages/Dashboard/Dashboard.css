@@ -135,3 +135,8 @@
 .club-gallery:hover .gallery-img-overlay {
   opacity: 1;
 }
+
+.disabled-section {
+  pointer-events: none;
+  cursor: default;
+}

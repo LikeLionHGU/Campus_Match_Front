@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useCallback } from "react";
 import BackArrow from "../../../../assets/arrow_left.svg";
 import "./ClubCalenderDetailPage.css";
 import Sidebar from "../../../../components/SideBar/SideBar";
@@ -26,6 +26,8 @@ const ClubCalenderDetailPage = () => {
     const [selectedScheduleId, setSelectedScheduleId] = useState(null);
 
     const [greenSchedules, setGreenSchedules] = useState([]);
+    const [matchPosts, setMatchPosts] = useState([]);
+    const [isMine, setIsMine] = useState(true);
 
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
@@ -34,38 +36,43 @@ const ClubCalenderDetailPage = () => {
     const lastDate = new Date(year, month + 1, 0).getDate();
     const startDay = firstDay.getDay();
 
-    const filledDates = [
-        "2026-02-08",
-        "2026-02-19",
-        "2026-02-20"
-    ];
+    const filledDates = matchPosts.map(post => post.matchDate);
 
     const outlineDates = [
         "2026-02-09",
         "2026-02-11"
     ];
+    const clubId =
+        new URLSearchParams(window.location.search).get("clubId")
+        || localStorage.getItem("clubId");
+    
 
-    const fetchSchedules = async () => {
+    const fetchSchedules = useCallback(async () => {
         try {
             const res = await fetch(
-                `${process.env.REACT_APP_HOST_URL}/api/schedule`,
+                `${process.env.REACT_APP_HOST_URL}/api/schedule/${clubId}`,
                 {
                     headers: {
-                        "Authorization": localStorage.getItem("Authorization"),
+                        Authorization: localStorage.getItem("Authorization"),
                     },
                 }
             );
 
             const data = await res.json();
-            setGreenSchedules(Array.isArray(data) ? data : data.List || []);
+            console.log(data);
+            setIsMine(data.isMine);
+            setGreenSchedules(data.scheduleResDtoList || []);
+            setMatchPosts(data.matchPostResDtoList || []);
+
         } catch (e) {
             console.error(e);
         }
-    };
+    }, [clubId]);
 
     useEffect(() => {
         fetchSchedules();
-    }, []);
+    }, [fetchSchedules]);
+
 
     
     const navigate = useNavigate();
@@ -212,6 +219,8 @@ const ClubCalenderDetailPage = () => {
                                             `}
                                             onClick={(e) => {
 
+                                                if (!isMine) return;
+
                                                 const scheduleElement = e.target.closest(".schedule-item");
 
                                                 if (scheduleElement && e.currentTarget.contains(scheduleElement)) {
@@ -221,6 +230,10 @@ const ClubCalenderDetailPage = () => {
                                                 if (item.isCurrentMonth) {
                                                     handleCellClick(dateKey);
                                                 }
+
+                                            }}
+                                            style={{
+                                                cursor: isMine ? "pointer" : "default"
                                             }}
                                         >
 
@@ -230,6 +243,32 @@ const ClubCalenderDetailPage = () => {
                                                     ${filled ? "filled" : ""}
                                                     ${outline ? "outline" : ""}
                                                 `}
+                                                onClick={(e) => {
+
+                                                    e.stopPropagation(); // 🔥 셀 클릭 막고 circle만 동작
+
+                                                    if (filled) {
+                                                        console.log("filled click", dateKey);
+
+                                                        // 나중에 모달
+                                                        // setModalType("filled");
+                                                    }
+
+                                                    if (outline) {
+                                                        console.log("outline click", dateKey);
+
+                                                        // setModalType("outline");
+                                                    }
+
+                                                }}
+                                                style={{
+                                                    cursor:
+                                                        filled || outline
+                                                            ? "pointer"
+                                                            : isMine
+                                                            ? "pointer"
+                                                            : "default"
+                                                }}
                                             >
                                                 {item.date}
                                             </div>
@@ -240,12 +279,14 @@ const ClubCalenderDetailPage = () => {
                                                         key={schedule.scheduleId}
                                                         className="schedule-item green"
                                                         style={{
-                                                            cursor: schedule.myClub ? "pointer" : "default",
-                                                            opacity: schedule.myClub ? 1 : 0.6
+                                                            cursor: isMine ? "pointer" : "default",
+                                                            opacity: isMine ? 1 : 0.6
                                                         }}
                                                         onClick={(e) => {
                                                             e.stopPropagation();
-                                                            if (!schedule.myClub) return;
+
+                                                            if (!isMine) return;
+
                                                             handleScheduleClick(schedule.scheduleId, e);
                                                         }}
                                                     >
@@ -259,19 +300,23 @@ const ClubCalenderDetailPage = () => {
                                                 ))}
                                             </div>
 
-                                            <div className="calender-detail-left-add-wrapper">
-                                                <img
-                                                    src={AddIcon}
-                                                    alt="add_icon"
-                                                    className="calender-detail-left-add add-icon"
-                                                />
+                                            {isMine && (
+                                                <div className="calender-detail-left-add-wrapper">
 
-                                                <img
-                                                    src={EditIcon}
-                                                    alt="edit_icon"
-                                                    className="calender-detail-left-add edit-icon"
-                                                />
-                                            </div>
+                                                    <img
+                                                        src={AddIcon}
+                                                        alt="add_icon"
+                                                        className="calender-detail-left-add add-icon"
+                                                    />
+
+                                                    <img
+                                                        src={EditIcon}
+                                                        alt="edit_icon"
+                                                        className="calender-detail-left-add edit-icon"
+                                                    />
+
+                                                </div>
+                                            )}
                                         </div>
                                     );
                                 })}
