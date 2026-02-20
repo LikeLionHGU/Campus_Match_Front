@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route,useLocation } from "react-router-dom";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import MakeClub from "./pages/makeClub/makeClub";
@@ -16,32 +16,43 @@ import OngoingMatchupPage from "./pages/Dashboard/Dashboard_Pages/ClubMatchupDet
 import ReceiveMatchupPage from "./pages/Dashboard/Dashboard_Pages/ClubMatchupDetailPage/RecieveMatchupPage/ReceiveMatchupPage";
 import SendMatchupPage from "./pages/Dashboard/Dashboard_Pages/ClubMatchupDetailPage/SendMatchupPage/SendMatchupPage";
 import FinishMatchupPage from "./pages/FinishMatchup/FinishMatchupPage";
+import LandingPage from "./pages/LandingPage/LandingPage";
 
 function App() {
+  function Layout() {
+    const location = useLocation();
+    const isLanding = location.pathname === "/";
+    return (
+      <>
+        <Header />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/makeClub" element={<MakeClub />} />
+          <Route path="/myPage" element={<MyPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/record" element={<MatchupHistoryPage />} />
+          <Route path="/dashboard/upcoming-matchup" element={<UpcomingMatchupPage />} />
+          <Route path="/dashboard/ongoing-matchup" element={<OngoingMatchupPage />} />
+          <Route path="/dashboard/receive-matchup" element={<ReceiveMatchupPage />} />
+          <Route path="/dashboard/send-matchup" element={<SendMatchupPage />} />
+          <Route path="/dashboard/calender" element={<DetailCalender />} />
+          <Route path="/dashboard/gallery" element={<DetailGallery />} />
+          <Route path="/matchup-board" element={<MatchupBoardPage />} />
+          <Route path="/club-board" element={<ClubSearchBoardPage />} />
+          <Route path="/finish-matchup" element={<FinishMatchupPage />} />
+          <Route path="/club-board/dashboard/:clubId" element={<Dashboard />} />
+          <Route path="/club-board/dashboard/:clubId/calender" element={<DetailCalender />} />
+        </Routes>
+        {!isLanding && <Footer />}
+      </>
+    );
+  }
+  
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<MyPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/makeClub" element={<MakeClub />} />
-        <Route path="/myPage" element={<MyPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/dashboard/record" element={<MatchupHistoryPage />} />
-        <Route path="/dashboard/upcoming-matchup" element={<UpcomingMatchupPage />} />
-        <Route path="/dashboard/ongoing-matchup" element={<OngoingMatchupPage />} />
-        <Route path="/dashboard/receive-matchup" element={<ReceiveMatchupPage />} />
-        <Route path="/dashboard/send-matchup" element={<SendMatchupPage />} />
-        <Route path="/dashboard/calender" element={<DetailCalender />} />
-        <Route path="/dashboard/gallery" element={<DetailGallery />} />
-        <Route path="/matchup-board" element={<MatchupBoardPage />} />
-        <Route path="/club-board" element={<ClubSearchBoardPage />} />
-        <Route path="/finish-matchup" element={<FinishMatchupPage />} />
-        <Route path="/club-board/dashboard/:clubId" element={<Dashboard />} />
-        <Route path="/club-board/dashboard/:clubId/calender" element={<DetailCalender />} />
-      </Routes>
-      <Footer />
+      <Layout />
     </BrowserRouter>
   );
 }

@@ -1,69 +1,48 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
+import Footer from "../../components/footer/Footer";
 import "./LandingPage.css";
 
 const LandingPage = () => {
+  const sectionsRef = useRef([]);
 
-    const [current, setCurrent] = useState(0);
-    const isScrolling = useRef(false);
-
-    const sections = [
-        <div className="first-section">
-            <span></span>
-        </div>,
-        "section2",
-        "section3",
-        "section4",
-    ];
-
-    useEffect(() => {
-
-        const handleWheel = (e) => {
-
-            if (isScrolling.current) return;
-
-            isScrolling.current = true;
-
-            if (e.deltaY > 0) {
-                setCurrent(prev =>
-                    Math.min(prev + 1, sections.length - 1)
-                );
-            } else {
-                setCurrent(prev =>
-                    Math.max(prev - 1, 0)
-                );
-            }
-
-            setTimeout(() => {
-                isScrolling.current = false;
-            }, 800);
-
-        };
-
-        window.addEventListener("wheel", handleWheel);
-
-        return () => {
-            window.removeEventListener("wheel", handleWheel);
-        };
-
-    }, []);
-
-    return (
-        <div className="landing-container">
-
-            {sections.map((section, index) => (
-                <div
-                    key={index}
-                    className={`landing-section ${
-                        current === index ? "active" : ""
-                    }`}
-                >
-                    <h1>{section}</h1>
-                </div>
-            ))}
-
-        </div>
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          } else {
+            entry.target.classList.remove("active");
+          }
+        });
+      },
+      {
+        threshold: 0.4, // 40% 보이면 활성화
+      }
     );
 
+    sectionsRef.current.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="landing-wrapper">
+      {[0, 1, 2, 3].map((i) => (
+        <section
+          key={i}
+          ref={(el) => (sectionsRef.current[i] = el)}
+          className="landing-section"
+        >
+          <h1>Section {i + 1}</h1>
+
+          {i === 3 && <Footer />}
+        </section>
+      ))}
+    </div>
+  );
 };
 
 export default LandingPage;
