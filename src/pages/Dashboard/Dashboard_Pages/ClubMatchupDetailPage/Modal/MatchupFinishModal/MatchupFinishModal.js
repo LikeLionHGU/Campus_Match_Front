@@ -1,7 +1,7 @@
 import "./MatchupFinishModal.css";
 import closeIcon from "../../../../../../assets/close.svg"
 
-const MatchupFinishModal = ({onClose, onConfirm, matchPostId }) =>{
+const MatchupFinishModal = ({onClose, onSuccess, matchPostId }) =>{
 
     const handleFinish = async () => {
         try {
@@ -17,7 +17,7 @@ const MatchupFinishModal = ({onClose, onConfirm, matchPostId }) =>{
 
             if (!res.ok) throw new Error();
 
-            onConfirm();
+            onSuccess();
 
         } catch (e) {
             console.error("finish matchup fail", e);

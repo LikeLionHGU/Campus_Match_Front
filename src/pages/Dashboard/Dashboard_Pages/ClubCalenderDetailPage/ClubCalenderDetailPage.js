@@ -57,14 +57,16 @@ const ClubCalenderDetailPage = () => {
             );
 
             const data = await res.json();
+            console.log(clubId);
             console.log(data);
             setIsMine(data.isMine);
-            setOutlineSchedules([
+            setMatchPosts([
                 ...(data.ongoingResDtoList || []),
                 ...(data.upcomingResDtoList || [])
             ]);
             setGreenSchedules(data.scheduleResDtoList || []);
-            setMatchPosts(data.matchPostResDtoList || []);
+            // setMatchPosts(data.matchPostResDtoList || []);
+            setOutlineSchedules(data.matchPostResDtoList || []);
 
         } catch (e) {
             console.error(e);
