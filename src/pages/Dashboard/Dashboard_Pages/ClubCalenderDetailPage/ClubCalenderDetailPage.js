@@ -40,9 +40,13 @@ const ClubCalenderDetailPage = () => {
     const filledDates = matchPosts.map(post => post.matchDate);
 
     const outlineDates = outlineSchedules.map(post => post.matchDate);
-    const clubId =
-        new URLSearchParams(window.location.search).get("clubId")
-        || localStorage.getItem("clubId");
+    const parts = window.location.pathname.split("/").filter(Boolean);
+    const dashIdx = parts.indexOf("dashboard");
+    const next = parts[dashIdx + 1];
+
+    const clubId = /^\d+$/.test(next) ? next : localStorage.getItem("clubId");
+
+        
     
 
     const fetchSchedules = useCallback(async () => {
