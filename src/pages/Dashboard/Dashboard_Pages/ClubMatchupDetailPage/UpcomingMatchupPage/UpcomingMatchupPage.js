@@ -33,10 +33,8 @@ const UpcomingMatchupPage = () => {
   const pageSize = 10;
   const fetchUpcoming = async () => {
     try {
-      const clubId = localStorage.getItem("clubId");
-
       const res = await fetch(
-        `${process.env.REACT_APP_HOST_URL}/api/matchPost/upcoming/${clubId}`,
+        `${process.env.REACT_APP_HOST_URL}/api/matchPost/upcoming`,
         {
           headers: {
             Authorization: localStorage.getItem("Authorization"),
@@ -227,7 +225,7 @@ const UpcomingMatchupPage = () => {
 
       {cancelModalOpen && (
         <MatchupCancelModal
-          matchPostId={selectedMatchId}
+          matchRequestId={selectedMatchId}
           onClose={() => setCancelModalOpen(false)}
           onSuccess={() => {
             setCancelModalOpen(false);

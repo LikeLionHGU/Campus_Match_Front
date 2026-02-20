@@ -229,7 +229,7 @@ const ReceiveMatchupPage = () => {
       </div>
       {detailModalOpen && (
         <MatchupDetailModal
-          matchPostId={selectedMatchId}
+          matchRequestId={selectedMatchId}
           matchType="matchRequest"
           type="receive"
           onClose={() => setDetailModalOpen(false)}
@@ -238,7 +238,7 @@ const ReceiveMatchupPage = () => {
 
       {cancelModalOpen && (
         <MatchupRefuseModal
-          matchPostId={selectedMatchId}
+          matchRequestId={selectedMatchId}
           type="receive"
           onClose={() => setCancelModalOpen(false)}
           message="해당 매치업을 거절하시겠습니까?"
@@ -252,8 +252,13 @@ const ReceiveMatchupPage = () => {
 
       {acceptModalOpen && (
         <MatchupAcceptModal
-          matchPostId={selectedMatchId}
-          onConfirm={() => setAcceptModalOpen(false)}
+          matchRequestId={selectedMatchId}
+          onConfirm={() => {
+            setAcceptModalOpen(false);
+            setSuccessModalOpen(true);
+            fetchReceive();
+          }}
+          onClose={() => setAcceptModalOpen(false)}
         />
       )}
 
