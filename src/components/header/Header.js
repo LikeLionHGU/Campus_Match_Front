@@ -55,9 +55,10 @@ const Header = () => {
                   if (isLogin) {
                     navigate("/dashboard");
                   } else {
-                    navigate("/login");
+                    navigate("/");
                   }
                 }}
+                
               >
                 <img src={logo} alt="logo" />
               </div>

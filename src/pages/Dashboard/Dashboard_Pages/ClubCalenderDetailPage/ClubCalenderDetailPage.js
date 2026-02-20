@@ -27,6 +27,7 @@ const ClubCalenderDetailPage = () => {
 
     const [greenSchedules, setGreenSchedules] = useState([]);
     const [matchPosts, setMatchPosts] = useState([]);
+    const [outlineSchedules, setOutlineSchedules]=useState([]);
     const [isMine, setIsMine] = useState(true);
 
     const year = currentDate.getFullYear();
@@ -38,10 +39,7 @@ const ClubCalenderDetailPage = () => {
 
     const filledDates = matchPosts.map(post => post.matchDate);
 
-    const outlineDates = [
-        "2026-02-09",
-        "2026-02-11"
-    ];
+    const outlineDates = outlineSchedules.map(post => post.matchDate);
     const clubId =
         new URLSearchParams(window.location.search).get("clubId")
         || localStorage.getItem("clubId");
@@ -61,6 +59,10 @@ const ClubCalenderDetailPage = () => {
             const data = await res.json();
             console.log(data);
             setIsMine(data.isMine);
+            setOutlineSchedules([
+                ...(data.ongoingResDtoList || []),
+                ...(data.upcomingResDtoList || [])
+            ]);
             setGreenSchedules(data.scheduleResDtoList || []);
             setMatchPosts(data.matchPostResDtoList || []);
 
@@ -138,6 +140,28 @@ const ClubCalenderDetailPage = () => {
         return end >= monthStart && start <= monthEnd;
     })
     .sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+
+    const currentMonthOutlineSchedules = outlineSchedules
+    .filter((post) => {
+        const date = new Date(post.matchDate);
+
+        return (
+            date.getFullYear() === year &&
+            date.getMonth() === month
+        );
+    })
+    .sort((a, b) => new Date(a.matchDate) - new Date(b.matchDate));
+
+    const currentMonthMatchSchedules = matchPosts
+    .filter((post) => {
+        const date = new Date(post.matchDate);
+
+        return (
+            date.getFullYear() === year &&
+            date.getMonth() === month
+        );
+    })
+    .sort((a, b) => new Date(a.matchDate) - new Date(b.matchDate));
 
     const getDayOfWeek = (dateString) => {
         const days = ["일", "월", "화", "수", "목", "금", "토"];
@@ -245,7 +269,7 @@ const ClubCalenderDetailPage = () => {
                                                 `}
                                                 onClick={(e) => {
 
-                                                    e.stopPropagation(); // 🔥 셀 클릭 막고 circle만 동작
+                                                    e.stopPropagation();
 
                                                     if (filled) {
                                                         console.log("filled click", dateKey);
@@ -356,11 +380,11 @@ const ClubCalenderDetailPage = () => {
                                                 className="right-schedule-item"
                                             >
                                                 <span>
-                                                    {getDayNumber(schedule.startDate)}
+                                                    {month+1}/{getDayNumber(schedule.startDate)}
                                                 </span>
 
                                                 <span>
-                                                    &nbsp;{getDayOfWeek(schedule.startDate)}요일 -&nbsp;
+                                                    &nbsp;&#40;{getDayOfWeek(schedule.startDate)}&#41; -&nbsp;
                                                 </span>
 
                                                 <span>
@@ -374,10 +398,47 @@ const ClubCalenderDetailPage = () => {
                                     <div className="calender-detail-right-bottom-second-title">
                                         <span >매치업 가능</span>
                                     </div>
+                                    <div className="calender-detail-right-bottom-first-item">
+                                        {currentMonthOutlineSchedules.map((post) => (
+                                            <div
+                                                key={post.matchPostId}
+                                                className="right-schedule-item"
+                                            >
+                                                <span>
+                                                    {month + 1}/{getDayNumber(post.matchDate)}
+                                                </span>
+
+                                                <span>
+                                                    &nbsp;&#40;{getDayOfWeek(post.matchDate)}&#41;
+                                                </span>
+
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                                 <div className="calender-detail-right-bottom-third">
                                     <div className="calender-detail-right-bottom-third-title">
                                         <span >매치업</span>
+                                    </div>
+                                    <div className="calender-detail-right-bottom-first-item">
+                                        {currentMonthMatchSchedules.map((post) => (
+                                            <div
+                                                key={post.matchPostId}
+                                                className="right-schedule-item"
+                                            >
+                                                <span>
+                                                    {month + 1}/{getDayNumber(post.matchDate)}
+                                                </span>
+
+                                                <span>
+                                                    &nbsp; &#40;{getDayOfWeek(post.matchDate)}&#41; -&nbsp;
+                                                </span>
+
+                                                <span>
+                                                    {post.clubName}
+                                                </span>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
                             </div>

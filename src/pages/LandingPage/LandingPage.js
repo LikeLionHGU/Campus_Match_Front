@@ -2,8 +2,15 @@ import { useEffect, useRef } from "react";
 import Footer from "../../components/footer/Footer";
 import "./LandingPage.css";
 
+import Section1 from "./Section1";
+import Section2 from "./Section2";
+import Section3 from "./Section3";
+import Section4 from "./Section4";
+
 const LandingPage = () => {
   const sectionsRef = useRef([]);
+
+  const sections = [Section1, Section2, Section3, Section4];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,15 +37,15 @@ const LandingPage = () => {
 
   return (
     <div className="landing-wrapper">
-      {[0, 1, 2, 3].map((i) => (
+      {sections.map((SectionComponent, i) => (
         <section
           key={i}
           ref={(el) => (sectionsRef.current[i] = el)}
           className="landing-section"
         >
-          <h1>Section {i + 1}</h1>
+          <SectionComponent />
 
-          {i === 3 && <Footer />}
+          {i === sections.length - 1 && <Footer />}
         </section>
       ))}
     </div>

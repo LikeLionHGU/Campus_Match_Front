@@ -1,0 +1,22 @@
+.section1{
+  width: 100%;
+  display: grid;
+  grid-template-rows: 200px 600px;
+  gap:50px;
+  background: var(--Ash-Blue, #F5F9FC);
+}
+.section1-bottom{
+  display: flex;
+  position: relative;
+}
+.section1-bottom-notebook{
+  width: 977px;
+  height: 592px;
+  position: absolute;
+
+}
+.section1-bottom-background{
+  width: 1000px;
+  height: 592px;
+  position: absolute;
+}
