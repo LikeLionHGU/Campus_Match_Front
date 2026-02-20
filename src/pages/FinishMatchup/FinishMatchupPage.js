@@ -47,7 +47,7 @@ const FinishMatchupPage = () => {
     try {
       const token = localStorage.getItem("Authorization");
       const response = await fetch(
-        `${process.env.REACT_APP_HOST_URL}/api/matchPost/finish/detail/${match.matchPostId}`,
+        `${process.env.REACT_APP_HOST_URL}/api/matchPost/finish/${match.matchPostId}`,
         {
           method: "GET",
           headers: {

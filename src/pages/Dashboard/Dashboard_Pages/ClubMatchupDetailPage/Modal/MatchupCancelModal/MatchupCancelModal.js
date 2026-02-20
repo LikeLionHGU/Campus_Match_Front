@@ -2,12 +2,12 @@ import { useState } from "react";
 import "./MatchupCancelModal.css";
 import closeIcon from "../../../../../../assets/close.svg";
 
-const MatchupCancelModal = ({ onClose, onSuccess, matchRequestId }) => {
+const MatchupCancelModal = ({ onClose, onSuccess, matchPostId }) => {
   const [reason, setReason] = useState("");
   const handleCancelConfirm = async () => {
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_HOST_URL}/api/matchRequest/send/${matchRequestId}`,
+        `${process.env.REACT_APP_HOST_URL}/api/matchPost/upcoming/${matchPostId}`,
         {
           method: "DELETE",
           headers: {
