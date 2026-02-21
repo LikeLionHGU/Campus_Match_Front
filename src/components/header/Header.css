@@ -56,9 +56,9 @@
   right: 2px;
   width: 8px;
   height: 8px;
-  fill: var(--Orange-Red, #fe5a35);
+  background-color: var(--Orange-Red, #fe5a35);
   border-radius: 50%;
 }
-.logo{
+.logo {
   cursor: pointer;
 }

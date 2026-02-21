@@ -9,48 +9,60 @@ const TABS = [
   { key: "finish", label: "종료된 매치업", countKey: "finishNoti" },
 ];
 
-const NotificationModal = ({ onClose, onNewChange }) => {
+const NotificationModal = ({ onClose, onNotificationsChange }) => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("default");
   const [notifications, setNotifications] = useState([]);
-  const [counts, setCounts] = useState({
-    defaultNoti: 0,
-    sendNoti: 0,
-    receiveNoti: 0,
-    finishNoti: 0,
+  const [tabCounts, setTabCounts] = useState({
+    default: 0,
+    send: 0,
+    receive: 0,
+    finish: 0,
   });
 
-  const fetchTab = useCallback(async (tab) => {
+  const fetchAllTabs = useCallback(async () => {
     try {
       const token = localStorage.getItem("Authorization");
-      const response = await fetch(
-        `${process.env.REACT_APP_HOST_URL}/api/notification/noti/${tab}`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: token || "",
+      const urls = ["default", "send", "receive", "finish"];
+
+      const fetchPromises = urls.map((tab) =>
+        fetch(
+          `${process.env.REACT_APP_HOST_URL}/api/notification/noti/${tab}`,
+          {
+            method: "GET",
+            headers: { Authorization: token || "" },
           },
-        },
+        )
+          .then((res) => (res.ok ? res.json() : null))
+          .catch(() => null),
       );
 
-      if (response.ok) {
-        const data = await response.json();
-        setNotifications(data.detailResDtoList || []);
-        setCounts({
-          defaultNoti: data.defaultNoti || 0,
-          sendNoti: data.sendNoti || 0,
-          receiveNoti: data.receiveNoti || 0,
-          finishNoti: data.finishNoti || 0,
-        });
-      }
+      const results = await Promise.all(fetchPromises);
+      const newCounts = { default: 0, send: 0, receive: 0, finish: 0 };
+
+      results.forEach((data, index) => {
+        if (!data) return;
+        const tab = urls[index];
+        const apiCount = data[`${tab}Noti`] || 0;
+        const actualLength = data.detailResDtoList
+          ? data.detailResDtoList.length
+          : 0;
+        newCounts[tab] = Math.max(apiCount, actualLength);
+
+        if (tab === activeTab) {
+          setNotifications(data.detailResDtoList || []);
+        }
+      });
+
+      setTabCounts(newCounts);
     } catch (error) {
-      console.error("Error fetching notifications:", error);
+      console.error("Error boldly fetching all tabs:", error);
     }
-  }, []);
+  }, [activeTab]);
 
   useEffect(() => {
-    fetchTab(activeTab);
-  }, [activeTab, fetchTab]);
+    fetchAllTabs();
+  }, [fetchAllTabs]);
 
   const handleDelete = async (notificationId) => {
     try {
@@ -69,13 +81,15 @@ const NotificationModal = ({ onClose, onNewChange }) => {
         setNotifications((prev) =>
           prev.filter((n) => n.notificationId !== notificationId),
         );
-        if (response.status !== 204) {
-          try {
-            const data = await response.json();
-            if (onNewChange) onNewChange(data.isNew);
-          } catch (e) {}
+        fetchAllTabs();
+
+        try {
+          // DELETE api returns { "isNew": true/false }
+          const data = await response.json();
+          if (onNotificationsChange) onNotificationsChange(data.isNew);
+        } catch (e) {
+          if (onNotificationsChange) onNotificationsChange();
         }
-        fetchTab(activeTab);
       }
     } catch (error) {
       console.error("Error deleting notification:", error);
@@ -274,8 +288,8 @@ const NotificationModal = ({ onClose, onNewChange }) => {
               onClick={() => setActiveTab(tab.key)}
             >
               {tab.label}
-              {counts[tab.countKey] > 0 && (
-                <span className="noti-badge">{counts[tab.countKey]}</span>
+              {tabCounts[tab.key] > 0 && (
+                <span className="noti-badge">{tabCounts[tab.key]}</span>
               )}
             </button>
           ))}

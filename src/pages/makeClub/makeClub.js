@@ -21,7 +21,6 @@ export default function MakeClub() {
     region: "",
     sportCategory: "",
   });
-  // eslint-disable-next-line
   const [isLoading, setIsLoading] = useState(false);
 
   const [profileImage, setProfileImage] = useState(null);
@@ -94,7 +93,7 @@ export default function MakeClub() {
       formData.append("request", requestBlob, "request.json");
 
       if (profileImage) {
-        formData.append("profileImage", profileImage);
+        formData.append("imageUrl", profileImage);
       }
 
       const token = localStorage.getItem("Authorization");
@@ -113,34 +112,10 @@ export default function MakeClub() {
 
       if (response.ok) {
         localStorage.removeItem("userRegistrationInfo");
-        if (data.clubId) {
-          localStorage.setItem("clubId", data.clubId);
-        } else {
-          try {
-            const infoRes = await fetch(
-              `${process.env.REACT_APP_HOST_URL}/api/club/info`,
-              {
-                method: "GET",
-                headers: {
-                  Authorization: token || "",
-                  "Content-Type": "application/json",
-                },
-              },
-            );
-            if (infoRes.ok) {
-              const infoData = await infoRes.json();
-              if (infoData.clubId) {
-                localStorage.setItem("clubId", infoData.clubId);
-              }
-            }
-          } catch (e) {
-            console.error("동아리 등록 실패", e);
-          }
-        }
         setModal({
           isOpen: true,
           message: "동아리 등록이 완료되었습니다!",
-          onConfirm: () => navigate("/dashboard"),
+          onConfirm: () => navigate("/login"),
         });
       } else {
         setModal({
