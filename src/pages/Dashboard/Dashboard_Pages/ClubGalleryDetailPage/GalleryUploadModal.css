@@ -7,17 +7,19 @@
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding-top: 147px;
   z-index: 1000;
 }
 
 .modal-content {
   background: white;
-  padding: 30px;
   border-radius: 12px;
-  width: 440px;
+  width: 620px;
+  height: 780px;
+  padding: 70px 60px 50px 60px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   position: relative;
+  margin-top: 0;
 }
 
 .modal-content h3 {
@@ -41,7 +43,7 @@
 .upload-area {
   border: 2px dashed #ddd;
   border-radius: 8px;
-  height: 150px;
+  height: 616px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -54,7 +56,7 @@
 }
 
 .upload-area:hover {
-  border-color: #007bff;
+  border-color: #16c0cc;
 }
 
 .upload-placeholder {
@@ -100,32 +102,41 @@
 
 .row-group {
   display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
+  gap: 12px;
+  margin-bottom: 50px;
 }
 
 .input-group {
-  flex: 1;
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  align-items: center;
+  gap: 8px;
+}
+
+.input-group:last-child {
+  flex: 1;
 }
 
 .input-group label {
   font-size: 14px;
   font-weight: 600;
   color: #333;
+  white-space: nowrap;
 }
 
 .input-group input {
-  padding: 10px;
+  padding: 8px 12px;
   border: 1px solid #ddd;
   border-radius: 6px;
   font-size: 14px;
+  width: 100%;
+  outline: none;
+}
+
+.input-group:first-child input {
+  width: 120px;
 }
 
 .input-group input:focus {
-  outline: none;
   border-color: #16c0cc;
 }
 
