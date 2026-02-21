@@ -89,6 +89,10 @@ const ClubCalenderDetailPage = () => {
 
     const dates = [];
 
+   
+
+
+
     for (let i = startDay - 1; i >= 0; i--) {
         dates.push({
             date: prevMonthLastDate - i,
@@ -224,22 +228,6 @@ const ClubCalenderDetailPage = () => {
 
                                     // const cellDate = new Date(year, month, item.date);
                                     const dateKey = makeDateKey(year, month, item.date);
-
-
-                                    const isToday =
-                                        item.isCurrentMonth &&
-                                        item.date === today.getDate() &&
-                                        month === today.getMonth() &&
-                                        year === today.getFullYear();
-
-                                    const filled =
-                                        item.isCurrentMonth &&
-                                        filledDates.includes(dateKey);
-
-                                    const outline =
-                                        item.isCurrentMonth &&
-                                        outlineDates.includes(dateKey);
-
                                     const daySchedules = greenSchedules.filter((schedule) => {
                                         if (!item.isCurrentMonth) return false;
 
@@ -250,6 +238,35 @@ const ClubCalenderDetailPage = () => {
 
                                         return current >= start && current <= end;
                                     });
+
+                                    const isToday =
+                                        item.isCurrentMonth &&
+                                        item.date === today.getDate() &&
+                                        month === today.getMonth() &&
+                                        year === today.getFullYear();
+
+                                    const hasFilled =
+                                        item.isCurrentMonth &&
+                                        filledDates.includes(dateKey);
+
+                                        const hasOutline =
+                                        item.isCurrentMonth &&
+                                        outlineDates.includes(dateKey);
+
+                                        const hasSchedule =
+                                        item.isCurrentMonth &&
+                                        daySchedules.length > 0;
+
+                                        const dateClass =
+                                            hasFilled
+                                                ? "filled"
+                                                : hasOutline
+                                                ? "outline"
+                                                : hasSchedule
+                                                ? "scheduled"
+                                                : "";
+
+                                    
                                     return (
                                         <div
                                             key={idx}
@@ -279,32 +296,23 @@ const ClubCalenderDetailPage = () => {
                                         >
 
                                             <div
-                                                className={`
-                                                    calender-detail-left-date
-                                                    ${filled ? "filled" : ""}
-                                                    ${outline ? "outline" : ""}
-                                                `}
+                                                className={`calender-detail-left-date ${dateClass}`}
                                                 onClick={(e) => {
 
                                                     e.stopPropagation();
 
-                                                    if (filled) {
-                                                        console.log("filled click", dateKey);
+                                                    if (hasFilled) {
+                                                    console.log("filled click", dateKey);
 
-                                                        // 나중에 모달
-                                                        // setModalType("filled");
-                                                    }
+                                                    } else if (hasOutline) {
+                                                    console.log("outline click", dateKey);
 
-                                                    if (outline) {
-                                                        console.log("outline click", dateKey);
-
-                                                        // setModalType("outline");
                                                     }
 
                                                 }}
                                                 style={{
                                                     cursor:
-                                                        filled || outline
+                                                        hasFilled|| hasOutline
                                                             ? "pointer"
                                                             : isMine
                                                             ? "pointer"

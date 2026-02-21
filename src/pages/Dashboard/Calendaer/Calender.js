@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import "./Calender.css";
 
 import leftArrow from "../../../assets/arrow_left.svg";
 import rightArrow from "../../../assets/arrow_right.svg";
 
-const Calender = ({ schedules = [],
+const Calender = ({
+  schedules = [],
   upcomingMatches = [],
   ongoingMatches = [],
-  matchRequests = []
- }) => {
+  matchRequests = [],
+}) => {
 
   const today = new Date();
   const [currentDate, setCurrentDate] = useState(today);
@@ -20,64 +21,66 @@ const Calender = ({ schedules = [],
   const lastDate = new Date(year, month + 1, 0).getDate();
   const startDay = firstDay.getDay();
 
+  // ✅ filled 날짜 Set (upcoming + ongoing)
+  const filledSet = useMemo(() => {
+    const set = new Set();
 
-  const filledDates = [...upcomingMatches, ...ongoingMatches].map(match => {
-    const date = new Date(match.matchDate);
+    [...upcomingMatches, ...ongoingMatches].forEach(match => {
+      const date = new Date(match.matchDate);
+      const key = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+      set.add(key);
+    });
 
-    return {
-      year: date.getFullYear(),
-      month: date.getMonth(),
-      day: date.getDate(),
-    };
-  });
-
-
-  const outlineDates = matchRequests.map(match => {
-    const date = new Date(match.matchDate);
-
-    return {
-      year: date.getFullYear(),
-      month: date.getMonth(),
-      day: date.getDate(),
-    };
-  });
+    return set;
+  }, [upcomingMatches, ongoingMatches]);
 
 
-  const scheduleDates = schedules.flatMap(schedule => {
-    const start = new Date(schedule.startDate);
-    const end = new Date(schedule.endDate);
+  // ✅ outline 날짜 Set
+  const outlineSet = useMemo(() => {
+    const set = new Set();
 
-    const dates = [];
-    const current = new Date(start);
+    matchRequests.forEach(match => {
+      const date = new Date(match.matchDate);
+      const key = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+      set.add(key);
+    });
 
-    while (current <= end) {
-      dates.push({
-        year: current.getFullYear(),
-        month: current.getMonth(),
-        day: current.getDate(),
-      });
+    return set;
+  }, [matchRequests]);
 
-      current.setDate(current.getDate() + 1);
-    }
 
-    return dates;
-  });
+  // ✅ schedule 날짜 Set (기간 포함)
+  const scheduleSet = useMemo(() => {
+    const set = new Set();
 
-  
+    schedules.forEach(schedule => {
+      const start = new Date(schedule.startDate);
+      const end = new Date(schedule.endDate);
 
+      const current = new Date(start);
+
+      while (current <= end) {
+        const key = `${current.getFullYear()}-${current.getMonth()}-${current.getDate()}`;
+        set.add(key);
+        current.setDate(current.getDate() + 1);
+      }
+    });
+
+    return set;
+  }, [schedules]);
+
+
+  // 캘린더 날짜 생성
   const dates = [];
 
-  
   const prevLastDate = new Date(year, month, 0).getDate();
 
- 
   for (let i = startDay - 1; i >= 0; i--) {
     dates.push({
       day: prevLastDate - i,
       isCurrentMonth: false,
     });
   }
-
 
   for (let i = 1; i <= lastDate; i++) {
     dates.push({
@@ -86,7 +89,6 @@ const Calender = ({ schedules = [],
     });
   }
 
- 
   let nextDay = 1;
   while (dates.length < 42) {
     dates.push({
@@ -95,7 +97,6 @@ const Calender = ({ schedules = [],
     });
   }
 
- 
 
   const prevMonth = () => {
     setCurrentDate(new Date(year, month - 1, 1));
@@ -105,7 +106,6 @@ const Calender = ({ schedules = [],
     setCurrentDate(new Date(year, month + 1, 1));
   };
 
- 
 
   return (
     <div className="calendar">
@@ -116,7 +116,10 @@ const Calender = ({ schedules = [],
           src={leftArrow}
           alt="prev"
           className="arrow"
-          onClick={prevMonth}
+          onClick={(e) => {
+            e.stopPropagation();
+            prevMonth();
+          }}
         />
 
         <span className="calendar-title">
@@ -127,7 +130,10 @@ const Calender = ({ schedules = [],
           src={rightArrow}
           alt="next"
           className="arrow"
-          onClick={nextMonth}
+          onClick={(e) => {
+            e.stopPropagation();
+            nextMonth();
+          }}
         />
 
       </div>
@@ -138,56 +144,54 @@ const Calender = ({ schedules = [],
         ))}
       </div>
 
+
       <div className="calendar-grid">
         {dates.map((item, idx) => {
 
           const date = item.day;
           const isCurrentMonth = item.isCurrentMonth;
 
+          const key = `${year}-${month}-${date}`;
 
           const filled =
-            isCurrentMonth &&
-            filledDates.some(
-              (d) =>
-                d.year === year &&
-                d.month === month &&
-                d.day === date
-            );
-
-          const hasSchedule =
-            isCurrentMonth &&
-            scheduleDates.some(
-              (d) =>
-                d.year === year &&
-                d.month === month &&
-                d.day === date
-            );  
+            isCurrentMonth && filledSet.has(key);
 
           const outline =
-            isCurrentMonth &&
-            outlineDates.some(
-              (d) =>
-                d.year === year &&
-                d.month === month &&
-                d.day === date
-          );
+            isCurrentMonth && outlineSet.has(key);
+
+          const hasSchedule =
+            isCurrentMonth && scheduleSet.has(key);
+
+
+          let priorityClass = "";
+
+          if (filled) {
+            priorityClass = "filled";
+
+          } else if (outline) {
+            priorityClass = "outline";
+
+          } else if (hasSchedule) {
+            priorityClass = "schedule";
+          }
 
 
           return (
             <div key={idx} className="calendar-cell">
+
               <div
                 className={`
                   date-circle
                   ${!isCurrentMonth ? "other-month" : ""}
-                  ${hasSchedule ? "schedule" : ""}
-                  ${filled ? "filled" : ""}
-                  ${outline ? "outline" : ""}
+                  ${priorityClass}
                 `}
               >
                 {date}
               </div>
+
             </div>
           );
+
         })}
       </div>
 
