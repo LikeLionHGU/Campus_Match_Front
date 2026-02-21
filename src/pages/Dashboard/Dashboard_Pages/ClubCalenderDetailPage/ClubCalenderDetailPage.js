@@ -70,7 +70,7 @@ const ClubCalenderDetailPage = () => {
             ]);
             setGreenSchedules(data.scheduleResDtoList || []);
             // setMatchPosts(data.matchPostResDtoList || []);
-            setOutlineSchedules(data.matchPostResDtoList || []);
+            setOutlineSchedules(data.matchResDtoList || []);
 
         } catch (e) {
             console.error(e);
