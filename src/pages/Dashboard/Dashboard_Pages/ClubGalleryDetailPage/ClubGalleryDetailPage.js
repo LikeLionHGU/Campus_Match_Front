@@ -42,7 +42,7 @@ const ClubGalleryDetailPage = () => {
           Authorization: token || "",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({}),
+        body: JSON.stringify({ keyword: "" }),
       });
 
       if (response.ok) {

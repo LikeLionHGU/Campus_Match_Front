@@ -22,9 +22,11 @@ const GalleryDetailModal = ({ item, onClose, onUpdate }) => {
     );
   };
 
-  const handleDelete = async () => {
-    if (!window.confirm("정말로 삭제하시겠습니까?")) return;
+  const handleDeleteClick = () => {
+    setStep("delete_confirm");
+  };
 
+  const executeDelete = async () => {
     try {
       const token = localStorage.getItem("Authorization");
       const response = await fetch(
@@ -60,7 +62,7 @@ const GalleryDetailModal = ({ item, onClose, onUpdate }) => {
       formData.append("request", jsonBlob, "request.json");
 
       const response = await fetch(
-        `${process.env.REACT_APP_HOST_URL}/api/image/${item.galleryId}`,
+        `${process.env.REACT_APP_HOST_URL}/api/gallery/${item.galleryId}`,
         {
           method: "PUT",
           headers: {
@@ -100,6 +102,46 @@ const GalleryDetailModal = ({ item, onClose, onUpdate }) => {
           <button className="gd-confirm-btn" onClick={handleSuccessClose}>
             확인
           </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (step === "delete_confirm") {
+    return (
+      <div className="gd-overlay" onClick={() => setStep("detail")}>
+        <div
+          className="gd-success-content"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <h3 className="gd-success-title" style={{ marginTop: "20px" }}>
+            정말 삭제하시겠습니까?
+          </h3>
+          <p
+            style={{
+              textAlign: "center",
+              color: "#666",
+              marginBottom: "20px",
+              fontSize: "14px",
+              fontFamily: "Pretendard",
+            }}
+          >
+            삭제된 항목은 복구할 수 없습니다.
+          </p>
+          <div
+            style={{ display: "flex", gap: "10px", justifyContent: "center" }}
+          >
+            <button
+              className="gd-confirm-btn"
+              style={{ backgroundColor: "#ccc" }}
+              onClick={() => setStep("detail")}
+            >
+              취소
+            </button>
+            <button className="gd-confirm-btn" onClick={executeDelete}>
+              삭제
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -162,7 +204,7 @@ const GalleryDetailModal = ({ item, onClose, onUpdate }) => {
         </div>
 
         <div className="gd-button-group">
-          <button className="gd-btn gd-btn-delete" onClick={handleDelete}>
+          <button className="gd-btn gd-btn-delete" onClick={handleDeleteClick}>
             삭제
           </button>
           <button className="gd-btn gd-btn-save" onClick={handleUpdate}>
