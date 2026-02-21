@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import "./Dropdown.css";
+import arrowDownGray from "../../assets/arrow_down_gray.svg";
 
 export default function CustomSelect({
   label,
@@ -38,21 +39,17 @@ export default function CustomSelect({
       </label>
       <div className="custom-select" ref={ref}>
         <div
-          className={`custom-select-trigger ${isOpen ? "open" : ""}`}
+          className={`custom-select-trigger ${isOpen ? "open" : ""} ${selected && value ? "has-value" : ""}`}
           onClick={() => setIsOpen(!isOpen)}
         >
-          <span>{selected ? selected.label : "선택하세요"}</span>
-          <svg
+          <span className={selected && value ? "" : "placeholder"}>
+            {selected ? selected.label : "선택하세요"}
+          </span>
+          <img
+            src={arrowDownGray}
+            alt="arrow"
             className={`select-arrow ${isOpen ? "open" : ""}`}
-            width="12"
-            height="8"
-            viewBox="0 0 12 8"
-          >
-            <path
-              fill="#9e9e9e"
-              d="M1.41 0L6 4.59L10.59 0L12 1.41l-6 6l-6-6z"
-            />
-          </svg>
+          />
         </div>
 
         {isOpen && (
