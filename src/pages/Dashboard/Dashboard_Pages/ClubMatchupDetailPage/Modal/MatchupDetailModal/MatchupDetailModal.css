@@ -14,7 +14,7 @@
   z-index: 2000;
 }
 .matchup-detail-modal {
-    transform: translateY(-150px);
+    transform: translateY(-50px);
     position: relative;
     background: #fff;
     padding: 70px 60px 30px 60px;
@@ -58,6 +58,7 @@
     display: grid;
     grid-template-columns: 94px 170px;
     gap:40px;
+    align-items: center;
 }
 .matchup-detail-modal-body-time div{
     display: grid;

@@ -33,18 +33,18 @@ const Matchup = ({
                 <thead>
                   <tr>
                     <th>날짜</th>
-                    <th>동아리/대학</th>
+                    <th>동아리</th>
                   </tr>
                 </thead>
                 <tbody>
                   {fillRows(upcomingList, MAX_ROWS).map((item, i) => (
                     <tr key={i} className={i === 0 ? "matchup-first-row" : ""}>
-                      <th>{item?.matchDate || ""}</th>
-                      <th>
+                      <td>{item?.matchDate || ""}</td>
+                      <td>
                         {item
-                          ? `${item.clubName || ""}/${item.university || ""}`
+                          ? `${item.clubName || ""}`
                           : ""}
-                      </th>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -63,18 +63,18 @@ const Matchup = ({
                 <thead>
                   <tr>
                     <th>날짜</th>
-                    <th>동아리/대학</th>
+                    <th>동아리</th>
                   </tr>
                 </thead>
                 <tbody>
                   {fillRows(ongoingList, MAX_ROWS).map((item, i) => (
                     <tr key={i} className={i === 0 ? "matchup-first-row" : ""}>
-                      <th>{item?.matchDate || ""}</th>
-                      <th>
+                      <td>{item?.matchDate || ""}</td>
+                      <td>
                         {item
-                          ? `${item.clubName || ""}/${item.university || ""}`
+                          ? `${item.clubName || ""}}`
                           : ""}
-                      </th>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -102,14 +102,14 @@ const Matchup = ({
               <tbody>
                 {fillRows(receiveList, MAX_ROWS).map((item, i) => (
                   <tr key={i} className={i === 0 ? "matchup-first-row" : ""}>
-                    <th>{item?.matchDate || ""}</th>
-                    <th>
+                    <td>{item?.matchDate || ""}</td>
+                    <td>
                       {item
                         ? `${item.clubName || ""}/${item.university || ""}`
                         : ""}
-                    </th>
-                    <th>{item?.sportCategory || ""}</th>
-                    <th>{item?.mannerScore ? `${item.mannerScore}°C` : ""}</th>
+                    </td>
+                    <td>{item?.sportCategory || ""}</td>
+                    <td>{item?.mannerScore ? `${item.mannerScore}°C` : ""}</td>
                   </tr>
                 ))}
               </tbody>
@@ -136,14 +136,14 @@ const Matchup = ({
               <tbody>
                 {fillRows(sendList, MAX_ROWS).map((item, i) => (
                   <tr key={i} className={i === 0 ? "matchup-first-row" : ""}>
-                    <th>{item?.matchDate || ""}</th>
-                    <th>
+                    <td>{item?.matchDate || ""}</td>
+                    <td>
                       {item
                         ? `${item.clubName || ""}/${item.university || ""}`
                         : ""}
-                    </th>
-                    <th>{item?.sportCategory || ""}</th>
-                    <th>{item?.mannerScore ? `${item.mannerScore}°C` : ""}</th>
+                    </td>
+                    <td>{item?.sportCategory || ""}</td>
+                    <td>{item?.mannerScore ? `${item.mannerScore}°C` : ""}</td>
                   </tr>
                 ))}
               </tbody>

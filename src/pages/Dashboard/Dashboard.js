@@ -67,7 +67,7 @@ const Dashboard = () => {
               </div>
             </div>
             <div className="club-intro-right">
-              <span>동아리 소개</span>
+              <span>{dashboardData?.clubName || ""}</span>
               <p>
                 {dashboardData?.description || "동아리 소개를 작성해주세요."}
               </p>

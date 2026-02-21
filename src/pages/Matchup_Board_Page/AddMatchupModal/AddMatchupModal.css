@@ -116,6 +116,11 @@
     line-height: 100%; /* 15px */
     cursor: pointer;
 }
+.add-matchup-left-button:hover{
+    background-color: #EAFDFF;
+    border: 1.5px solid #8BF7FF;
+    color: var(--Primary, #8BF7FF);
+}
 .add-matchup-right-button{
     border: 0px;
     margin-top: 20px;
@@ -190,6 +195,12 @@
     background: var(--Primary, #16C0CC);
     border: 1.5px solid #16C0CC;
     color:#FFF;
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 14.571px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 100%; /* 14.571px */
 }
 .add-matchup-modal-place input{
     border-radius: 8px;

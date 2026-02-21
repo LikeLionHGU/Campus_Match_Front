@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./MatchupDetailModal.css";
 import closeIcon from "../../../../../../assets/close.svg";
 
@@ -10,10 +10,13 @@ const MatchupDetailModal = ({
   matchType,
 }) => {
   const [detail, setDetail] = useState(null);
+  const mapRef = useRef(null);
+
   useEffect(() => {
     const fetchDetail = async () => {
       try {
         let url = "";
+
         if (type === "receive") {
           url = `${process.env.REACT_APP_HOST_URL}/api/matchRequest/receive/${matchRequestId}`;
         } else if (type === "send") {
@@ -35,7 +38,6 @@ const MatchupDetailModal = ({
         if (!res.ok) throw new Error();
 
         const data = await res.json();
-        console.log(matchPostId || matchRequestId);
         setDetail(data);
       } catch (e) {
         console.error("detail load fail", e);
@@ -45,49 +47,118 @@ const MatchupDetailModal = ({
     if (matchPostId || matchRequestId) fetchDetail();
   }, [matchPostId, matchRequestId, matchType, type]);
 
+  useEffect(() => {
+  if (!detail || !mapRef.current) return;
+  if (!window.kakao || !window.kakao.maps) return;
+
+  // 장소 검색용 키워드 (상세주소 우선, 없으면 location)
+  const locationName = detail.locationDetail || detail.location;
+  if (!locationName) return;
+
+  window.kakao.maps.load(() => {
+    const kakao = window.kakao;
+
+    const container = mapRef.current;
+
+    const options = {
+      center: new kakao.maps.LatLng(36.019, 129.3435), // 기본값 (포항)
+      level: 3,
+    };
+
+    const map = new kakao.maps.Map(container, options);
+
+    const places = new kakao.maps.services.Places();
+
+    places.keywordSearch(locationName, (data, status) => {
+      if (status === kakao.maps.services.Status.OK && data.length > 0) {
+        const place = data[0];
+
+        const latlng = new kakao.maps.LatLng(place.y, place.x);
+
+        map.setCenter(latlng);
+
+        const marker = new kakao.maps.Marker({
+          map: map,
+          position: latlng,
+        });
+
+        // ⭐ 마커 위 이름 표시
+        const infowindow = new kakao.maps.InfoWindow({
+          content: `
+            <div style="
+              padding:6px 10px;
+              font-size:13px;
+              font-weight:600;
+              white-space:nowrap;
+            ">
+              ${detail.location}
+            </div>
+          `,
+        });
+
+        infowindow.open(map, marker);
+      }
+    });
+  });
+}, [detail]);
+
   const formatTime = (time) => {
     if (!time) return "";
-
     return time.slice(0, 5);
   };
+
   return (
-    <>
-      <div className="matchup-detail-modal-backdrop" onClick={onClose}>
-        <div
-          className="matchup-detail-modal"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <img
-            src={closeIcon}
-            alt="close"
-            className="matchup-cancel-modal-close"
-            onClick={onClose}
-          />
-          <div className="matchup-detail-modal-main">
-            <span className="matchup-detail-modal-header">세부 정보</span>
-            <div className="matchup-detail-modal-body">
-              <div className="matchup-detail-modal-body-time">
-                <span>신청</span>
-                <div>
-                  <input value={formatTime(detail?.startTime)} readOnly />
-                  <span>~</span>
-                  <input value={formatTime(detail?.endTime)} readOnly />
-                </div>
+    <div className="matchup-detail-modal-backdrop" onClick={onClose}>
+      <div
+        className="matchup-detail-modal"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <img
+          src={closeIcon}
+          alt="close"
+          className="matchup-cancel-modal-close"
+          onClick={onClose}
+        />
+
+        <div className="matchup-detail-modal-main">
+          <span className="matchup-detail-modal-header">세부 정보</span>
+
+          <div className="matchup-detail-modal-body">
+
+            <div className="matchup-detail-modal-body-time">
+              <span>신청</span>
+              <div>
+                <input value={formatTime(detail?.startTime)} readOnly />
+                <span>~</span>
+                <input value={formatTime(detail?.endTime)} readOnly />
               </div>
-              <div className="matchup-detail-modal-body-phone">
-                <span>전화번호</span>
-                <input value={detail?.phone || ""} readOnly />
-              </div>
-              <div className="matchup-detail-modal-body-place">
-                <span>장소</span>
-                <input value={detail?.location || ""} readOnly />
-              </div>
-              <div className="matchup-detail-modal-body-map">ㅁㄴㅇ</div>
             </div>
+
+            <div className="matchup-detail-modal-body-phone">
+              <span>전화번호</span>
+              <input value={detail?.phone || ""} readOnly />
+            </div>
+
+            <div className="matchup-detail-modal-body-place">
+              <span>장소</span>
+              <input value={detail?.location || ""} readOnly />
+            </div>
+
+            <div className="matchup-detail-modal-body-map">
+              <div
+                ref={mapRef}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: "8px",
+                }}
+              />
+            </div>
+
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
