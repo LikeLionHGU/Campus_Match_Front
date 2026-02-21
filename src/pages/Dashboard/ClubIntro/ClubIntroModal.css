@@ -14,7 +14,7 @@
 .club-intro-modal {
   width: 480px;
   max-width: 90%;
-  max-height: 85vh;
+  height: 880px;
   overflow-y: auto;
   background: #fff;
   border-radius: 20px;
@@ -156,7 +156,7 @@
   width: 100%;
   min-height: 140px;
   padding: 16px;
-  border: 1px solid #16c0cc;
+  border: 1px solid #d6d6d6;
   border-radius: 8px;
   font-size: 14px;
   line-height: 1.7;

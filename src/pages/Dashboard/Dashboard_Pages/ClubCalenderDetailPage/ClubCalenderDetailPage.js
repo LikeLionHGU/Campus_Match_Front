@@ -188,10 +188,7 @@ const ClubCalenderDetailPage = () => {
     const getDayNumber = (dateString) => {
         return parseLocalDate(dateString).getDate();
     };
-    console.log("28일 일정:", greenSchedules.filter(s =>
-    s.startDate.includes("-28") ||
-    s.endDate.includes("-28")
-));
+    
 
     return (
         <>
@@ -520,6 +517,8 @@ const ClubCalenderDetailPage = () => {
                     onConfirm={() => setModalType(null)}
                 />
             )}
+
+        
         </>
     );
 };

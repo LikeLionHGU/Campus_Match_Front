@@ -8,6 +8,7 @@ import ArrowRightDouble from "../../assets/arrow_right_double.svg";
 import ArrowDown from "../../assets/arrow_down_primary.svg";
 import MatchupSearchModal from "./MatchupSearchModal";
 import SearchIcon from "../../assets/search.svg";
+import SearchGrayIcon from "../../assets/search_gray.svg";
 import DefaultClubIcon from "../../assets/Main_Icon_Gray.svg";
 import AddMatchupModal from "./AddMatchupModal/AddMatchupModal";
 import SuccessModal from "../Dashboard/Dashboard_Pages/ClubCalenderDetailPage/SuccessModal/SuccessModal";
@@ -18,6 +19,7 @@ import CloseIcon from "../../assets/close.svg";
 import EditMatchupModal from "./EditMatchupModal/EditMatchupModal";
 import ApplyMatchupModal from "./ApplyMatchupModal/ApplyMatchupModal";
 import ApplySuccessModal from "./ApplySuccessModal/ApplySuccessModal";
+import ArrowDownWhite from "../../assets/arrow_down.svg";
 
 const MatchupBoardPage = () => {
   const [matchups, setMatchups] = useState([]);
@@ -43,6 +45,7 @@ const MatchupBoardPage = () => {
   const [applySuccessModalOpen, setApplySuccessModalOpen] = useState(false);
   const [editSuccessModalOpen, setEditSuccessModalOpen] = useState(false);
   const [deleteSuccessModalOpen, setDeleteSuccessModalOpen] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
 
   const [filters, setFilters] = useState({
     regions: [],
@@ -265,8 +268,9 @@ const MatchupBoardPage = () => {
                   placeholder="검색"
                   value={keyword}
                   onChange={(e) => setKeyword(e.target.value)}
+                  onFocus={() => setIsFocused(true)}
                 />
-                <img src={SearchIcon} alt="search" />
+                <img src={isFocused ? SearchIcon : SearchGrayIcon} alt="search" />
               </div>
 
               <div className="matchup-board-search-condition">
@@ -362,7 +366,7 @@ const MatchupBoardPage = () => {
                           <span>날짜</span>
                           <img
                             className={dateOrder === "desc" ? "rotate" : ""}
-                            src={ArrowDown}
+                            src={ArrowDownWhite}
                             alt="down_arrow"
                           />
                         </div>
@@ -386,7 +390,7 @@ const MatchupBoardPage = () => {
                             <td>{item.matchDate}</td>
                             <td>{item.sportCategory}</td>
                             <td>
-                              <div>
+                              <div className="matchup-board-clubName">
                                 <img
                                   className="club-small-icon"
                                   src={item.imageUrl || DefaultClubIcon}
