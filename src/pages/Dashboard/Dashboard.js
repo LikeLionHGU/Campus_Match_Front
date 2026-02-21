@@ -14,15 +14,16 @@ import Sidebar from "../../components/SideBar/SideBar";
 const Dashboard = () => {
   const [openModal, setOpenModal] = useState(null);
   const [dashboardData, setDashboardData] = useState(null);
+  const [badges, setBadges] = useState([]);
   const navigate = useNavigate();
 
   const { clubId: paramClubId } = useParams();
 
   const clubId = paramClubId || localStorage.getItem("clubId");
-
   const isMyDashboard = !paramClubId;
 
   const fetchClubDashboard = useCallback(async () => {
+    if (!clubId) return;
     try {
       const res = await fetch(
         `${process.env.REACT_APP_HOST_URL}/api/club/dashboard/${clubId}`,
@@ -38,7 +39,6 @@ const Dashboard = () => {
       if (!res.ok) throw new Error("dashboard load fail");
 
       const data = await res.json();
-      console.log(data);
       setDashboardData(data);
     } catch (e) {
       console.error(e);
@@ -48,6 +48,30 @@ const Dashboard = () => {
   useEffect(() => {
     fetchClubDashboard();
   }, [fetchClubDashboard]);
+
+  const fetchBadges = useCallback(async () => {
+    if (!clubId) return;
+    try {
+      const res = await fetch(
+        `${process.env.REACT_APP_HOST_URL}/api/badge/${clubId}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: localStorage.getItem("Authorization"),
+          },
+        },
+      );
+      if (!res.ok) throw new Error("badge load fail");
+      const data = await res.json();
+      setBadges(Array.isArray(data) ? data : []);
+    } catch (e) {
+      console.error(e);
+    }
+  }, [clubId]);
+
+  useEffect(() => {
+    fetchBadges();
+  }, [fetchBadges]);
 
   return (
     <>
@@ -87,45 +111,43 @@ const Dashboard = () => {
               <div className="total-record">
                 <span className="count-title">누적 교류 수</span>
                 <span className="count">
-                  {dashboardData?.totalMatches ?? 0}
+                  {Math.max(0, dashboardData?.totalMatches ?? 0)}
                 </span>
               </div>
               <div className="detail-record">
                 <div className="win">
                   <span>승</span>
-                  <p>{dashboardData?.totalWins ?? 0}</p>
+                  <p>{Math.max(0, dashboardData?.totalWins ?? 0)}</p>
                 </div>
                 <div className="draw">
                   <span>무</span>
-                  <p>{dashboardData?.totalDraws ?? 0}</p>
+                  <p>{Math.max(0, dashboardData?.totalDraws ?? 0)}</p>
                 </div>
                 <div className="lose">
                   <span>패</span>
-                  <p>{dashboardData?.totalLosses ?? 0}</p>
+                  <p>{Math.max(0, dashboardData?.totalLosses ?? 0)}</p>
                 </div>
               </div>
             </div>
           </div>
           <div className="club-badge" onClick={() => setOpenModal("badge")}>
             <div className="badge-frame">
-              <div>
-                <img src={empty_badge} alt="empty" />
-              </div>
-              <div>
-                <img src={empty_badge} alt="empty" />
-              </div>
-              <div>
-                <img src={empty_badge} alt="empty" />
-              </div>
-              <div>
-                <img src={empty_badge} alt="empty" />
-              </div>
-              <div>
-                <img src={empty_badge} alt="empty" />
-              </div>
-              <div>
-                <img src={empty_badge} alt="empty" />
-              </div>
+              {(() => {
+                const MAX_BADGES = 6;
+                const slots = [...badges];
+                while (slots.length < MAX_BADGES) slots.push(null);
+                return slots.slice(0, MAX_BADGES).map((badge, i) => (
+                  <div key={i} className="badge-item">
+                    <img
+                      src={badge?.imageUrl || empty_badge}
+                      alt={badge?.title || "empty"}
+                    />
+                    {badge && (
+                      <span className="badge-tooltip">{badge.title}</span>
+                    )}
+                  </div>
+                ));
+              })()}
             </div>
           </div>
           <div

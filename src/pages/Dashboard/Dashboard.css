@@ -69,16 +69,56 @@
   column-gap: 34px;
 }
 
-.badge-frame div {
+.badge-item {
+  position: relative;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.badge-frame div img {
+.badge-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.badge-tooltip {
+  visibility: hidden;
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  transition:
+    opacity 0.2s,
+    visibility 0.2s;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.badge-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+}
+
+.badge-item:hover .badge-tooltip {
+  visibility: visible;
+  opacity: 1;
 }
 
 .club-intro-right {
