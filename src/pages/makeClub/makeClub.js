@@ -93,7 +93,7 @@ export default function MakeClub() {
       formData.append("request", requestBlob, "request.json");
 
       if (profileImage) {
-        formData.append("imageUrl", profileImage);
+        formData.append("image", profileImage);
       }
 
       const token = localStorage.getItem("Authorization");
