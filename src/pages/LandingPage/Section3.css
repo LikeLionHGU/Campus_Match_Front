@@ -1,0 +1,37 @@
+.section3{
+    display: grid;
+    grid-template-columns:718px 371px;
+    gap: 117px;
+    position: relative;
+    z-index: 2;
+}
+.section3-right{
+    display: grid;
+    grid-template-rows: 116px 64px;
+    gap: 35px;
+    padding-top: 40px;
+}
+.section3-right-main{
+    color: #1F1F1F;
+    font-family: Pretendard;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 58.5px */
+}
+.section3-right-main-color{
+    color: var(--Primary, #16C0CC);
+}
+.section3-right-sub{
+    color: var(--Gray-4, #9E9E9E);
+    font-family: Pretendard;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%; /* 32.5px */
+}
+.section3-back{
+    position: absolute;
+    z-index: 1;
+    left:-230px
+}

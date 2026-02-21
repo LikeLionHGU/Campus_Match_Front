@@ -1,10 +1,14 @@
+
+
 .landing-wrapper {
   height: calc(100vh - 90px);
   overflow-y: auto;
+  background: var(--Ash-Blue, #F5F9FC);
+  overflow-x: hidden;
 }
 
 .landing-section {
-  height: calc(100vh - 90px);
+  min-height: calc(100vh - 90px);
 
   display: flex;
   justify-content: center;

@@ -6,11 +6,12 @@ import Section1 from "./Section1";
 import Section2 from "./Section2";
 import Section3 from "./Section3";
 import Section4 from "./Section4";
+import Section5 from "./Section5";
 
 const LandingPage = () => {
   const sectionsRef = useRef([]);
 
-  const sections = [Section1, Section2, Section3, Section4];
+  const sections = [Section1, Section2, Section3, Section4, Section5];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -24,7 +25,7 @@ const LandingPage = () => {
         });
       },
       {
-        threshold: 0.4,
+        threshold: 0.6,
       }
     );
 
@@ -45,9 +46,10 @@ const LandingPage = () => {
         >
           <SectionComponent />
 
-          {i === sections.length - 1 && <Footer />}
+          
         </section>
       ))}
+      <Footer />
     </div>
   );
 };

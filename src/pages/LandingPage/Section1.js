@@ -15,7 +15,9 @@ const Section1 = () => {
                 <span className="section1-top-sub">
                 대학 스포츠 동아리를 연결해 지속적인 교류를 이어주는 서비스
                 </span>
-                <button className="section1-top-button">동아리 페이지 만들기</button>
+                <div>
+                    <button className="section1-top-button">동아리 페이지 만들기</button>
+                </div>
             </div>
             <div className="section1-bottom">
                 <img className="section1-bottom-notebook" src={Notebook} alt="notebook" />

@@ -3,8 +3,8 @@
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: 200px 1000px;
-  gap:50px;
+  grid-template-rows: 230px 1000px;
+  gap:20px;
   background: var(--Ash-Blue, #F5F9FC);
   justify-content: center;
   position: relative;
@@ -12,9 +12,11 @@
 .section1-top{
   width: 100%;
   display: grid;
-  grid-template-rows: 50px 20px 48px;
-  gap: 30px 50px;
+  grid-template-rows: 50px 20px 68px;
+  gap: 30px;
   text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 .section1-top-main{
   color: var(--Text, #1F1F1F);
@@ -50,4 +52,20 @@
 .section1-bottom-background{
   width: 100%;
   position: absolute;
+}
+
+.section1-top-button{
+  padding: 15px 20px;
+  z-index: 3;
+  position: relative;
+  color: #FFF;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100%; /* 18px */
+  border-radius: 8px;
+  background: var(--Primary, #16C0CC);
+  border: 1.5px solid #16C0CC;
+  cursor: pointer;
 }
