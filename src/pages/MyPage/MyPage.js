@@ -154,7 +154,6 @@ export default function MyPage() {
           throw new Error("Club ID not found");
         }
       } catch (error) {
-        // console.error(error);
         openModal("정보를 불러오는데 실패했습니다.");
       } finally {
         setIsLoading(false);
@@ -279,9 +278,6 @@ export default function MyPage() {
     openModal("정말 캠퍼스 매치를 탈퇴 하시겠습니까?", deleteMem, true);
   };
 
-  const onSearchUniversity = () => {};
-  const onSearchClub = () => {};
-
   if (isLoading) {
     return (
       <div className="mypage-container">
@@ -360,7 +356,7 @@ export default function MyPage() {
                 <input
                   type="password"
                   name="password"
-                  value={form.password}
+                  value={""}
                   onChange={onChange}
                 />
               </Field>
@@ -375,38 +371,20 @@ export default function MyPage() {
                 <input name="email" value={form.email} onChange={onChange} />
               </Field>
 
-              <Field label="대학" required noControl>
-                <div className="inputWithButton">
-                  <input
-                    name="university"
-                    value={form.university}
-                    onChange={onChange}
-                  />
-                  <button
-                    type="button"
-                    className="searchBtn"
-                    onClick={onSearchUniversity}
-                  >
-                    찾기
-                  </button>
-                </div>
+              <Field label="대학" required>
+                <input
+                  name="university"
+                  value={form.university}
+                  onChange={onChange}
+                />
               </Field>
 
-              <Field label="동아리" required noControl>
-                <div className="inputWithButton">
-                  <input
-                    name="clubName"
-                    value={form.clubName}
-                    onChange={onChange}
-                  />
-                  <button
-                    type="button"
-                    className="searchBtn"
-                    onClick={onSearchClub}
-                  >
-                    찾기
-                  </button>
-                </div>
+              <Field label="동아리" required>
+                <input
+                  name="clubName"
+                  value={form.clubName}
+                  onChange={onChange}
+                />
               </Field>
             </div>
           </div>
