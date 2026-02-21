@@ -44,7 +44,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 40px;
 }
 
 .club-field {
@@ -61,7 +61,7 @@
   width: fit-content;
   font-size: 18px;
   font-weight: 400;
-  color: var(--txt-color);
+  color: var(--txt-color--);
 }
 
 .club-req {
@@ -85,6 +85,15 @@
   font-size: 16px;
   font-family: Pretendard;
   color: var(--txt-color);
+  transition: border-color 0.2s ease;
+}
+
+.club-input:placeholder-shown {
+  color: var(--Gray-2);
+}
+
+.club-input:not(:placeholder-shown) {
+  border-color: var(--primary-color);
 }
 
 .club-input:focus {
@@ -120,6 +129,15 @@ select.club-input {
   font-family: Pretendard;
   color: var(--txt-color);
   resize: none;
+  transition: border-color 0.2s ease;
+}
+
+.club-textarea:placeholder-shown {
+  color: var(--Gray-2);
+}
+
+.club-textarea:not(:placeholder-shown) {
+  border-color: var(--primary-color);
 }
 
 .club-textarea:focus {
