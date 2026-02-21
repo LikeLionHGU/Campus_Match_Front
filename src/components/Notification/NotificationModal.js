@@ -39,18 +39,30 @@ const NotificationModal = ({ onClose, onNotificationsChange }) => {
 
       const results = await Promise.all(fetchPromises);
       const newCounts = { default: 0, send: 0, receive: 0, finish: 0 };
-
       results.forEach((data, index) => {
         if (!data) return;
         const tab = urls[index];
+
         const apiCount = data[`${tab}Noti`] || 0;
-        const actualLength = data.detailResDtoList
-          ? data.detailResDtoList.length
-          : 0;
+
+        let items = [];
+        if (Array.isArray(data)) {
+          items = data;
+        } else if (
+          data.detailResDtoList &&
+          Array.isArray(data.detailResDtoList)
+        ) {
+          items = data.detailResDtoList;
+        } else if (data.data && Array.isArray(data.data)) {
+          items = data.data;
+        }
+
+        const actualLength = items.length;
+
         newCounts[tab] = Math.max(apiCount, actualLength);
 
         if (tab === activeTab) {
-          setNotifications(data.detailResDtoList || []);
+          setNotifications(items);
         }
       });
 
@@ -84,7 +96,6 @@ const NotificationModal = ({ onClose, onNotificationsChange }) => {
         fetchAllTabs();
 
         try {
-          // DELETE api returns { "isNew": true/false }
           const data = await response.json();
           if (onNotificationsChange) onNotificationsChange(data.isNew);
         } catch (e) {
@@ -120,14 +131,14 @@ const NotificationModal = ({ onClose, onNotificationsChange }) => {
               ×
             </button>
             <div className="noti-buttons">
-              <button
-                className="noti-action-btn"
-                onClick={() => {
-                  if (item.awayClubId) navigate(`/club/${item.awayClubId}`);
-                }}
-              >
-                동아리 방문하기
-              </button>
+              {item.awayClubId && (
+                <button
+                  className="noti-action-btn"
+                  onClick={() => navigate(`/club/${item.awayClubId}`)}
+                >
+                  동아리 방문하기
+                </button>
+              )}
               <button
                 className="noti-action-btn"
                 onClick={() => navigate("/dashboard/gallery")}
@@ -163,11 +174,27 @@ const NotificationModal = ({ onClose, onNotificationsChange }) => {
         );
 
       case "schedule":
+        return (
+          <div className="noti-item" key={item.notificationId}>
+            <div className="noti-text">
+              {item.content ||
+                `${club}와의 매치업 일정이 있습니다. 확인해보세요!`}
+            </div>
+            <button
+              className="noti-close"
+              onClick={() => handleDelete(item.notificationId)}
+            >
+              ×
+            </button>
+          </div>
+        );
+
+      case "matchCancel":
       case "matchCancle":
         return (
           <div className="noti-item" key={item.notificationId}>
             <div className="noti-text">
-              {item.content || `${club} 관련 알림`}
+              {item.content || `${club}와의 매치업이 취소되었습니다.`}
             </div>
             <button
               className="noti-close"
@@ -232,6 +259,22 @@ const NotificationModal = ({ onClose, onNotificationsChange }) => {
                 예정된 매치업으로 이동
               </button>
             </div>
+          </div>
+        );
+
+      case "receiveCancel":
+      case "receiveCancle":
+        return (
+          <div className="noti-item" key={item.notificationId}>
+            <div className="noti-text">
+              {item.content || `${club}(이)가 제안을 취소했습니다`}
+            </div>
+            <button
+              className="noti-close"
+              onClick={() => handleDelete(item.notificationId)}
+            >
+              ×
+            </button>
           </div>
         );
 

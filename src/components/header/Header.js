@@ -33,11 +33,9 @@ const Header = () => {
 
       const results = await Promise.all(fetchPromises);
       let hasAnyItemsOrCounts = false;
-
       for (const data of results) {
         if (!data) continue;
 
-        // Check if the backend correctly returned counts
         if (
           (data.defaultNoti || 0) > 0 ||
           (data.sendNoti || 0) > 0 ||
@@ -48,8 +46,19 @@ const Header = () => {
           break;
         }
 
-        // Fallback: Check if the actual raw array has contents
-        if (data.detailResDtoList && data.detailResDtoList.length > 0) {
+        let itemsCount = 0;
+        if (Array.isArray(data)) {
+          itemsCount = data.length;
+        } else if (
+          data.detailResDtoList &&
+          Array.isArray(data.detailResDtoList)
+        ) {
+          itemsCount = data.detailResDtoList.length;
+        } else if (data.data && Array.isArray(data.data)) {
+          itemsCount = data.data.length;
+        }
+
+        if (itemsCount > 0) {
           hasAnyItemsOrCounts = true;
           break;
         }
