@@ -148,7 +148,10 @@ export default function RegisterPage() {
                 className="register-input phone-input"
                 name="phone1"
                 value={form.phone1}
-                onChange={onChange}
+                onChange={(e) => {
+                  e.target.value = e.target.value.replace(/[^0-9]/g, "");
+                  onChange(e);
+                }}
                 maxLength={3}
               />
               <span className="dash"></span>
@@ -156,7 +159,10 @@ export default function RegisterPage() {
                 className="register-input phone-input"
                 name="phone2"
                 value={form.phone2}
-                onChange={onChange}
+                onChange={(e) => {
+                  e.target.value = e.target.value.replace(/[^0-9]/g, "");
+                  onChange(e);
+                }}
                 maxLength={4}
               />
               <span className="dash"></span>
@@ -164,7 +170,10 @@ export default function RegisterPage() {
                 className="register-input phone-input"
                 name="phone3"
                 value={form.phone3}
-                onChange={onChange}
+                onChange={(e) => {
+                  e.target.value = e.target.value.replace(/[^0-9]/g, "");
+                  onChange(e);
+                }}
                 maxLength={4}
               />
             </div>

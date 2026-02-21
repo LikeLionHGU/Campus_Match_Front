@@ -127,7 +127,7 @@
 
 .formGrid {
   display: flex;
-  gap: 236px;
+  justify-content: space-between;
   width: 100%;
 }
 
@@ -136,10 +136,6 @@
   flex-direction: column;
   gap: 30px;
   width: 422px;
-}
-
-.col:last-child {
-  width: 508px;
 }
 
 .field {
@@ -193,49 +189,6 @@
   background: transparent;
   font-family: Pretendard;
   color: var(--txt-color);
-}
-
-.inputWithButton {
-  width: 508px;
-  display: grid;
-  grid-template-columns: 1fr 86px;
-  column-gap: 10px;
-  align-items: center;
-}
-
-.inputWithButton input {
-  width: 100%;
-  height: 50px;
-  border: 1px solid var(--Gray-2);
-  background: var(--bg-color);
-  outline: none;
-  box-sizing: border-box;
-  border-radius: 8px;
-  padding: 0 15px;
-  font-size: 16px;
-  font-family: Pretendard;
-  color: var(--txt-color);
-}
-
-.inputWithButton input:focus {
-  border-color: var(--primary-color);
-}
-
-.searchBtn {
-  width: 86px;
-  height: 50px;
-  border: none;
-  border-radius: 8px;
-  background: var(--primary-color);
-  font-size: 18px;
-  color: #fff;
-  box-sizing: border-box;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.searchBtn:hover {
-  background: #9ce2e7;
 }
 
 .phoneSection {

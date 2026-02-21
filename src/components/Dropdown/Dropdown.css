@@ -6,7 +6,7 @@
 .custom-select-trigger {
   width: 100%;
   height: 50px;
-  padding: 0 40px 0 15px;
+  padding: 0 15px;
   border: 1px solid var(--Gray-2);
   background: var(--bg-color);
   border-radius: 8px;
@@ -19,6 +19,15 @@
   justify-content: space-between;
   box-sizing: border-box;
   transition: border-color 0.2s ease;
+}
+
+.custom-select-trigger .placeholder {
+  color: var(--Gray-2);
+}
+
+.custom-select-trigger.has-value {
+  border-color: var(--primary-color);
+  color: var(--txt-color);
 }
 
 .custom-select-trigger:hover {

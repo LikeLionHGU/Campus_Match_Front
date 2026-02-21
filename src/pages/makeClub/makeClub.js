@@ -119,7 +119,7 @@ export default function MakeClub() {
         setModal({
           isOpen: true,
           message: "동아리 등록이 완료되었습니다!",
-          onConfirm: () => navigate("/myPage"),
+          onConfirm: () => navigate("/dashboard"),
         });
       } else {
         setModal({
@@ -132,8 +132,7 @@ export default function MakeClub() {
       setModal({
         isOpen: true,
         message: "동아리 등록이 실패했습니다!",
-        subtitle: "로그인이 필요해요",
-        onConfirm: () => navigate("/login"),
+        subtitle: "네트워크 오류가 발생했습니다. 다시 시도해주세요.",
       });
     } finally {
       setIsLoading(false);
@@ -208,7 +207,7 @@ export default function MakeClub() {
               name="clubName"
               value={form.clubName}
               onChange={onChange}
-              placeholder="동아리 이름을 입력하세요"
+              placeholder=" "
             />
           </div>
 
@@ -221,14 +220,14 @@ export default function MakeClub() {
               name="description"
               value={form.description}
               onChange={onChange}
-              placeholder="동아리에 대해 소개해주세요"
+              placeholder=" "
               rows={5}
             />
           </div>
 
           <div className="club-field-row">
             <CustomSelect
-              label="지역"
+              label="동아리 지역"
               name="region"
               value={form.region}
               onChange={onChange}
@@ -251,7 +250,7 @@ export default function MakeClub() {
             />
 
             <CustomSelect
-              label="운동 종목"
+              label="동아리 종목"
               name="sportCategory"
               value={form.sportCategory}
               onChange={onChange}
