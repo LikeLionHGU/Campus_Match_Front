@@ -11,7 +11,7 @@
 .matchup-search-modal {
     position: relative;
     width: 568px;
-    height: 659px;
+    height: 759px;
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
@@ -30,7 +30,7 @@
 
 .matchup-search-filter-modal {
   display: grid;
-  grid-template-rows: 100px 300px 74px;
+  grid-template-rows: 200px 300px 74px;
   padding: 70px 60px 50px 60px;
 
 }
@@ -76,7 +76,7 @@
   padding: 20px 10px;
   border-bottom: 1.5px solid #16C0CC;
   display: grid;
-  grid-template-columns: 111px 13px 111px;
+  grid-template-columns: 121px 13px 121px;
   gap: 10px;
   align-items: center;
 }
