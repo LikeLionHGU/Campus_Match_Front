@@ -114,7 +114,7 @@ const OngoingMatchupPage = () => {
                       <th>지역</th>
                       <th>장소</th>
                       <th>매치온도</th>
-                      <th>세부 정보 / 매치업 취소</th>
+                      <th>종료하기</th>
                     </tr>
                   </thead>
                   <tbody>
