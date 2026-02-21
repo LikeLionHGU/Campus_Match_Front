@@ -85,6 +85,29 @@ function LoginPage() {
         localStorage.setItem("Authorization", accessToken);
       }
 
+      if (!loginData.clubId) {
+        try {
+          const infoRes = await fetch(
+            `${process.env.REACT_APP_HOST_URL}/api/club/info`,
+            {
+              method: "GET",
+              headers: {
+                Authorization: accessToken || "",
+                "Content-Type": "application/json",
+              },
+            },
+          );
+          if (infoRes.ok) {
+            const infoData = await infoRes.json();
+            if (infoData.clubId) {
+              localStorage.setItem("clubId", infoData.clubId);
+            }
+          }
+        } catch (err) {
+          console.error("Failed to fetch club id during login", err);
+        }
+      }
+
       alert("로그인 성공!");
       navigate("/dashboard");
     } catch (error) {

@@ -115,6 +115,27 @@ export default function MakeClub() {
         localStorage.removeItem("userRegistrationInfo");
         if (data.clubId) {
           localStorage.setItem("clubId", data.clubId);
+        } else {
+          try {
+            const infoRes = await fetch(
+              `${process.env.REACT_APP_HOST_URL}/api/club/info`,
+              {
+                method: "GET",
+                headers: {
+                  Authorization: token || "",
+                  "Content-Type": "application/json",
+                },
+              },
+            );
+            if (infoRes.ok) {
+              const infoData = await infoRes.json();
+              if (infoData.clubId) {
+                localStorage.setItem("clubId", infoData.clubId);
+              }
+            }
+          } catch (e) {
+            console.error("동아리 등록 실패", e);
+          }
         }
         setModal({
           isOpen: true,
