@@ -12,6 +12,7 @@ import ResetIcon from "../../assets/reset.svg";
 import CloseIcon from "../../assets/close.svg"
 import DefaultClubIcon from "../../assets/Main_Icon_Gray.svg"
 import { useNavigate } from "react-router-dom";
+import SearchGrayIcon from "../../assets/search_gray.svg";
 
 const ClubSearchBoardPage = () => {
 
@@ -31,6 +32,7 @@ const ClubSearchBoardPage = () => {
         regions: [],
         sports: [],
     });
+    const [isFocused, setIsFocused] = useState(false);
 
     const displayFilters = [
         ...filters.regions.map(r => ({
@@ -146,8 +148,9 @@ const ClubSearchBoardPage = () => {
                                     placeholder="검색"
                                     value={keyword}
                                     onChange={(e) => setKeyword(e.target.value)}
+                                    onFocus={() => setIsFocused(true)}
                                 />
-                                <img src={SearchIcon} alt="search" />
+                                <img src={isFocused ? SearchIcon : SearchGrayIcon} alt="search" />
                             </div>
 
                             <div
@@ -241,7 +244,7 @@ const ClubSearchBoardPage = () => {
                                                 <td>{item.region}</td>
                                                 <td>{item.university}</td>
                                                 <td>
-                                                    <div>
+                                                    <div className="club-board-clubName">
                                                         <img className="club-small-icon" src={item.imageUrl || DefaultClubIcon} alt="club-icon" />
                                                         <span>
                                                             {item.clubName}

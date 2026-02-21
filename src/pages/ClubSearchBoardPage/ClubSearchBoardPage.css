@@ -25,7 +25,7 @@
     height: 15px;
     padding: 17.5px 20px;
     border-radius: 8px;
-    border: 1.5px solid var(--Primary, #16C0CC);
+    border: 1.5px solid var(--Primary, #d6d6d6);
     background: #FFF;
 }
 
@@ -53,7 +53,7 @@
     width: 1085px;
     padding: 12px 20px;
     border-radius: 8px;
-    border: 1.5px solid var(--Primary, #16C0CC);
+    border: 1.5px solid var(--Primary, #d6d6d6);
     background: #FFF;
     justify-content: center;
     align-items: center;
@@ -278,4 +278,8 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+}
+.club-board-clubName{
+    justify-content:initial !important;
+    padding-left: 50px;
 }

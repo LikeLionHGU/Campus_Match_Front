@@ -118,8 +118,8 @@ const Header = () => {
               </>
             ) : (
               <>
-                <a href="/login">로그인</a>
-                <a href="/register">회원가입</a>
+                <span onClick={()=>navigate("/login")} >로그인</span>
+                <span onClick={()=>navigate("/register")}>회원가입</span>
               </>
             )}
           </nav>
