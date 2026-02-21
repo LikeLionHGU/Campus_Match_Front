@@ -66,6 +66,39 @@
   border-color: #16c0cc;
 }
 
+.history-modal-search-input {
+  display: flex;
+  flex: 1;
+  gap: 8px;
+}
+
+.history-modal-search-input input[type="text"] {
+  flex: 1;
+  margin: 0;
+}
+
+.history-modal-search-btn {
+  background-color: #16c0cc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+}
+
+.history-modal-search-btn:hover {
+  background-color: #9ce2e7;
+}
+
+.history-modal-search-btn:active {
+  background-color: #007f88;
+}
+
 .history-modal-radio-group {
   display: flex;
   align-items: center;
@@ -129,4 +162,137 @@
 
 .history-modal-submit:active {
   background-color: #007f88;
+}
+
+/* --- Search Modal CSS --- */
+.search-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.search-modal-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.search-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-modal-header h3 {
+  margin: 0;
+  font-family: Pretendard;
+  font-size: 18px;
+  color: #333;
+}
+
+.search-modal-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #999;
+  cursor: pointer;
+}
+
+.search-modal-close:hover {
+  color: #333;
+}
+
+.search-modal-input-row {
+  display: flex;
+  gap: 10px;
+}
+
+.search-modal-input-row input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: Pretendard;
+  outline: none;
+}
+
+.search-modal-input-row button {
+  background-color: #16c0cc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.search-modal-input-row button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.search-modal-results {
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+.search-modal-result-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s;
+}
+
+.search-modal-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-modal-result-item:hover {
+  background-color: #f9f9f9;
+}
+
+.search-modal-result-item .club-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-modal-result-item .club-name {
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.search-modal-result-item .club-univ {
+  font-family: Pretendard;
+  font-size: 12px;
+  color: #888;
+}
+
+.search-modal-empty {
+  padding: 30px;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 14px;
+  color: #888;
 }

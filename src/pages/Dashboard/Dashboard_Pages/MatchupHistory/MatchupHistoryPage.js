@@ -31,16 +31,27 @@ const MatchupHistoryPage = () => {
       const response = await fetch(
         `${process.env.REACT_APP_HOST_URL}/api/matchHistory/${clubId}`,
         {
-          method: "GET",
+          method: "POST",
           headers: {
+            "Content-Type": "application/json",
             Authorization: token || "",
           },
+          body: JSON.stringify({ keyword: "" }),
         },
       );
 
       if (response.ok) {
         const data = await response.json();
-        setHistoryList(data.List || data);
+        console.log("Matchup History Response:", data);
+        let list = data.matchHistoryList;
+
+        if (list && !Array.isArray(list) && typeof list === "object") {
+          list = [list];
+        }
+
+        let formattedList = Array.isArray(list) ? list : [];
+
+        setHistoryList(formattedList);
       }
     } catch (error) {
       console.error("오류:", error);
@@ -71,12 +82,12 @@ const MatchupHistoryPage = () => {
   };
 
   const getFilteredItems = () => {
-    let filtered = historyList;
+    let filtered = Array.isArray(historyList) ? historyList : [];
 
     if (filter === "created") {
-      filtered = filtered.filter((item) => item.matchPostId);
+      filtered = filtered.filter((item) => item.isOfficial);
     } else if (filter === "added") {
-      filtered = filtered.filter((item) => !item.matchPostId);
+      filtered = filtered.filter((item) => !item.isOfficial);
     }
 
     if (searchTerm) {
@@ -224,12 +235,12 @@ const MatchupHistoryPage = () => {
             </thead>
             <tbody>
               {currentItems.map((item, index) => (
-                <tr key={item.historyMatchId || item.matchHistoryId || index}>
+                <tr key={item.historyMatchId || index}>
                   <td>{item.matchDate}</td>
                   <td>
                     <div className="history-club-cell">
                       <img
-                        src={item.logo || DefaultLogo}
+                        src={item.imageUrl || DefaultLogo}
                         alt="logo"
                         className="history-club-logo"
                       />
@@ -252,8 +263,8 @@ const MatchupHistoryPage = () => {
                         onClick={() =>
                           setDeleteTarget({
                             ...item,
-                            historyMatchId:
-                              item.historyMatchId || item.matchHistoryId,
+                            matchHistoryId:
+                              item.matchHistoryId || item.historyMatchId,
                           })
                         }
                       >
@@ -344,7 +355,9 @@ const MatchupHistoryPage = () => {
 
         {deleteTarget && (
           <DeleteConfirmModal
-            matchHistoryId={deleteTarget.historyMatchId}
+            matchHistoryId={
+              deleteTarget.matchHistoryId || deleteTarget.historyMatchId
+            }
             onClose={() => setDeleteTarget(null)}
             onSuccess={handleSuccess}
           />

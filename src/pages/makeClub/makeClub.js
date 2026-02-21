@@ -295,10 +295,11 @@ export default function MakeClub() {
           </div>
 
           <button
-            className={`club-submit ${isFormValid ? "active" : ""}`}
+            className={`club-submit ${isFormValid && !isLoading ? "active" : ""}`}
             type="submit"
+            disabled={!isFormValid || isLoading}
           >
-            동아리 생성
+            {isLoading ? "생성 중..." : "동아리 생성"}
           </button>
         </form>
       </div>
