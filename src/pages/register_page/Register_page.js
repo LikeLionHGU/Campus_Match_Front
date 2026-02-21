@@ -3,13 +3,16 @@ import { useNavigate } from "react-router-dom";
 import "./Register_page.css";
 import mainLogo from "../../assets/mainLogo.png";
 import Modal from "../../components/Modal/Modal";
+import UniversityModal from "./UniversityModal/UniversityModal";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
+  const [showUnivModal, setShowUnivModal] = useState(false);
   const [modal, setModal] = useState({
     isOpen: false,
     message: "",
   });
+  
 
   const [form, setForm] = useState({
     username: "",
@@ -71,136 +74,152 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="register-container">
-      <Modal
-        isOpen={modal.isOpen}
-        message={modal.message}
-        onConfirm={() => setModal({ isOpen: false, message: "" })}
-      />
+    <>
+      <div className="register-container">
+        <Modal
+          isOpen={modal.isOpen}
+          message={modal.message}
+          onConfirm={() => setModal({ isOpen: false, message: "" })}
+        />
 
-      <div className="register-content">
-        <div className="register-title">
-          <img src={mainLogo} alt="mainLogo" className="register-title-logo" />
-          <span>회원가입</span>
-        </div>
-
-        <form className="register-form" onSubmit={onSubmit}>
-          <div className="register-field">
-            <label className="register-label">
-              아이디<span className="register-req">*</span>
-            </label>
-            <input
-              className="register-input"
-              name="username"
-              value={form.username}
-              onChange={onChange}
-            />
+        <div className="register-content">
+          <div className="register-title">
+            <img src={mainLogo} alt="mainLogo" className="register-title-logo" />
+            <span>회원가입</span>
           </div>
 
-          <div className="register-field">
-            <label className="register-label">
-              비밀번호<span className="register-req">*</span>
-            </label>
-            <input
-              className="register-input"
-              type="password"
-              name="password"
-              value={form.password}
-              onChange={onChange}
-            />
-          </div>
-
-          <div className="register-field">
-            <label className="register-label">
-              이름<span className="register-req">*</span>
-            </label>
-            <input
-              className="register-input"
-              name="name"
-              value={form.name}
-              onChange={onChange}
-            />
-          </div>
-
-          <div className="register-field">
-            <label className="register-label">
-              대학<span className="register-req">*</span>
-            </label>
-            <div className="row">
+          <form className="register-form" onSubmit={onSubmit}>
+            <div className="register-field">
+              <label className="register-label">
+                아이디<span className="register-req">*</span>
+              </label>
               <input
                 className="register-input"
-                name="university"
-                value={form.university}
+                name="username"
+                value={form.username}
                 onChange={onChange}
               />
-              <button className="register-btn" type="button">
-                찾기
-              </button>
             </div>
-          </div>
 
-          <div className="register-field">
-            <label className="register-label">
-              전화번호<span className="register-req">*</span>
-            </label>
-            <div className="phone">
+            <div className="register-field">
+              <label className="register-label">
+                비밀번호<span className="register-req">*</span>
+              </label>
               <input
-                className="register-input phone-input"
-                name="phone1"
-                value={form.phone1}
-                onChange={(e) => {
-                  e.target.value = e.target.value.replace(/[^0-9]/g, "");
-                  onChange(e);
-                }}
-                maxLength={3}
-              />
-              <span className="dash"></span>
-              <input
-                className="register-input phone-input"
-                name="phone2"
-                value={form.phone2}
-                onChange={(e) => {
-                  e.target.value = e.target.value.replace(/[^0-9]/g, "");
-                  onChange(e);
-                }}
-                maxLength={4}
-              />
-              <span className="dash"></span>
-              <input
-                className="register-input phone-input"
-                name="phone3"
-                value={form.phone3}
-                onChange={(e) => {
-                  e.target.value = e.target.value.replace(/[^0-9]/g, "");
-                  onChange(e);
-                }}
-                maxLength={4}
+                className="register-input"
+                type="password"
+                name="password"
+                value={form.password}
+                onChange={onChange}
               />
             </div>
-          </div>
 
-          <div className="register-field">
-            <label className="register-label">
-              이메일<span className="register-req">*</span>
-            </label>
-            <input
-              className="register-input"
-              name="email"
-              type="email"
-              value={form.email}
-              onChange={onChange}
-            />
-          </div>
+            <div className="register-field">
+              <label className="register-label">
+                이름<span className="register-req">*</span>
+              </label>
+              <input
+                className="register-input"
+                name="name"
+                value={form.name}
+                onChange={onChange}
+              />
+            </div>
 
-          <button
-            className={`submit ${isFormValid ? "active" : ""}`}
-            type="submit"
-            disabled={!isFormValid}
-          >
-            다음
-          </button>
-        </form>
+            <div className="register-field">
+              <label className="register-label">
+                대학<span className="register-req">*</span>
+              </label>
+              <div className="row">
+                <input
+                  className="register-input"
+                  name="university"
+                  value={form.university}
+                  onChange={onChange}
+                  readOnly
+                />
+                <button onClick={()=>setShowUnivModal(true)} className="register-btn" type="button">
+                  찾기
+                </button>
+              </div>
+            </div>
+
+            <div className="register-field">
+              <label className="register-label">
+                전화번호<span className="register-req">*</span>
+              </label>
+              <div className="phone">
+                <input
+                  className="register-input phone-input"
+                  name="phone1"
+                  value={form.phone1}
+                  onChange={(e) => {
+                    e.target.value = e.target.value.replace(/[^0-9]/g, "");
+                    onChange(e);
+                  }}
+                  maxLength={3}
+                />
+                <span className="dash"></span>
+                <input
+                  className="register-input phone-input"
+                  name="phone2"
+                  value={form.phone2}
+                  onChange={(e) => {
+                    e.target.value = e.target.value.replace(/[^0-9]/g, "");
+                    onChange(e);
+                  }}
+                  maxLength={4}
+                />
+                <span className="dash"></span>
+                <input
+                  className="register-input phone-input"
+                  name="phone3"
+                  value={form.phone3}
+                  onChange={(e) => {
+                    e.target.value = e.target.value.replace(/[^0-9]/g, "");
+                    onChange(e);
+                  }}
+                  maxLength={4}
+                />
+              </div>
+            </div>
+
+            <div className="register-field">
+              <label className="register-label">
+                이메일<span className="register-req">*</span>
+              </label>
+              <input
+                className="register-input"
+                name="email"
+                type="email"
+                value={form.email}
+                onChange={onChange}
+              />
+            </div>
+
+            <button
+              className={`submit ${isFormValid ? "active" : ""}`}
+              type="submit"
+              disabled={!isFormValid}
+            >
+              다음
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+      {showUnivModal && (
+        <UniversityModal
+          onClose={() => setShowUnivModal(false)}
+          onSelect={(universityName) => {
+            setForm((prev) => ({
+              ...prev,
+              university: universityName,
+            }));
+            setShowUnivModal(false);
+          }}
+        />
+      )}
+    </>
+    
   );
 }
