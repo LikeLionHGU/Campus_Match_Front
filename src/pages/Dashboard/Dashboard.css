@@ -91,8 +91,8 @@
   bottom: 110%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.8);
-  color: #fff;
+  background-color: #bdbdbd;
+  color: var(--Text, #1f1f1f);
   padding: 8px 12px;
   border-radius: 8px;
   font-size: 14px;
@@ -113,7 +113,7 @@
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+  border-color: #bdbdbd transparent transparent transparent;
 }
 
 .badge-item:hover .badge-tooltip {
