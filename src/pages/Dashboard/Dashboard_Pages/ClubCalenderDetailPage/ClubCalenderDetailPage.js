@@ -134,18 +134,24 @@ const ClubCalenderDetailPage = () => {
         setSelectedScheduleId(scheduleId);
         setModalType("edit");
     };
+    const parseLocalDate = (dateStr) => {
+    const [y, m, d] = dateStr.split("-").map(Number);
+    return new Date(y, m - 1, d);
+    };
 
     const currentMonthSchedules = greenSchedules
     .filter((schedule) => {
-        const start = new Date(schedule.startDate);
-        const end = new Date(schedule.endDate);
+        const start = parseLocalDate(schedule.startDate);
+        const end = parseLocalDate(schedule.endDate);
 
         const monthStart = new Date(year, month, 1);
         const monthEnd = new Date(year, month + 1, 0);
 
-        return end >= monthStart && start <= monthEnd;
+        return !(end < monthStart || start > monthEnd);
     })
-    .sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+    .sort((a, b) =>
+        parseLocalDate(a.startDate) - parseLocalDate(b.startDate)
+    );
 
     const currentMonthOutlineSchedules = outlineSchedules
     .filter((post) => {
@@ -171,13 +177,17 @@ const ClubCalenderDetailPage = () => {
 
     const getDayOfWeek = (dateString) => {
         const days = ["일", "월", "화", "수", "목", "금", "토"];
-        const date = new Date(dateString);
+        const date = parseLocalDate(dateString);
         return days[date.getDay()];
     };
 
     const getDayNumber = (dateString) => {
-        return new Date(dateString).getDate();
+        return parseLocalDate(dateString).getDate();
     };
+    console.log("28일 일정:", greenSchedules.filter(s =>
+    s.startDate.includes("-28") ||
+    s.endDate.includes("-28")
+));
 
     return (
         <>
@@ -235,6 +245,7 @@ const ClubCalenderDetailPage = () => {
 
                                         const start = new Date(schedule.startDate);
                                         const end = new Date(schedule.endDate);
+                                        end.setHours(23, 59, 59, 999);
                                         const current = new Date(dateKey);
 
                                         return current >= start && current <= end;

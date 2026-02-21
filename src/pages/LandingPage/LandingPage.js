@@ -6,6 +6,7 @@ import Section1 from "./Section1";
 import Section2 from "./Section2";
 import Section3 from "./Section3";
 import Section4 from "./Section4";
+import Section5 from "./Section5";
 
 const LandingPage = () => {
   const sectionsRef = useRef([]);
@@ -24,7 +25,7 @@ const LandingPage = () => {
         });
       },
       {
-        threshold: 0.4,
+        threshold: 0.6,
       }
     );
 
@@ -45,9 +46,13 @@ const LandingPage = () => {
         >
           <SectionComponent />
 
-          {i === sections.length - 1 && <Footer />}
+          
         </section>
       ))}
+      <section className="section5-container">
+        <Section5 />
+      </section>
+      <Footer />
     </div>
   );
 };
