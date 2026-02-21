@@ -14,24 +14,50 @@ const Header = () => {
 
   const checkNewNotifications = useCallback(async () => {
     if (!isLogin) return;
+
     try {
       const token = localStorage.getItem("Authorization");
-      const response = await fetch(
-        `${process.env.REACT_APP_HOST_URL}/api/notification/noti`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: token || "",
+      const urls = ["default", "send", "receive", "finish"];
+
+      const fetchPromises = urls.map((tab) =>
+        fetch(
+          `${process.env.REACT_APP_HOST_URL}/api/notification/noti/${tab}`,
+          {
+            method: "GET",
+            headers: { Authorization: token || "" },
           },
-        },
+        )
+          .then((res) => (res.ok ? res.json() : null))
+          .catch(() => null),
       );
 
-      if (response.ok) {
-        const data = await response.json();
-        setHasNew(data.isNew);
+      const results = await Promise.all(fetchPromises);
+      let hasAnyItemsOrCounts = false;
+
+      for (const data of results) {
+        if (!data) continue;
+
+        // Check if the backend correctly returned counts
+        if (
+          (data.defaultNoti || 0) > 0 ||
+          (data.sendNoti || 0) > 0 ||
+          (data.receiveNoti || 0) > 0 ||
+          (data.finishNoti || 0) > 0
+        ) {
+          hasAnyItemsOrCounts = true;
+          break;
+        }
+
+        // Fallback: Check if the actual raw array has contents
+        if (data.detailResDtoList && data.detailResDtoList.length > 0) {
+          hasAnyItemsOrCounts = true;
+          break;
+        }
       }
+
+      setHasNew(hasAnyItemsOrCounts);
     } catch (error) {
-      console.error("Error checking notifications:", error);
+      console.error("Error boldly checking notifications:", error);
     }
   }, [isLogin]);
 
@@ -58,7 +84,6 @@ const Header = () => {
                     navigate("/");
                   }
                 }}
-                
               >
                 <img src={logo} alt="logo" />
               </div>
@@ -95,7 +120,7 @@ const Header = () => {
       {isNotiOpen && (
         <NotificationModal
           onClose={() => setIsNotiOpen(false)}
-          onNewChange={(isNew) => setHasNew(isNew)}
+          onNotificationsChange={checkNewNotifications}
         />
       )}
     </>
