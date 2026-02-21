@@ -180,6 +180,7 @@
   width: 100%;
   border-collapse: collapse;
   border: 1px solid #ccc;
+  table-layout: fixed;
 }
 
 .history-table thead {
@@ -194,6 +195,7 @@
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
+  width: 20%;
 }
 
 .history-table th img {
