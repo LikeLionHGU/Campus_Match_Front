@@ -48,7 +48,7 @@ const MatchupSearchModal = ({ filters, setFilters, onClose }) => {
  
     const regions = [
         "경기","경남","경북","광주","대전","대구","부산","서울"
-        // ,"세종","인천","전남","전북","제주","충남","충북"
+        // ,"세종","울산","인천","전남","전북","제주","충남","충북"
     ];
 
     const sports = [

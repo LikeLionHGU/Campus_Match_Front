@@ -24,7 +24,7 @@ const ReceiveMatchupPage = () => {
   const [selectedMatchId, setSelectedMatchId] = useState(null);
   const [acceptModalOpen, setAcceptModalOpen] = useState(false);
   const [successModalOpen, setSuccessModalOpen] = useState(false);
-  const [acceptSuccessModalOpen, setAcceptSuccessModalOpen] = useState(false);
+  
 
   const sortedMatchups = [...matchups].sort((a, b) => {
     const dateA = new Date(a.matchDate);
@@ -256,18 +256,13 @@ const ReceiveMatchupPage = () => {
           matchRequestId={selectedMatchId}
           onConfirm={() => {
             setAcceptModalOpen(false);
-            setAcceptSuccessModalOpen(true);
+      
             fetchReceive();
           }}
           onClose={() => setAcceptModalOpen(false)}
         />
       )}
-      {acceptSuccessModalOpen && (
-        <SuccessModal
-          message="수락이 완료되었습니다"
-          onConfirm={() => setAcceptSuccessModalOpen(false)}
-        />
-      )}
+      
 
       {successModalOpen && (
         <SuccessModal
