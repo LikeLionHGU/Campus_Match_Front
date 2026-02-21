@@ -1,35 +1,47 @@
 import Notebook from "../../assets/notebook_section1.svg";
 import Background from "../../assets/background_section1.svg";
 import "./Section1.css";
+import { useNavigate } from "react-router-dom";
 const Section1 = () => {
-
-  return (
-    <>  
-        <div className="section1">
-            <img className="section1-bottom-background" src={Background} alt="background" />
-            <div className="section1-top">
-                
-                <span className="section1-top-main">
-                흩어지는 땀방울, 기록되는 역사
-                </span>
-                <span className="section1-top-sub">
-                대학 스포츠 동아리를 연결해 지속적인 교류를 이어주는 서비스
-                </span>
-                <div>
-                    <button className="section1-top-button">동아리 페이지 만들기</button>
+    const navigate = useNavigate();
+    const handleGoToTop = () => {
+        window.scrollTo({
+            top: 0,
+        });
+    };
+    return (
+        <>  
+            <div className="section1">
+                <img className="section1-bottom-background" src={Background} alt="background" />
+                <div className="section1-top">
+                    
+                    <span className="section1-top-main">
+                    흩어지는 땀방울, 기록되는 역사
+                    </span>
+                    <span className="section1-top-sub">
+                    대학 스포츠 동아리를 연결해 지속적인 교류를 이어주는 서비스
+                    </span>
+                    <div>
+                        <button 
+                            className="section1-top-button"
+                            onClick={()=>{
+                                navigate("/register");
+                                handleGoToTop();
+                            }}
+                        >동아리 페이지 만들기</button>
+                    </div>
                 </div>
-            </div>
-            <div className="section1-bottom">
-                <img className="section1-bottom-notebook" src={Notebook} alt="notebook" />
+                <div className="section1-bottom">
+                    <img className="section1-bottom-notebook" src={Notebook} alt="notebook" />
+                    
+                </div>
                 
             </div>
             
-        </div>
+        </>
         
-    </>
-    
 
-  );
+    );
 
 };
 

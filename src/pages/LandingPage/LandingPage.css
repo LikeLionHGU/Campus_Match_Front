@@ -1,8 +1,7 @@
 
 
 .landing-wrapper {
-  height: calc(100vh - 90px);
-  overflow-y: auto;
+  
   background: var(--Ash-Blue, #F5F9FC);
   overflow-x: hidden;
 }
@@ -26,4 +25,11 @@
 .landing-section.active {
   opacity: 1;
   transform: translateY(0);
+}
+.section5-container {
+  position: relative;
+  min-height: calc(100vh - 90px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -11,7 +11,7 @@ import Section5 from "./Section5";
 const LandingPage = () => {
   const sectionsRef = useRef([]);
 
-  const sections = [Section1, Section2, Section3, Section4, Section5];
+  const sections = [Section1, Section2, Section3, Section4];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -49,6 +49,9 @@ const LandingPage = () => {
           
         </section>
       ))}
+      <section className="section5-container">
+        <Section5 />
+      </section>
       <Footer />
     </div>
   );
