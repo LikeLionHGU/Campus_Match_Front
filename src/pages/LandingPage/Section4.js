@@ -3,7 +3,7 @@ import Circle1 from "../../assets/circle1_section4.svg";
 import Circle2 from "../../assets/circle2_section4.svg";
 import Circle3 from "../../assets/circle3_section4.svg";
 import Img1 from "../../assets/img1_section4.png";
-import Img2 from "../../assets/img2_section4.png";
+import Img2 from "../../assets/image2_section4.png";
 import Img3 from "../../assets/img3_section4.png";
 const Section4 = () => {
 
