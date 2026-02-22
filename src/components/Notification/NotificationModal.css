@@ -10,7 +10,7 @@
 .noti-modal {
   position: fixed;
   top: 120px;
-  right: 25px;
+  right: 80px;
   width: 450px;
   background: #fff;
   border-radius: 16px;
@@ -19,7 +19,6 @@
   padding: 30px;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 .noti-title {
