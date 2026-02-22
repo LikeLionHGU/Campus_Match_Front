@@ -82,12 +82,14 @@ const Dashboard = () => {
         </div>
         <div className="dashboard-right">
           {!isMyDashboard && (
-            <div className="dashboard_back">
+            <div className="dashboard_back"
+              onClick={() => navigate(-1)}
+            >
               <img
                 src={LeftArrow}
                 alt="left_arrow"
                 className="dashboard-back-button"
-                onClick={() => navigate(-1)}
+                
               />
               
               <span>동아리 게시판</span>
