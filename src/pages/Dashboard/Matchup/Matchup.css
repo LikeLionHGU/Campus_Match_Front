@@ -95,3 +95,14 @@
     font-weight: 400;
     text-align: center;
 }
+.matchup-frame thead{
+    color: var(--Text, #1F1F1F);
+    font-family: Pretendard;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500 !important;
+    line-height: normal;
+}
+.matchup-frame thead th{
+    font-weight: 500 !important;
+}
