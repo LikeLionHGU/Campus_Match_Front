@@ -172,7 +172,7 @@ const NotificationModal = ({ onClose, onNotificationsChange }) => {
             </div>
           </div>
         );
-
+      // 보류 content 내용에 따라 수정 필요
       case "schedule":
         return (
           <div className="noti-item" key={item.notificationId}>
@@ -188,7 +188,7 @@ const NotificationModal = ({ onClose, onNotificationsChange }) => {
             </button>
           </div>
         );
-
+      // 보류 content 내용에 따라 수정 필요
       case "matchCancel":
       case "matchCancle":
         return (
@@ -218,14 +218,14 @@ const NotificationModal = ({ onClose, onNotificationsChange }) => {
             <div className="noti-buttons">
               <button
                 className="noti-action-btn"
-                onClick={() => navigate("/dashboard/scheduled")}
+                onClick={() => navigate("/dashboard/upcoming-matchup")}
               >
                 예정된 매치업으로 이동
               </button>
             </div>
           </div>
         );
-
+      // 보류 content 내용에 따라 수정 필요
       case "sendNo":
         return (
           <div className="noti-item" key={item.notificationId}>
@@ -254,14 +254,14 @@ const NotificationModal = ({ onClose, onNotificationsChange }) => {
             <div className="noti-buttons">
               <button
                 className="noti-action-btn"
-                onClick={() => navigate("/dashboard/scheduled")}
+                onClick={() => navigate("/dashboard/recieve-matchup")}
               >
-                예정된 매치업으로 이동
+                제안받은 매치업으로 이동
               </button>
             </div>
           </div>
         );
-
+      // 보류 content 내용에 따라 수정 필요
       case "receiveCancel":
       case "receiveCancle":
         return (
@@ -294,14 +294,14 @@ const NotificationModal = ({ onClose, onNotificationsChange }) => {
             <div className="noti-buttons">
               <button
                 className="noti-action-btn"
-                onClick={() => navigate("/finishMatchup")}
+                onClick={() => navigate("/finish-matchup")}
               >
                 종료된 매치업으로 이동
               </button>
             </div>
           </div>
         );
-
+      // 보류 content 내용에 따라 수정 필요
       default:
         return (
           <div className="noti-item" key={item.notificationId}>
