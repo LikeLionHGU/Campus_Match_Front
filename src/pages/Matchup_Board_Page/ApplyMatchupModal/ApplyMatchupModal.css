@@ -170,3 +170,11 @@
     border: 1.5px solid var(--Gray-2, #D6D6D6);
     background: var(--white, #FFF);
 }
+.apply-matchup-modal-date input:focus{
+    outline: none;
+    border: 1.5px solid  #16C0CC;
+}
+.apply-matchup-modal-time-inputs input:focus{
+    outline: none;
+    border: 1.5px solid  #16C0CC;
+}

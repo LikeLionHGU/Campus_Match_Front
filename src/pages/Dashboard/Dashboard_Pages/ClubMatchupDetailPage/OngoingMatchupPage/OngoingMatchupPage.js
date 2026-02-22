@@ -146,7 +146,7 @@ const OngoingMatchupPage = () => {
                             >
                               세부정보
                             </button>
-                            &nbsp;/&nbsp;
+                            &nbsp;&nbsp;
                             <button
                               onClick={() => {
                                 setSelectedMatchId(item.matchPostId);

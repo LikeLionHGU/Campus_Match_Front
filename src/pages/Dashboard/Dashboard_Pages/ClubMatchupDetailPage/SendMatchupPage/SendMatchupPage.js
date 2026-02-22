@@ -147,7 +147,7 @@ const SendMatchupPage = () => {
                             >
                               세부 정보
                             </button>
-                            &nbsp;/&nbsp;
+                            &nbsp;&nbsp;
                             <button
                               className="cancel-button"
                               onClick={() => {

@@ -27,6 +27,12 @@
     border-radius: 8px;
     border: 1.5px solid var(--Primary, #d6d6d6);
     background: #FFF;
+    font-family: Pretendard;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    color: #000;
 }
 
 .clubsearch-board-header-search-input input:focus{
@@ -65,7 +71,7 @@
 .clubsearch-board-search-condition-left{
     color: var(--Gray-4, #9E9E9E);
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 13px;
     font-style: normal;
     font-weight: 400;
     line-height: 100%; /* 15px */
@@ -101,7 +107,7 @@
 .clubsearch-board-content{
     display: flex;
     flex-direction: column;
-    height: 813px;
+    height: 730px;
     width:1533px;
 }
 
@@ -110,6 +116,8 @@
     overflow-y: auto;
     border-radius: 8px;
     width: 1533px;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.08);
+    margin-bottom: 50px;
 }
 
 .clubsearch-board-table-wrapper table tr{

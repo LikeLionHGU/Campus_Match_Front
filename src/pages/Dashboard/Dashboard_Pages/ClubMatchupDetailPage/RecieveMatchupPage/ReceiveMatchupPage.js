@@ -150,7 +150,7 @@ const ReceiveMatchupPage = () => {
                             >
                               세부 정보
                             </button>
-                            &nbsp;/&nbsp;
+                            &nbsp;&nbsp;
                             <button
                               className="refuse-button"
                               onClick={() => {
@@ -160,7 +160,7 @@ const ReceiveMatchupPage = () => {
                             >
                               거절
                             </button>
-                            &nbsp;/&nbsp;
+                            &nbsp;&nbsp;
                             <button
                               className="receive-button"
                               onClick={() => {
