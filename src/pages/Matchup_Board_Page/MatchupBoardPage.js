@@ -40,7 +40,6 @@ const MatchupBoardPage = () => {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deleteTargetId, setDeleteTargetId] = useState(null);
   const [editModalOpen, setEditModalOpen] = useState(false);
-  const [editTargetId, setEditTargetId] = useState(null);
   const [applyModalOpen, setApplyModalOpen] = useState(false);
   const [applySuccessModalOpen, setApplySuccessModalOpen] = useState(false);
   const [editSuccessModalOpen, setEditSuccessModalOpen] = useState(false);
@@ -75,7 +74,6 @@ const MatchupBoardPage = () => {
           keyword: keyword,
         }),
       });
-      console.log(filters);
       if (!res.ok) throw new Error();
 
       const data = await res.json();
@@ -270,7 +268,10 @@ const MatchupBoardPage = () => {
                   onChange={(e) => setKeyword(e.target.value)}
                   onFocus={() => setIsFocused(true)}
                 />
-                <img src={isFocused ? SearchIcon : SearchGrayIcon} alt="search" />
+                <img
+                  src={isFocused ? SearchIcon : SearchGrayIcon}
+                  alt="search"
+                />
               </div>
 
               <div className="matchup-board-search-condition">
@@ -472,8 +473,6 @@ const MatchupBoardPage = () => {
                                             <button
                                               className="accordion-edit-button"
                                               onClick={() => {
-                                                setEditTargetId(openMatchId);
-                                                console.log(editTargetId);
                                                 setEditModalOpen(true);
                                               }}
                                             >
@@ -483,7 +482,6 @@ const MatchupBoardPage = () => {
                                               className="accordion-delete-button"
                                               onClick={() => {
                                                 setDeleteTargetId(openMatchId);
-                                                console.log(deleteTargetId);
                                                 setDeleteModalOpen(true);
                                               }}
                                             >

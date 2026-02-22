@@ -139,8 +139,8 @@ const MatchupHistoryModal = ({ mode, historyData, onClose, onSuccess }) => {
             <div className="history-modal-row">
               <label>날짜</label>
               <input
-                type="text"
-                placeholder="00.00.00"
+                type="date"
+                required
                 value={matchDate}
                 onChange={(e) => setMatchDate(e.target.value)}
               />

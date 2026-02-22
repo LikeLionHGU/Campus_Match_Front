@@ -42,7 +42,6 @@ const MatchupHistoryPage = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("Matchup History Response:", data);
         let list = data.matchHistoryList;
 
         if (list && !Array.isArray(list) && typeof list === "object") {

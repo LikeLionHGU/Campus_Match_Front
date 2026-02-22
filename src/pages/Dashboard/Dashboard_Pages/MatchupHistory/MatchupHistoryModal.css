@@ -51,7 +51,8 @@
   flex-shrink: 0;
 }
 
-.history-modal-row input[type="text"] {
+.history-modal-row input[type="text"],
+.history-modal-row input[type="date"] {
   flex: 1;
   padding: 10px 14px;
   border: 1px solid #ddd;
@@ -60,10 +61,36 @@
   font-family: Pretendard;
   outline: none;
   transition: border-color 0.2s;
+  box-sizing: border-box;
 }
 
-.history-modal-row input[type="text"]:focus {
+.history-modal-row input[type="text"]:focus,
+.history-modal-row input[type="date"]:focus {
   border-color: #16c0cc;
+}
+
+.history-modal-row input[type="date"] {
+  color: #333;
+  position: relative;
+}
+
+.history-modal-row input[type="date"]:required:invalid::-webkit-datetime-edit {
+  color: transparent;
+}
+.history-modal-row input[type="date"]:required:invalid::before {
+  content: "0000-00-00";
+  position: absolute;
+  left: 14px;
+  color: #d6d6d6;
+  pointer-events: none;
+}
+
+.history-modal-row input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+}
+.history-modal-row input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
 }
 
 .history-modal-search-input {
