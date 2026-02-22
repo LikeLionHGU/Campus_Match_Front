@@ -86,7 +86,10 @@ const GalleryUploadModal = ({
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="gallery-modal-content"
+        onClick={(e) => e.stopPropagation()}
+      >
         <button className="close-btn" onClick={onClose}>
           &times;
         </button>
