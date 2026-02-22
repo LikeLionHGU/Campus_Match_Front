@@ -13,10 +13,15 @@ const FinishMatchupModal = ({ onClose, match }) => {
   const handleImageChange = (e) => {
     if (e.target.files) {
       const newImages = Array.from(e.target.files);
-      if (images.length + newImages.length > 5) {
-        return;
-      }
-      setImages((prev) => [...prev, ...newImages]);
+      setImages((prev) => {
+        const combined = [...prev, ...newImages];
+        if (combined.length > 5) {
+          alert("사진은 최대 5장까지 올릴 수 있습니다.");
+          return combined.slice(0, 5);
+        }
+        return combined;
+      });
+      e.target.value = "";
     }
   };
 
@@ -101,7 +106,7 @@ const FinishMatchupModal = ({ onClose, match }) => {
           >
             &times;
           </button>
-          <h2 className="confirm-title">매치업을 마무리하시겠습니까</h2>
+          <div className="confirm-title">매치업을 마무리하시겠습니까</div>
           <div className="modal-footer">
             <button
               className="modal-btn cancel-btn"
@@ -128,7 +133,7 @@ const FinishMatchupModal = ({ onClose, match }) => {
           <button className="finish-modal-close" onClick={handleSuccessClose}>
             &times;
           </button>
-          <h2 className="confirm-title">매치업이 마무리 되었습니다</h2>
+          <div className="confirm-title">매치업이 마무리 되었습니다</div>
           <p className="confirm-subtitle">
             작성한 글은 대시보드&gt;매치업 히스토리에서 확인 가능합니다
           </p>
@@ -153,32 +158,102 @@ const FinishMatchupModal = ({ onClose, match }) => {
         </button>
 
         <div className="finish-modal-header">
-          <h2>마무리하기</h2>
+          <div>마무리하기</div>
         </div>
 
         <div className="upload-section">
-          <label className="upload-box">
-            {images.length > 0 ? (
-              <img
-                src={URL.createObjectURL(images[0])}
-                alt="preview"
-                className="upload-preview"
-              />
-            ) : (
+          {images.length > 0 ? (
+            <div className="upload-area-active">
+              <div className="image-preview-container">
+                {Array.from(images).map((file, index) => (
+                  <div key={index} className="preview-item">
+                    <img
+                      src={URL.createObjectURL(file)}
+                      alt={`preview-${index}`}
+                      className="upload-preview"
+                    />
+                    <button
+                      type="button"
+                      className="remove-img-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        setImages((prev) => {
+                          const newImages = [...prev];
+                          newImages.splice(index, 1);
+                          return newImages;
+                        });
+                      }}
+                    >
+                      X
+                    </button>
+                  </div>
+                ))}
+              </div>
+              {images.length < 5 && (
+                <label
+                  className="upload-box"
+                  style={{
+                    width: "100%",
+                    height: "60px",
+                    flexDirection: "row",
+                    gap: "10px",
+                    marginTop: "10px",
+                    backgroundColor: "#fafafa",
+                    border: "2px dashed #ddd",
+                  }}
+                >
+                  <div
+                    className="upload-placeholder-content"
+                    style={{ flexDirection: "row", gap: "8px" }}
+                  >
+                    <span
+                      className="upload-icon"
+                      style={{ marginBottom: 0 }}
+                    ></span>
+                    <span
+                      className="upload-text"
+                      style={{
+                        fontSize: "14px",
+                        fontWeight: "500",
+                        color: "#333",
+                      }}
+                    >
+                      추가하기
+                    </span>
+                    <span
+                      className="upload-text"
+                      style={{ fontSize: "12px", color: "#bbb" }}
+                    >
+                      {images.length}/5
+                    </span>
+                  </div>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    className="image-file-input"
+                    onChange={handleImageChange}
+                  />
+                </label>
+              )}
+            </div>
+          ) : (
+            <label className="upload-box">
               <div className="upload-placeholder-content">
                 <span className="upload-icon"></span>
                 <span className="upload-text">사진 올리기</span>
-                <span className="upload-text">{images.length}/5</span>
+                <span className="upload-text">0/5</span>
               </div>
-            )}
-            <input
-              type="file"
-              accept="image/*"
-              multiple
-              className="image-file-input"
-              onChange={handleImageChange}
-            />
-          </label>
+              <input
+                type="file"
+                accept="image/*"
+                multiple
+                className="image-file-input"
+                onChange={handleImageChange}
+              />
+            </label>
+          )}
         </div>
 
         <div className="form-section">
@@ -196,6 +271,7 @@ const FinishMatchupModal = ({ onClose, match }) => {
             <span className="form-label">결과</span>
             <div className="radio-group">
               <label className="radio-label">
+                경기
                 <input
                   type="radio"
                   name="matchCategory"
@@ -205,36 +281,35 @@ const FinishMatchupModal = ({ onClose, match }) => {
                     setResult("");
                   }}
                 />
-                경기
               </label>
               {matchCategory === "경기" && (
                 <>
                   <label className="radio-label">
+                    승
                     <input
                       type="radio"
                       name="result"
                       checked={result === "승"}
                       onChange={() => setResult("승")}
                     />
-                    승
                   </label>
                   <label className="radio-label">
+                    패
                     <input
                       type="radio"
                       name="result"
                       checked={result === "패"}
                       onChange={() => setResult("패")}
                     />
-                    패
                   </label>
                   <label className="radio-label">
+                    무
                     <input
                       type="radio"
                       name="result"
                       checked={result === "무"}
                       onChange={() => setResult("무")}
                     />
-                    무
                   </label>
                 </>
               )}
@@ -244,6 +319,7 @@ const FinishMatchupModal = ({ onClose, match }) => {
               style={{ marginTop: "8px", marginLeft: "96px" }}
             >
               <label className="radio-label">
+                단순 교류
                 <input
                   type="radio"
                   name="matchCategory"
@@ -253,7 +329,6 @@ const FinishMatchupModal = ({ onClose, match }) => {
                     setResult("교류");
                   }}
                 />
-                단순 교류
               </label>
             </div>
           </div>
@@ -262,22 +337,22 @@ const FinishMatchupModal = ({ onClose, match }) => {
             <span className="form-label">매치 온도</span>
             <div className="radio-group">
               <label className="radio-label">
+                업
                 <input
                   type="radio"
                   name="temperature"
                   checked={temperature === "up"}
                   onChange={() => setTemperature("up")}
                 />
-                업
               </label>
               <label className="radio-label">
+                다운
                 <input
                   type="radio"
                   name="temperature"
                   checked={temperature === "down"}
                   onChange={() => setTemperature("down")}
                 />
-                다운
               </label>
             </div>
           </div>
@@ -286,22 +361,22 @@ const FinishMatchupModal = ({ onClose, match }) => {
             <span className="form-label">재매치 의사</span>
             <div className="radio-group">
               <label className="radio-label">
+                예
                 <input
                   type="radio"
                   name="rematch"
                   checked={rematch === "yes"}
                   onChange={() => setRematch("yes")}
                 />
-                예
               </label>
               <label className="radio-label">
+                아니오
                 <input
                   type="radio"
                   name="rematch"
                   checked={rematch === "no"}
                   onChange={() => setRematch("no")}
                 />
-                아니오
               </label>
             </div>
           </div>
