@@ -149,6 +149,7 @@ const ClubSearchBoardPage = () => {
                                     value={keyword}
                                     onChange={(e) => setKeyword(e.target.value)}
                                     onFocus={() => setIsFocused(true)}
+                                    onBlur={() => setIsFocused(false)}
                                 />
                                 <img src={isFocused ? SearchIcon : SearchGrayIcon} alt="search" />
                             </div>
