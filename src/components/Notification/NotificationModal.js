@@ -254,7 +254,7 @@ const NotificationModal = ({ onClose, onNotificationsChange }) => {
             <div className="noti-buttons">
               <button
                 className="noti-action-btn"
-                onClick={() => navigate("/dashboard/recieve-matchup")}
+                onClick={() => navigate("/dashboard/receive-matchup")}
               >
                 제안받은 매치업으로 이동
               </button>
