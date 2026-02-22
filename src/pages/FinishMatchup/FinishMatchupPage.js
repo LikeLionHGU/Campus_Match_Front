@@ -120,7 +120,7 @@ const FinishMatchupPage = () => {
                       <td>
                         <div className="opponent-cell">
                           <img
-                            src={match.logo || DefaultLogo}
+                            src={match.imageUrl || DefaultLogo}
                             alt="logo"
                             className="opponent-logo"
                           />
