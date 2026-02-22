@@ -1,6 +1,6 @@
- import "./BadgeModal.css";
-import Badge_list from "../../../assets/badge_list.svg";
-import closeIcon from "../../../assets/close.svg"
+import "./BadgeModal.css";
+import Badge_list from "../../../assets/realBadgeList.svg";
+import closeIcon from "../../../assets/close.svg";
 
 const BadgeModal = ({ onClose }) => {
   return (
@@ -13,10 +13,10 @@ const BadgeModal = ({ onClose }) => {
           onClick={onClose}
         />
         <div className="badge-modal-text">배지 목록</div>
-        <img src={Badge_list} alt="배지리스트"/>
+        <img src={Badge_list} alt="배지리스트" />
       </div>
     </div>
   );
 };
- 
+
 export default BadgeModal;
