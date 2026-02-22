@@ -244,7 +244,7 @@ export default function MyPage() {
   const deleteMem = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_HOST_URL}/api/club/setting/${clubId}`,
+        `${process.env.REACT_APP_HOST_URL}/api/club/setting`,
         {
           method: "DELETE",
           headers: {
