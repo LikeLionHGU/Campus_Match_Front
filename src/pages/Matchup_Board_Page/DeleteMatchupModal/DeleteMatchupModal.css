@@ -66,6 +66,12 @@
     color: #fff;
     cursor: pointer;
 }
+.delete-matchup-modal-button-confirm:hover{
+    background: #9CE2E7;
+}
+.delete-matchup-modal-button-confirm:active{
+    background: #007F88;
+}
 .delete-matchup-modal-button-cancel{
     border: 0px;
     width: 66px;
@@ -78,4 +84,16 @@
     border: 1.5px solid var(--Primary, #16C0CC);
     color:#16C0CC;
     cursor: pointer;
+}
+.delete-matchup-modal-button-cancel:hover{
+    color: #8BF7FF;
+    border: 1.5px solid #8BF7FF;
+    background: #EAFDFF;
+    outline: none;
+}
+.delete-matchup-modal-button-cancel:active{
+    border: 1.5px solid #007F88;
+    background: rgba(0, 127, 136, 0.30);
+    outline: none;
+    color: #007F88;
 }

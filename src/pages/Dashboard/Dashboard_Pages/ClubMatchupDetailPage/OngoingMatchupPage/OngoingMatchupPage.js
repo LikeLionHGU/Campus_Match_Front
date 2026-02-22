@@ -125,7 +125,7 @@ const OngoingMatchupPage = () => {
                         <td>
                           <div className="ongoing-club-info">
                             <img
-                              src={item.clubImage || DefaultLogo}
+                              src={item.imageUrl || DefaultLogo}
                               alt="club-icon"
                             />
                             <span>

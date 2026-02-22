@@ -116,6 +116,18 @@
     line-height: 100%; /* 15px */
     cursor: pointer;
 }
+.edit-matchup-left-button:hover{
+    border: 1.5px solid #8BF7FF;
+    background: #EAFDFF;
+    outline: none;
+    color: #8BF7FF;
+}
+.edit-matchup-left-button:active{
+    border: 1.5px solid #007F88;
+    background: rgba(0, 127, 136, 0.30);
+    outline: none;
+    color: #007F88;
+}
 .edit-matchup-right-button{
     border: 0px;
     margin-top: 20px;
@@ -134,6 +146,12 @@
     font-weight: 600;
     line-height: 100%; /* 15px */
     cursor: pointer;
+}
+.edit-matchup-right-button:hover{
+    background: #9CE2E7;
+}
+.edit-matchup-right-button:active{
+    background: #007F88;
 }
 .edit-matchup-modal-category,
 .edit-matchup-modal-date{
@@ -190,6 +208,12 @@
     background: var(--Primary, #16C0CC);
     border: 1.5px solid #16C0CC;
     color:#FFF;
+}
+.edit-matchup-modal-place button:hover{
+    background: #9CE2E7;
+}
+.edit-matchup-modal-place button:active{
+    background: #007F88;
 }
 .edit-matchup-modal-place input{
     border-radius: 8px;

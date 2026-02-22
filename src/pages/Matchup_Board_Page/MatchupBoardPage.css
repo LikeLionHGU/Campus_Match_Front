@@ -160,14 +160,13 @@
   display: flex;
   flex-direction: column;
   overflow: visible;
-  height: auto;
+  height: 813px;
   width: 1533px;
 }
 
 .matchup-board-table-wrapper {
   flex: 1;
-  overflow: visible;
-  height: auto;
+  overflow-y: auto;
   border-radius: 8px;
   width: 1533px;
 }
@@ -232,7 +231,6 @@
   cursor: pointer;
 }
 .matchup-board-pagination {
-  margin-top: 70px;
   display: flex;
   justify-content: center;
   align-items: center;

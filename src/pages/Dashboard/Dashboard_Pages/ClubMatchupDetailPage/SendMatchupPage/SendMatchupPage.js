@@ -126,7 +126,7 @@ const SendMatchupPage = () => {
                         <td>
                           <div className="send-club-info">
                             <img
-                              src={item.clubImage || DefaultLogo}
+                              src={item.imageUrl || DefaultLogo}
                               alt="club-icon"
                             />
                             <span>
