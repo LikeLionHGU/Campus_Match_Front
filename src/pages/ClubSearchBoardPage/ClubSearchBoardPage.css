@@ -58,7 +58,7 @@
     justify-content: center;
     align-items: center;
     display: grid;
-    grid-template-columns: 82px 884px 68px ;
+    grid-template-columns: 82px 884px 72px ;
     gap: 25px;
 }
 
@@ -92,7 +92,7 @@
 }
 
 .clubsearch-board-search-condition-right img{
-    margin-left: 2px;
+    margin-left: 6px;
     width: 12px;
     height: 12px;
 }
