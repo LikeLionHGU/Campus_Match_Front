@@ -10,6 +10,7 @@
   gap: 25px;
   background-color: #fbffff;
   padding: 80px 80px 83px 80px;
+  position: relative;
 }
 
 .club-intro {
@@ -180,3 +181,13 @@
   pointer-events: none;
   cursor: default;
 }
+.dashboard_back{
+  display: flex;
+  position: absolute;
+  left: 80px;
+  top: 30px;
+  align-items: center;
+  cursor: pointer;
+  
+}
+

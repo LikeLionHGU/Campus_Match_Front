@@ -10,6 +10,7 @@ import Matchup from "./Matchup/Matchup";
 import Gallery from "./Gallery/Gallery";
 import { useNavigate, useParams } from "react-router-dom";
 import Sidebar from "../../components/SideBar/SideBar";
+import LeftArrow from "../../assets/arrow_left.svg";
 
 const Dashboard = () => {
   const [openModal, setOpenModal] = useState(null);
@@ -80,6 +81,19 @@ const Dashboard = () => {
           <Sidebar />
         </div>
         <div className="dashboard-right">
+          {!isMyDashboard && (
+            <div className="dashboard_back">
+              <img
+                src={LeftArrow}
+                alt="left_arrow"
+                className="dashboard-back-button"
+                onClick={() => navigate(-1)}
+              />
+              
+              <span>동아리 게시판</span>
+            </div>
+    
+          )}
           <div
             className="club-intro"
             onClick={() => setOpenModal("intro")}
