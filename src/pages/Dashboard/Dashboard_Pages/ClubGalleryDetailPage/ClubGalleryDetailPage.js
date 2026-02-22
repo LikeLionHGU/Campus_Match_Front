@@ -6,6 +6,10 @@ import GalleryDetailModal from "./GalleryDetailModal";
 import MainLogo from "../../../../assets/mainLogo.png";
 import "./ClubGalleryDetailPage.css";
 import searchIcon from "../../../../assets/search.svg";
+import ArrowLeft from "../../../../assets/arrow_left.svg";
+import ArrowLeftDouble from "../../../../assets/arrow_left_double.svg";
+import ArrowRight from "../../../../assets/arrow_right.svg";
+import ArrowRightDouble from "../../../../assets/arrow_right_double.svg";
 import arrowIcon from "../../../../assets/arrow.svg";
 import backIcon from "../../../../assets/arrow_left.svg";
 
@@ -222,53 +226,71 @@ const ClubGalleryDetailPage = () => {
               </div>
 
               <div className="gallery-pagination">
-                <button
-                  className="page-control double"
-                  onClick={() => setCurrentPage(1)}
-                  disabled={currentPage === 1}
-                >
-                  &lt;&lt;
-                </button>
-                <button
-                  className="page-control"
-                  onClick={() =>
-                    setCurrentPage((prev) => Math.max(prev - 1, 1))
-                  }
-                  disabled={currentPage === 1}
-                >
-                  &lt;
-                </button>
+                <div className="pagination-move">
+                  <img
+                    className="gallery-pagination-double"
+                    src={ArrowLeftDouble}
+                    alt="<<"
+                    onClick={() => setCurrentPage(1)}
+                    style={{
+                      opacity: currentPage === 1 ? 0.3 : 1,
+                      cursor: currentPage === 1 ? "default" : "pointer",
+                    }}
+                  />
+                  <img
+                    className="gallery-pagination-mono"
+                    src={ArrowLeft}
+                    alt="<"
+                    onClick={() =>
+                      setCurrentPage((prev) => Math.max(prev - 1, 1))
+                    }
+                    style={{
+                      opacity: currentPage === 1 ? 0.3 : 1,
+                      cursor: currentPage === 1 ? "default" : "pointer",
+                    }}
+                  />
+                </div>
 
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                  (number) => (
-                    <button
-                      key={number}
-                      className={`page-number ${
-                        currentPage === number ? "active" : ""
-                      }`}
-                      onClick={() => setCurrentPage(number)}
-                    >
-                      {number}
-                    </button>
-                  ),
-                )}
+                <div className="pagination-numbers">
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                    (number) => (
+                      <button
+                        key={number}
+                        className={currentPage === number ? "active" : ""}
+                        onClick={() => setCurrentPage(number)}
+                      >
+                        {number}
+                      </button>
+                    ),
+                  )}
+                </div>
 
-                <button
-                  className="page-control"
-                  onClick={() =>
-                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-                  }
-                  disabled={currentPage === totalPages}
-                >
-                  &gt;
-                </button>
-                <button
-                  className="page-control double"
-                  onClick={() => setCurrentPage(totalPages)}
-                  disabled={currentPage === totalPages}
-                >
-                  &gt;&gt;
-                </button>
+                <div className="pagination-move">
+                  <img
+                    className="gallery-pagination-mono"
+                    src={ArrowRight}
+                    alt=">"
+                    onClick={() =>
+                      setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                    }
+                    style={{
+                      opacity: currentPage === totalPages ? 0.3 : 1,
+                      cursor:
+                        currentPage === totalPages ? "default" : "pointer",
+                    }}
+                  />
+                  <img
+                    className="gallery-pagination-double"
+                    src={ArrowRightDouble}
+                    alt=">>"
+                    onClick={() => setCurrentPage(totalPages)}
+                    style={{
+                      opacity: currentPage === totalPages ? 0.3 : 1,
+                      cursor:
+                        currentPage === totalPages ? "default" : "pointer",
+                    }}
+                  />
+                </div>
               </div>
             </>
           );
