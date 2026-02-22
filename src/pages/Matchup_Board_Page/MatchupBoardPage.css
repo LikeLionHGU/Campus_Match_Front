@@ -184,7 +184,7 @@
 }
 
 .matchup-board-table-wrapper table tr {
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.08);
+  
 }
 
 .matchup-board-table-wrapper table {
@@ -343,12 +343,13 @@
   background: var(--Primary, #16c0cc);
   color: #fff;
   font-family: Pretendard;
-  font-size: 18px;
+  font-size: 15px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 100%; /* 18px */
   border: none;
   cursor: pointer;
+  justify-content: center;
 }
 .matchup-board-header-add button:hover {
   background: #9ce2e7;
