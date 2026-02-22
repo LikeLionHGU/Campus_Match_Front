@@ -130,10 +130,38 @@
   font-size: 14px;
   width: 100%;
   outline: none;
+  font-family: inherit;
+}
+
+/* Base custom styling for date input */
+.input-group input[type="date"] {
+  color: #333;
+  position: relative;
+}
+
+/* Pseudo-placeholder for empty state */
+.input-group input[type="date"]:required:invalid::-webkit-datetime-edit {
+  color: transparent;
+}
+.input-group input[type="date"]:required:invalid::before {
+  content: "연도. 월. 일.";
+  position: absolute;
+  left: 12px;
+  color: #d6d6d6;
+  pointer-events: none;
+}
+
+/* Adjust the calendar picker icon */
+.input-group input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+}
+.input-group input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
 }
 
 .input-group:first-child input {
-  width: 120px;
+  width: 150px; /* Slightly wider to fit "연도. 월. 일." and icon */
 }
 
 .input-group input:focus {

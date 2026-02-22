@@ -135,10 +135,9 @@ const GalleryUploadModal = ({
             <div className="input-group">
               <label>날짜</label>
               <input
-                type="text"
+                type="date"
                 value={matchDate}
                 onChange={(e) => setMatchDate(e.target.value)}
-                placeholder="0000.00.00"
                 readOnly={isOfficial}
               />
             </div>
