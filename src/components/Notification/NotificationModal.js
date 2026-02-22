@@ -113,7 +113,7 @@ const NotificationModal = ({ onClose, onNotificationsChange }) => {
     }
     return item.awayClubName || "";
   };
-
+  // 일정 알람 개수 이상 많아지면, 스크롤 가능하게 수정해야함.
   const renderNotification = (item) => {
     const club = getClubDisplay(item);
 
@@ -172,14 +172,16 @@ const NotificationModal = ({ onClose, onNotificationsChange }) => {
             </div>
           </div>
         );
-      // 보류 content 내용에 따라 수정 필요
+
       case "schedule":
         return (
           <div className="noti-item" key={item.notificationId}>
             <div className="noti-text">
-              {item.content ||
-                `${club}와의 매치업 일정이 있습니다. 확인해보세요!`}
+              {item.content
+                ? `오늘의 할 일: ${item.content}`
+                : `오늘의 할 일: ${club}와의 매치업 일정이 생성되었습니다.`}
             </div>
+
             <button
               className="noti-close"
               onClick={() => handleDelete(item.notificationId)}
@@ -188,13 +190,15 @@ const NotificationModal = ({ onClose, onNotificationsChange }) => {
             </button>
           </div>
         );
-      // 보류 content 내용에 따라 수정 필요
+
       case "matchCancel":
       case "matchCancle":
         return (
           <div className="noti-item" key={item.notificationId}>
             <div className="noti-text">
-              {item.content || `${club}와의 매치업이 취소되었습니다.`}
+              {item.content
+                ? `${club}와의 매치업이 ${item.content}의 이유로 취소되었습니다.`
+                : `${club}와의 매치업이 취소되었습니다.`}
             </div>
             <button
               className="noti-close"
@@ -225,12 +229,14 @@ const NotificationModal = ({ onClose, onNotificationsChange }) => {
             </div>
           </div>
         );
-      // 보류 content 내용에 따라 수정 필요
+
       case "sendNo":
         return (
           <div className="noti-item" key={item.notificationId}>
             <div className="noti-text">
-              {item.content || `${club}(이)가 매치업을 거절했습니다`}
+              {item.content
+                ? `${item.content}의 이유로 ${club}이 매치업을 거절했습니다.`
+                : `${club}(이)가 매치업을 거절했습니다`}
             </div>
             <button
               className="noti-close"
@@ -254,20 +260,21 @@ const NotificationModal = ({ onClose, onNotificationsChange }) => {
             <div className="noti-buttons">
               <button
                 className="noti-action-btn"
-                onClick={() => navigate("/dashboard/recieve-matchup")}
+                onClick={() => navigate("/dashboard/receive-matchup")}
               >
                 제안받은 매치업으로 이동
               </button>
             </div>
           </div>
         );
-      // 보류 content 내용에 따라 수정 필요
+
       case "receiveCancel":
-      case "receiveCancle":
         return (
           <div className="noti-item" key={item.notificationId}>
             <div className="noti-text">
-              {item.content || `${club}(이)가 제안을 취소했습니다`}
+              {item.content
+                ? `${item.content}의 이유로 ${club}이 매치업을 취소했습니다.`
+                : `${club}(이)가 매치업을 취소했습니다`}
             </div>
             <button
               className="noti-close"
@@ -301,11 +308,14 @@ const NotificationModal = ({ onClose, onNotificationsChange }) => {
             </div>
           </div>
         );
-      // 보류 content 내용에 따라 수정 필요
       default:
         return (
           <div className="noti-item" key={item.notificationId}>
-            <div className="noti-text">{item.content || "알림이 있습니다"}</div>
+            <div className="noti-text">
+              {item.content
+                ? `알림이 있습니다 : ${item.content}`
+                : "알림이 있습니다"}
+            </div>
             <button
               className="noti-close"
               onClick={() => handleDelete(item.notificationId)}
