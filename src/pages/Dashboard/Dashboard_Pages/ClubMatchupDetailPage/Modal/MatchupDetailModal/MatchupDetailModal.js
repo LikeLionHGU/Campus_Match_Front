@@ -51,7 +51,7 @@ const MatchupDetailModal = ({
   if (!detail || !mapRef.current) return;
   if (!window.kakao || !window.kakao.maps) return;
 
-  // 장소 검색용 키워드 (상세주소 우선, 없으면 location)
+
   const locationName = detail.locationDetail || detail.location;
   if (!locationName) return;
 
@@ -61,7 +61,7 @@ const MatchupDetailModal = ({
     const container = mapRef.current;
 
     const options = {
-      center: new kakao.maps.LatLng(36.019, 129.3435), // 기본값 (포항)
+      center: new kakao.maps.LatLng(36.019, 129.3435),
       level: 3,
     };
 
@@ -82,7 +82,6 @@ const MatchupDetailModal = ({
           position: latlng,
         });
 
-        // ⭐ 마커 위 이름 표시
         const infowindow = new kakao.maps.InfoWindow({
           content: `
             <div style="
