@@ -16,6 +16,7 @@ import EditCalenderModal from "./EditCalenderModal/EditCalenderModal";
 import SuccessModal from "./SuccessModal/SuccessModal";
 import EditIcon from "../../../../assets/edit_gray.svg";
 import CanMatchupModal from "./CanMatcupModal/CanMatchupModal";
+import MyMatchupModal from "./MyMatchupModal/MyMatchupModal";
 
 const ClubCalenderDetailPage = () => {
 
@@ -32,6 +33,7 @@ const ClubCalenderDetailPage = () => {
     const [isMine, setIsMine] = useState(true);
     const [canMatchupModalOpen, setCanMatchupModalOpen] = useState(false);
     const [selectedMatchId, setSelectedMatchId] = useState(null);
+    const [myMatchupModalOpen,setMyMatchupModalOpen] = useState(false);
 
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
@@ -304,9 +306,12 @@ const ClubCalenderDetailPage = () => {
                                                     e.stopPropagation();
 
                                                     if (isMine && hasFilled) {
-
-                                                        
-
+                                                        const match = matchPosts.find((p) => p.matchDate === dateKey);
+                                                        if (match) {
+                                                        setSelectedMatchId(match.matchPostId);
+                                                        setMyMatchupModalOpen(true);
+                                                        }
+                                                        return;
                                                     }
 
                                                     else if (!isMine && hasOutline) {
@@ -551,6 +556,24 @@ const ClubCalenderDetailPage = () => {
                 />
             )}
 
+            {myMatchupModalOpen && (
+                <MyMatchupModal
+                    clubId={clubId}
+                    matchPostId={selectedMatchId}
+                    onSuccess={() => {
+
+                    setCanMatchupModalOpen(false);
+                
+
+                    
+                    }}
+                    onClose={() => {
+                    fetchSchedules();
+                    setMyMatchupModalOpen(false);
+                    
+                    }}
+                />
+            )}
         
         </>
     );

@@ -122,6 +122,7 @@
     border-radius: 8px;
     border: 1.5px solid var(--Gray-2, #D6D6D6);
     background: var(--white, #FFF);
+    
 }
 .apply-matchup-modal-date{
     display: grid;
