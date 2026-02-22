@@ -219,62 +219,64 @@ const MatchupHistoryPage = () => {
         </div>
 
         <div className="history-list-container">
-          <table className="history-table">
-            <thead>
-              <tr>
-                <th>
-                  날짜
-                  <img src={arrowIcon} alt="arrow" />
-                </th>
-                <th>동아리/대학</th>
-                <th>장소</th>
-                <th>결과</th>
-                <th>수정 / 삭제</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentItems.map((item, index) => (
-                <tr key={item.historyMatchId || index}>
-                  <td>{item.matchDate}</td>
-                  <td>
-                    <div className="history-club-cell">
-                      <img
-                        src={item.imageUrl || DefaultLogo}
-                        alt="logo"
-                        className="history-club-logo"
-                      />
-                      {item.clubName}/{item.university}
-                    </div>
-                  </td>
-                  <td>{item.location}</td>
-                  <td>{getResultIcon(item.result)}</td>
-                  <td>
-                    <div className="history-action-buttons">
-                      <button
-                        className="history-edit-btn"
-                        onClick={() => setEditData(item)}
-                      >
-                        수정하기
-                      </button>
-                      <span className="history-separator">/</span>
-                      <button
-                        className="history-delete-btn"
-                        onClick={() =>
-                          setDeleteTarget({
-                            ...item,
-                            matchHistoryId:
-                              item.matchHistoryId || item.historyMatchId,
-                          })
-                        }
-                      >
-                        삭제하기
-                      </button>
-                    </div>
-                  </td>
+          <div className="history-table-wrapper">
+            <table className="history-table">
+              <thead>
+                <tr>
+                  <th>
+                    날짜
+                    <img src={arrowIcon} alt="arrow" />
+                  </th>
+                  <th>동아리/대학</th>
+                  <th>장소</th>
+                  <th>결과</th>
+                  <th>수정 / 삭제</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {currentItems.map((item, index) => (
+                  <tr key={item.historyMatchId || index}>
+                    <td>{item.matchDate}</td>
+                    <td>
+                      <div className="history-club-cell">
+                        <img
+                          src={item.imageUrl || DefaultLogo}
+                          alt="logo"
+                          className="history-club-logo"
+                        />
+                        {item.clubName}/{item.university}
+                      </div>
+                    </td>
+                    <td>{item.location}</td>
+                    <td>{getResultIcon(item.result)}</td>
+                    <td>
+                      <div className="history-action-buttons">
+                        <button
+                          className="history-edit-btn"
+                          onClick={() => setEditData(item)}
+                        >
+                          수정하기
+                        </button>
+
+                        <button
+                          className="history-delete-btn"
+                          onClick={() =>
+                            setDeleteTarget({
+                              ...item,
+                              matchHistoryId:
+                                item.matchHistoryId || item.historyMatchId,
+                            })
+                          }
+                        >
+                          삭제하기
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
           <div className="history-pagination">
             {(() => {

@@ -133,13 +133,10 @@
   font-family: inherit;
 }
 
-/* Base custom styling for date input */
 .input-group input[type="date"] {
   color: #333;
   position: relative;
 }
-
-/* Pseudo-placeholder for empty state */
 .input-group input[type="date"]:required:invalid::-webkit-datetime-edit {
   color: transparent;
 }
@@ -151,7 +148,6 @@
   pointer-events: none;
 }
 
-/* Adjust the calendar picker icon */
 .input-group input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
   opacity: 0.6;
@@ -161,7 +157,7 @@
 }
 
 .input-group:first-child input {
-  width: 150px; /* Slightly wider to fit "연도. 월. 일." and icon */
+  width: 150px;
 }
 
 .input-group input:focus {
@@ -169,17 +165,17 @@
 }
 
 .submit-btn {
-  width: 100%;
+  display: block;
+  width: 66px;
   padding: 12px;
   background-color: #16c0cc;
   color: white;
   border: none;
-
-  border-radius: 6px;
+  border-radius: 5px;
   font-weight: bold;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 10px;
+  margin: 10px auto 0 auto;
 }
 
 .submit-btn:hover {
@@ -190,7 +186,6 @@
   background-color: #007f88;
 }
 
-/* 저장 완료 모달 */
 .modal-success-content {
   background: #fff;
   padding: 30px;
