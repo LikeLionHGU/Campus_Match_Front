@@ -45,12 +45,12 @@ const MatchupCancelModal = ({ onClose, onSuccess, matchPostId }) => {
               <span>해당 매치업을 취소 요청 하시겠습니까?</span>
             </div>
             <div className="matchup-cancel-modal-body">
-              <span>사유</span>
               <div>
                 <textarea
                   value={reason}
                   onChange={(e) => setReason(e.target.value)}
                   maxLength={200}
+                  placeholder="취소 사유를 입력해주세요."
                 />
 
                 <div className="typing-count">{reason.length} / 200</div>
