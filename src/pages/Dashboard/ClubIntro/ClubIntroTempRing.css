@@ -31,12 +31,9 @@
 
 .club-intro-temp-text strong {
   font-family: Pretendard;
-  font-weight: 700;
+  font-weight: 600;
   color: #1f1f1f;
-  /* Scaled font size: 36.6px was for 213px. For 183px, usage 36.6 * (183/213) = 31.4px? 
-     Or keep 36.6px if it fits? 
-     Let's use ~32px to be safe. */
-  font-size: 32px;
+  font-size: 20px;
   text-align: center;
   line-height: normal;
 }
