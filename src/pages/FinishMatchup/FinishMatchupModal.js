@@ -101,7 +101,7 @@ const FinishMatchupModal = ({ onClose, match }) => {
           >
             &times;
           </button>
-          <h2 className="confirm-title">매치업을 마무리하시겠습니까</h2>
+          <div className="confirm-title">매치업을 마무리하시겠습니까</div>
           <div className="modal-footer">
             <button
               className="modal-btn cancel-btn"
@@ -128,7 +128,7 @@ const FinishMatchupModal = ({ onClose, match }) => {
           <button className="finish-modal-close" onClick={handleSuccessClose}>
             &times;
           </button>
-          <h2 className="confirm-title">매치업이 마무리 되었습니다</h2>
+          <div className="confirm-title">매치업이 마무리 되었습니다</div>
           <p className="confirm-subtitle">
             작성한 글은 대시보드&gt;매치업 히스토리에서 확인 가능합니다
           </p>
@@ -153,7 +153,7 @@ const FinishMatchupModal = ({ onClose, match }) => {
         </button>
 
         <div className="finish-modal-header">
-          <h2>마무리하기</h2>
+          <div>마무리하기</div>
         </div>
 
         <div className="upload-section">
@@ -196,6 +196,7 @@ const FinishMatchupModal = ({ onClose, match }) => {
             <span className="form-label">결과</span>
             <div className="radio-group">
               <label className="radio-label">
+                경기
                 <input
                   type="radio"
                   name="matchCategory"
@@ -205,36 +206,35 @@ const FinishMatchupModal = ({ onClose, match }) => {
                     setResult("");
                   }}
                 />
-                경기
               </label>
               {matchCategory === "경기" && (
                 <>
                   <label className="radio-label">
+                    승
                     <input
                       type="radio"
                       name="result"
                       checked={result === "승"}
                       onChange={() => setResult("승")}
                     />
-                    승
                   </label>
                   <label className="radio-label">
+                    패
                     <input
                       type="radio"
                       name="result"
                       checked={result === "패"}
                       onChange={() => setResult("패")}
                     />
-                    패
                   </label>
                   <label className="radio-label">
+                    무
                     <input
                       type="radio"
                       name="result"
                       checked={result === "무"}
                       onChange={() => setResult("무")}
                     />
-                    무
                   </label>
                 </>
               )}
@@ -244,6 +244,7 @@ const FinishMatchupModal = ({ onClose, match }) => {
               style={{ marginTop: "8px", marginLeft: "96px" }}
             >
               <label className="radio-label">
+                단순 교류
                 <input
                   type="radio"
                   name="matchCategory"
@@ -253,7 +254,6 @@ const FinishMatchupModal = ({ onClose, match }) => {
                     setResult("교류");
                   }}
                 />
-                단순 교류
               </label>
             </div>
           </div>
@@ -262,22 +262,22 @@ const FinishMatchupModal = ({ onClose, match }) => {
             <span className="form-label">매치 온도</span>
             <div className="radio-group">
               <label className="radio-label">
+                업
                 <input
                   type="radio"
                   name="temperature"
                   checked={temperature === "up"}
                   onChange={() => setTemperature("up")}
                 />
-                업
               </label>
               <label className="radio-label">
+                다운
                 <input
                   type="radio"
                   name="temperature"
                   checked={temperature === "down"}
                   onChange={() => setTemperature("down")}
                 />
-                다운
               </label>
             </div>
           </div>
@@ -286,22 +286,22 @@ const FinishMatchupModal = ({ onClose, match }) => {
             <span className="form-label">재매치 의사</span>
             <div className="radio-group">
               <label className="radio-label">
+                예
                 <input
                   type="radio"
                   name="rematch"
                   checked={rematch === "yes"}
                   onChange={() => setRematch("yes")}
                 />
-                예
               </label>
               <label className="radio-label">
+                아니오
                 <input
                   type="radio"
                   name="rematch"
                   checked={rematch === "no"}
                   onChange={() => setRematch("no")}
                 />
-                아니오
               </label>
             </div>
           </div>

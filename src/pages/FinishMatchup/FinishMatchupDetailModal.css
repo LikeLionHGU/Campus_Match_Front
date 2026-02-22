@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,6 +15,7 @@
   background: #fff;
   width: 500px;
   max-width: 90%;
+  height: 800px;
   border-radius: 20px;
   padding: 40px;
   position: relative;
@@ -26,10 +27,9 @@
 
 .detail-modal-title {
   text-align: center;
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 20px;
   margin-bottom: 30px;
-  color: #333;
+  color: var(--text-color);
 }
 
 .detail-modal-close {
@@ -38,9 +38,9 @@
   right: 20px;
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
-  color: #666;
+  color: var(--text-color);
 }
 
 .detail-row {
@@ -53,7 +53,7 @@
   width: 80px;
   font-size: 16px;
   font-weight: 500;
-  color: #333;
+  color: var(--text-color);
 }
 
 .detail-value-box {
