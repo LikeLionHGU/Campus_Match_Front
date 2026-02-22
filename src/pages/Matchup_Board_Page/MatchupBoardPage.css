@@ -118,7 +118,7 @@
   justify-content: center;
   align-items: center;
   display: grid;
-  grid-template-columns: 82px 342px 68px;
+  grid-template-columns: 82px 342px 70px;
   gap: 25px;
 }
 
@@ -152,7 +152,7 @@
 }
 
 .matchup-board-search-condition-right img {
-  margin-left: 2px;
+  margin-left: 6px;
   width: 12px;
   height: 12px;
 }
