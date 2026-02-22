@@ -283,3 +283,7 @@
     justify-content:initial !important;
     padding-left: 50px;
 }
+.clubsearch-board-search-condition.active {
+  border: 1.5px solid #16C0CC;
+
+}
