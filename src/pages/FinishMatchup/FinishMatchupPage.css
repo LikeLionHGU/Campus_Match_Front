@@ -80,10 +80,6 @@
   border-bottom: none;
 }
 
-.matchup-table tbody tr:hover {
-  background-color: #f9f9f9;
-}
-
 .matchup-table td {
   padding: 16px;
   text-align: center;
