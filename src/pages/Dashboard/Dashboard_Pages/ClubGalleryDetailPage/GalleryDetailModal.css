@@ -7,7 +7,7 @@
   background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
-  padding-top: 147px;
+  align-items: center;
   z-index: 1000;
 }
 
@@ -127,6 +127,32 @@
   font-size: 14px;
   width: 100%;
   outline: none;
+  font-family: inherit;
+}
+
+.gd-field input[type="date"] {
+  color: #333;
+  position: relative;
+  width: 150px;
+}
+
+.gd-field input[type="date"]:required:invalid::-webkit-datetime-edit {
+  color: transparent;
+}
+.gd-field input[type="date"]:required:invalid::before {
+  content: "연도. 월. 일.";
+  position: absolute;
+  left: 12px;
+  color: #d6d6d6;
+  pointer-events: none;
+}
+
+.gd-field input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+}
+.gd-field input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
 }
 
 .gd-field input:focus {

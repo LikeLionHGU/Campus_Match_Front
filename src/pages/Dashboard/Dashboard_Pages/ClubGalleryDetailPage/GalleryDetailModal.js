@@ -188,7 +188,7 @@ const GalleryDetailModal = ({ item, onClose, onUpdate }) => {
           <div className="gd-field">
             <label>날짜</label>
             <input
-              type="text"
+              type="date"
               value={matchDate}
               onChange={(e) => setMatchDate(e.target.value)}
             />
