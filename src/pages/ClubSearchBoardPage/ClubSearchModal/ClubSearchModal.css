@@ -11,7 +11,7 @@
 .club-search-modal {
     position: relative;
     width: 568px;
-    height: 759px;
+    height: 709px;
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
@@ -154,6 +154,9 @@
 }
 
 .club-search-confirm-btn:hover {
-  filter: brightness(0.95);
+    background: #9CE2E7;
+}
+.club-search-confirm-btn:active {
+    background: #007F88;
 }
 

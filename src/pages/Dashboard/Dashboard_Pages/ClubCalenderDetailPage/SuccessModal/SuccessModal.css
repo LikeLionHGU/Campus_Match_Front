@@ -59,3 +59,9 @@
     background: var(--Primary, #16C0CC);
     color: #fff; 
 }
+.success-modal-button:hover{
+    background: #9CE2E7;
+}
+.success-modal-button:active{
+    background: #007F88;
+}

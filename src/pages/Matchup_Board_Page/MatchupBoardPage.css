@@ -534,3 +534,6 @@
 .matchup-board-clubName {
   justify-content: initial !important;
 }
+.matchup-board-search-condition.active {
+  border: 1.5px solid #16c0cc;
+}

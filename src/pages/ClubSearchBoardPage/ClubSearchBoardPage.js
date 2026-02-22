@@ -121,6 +121,9 @@ const ClubSearchBoardPage = () => {
   const goLastBlock = () => {
     setCurrentPage((prev) => Math.min(totalPages, prev + 10));
   };
+  const hasActiveFilter =
+  filters.regions.length > 0 ||
+  filters.sports.length > 0;
 
   return (
     <>
@@ -147,7 +150,11 @@ const ClubSearchBoardPage = () => {
                 />
               </div>
 
-              <div className="clubsearch-board-search-condition">
+              <div
+                className={`clubsearch-board-search-condition ${
+                  hasActiveFilter ? "active" : ""
+                }`}
+              >
                 <div
                   className="clubsearch-board-search-condition-left"
                   onClick={() => setSearchModalOpen(true)}

@@ -154,6 +154,9 @@
 }
 
 .matchup-search-confirm-btn:hover {
-  filter: brightness(0.95);
+  background: #9CE2E7;
+}
+.matchup-search-confirm-btn:active {
+  background: #007F88;
 }
 

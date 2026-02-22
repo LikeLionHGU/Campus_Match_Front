@@ -73,3 +73,9 @@
     color: #fff;
     cursor: pointer;
 }
+.apply-success-modal-button:hover{
+    background: #9CE2E7;
+}
+.apply-success-modal-button:active{
+    background: #007F88;
+}

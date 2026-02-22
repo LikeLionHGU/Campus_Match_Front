@@ -205,6 +205,12 @@ const MatchupBoardPage = () => {
       : []),
   ];
 
+  const hasActiveFilter =
+    filters.regions.length > 0 ||
+    filters.sports.length > 0 ||
+    filters.startDate ||
+    filters.endDate;
+
   return (
     <>
       <div className="container">
@@ -275,7 +281,10 @@ const MatchupBoardPage = () => {
                 />
               </div>
 
-              <div className="matchup-board-search-condition">
+              <div className={`matchup-board-search-condition ${
+                  hasActiveFilter ? "active" : ""
+                }`}
+              >
                 <div
                   className="matchup-board-search-condition-left"
                   onClick={() => setSearchModalOpen(true)}
