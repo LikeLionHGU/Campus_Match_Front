@@ -3,7 +3,7 @@ import Sidebar from "../../components/SideBar/SideBar";
 import FinishMatchupModal from "./FinishMatchupModal";
 import FinishMatchupDetailModal from "./FinishMatchupDetailModal";
 import "./FinishMatchupPage.css";
-import arrow from "../../assets/arrow.svg";
+import arrow from "../../assets/arrow_down.svg";
 import DefaultLogo from "../../assets/Main_Icon_Gray.svg";
 
 const FinishMatchupPage = () => {
