@@ -303,11 +303,15 @@ const ClubCalenderDetailPage = () => {
 
                                                     e.stopPropagation();
 
-                                                    if (hasFilled) {
-                                                    console.log("filled click", dateKey);
+                                                    if (isMine && hasFilled) {
 
-                                                    } else if (hasOutline) {
-                                                    const match = outlineSchedules.find(
+                                                        
+
+                                                    }
+
+                                                    else if (!isMine && hasOutline) {
+
+                                                        const match = outlineSchedules.find(
                                                             post => post.matchDate === dateKey
                                                         );
 
@@ -315,7 +319,6 @@ const ClubCalenderDetailPage = () => {
                                                             setSelectedMatchId(match.matchPostId);
                                                             setCanMatchupModalOpen(true);
                                                         }
-
                                                     }
 
                                                 }}
