@@ -26,10 +26,11 @@ const ApplyMatchupModal = ({ onClose, onSuccess, matchPostId, matchDate,start,en
                     })
                 }
             );
-
+            console.log(start,end);
             if (!res.ok) throw new Error();
     
             onSuccess();
+            
 
         } catch (e) {
 

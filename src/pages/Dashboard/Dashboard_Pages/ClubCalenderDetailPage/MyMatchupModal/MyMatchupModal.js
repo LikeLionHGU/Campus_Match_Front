@@ -1,21 +1,18 @@
 import { useState, useEffect, useRef } from "react";
-import "./CanMatchupModal.css";
+import "./MyMatchupModal.css";
 import closeIcon from "../../../../../assets/close.svg";
-import ApplyMatchupModal2 from "./ApplyMatchupModal2";
-import ApplySuccessModal from "../../../../Matchup_Board_Page/ApplySuccessModal/ApplySuccessModal";
 
-const CanMatchupModal = ({
+
+
+const MyMatchupModal = ({
     onClose,
     clubId,
-    matchPostId,
-    onSuccess    
+    matchPostId,   
 }) => {
 
     const [detail, setDetail] = useState(null);
-    const [applyModalOpen, setApplyModalOpen] = useState(false);
-    const [applySuccessModalOpen, setApplySuccessModalOpen] = useState(false);
-    const [applyStartTime, setApplyStartTime] = useState("");
-    const [applyEndTime, setApplyEndTime] = useState("");
+
+    
   const mapRef = useRef(null);
 
 
@@ -137,43 +134,70 @@ const CanMatchupModal = ({
     
     <>
         <div
-        className="can-matchup-modal-backdrop"
+        className="my-matchup-modal-backdrop"
         onClick={onClose}
         >
 
         <div
-            className="can-matchup-modal"
+            className="my-matchup-modal"
             onClick={(e) => e.stopPropagation()}
         >
 
             <img
             src={closeIcon}
             alt="close"
-            className="can-matchup-modal-close"
+            className="my-matchup-modal-close"
             onClick={onClose}
             />
 
 
-            <div className="can-matchup-modal-main">
+            <div className="my-matchup-modal-main">
 
-            <span className="can-matchup-modal-header">
+            <span className="my-matchup-modal-header">
                 매치 정보
             </span>
 
 
-            <div className="can-matchup-modal-body">
+            <div className="my-matchup-modal-body">
 
 
-                <div className="can-matchup-modal-body-date">
-                    <span>가능 날짜</span>
+                
+                
+
+                
+                <div className="my-matchup-modal-body-phone">
+
+                <span>종목</span>
+
+                <input
+                    value={detail?.sportCategory || ""}
+                    readOnly
+                />
+
+                </div>
+
+                <div className="my-matchup-modal-body-phone">
+
+                <span>동아리/대학</span>
+
+                <input
+                    value={`${detail?.clubName}/${detail?.university}` || ""}
+                    readOnly
+                />
+
+                </div>
+
+                <div className="my-matchup-modal-body-date">
+                    <span>매치 날짜</span>
                     <input
                         value={detail?.matchDate}
                         readOnly
                     />
                 </div>
-                <div className="can-matchup-modal-body-time">
 
-                <span>가능 시간</span>
+                <div className="my-matchup-modal-body-time">
+
+                <span>매치 시간</span>
 
                 <div>
                     <input
@@ -191,42 +215,8 @@ const CanMatchupModal = ({
 
                 </div>
 
-                <div className="can-matchup-modal-body-time2">
 
-                <span>신청 시간</span>
-
-                <div>
-                    <input
-                    type="time"
-                    value={applyStartTime}
-                    onChange={(e) => setApplyStartTime(e.target.value)}
-                    />
-
-                    <span>~</span>
-
-                    <input
-                    type="time"
-                    value={applyEndTime}
-                    onChange={(e) => setApplyEndTime(e.target.value)}
-                    />
-                </div>
-
-                </div>
-
-
-                <div className="can-matchup-modal-body-phone">
-
-                <span>전화번호</span>
-
-                <input
-                    value={detail?.phone || ""}
-                    readOnly
-                />
-
-                </div>
-
-
-                <div className="can-matchup-modal-body-place">
+                <div className="my-matchup-modal-body-place">
 
                 <span>장소</span>
 
@@ -238,7 +228,7 @@ const CanMatchupModal = ({
                 </div>
 
 
-                <div className="can-matchup-modal-body-map">
+                <div className="my-matchup-modal-body-map">
 
                 <div
                     ref={mapRef}
@@ -252,21 +242,12 @@ const CanMatchupModal = ({
                 </div>
 
             </div>
-            <div className="can-matchup-modal-bottom">
-                    <button 
-                        className="can-matchup-bottom-left-button"
-                        onClick={onClose}>
-                    취소
-                </button>
+            <div className="my-matchup-modal-bottom">
                 <button
-                        className="can-matchup-bottom-right-button"
-                        onClick={() => {
-                            
-                            setApplyModalOpen(true);
-                            
-                        }}
+                        className="my-matchup-bottom-button"
+                        onClick={()=>onClose()}
                 >
-                    신청
+                    확인
                 </button>
             </div>
 
@@ -275,29 +256,9 @@ const CanMatchupModal = ({
         </div>
 
         </div>
-        {applyModalOpen && (
-            <ApplyMatchupModal2
-                matchPostId={matchPostId}
-                matchDate={detail?.matchDate}
-
-                start={applyStartTime}
-                end={applyEndTime}
-
-                onClose={() => setApplyModalOpen(false)}
-
-                onSuccess={() => {
-                setApplyModalOpen(false);
-                setApplySuccessModalOpen(true);
-                
-                }}
-            />
-        )}
-        {applySuccessModalOpen && (
-            <ApplySuccessModal onConfirm={() => setApplySuccessModalOpen(false)} />
-        )}
     </>
   );
 
 };
 
-export default CanMatchupModal;
+export default MyMatchupModal;
