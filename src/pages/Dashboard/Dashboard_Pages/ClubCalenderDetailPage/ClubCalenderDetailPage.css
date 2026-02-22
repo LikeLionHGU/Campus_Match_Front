@@ -357,6 +357,7 @@
     text-align: center;
     background-color: #41DF82;
     margin-bottom: 15px;
+    border-radius: 3px;
 }
 
 .right-schedule-item{
@@ -382,6 +383,7 @@
     text-align: center;
     background-color: #D0F2F5;
     margin-bottom: 15px;
+    border-radius: 2px;
 }
 .calender-detail-right-bottom-third-title{
     width: 213px;
@@ -396,6 +398,7 @@
     text-align: center;
     background-color: #16C0CC;
     margin-bottom: 15px;
+    border-radius: 2px;
 }
 
 .calender-detail-header{
