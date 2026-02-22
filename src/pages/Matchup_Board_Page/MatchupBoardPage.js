@@ -230,7 +230,7 @@ const MatchupBoardPage = () => {
                   {filter === "mine" && "내가 쓴 매치업"}
                   {filter === "others" && "다른 사람이 쓴 매치업"}
                   <img
-                    src={ArrowDown}
+                    src={dropdownOpen? ArrowDown:ArrowDownGray}
                     alt="arrow"
                     className={`dropdown-arrow ${dropdownOpen ? "open" : ""}`}
                   />

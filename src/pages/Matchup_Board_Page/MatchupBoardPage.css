@@ -22,7 +22,7 @@
 }
 
 .dropdown-selected {
-  border: 1.5px solid #16c0cc;
+  border: 1.5px solid #d6d6d6;
   width: 163px;
   height: 18px;
   padding: 14px 20px;
@@ -31,7 +31,7 @@
   font-family: Pretendard;
   font-size: 15px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: normal;
   justify-content: space-between;
   background-color: #fff;
@@ -134,6 +134,7 @@
   align-items: center;
 }
 .matchup-board-search-condition-left img {
+  width: 12px;
   margin-left: 12px;
   margin-bottom: 1px;
 }
