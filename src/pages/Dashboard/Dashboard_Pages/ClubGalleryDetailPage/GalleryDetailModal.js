@@ -8,7 +8,28 @@ const GalleryDetailModal = ({ item, onClose, onUpdate }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [step, setStep] = useState("detail");
 
-  const imageList = item.imageUrls || (item.imageUrl ? [item.imageUrl] : []);
+  console.log("Gallery Detail Modal Item Data:", item); // for debugging backend response
+
+  let extractedList = [];
+  if (Array.isArray(item.imageUrls) && item.imageUrls.length > 0) {
+    extractedList = item.imageUrls;
+  } else if (item.imageUrls && typeof item.imageUrls === "string") {
+    // fallback if it comes as a comma separated string
+    extractedList = item.imageUrls.split(",").filter(Boolean);
+  } else if (Array.isArray(item.images) && item.images.length > 0) {
+    extractedList = item.images;
+  } else if (Array.isArray(item.imageList) && item.imageList.length > 0) {
+    extractedList = item.imageList;
+  } else if (
+    Array.isArray(item.galleryImages) &&
+    item.galleryImages.length > 0
+  ) {
+    extractedList = item.galleryImages;
+  } else if (item.imageUrl) {
+    extractedList = [item.imageUrl];
+  }
+
+  const imageList = extractedList;
 
   const handlePrev = () => {
     setCurrentImageIndex((prev) =>

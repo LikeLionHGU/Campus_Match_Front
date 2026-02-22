@@ -232,18 +232,18 @@
   text-overflow: ellipsis;
 }
 
-.matchup-board-pagination {
+.gallery-pagination {
   margin-top: auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.matchup-board-pagination-double {
+.gallery-pagination-double {
   width: 11px;
   height: 11px;
   margin-top: 2.8px;
 }
-.matchup-board-pagination-mono {
+.gallery-pagination-mono {
   width: 16px;
   height: 16px;
 }
@@ -256,7 +256,7 @@
   display: flex;
   gap: 15px;
 }
-.matchup-board-pagination button {
+.gallery-pagination button {
   border: none;
   background: none;
   cursor: pointer;
@@ -269,7 +269,7 @@
   line-height: normal;
 }
 
-.matchup-board-pagination button.active {
+.gallery-pagination button.active {
   color: #16c0cc;
   font-weight: 600;
 }

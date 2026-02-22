@@ -97,38 +97,148 @@ const GalleryUploadModal = ({
         <form onSubmit={handleSubmit}>
           <div className="upload-area">
             {images.length > 0 ? (
-              <div className="image-preview-container">
-                {Array.from(images).map((file, index) => (
-                  <img
-                    key={index}
-                    src={URL.createObjectURL(file)}
-                    alt="preview"
-                    className="preview-img"
-                  />
-                ))}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "100%",
+                  height: "100%",
+                  padding: "15px",
+                  boxSizing: "border-box",
+                }}
+              >
+                <div
+                  className="image-preview-container"
+                  style={{ flex: 1, minHeight: 0, padding: 0 }}
+                >
+                  {Array.from(images).map((file, index) => (
+                    <div
+                      key={index}
+                      style={{
+                        position: "relative",
+                        height: "100%",
+                        flexShrink: 0,
+                      }}
+                    >
+                      <img
+                        src={URL.createObjectURL(file)}
+                        alt="preview"
+                        className="preview-img"
+                      />
+                      <button
+                        type="button"
+                        style={{
+                          position: "absolute",
+                          top: "5px",
+                          right: "5px",
+                          background: "rgba(0,0,0,0.5)",
+                          color: "white",
+                          border: "none",
+                          borderRadius: "50%",
+                          width: "20px",
+                          height: "20px",
+                          cursor: "pointer",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontSize: "12px",
+                        }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          e.preventDefault();
+                          setImages((prev) => {
+                            const newImages = [...prev];
+                            newImages.splice(index, 1);
+                            return newImages;
+                          });
+                        }}
+                      >
+                        X
+                      </button>
+                    </div>
+                  ))}
+                </div>
+                {images.length < 5 && (
+                  <label
+                    className="upload-placeholder"
+                    style={{
+                      cursor: "pointer",
+                      width: "100%",
+                      height: "100px",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      display: "flex",
+                      flexDirection: "column",
+                      border: "2px dashed #ddd",
+                      borderRadius: "8px",
+                      background: "#fafafa",
+                      flexShrink: 0,
+                      pointerEvents: "auto",
+                      marginTop: "15px",
+                    }}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <div
+                      className="camera-icon"
+                      style={{ marginBottom: "8px" }}
+                    ></div>
+                    <span>추가하기</span>
+                    <span style={{ fontSize: "12px", color: "#bbb" }}>
+                      {images.length}/5
+                    </span>
+                    <input
+                      type="file"
+                      multiple
+                      accept="image/*"
+                      style={{ display: "none" }}
+                      onChange={(e) => {
+                        const newFiles = Array.from(e.target.files);
+                        setImages((prev) => {
+                          const combined = [...prev, ...newFiles];
+                          if (combined.length > 5) {
+                            alert("사진은 최대 5장까지 올릴 수 있습니다.");
+                            return combined.slice(0, 5);
+                          }
+                          return combined;
+                        });
+                        e.target.value = "";
+                      }}
+                    />
+                  </label>
+                )}
               </div>
             ) : (
-              <div className="upload-placeholder">
+              <label
+                className="upload-placeholder"
+                style={{
+                  cursor: "pointer",
+                  width: "100%",
+                  height: "100%",
+                  justifyContent: "center",
+                  pointerEvents: "auto",
+                }}
+              >
                 <div className="camera-icon"></div>
                 <span>사진 올리기</span>
                 <span style={{ fontSize: "12px", color: "#bbb" }}>0/5</span>
-              </div>
+                <input
+                  type="file"
+                  multiple
+                  accept="image/*"
+                  style={{ display: "none" }}
+                  onChange={(e) => {
+                    const newFiles = Array.from(e.target.files);
+                    if (newFiles.length > 5) {
+                      alert("사진은 최대 5장까지 올릴 수 있습니다.");
+                      setImages(newFiles.slice(0, 5));
+                    } else {
+                      setImages(newFiles);
+                    }
+                    e.target.value = "";
+                  }}
+                />
+              </label>
             )}
-
-            <input
-              type="file"
-              multiple
-              accept="image/*"
-              onChange={(e) => {
-                if (e.target.files.length > 5) {
-                  alert("사진은 최대 5장까지 올릴 수 있습니다.");
-                  e.target.value = "";
-                  return;
-                }
-                setImages(e.target.files);
-              }}
-              className="file-input"
-            />
           </div>
 
           <div className="row-group">
