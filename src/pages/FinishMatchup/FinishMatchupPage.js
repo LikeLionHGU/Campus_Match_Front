@@ -89,69 +89,70 @@ const FinishMatchupPage = () => {
 
         <div className="matchup-list-container">
           <>
-            <table className="matchup-table">
-              <thead>
-                <tr>
-                  <th>
-                    날짜
-                    <img src={arrow} alt="arrow" />
-                  </th>
-                  <th>종목</th>
-                  <th>동아리/대학</th>
-                  <th>지역</th>
-                  <th>장소</th>
-                  <th>매치온도</th>
-                  <th>세부 정보 / 마무리하기</th>
-                </tr>
-              </thead>
-              <tbody>
-                {(() => {
-                  const indexOfLastItem = currentPage * itemsPerPage;
-                  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-                  const currentItems = matchups.slice(
-                    indexOfFirstItem,
-                    indexOfLastItem,
-                  );
+            <div className="matchup-table-wrapper">
+              <table className="matchup-table">
+                <thead>
+                  <tr>
+                    <th>
+                      날짜
+                      <img src={arrow} alt="arrow" />
+                    </th>
+                    <th>종목</th>
+                    <th>동아리/대학</th>
+                    <th>지역</th>
+                    <th>장소</th>
+                    <th>매치온도</th>
+                    <th>세부 정보 / 마무리하기</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(() => {
+                    const indexOfLastItem = currentPage * itemsPerPage;
+                    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+                    const currentItems = matchups.slice(
+                      indexOfFirstItem,
+                      indexOfLastItem,
+                    );
 
-                  return currentItems.map((match) => (
-                    <tr key={match.matchPostId}>
-                      <td>{match.matchDate}</td>
-                      <td>{match.sportCategory}</td>
-                      <td>
-                        <div className="opponent-cell">
-                          <img
-                            src={match.imageUrl || DefaultLogo}
-                            alt="logo"
-                            className="opponent-logo"
-                          />
-                          {match.clubName}/{match.university}
-                        </div>
-                      </td>
-                      <td>{match.region}</td>
-                      <td>{match.location}</td>
-                      <td>{match.mannerScore}°C</td>
-                      <td>
-                        <div className="action-buttons">
-                          <button
-                            className="detail-btn"
-                            onClick={() => handleDetailClick(match)}
-                          >
-                            세부정보
-                          </button>
-                          <span className="separator">/</span>
-                          <button
-                            className="finish-btn"
-                            onClick={() => handleFinishClick(match)}
-                          >
-                            마무리하기
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ));
-                })()}
-              </tbody>
-            </table>
+                    return currentItems.map((match) => (
+                      <tr key={match.matchPostId}>
+                        <td>{match.matchDate}</td>
+                        <td>{match.sportCategory}</td>
+                        <td>
+                          <div className="opponent-cell">
+                            <img
+                              src={match.imageUrl || DefaultLogo}
+                              alt="logo"
+                              className="opponent-logo"
+                            />
+                            {match.clubName}/{match.university}
+                          </div>
+                        </td>
+                        <td>{match.region}</td>
+                        <td>{match.location}</td>
+                        <td>{match.mannerScore}°C</td>
+                        <td>
+                          <div className="action-buttons">
+                            <button
+                              className="detail-btn"
+                              onClick={() => handleDetailClick(match)}
+                            >
+                              세부정보
+                            </button>
+                            <button
+                              className="finish-btn"
+                              onClick={() => handleFinishClick(match)}
+                            >
+                              마무리하기
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ));
+                  })()}
+                </tbody>
+              </table>
+            </div>
             <div className="pagination">
               {(() => {
                 const totalPages = Math.ceil(matchups.length / itemsPerPage);
