@@ -624,6 +624,7 @@ const MatchupBoardPage = () => {
 
       {applyModalOpen && (
         <ApplyMatchupModal
+          matchDate={detailData.matchDate}
           matchPostId={openMatchId}
           onClose={() => setApplyModalOpen(false)}
           onSuccess={() => {

@@ -1,18 +1,14 @@
-import { useState } from "react";
-import "./ApplyMatchupModal.css";
-import closeIcon from "../../../assets/close.svg";
 
-const ApplyMatchupModal = ({ onClose, onSuccess, matchPostId, matchDate}) => {
+import "./ApplyMatchupModal2.css";
+import closeIcon from "../../../../../assets/close.svg";
 
-    const [startTime, setStartTime] = useState("");
-    const [endTime, setEndTime] = useState("");
+const ApplyMatchupModal = ({ onClose, onSuccess, matchPostId, matchDate,start,end}) => {
+
+    
 
     const handleApply = async () => {
 
-        if (!startTime || !endTime) {
-            alert("신청 시간을 입력해주세요.");
-            return;
-        }
+        
 
         try {
 
@@ -25,15 +21,14 @@ const ApplyMatchupModal = ({ onClose, onSuccess, matchPostId, matchDate}) => {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        startTime: startTime,
-                        endTime: endTime
+                        startTime: start,
+                        endTime: end
                     })
                 }
             );
 
             if (!res.ok) throw new Error();
-            console.log(startTime);
-            console.log(endTime);
+    
             onSuccess();
 
         } catch (e) {
@@ -75,16 +70,16 @@ const ApplyMatchupModal = ({ onClose, onSuccess, matchPostId, matchDate}) => {
 
                         <input
                             type="time"
-                            value={startTime}
-                            onChange={(e) => setStartTime(e.target.value)}
+                            value={start}
+                            readOnly
                         />
 
                         <span>~</span>
 
                         <input
                             type="time"
-                            value={endTime}
-                            onChange={(e) => setEndTime(e.target.value)}
+                            value={end}
+                            readOnly
                         />
 
                     </div>

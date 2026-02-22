@@ -11,7 +11,7 @@ import Section5 from "./Section5";
 const LandingPage = () => {
   const sectionsRef = useRef([]);
 
-  const sections = [Section1, Section2, Section3, Section4];
+  const sections = [Section2, Section3, Section4];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -38,6 +38,7 @@ const LandingPage = () => {
 
   return (
     <div className="landing-wrapper">
+      <Section1 />
       {sections.map((SectionComponent, i) => (
         <section
           key={i}
