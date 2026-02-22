@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import LogoutIcon from "../../assets/logout.svg";
+import LogoutIcon from "../../assets/logout_gray.svg";
 import DefaultClubIcon from "../../assets/Main_Icon_Gray.svg";
 import "./SideBar.css";
 
