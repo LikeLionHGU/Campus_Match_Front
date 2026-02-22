@@ -11,7 +11,7 @@
   z-index: 1000;
 }
 
-.modal-content {
+.gallery-modal-content {
   background: white;
   border-radius: 12px;
   width: 620px;
@@ -22,7 +22,7 @@
   margin-top: 0;
 }
 
-.modal-content h3 {
+.gallery-modal-content h3 {
   margin: 0 0 20px 0;
   font-size: 18px;
   font-weight: bold;
