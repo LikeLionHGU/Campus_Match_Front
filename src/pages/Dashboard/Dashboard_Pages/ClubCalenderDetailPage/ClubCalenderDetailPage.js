@@ -14,7 +14,8 @@ import AddCalenderModal from "./AddCalenderModal/AddCalenderModal";
 import EditCalenderModal from "./EditCalenderModal/EditCalenderModal";
 // import MatchupCalenderModal from "./MatchupCalenderModal/MatchupCalenderModal";
 import SuccessModal from "./SuccessModal/SuccessModal";
-import EditIcon from "../../../../assets/edit_gray.svg"
+import EditIcon from "../../../../assets/edit_gray.svg";
+import CanMatchupModal from "./CanMatcupModal/CanMatchupModal";
 
 const ClubCalenderDetailPage = () => {
 
@@ -29,6 +30,8 @@ const ClubCalenderDetailPage = () => {
     const [matchPosts, setMatchPosts] = useState([]);
     const [outlineSchedules, setOutlineSchedules]=useState([]);
     const [isMine, setIsMine] = useState(true);
+    const [canMatchupModalOpen, setCanMatchupModalOpen] = useState(false);
+    const [selectedMatchId, setSelectedMatchId] = useState(null);
 
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
@@ -138,6 +141,8 @@ const ClubCalenderDetailPage = () => {
         setSelectedScheduleId(scheduleId);
         setModalType("edit");
     };
+
+    
     const parseLocalDate = (dateStr) => {
     const [y, m, d] = dateStr.split("-").map(Number);
     return new Date(y, m - 1, d);
@@ -302,7 +307,14 @@ const ClubCalenderDetailPage = () => {
                                                     console.log("filled click", dateKey);
 
                                                     } else if (hasOutline) {
-                                                    console.log("outline click", dateKey);
+                                                    const match = outlineSchedules.find(
+                                                            post => post.matchDate === dateKey
+                                                        );
+
+                                                        if (match) {
+                                                            setSelectedMatchId(match.matchPostId);
+                                                            setCanMatchupModalOpen(true);
+                                                        }
 
                                                     }
 
@@ -515,6 +527,24 @@ const ClubCalenderDetailPage = () => {
                 <SuccessModal
                     message="삭제되었습니다"
                     onConfirm={() => setModalType(null)}
+                />
+            )}
+            {canMatchupModalOpen && (
+                <CanMatchupModal
+                    clubId={clubId}
+                    matchPostId={selectedMatchId}
+                    onSuccess={() => {
+
+                    setCanMatchupModalOpen(false);
+                
+
+                    
+                    }}
+                    onClose={() => {
+                    fetchSchedules();
+                    setCanMatchupModalOpen(false);
+                    
+                    }}
                 />
             )}
 
