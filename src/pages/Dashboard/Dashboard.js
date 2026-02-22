@@ -142,9 +142,9 @@ const Dashboard = () => {
                       src={badge?.imageUrl || empty_badge}
                       alt={badge?.title || "empty"}
                     />
-                    {badge && (
-                      <span className="badge-tooltip">{badge.title}</span>
-                    )}
+                    <span className="badge-tooltip">
+                      {badge ? badge.title : "아직 배지가 없습니다"}
+                    </span>
                   </div>
                 ));
               })()}
