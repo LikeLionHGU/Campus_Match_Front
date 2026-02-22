@@ -13,10 +13,15 @@ const FinishMatchupModal = ({ onClose, match }) => {
   const handleImageChange = (e) => {
     if (e.target.files) {
       const newImages = Array.from(e.target.files);
-      if (images.length + newImages.length > 5) {
-        return;
-      }
-      setImages((prev) => [...prev, ...newImages]);
+      setImages((prev) => {
+        const combined = [...prev, ...newImages];
+        if (combined.length > 5) {
+          alert("사진은 최대 5장까지 올릴 수 있습니다.");
+          return combined.slice(0, 5);
+        }
+        return combined;
+      });
+      e.target.value = "";
     }
   };
 
@@ -157,28 +162,98 @@ const FinishMatchupModal = ({ onClose, match }) => {
         </div>
 
         <div className="upload-section">
-          <label className="upload-box">
-            {images.length > 0 ? (
-              <img
-                src={URL.createObjectURL(images[0])}
-                alt="preview"
-                className="upload-preview"
-              />
-            ) : (
+          {images.length > 0 ? (
+            <div className="upload-area-active">
+              <div className="image-preview-container">
+                {Array.from(images).map((file, index) => (
+                  <div key={index} className="preview-item">
+                    <img
+                      src={URL.createObjectURL(file)}
+                      alt={`preview-${index}`}
+                      className="upload-preview"
+                    />
+                    <button
+                      type="button"
+                      className="remove-img-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        setImages((prev) => {
+                          const newImages = [...prev];
+                          newImages.splice(index, 1);
+                          return newImages;
+                        });
+                      }}
+                    >
+                      X
+                    </button>
+                  </div>
+                ))}
+              </div>
+              {images.length < 5 && (
+                <label
+                  className="upload-box"
+                  style={{
+                    width: "100%",
+                    height: "60px",
+                    flexDirection: "row",
+                    gap: "10px",
+                    marginTop: "10px",
+                    backgroundColor: "#fafafa",
+                    border: "2px dashed #ddd",
+                  }}
+                >
+                  <div
+                    className="upload-placeholder-content"
+                    style={{ flexDirection: "row", gap: "8px" }}
+                  >
+                    <span
+                      className="upload-icon"
+                      style={{ marginBottom: 0 }}
+                    ></span>
+                    <span
+                      className="upload-text"
+                      style={{
+                        fontSize: "14px",
+                        fontWeight: "500",
+                        color: "#333",
+                      }}
+                    >
+                      추가하기
+                    </span>
+                    <span
+                      className="upload-text"
+                      style={{ fontSize: "12px", color: "#bbb" }}
+                    >
+                      {images.length}/5
+                    </span>
+                  </div>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    className="image-file-input"
+                    onChange={handleImageChange}
+                  />
+                </label>
+              )}
+            </div>
+          ) : (
+            <label className="upload-box">
               <div className="upload-placeholder-content">
                 <span className="upload-icon"></span>
                 <span className="upload-text">사진 올리기</span>
-                <span className="upload-text">{images.length}/5</span>
+                <span className="upload-text">0/5</span>
               </div>
-            )}
-            <input
-              type="file"
-              accept="image/*"
-              multiple
-              className="image-file-input"
-              onChange={handleImageChange}
-            />
-          </label>
+              <input
+                type="file"
+                accept="image/*"
+                multiple
+                className="image-file-input"
+                onChange={handleImageChange}
+              />
+            </label>
+          )}
         </div>
 
         <div className="form-section">
