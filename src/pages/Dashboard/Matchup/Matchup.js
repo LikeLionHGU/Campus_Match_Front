@@ -94,7 +94,7 @@ const Matchup = ({
               <thead>
                 <tr>
                   <th>날짜</th>
-                  <th>동아리/대학</th>
+                  <th>동아리</th>
                   <th>종목</th>
                   <th>매치온도</th>
                 </tr>
@@ -105,7 +105,7 @@ const Matchup = ({
                     <td>{item?.matchDate || ""}</td>
                     <td>
                       {item
-                        ? `${item.clubName || ""}/${item.university || ""}`
+                        ? `${item.clubName || ""}`
                         : ""}
                     </td>
                     <td>{item?.sportCategory || ""}</td>
@@ -128,7 +128,7 @@ const Matchup = ({
               <thead>
                 <tr>
                   <th>날짜</th>
-                  <th>동아리/대학</th>
+                  <th>동아리</th>
                   <th>종목</th>
                   <th>매치온도</th>
                 </tr>
@@ -139,7 +139,7 @@ const Matchup = ({
                     <td>{item?.matchDate || ""}</td>
                     <td>
                       {item
-                        ? `${item.clubName || ""}/${item.university || ""}`
+                        ? `${item.clubName || ""}`
                         : ""}
                     </td>
                     <td>{item?.sportCategory || ""}</td>

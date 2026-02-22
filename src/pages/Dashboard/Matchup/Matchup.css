@@ -68,7 +68,7 @@
 } 
 
 .matchup-frame table {
-    
+    background-color: #fff;
     border-collapse: collapse;
 }
 
@@ -84,7 +84,7 @@
     width: 125px;
 }
 
-.matchup-first-row{
+.matchup-frame table tbody tr:nth-child(odd){
     background: #ECFEFA;
 }
 

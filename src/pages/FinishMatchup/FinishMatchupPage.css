@@ -87,8 +87,12 @@
 .matchup-table td {
   padding: 16px;
   text-align: center;
-  font-size: 14px;
-  color: #333;
+  color: var(--Text, #1F1F1F);
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
   vertical-align: middle;
 }
 

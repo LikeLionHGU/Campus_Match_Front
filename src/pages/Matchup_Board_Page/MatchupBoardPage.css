@@ -169,6 +169,7 @@
   overflow-y: auto;
   border-radius: 8px;
   width: 1533px;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.08);
 }
 
 .matchup-board-table-wrapper table tr {
@@ -214,7 +215,7 @@
 }
 
 .matchup-board-table-wrapper tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #f6f6f6;
 }
 .matchup-board-table-wrapper tbody button {
   border: none;
@@ -234,6 +235,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 .matchup-board-pagination-double {
   width: 11px;
