@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./FinishMatchupModal.css";
+import closeIcon from "../../assets/close.svg";
 
 const FinishMatchupModal = ({ onClose, match }) => {
   const [title, setTitle] = useState("");
@@ -100,12 +101,12 @@ const FinishMatchupModal = ({ onClose, match }) => {
           className="finish-confirm-content"
           onClick={(e) => e.stopPropagation()}
         >
-          <button
+          <img
+            src={closeIcon}
+            alt="close"
             className="finish-modal-close"
             onClick={() => setStep("form")}
-          >
-            &times;
-          </button>
+          />
           <div className="confirm-title">매치업을 마무리하시겠습니까</div>
           <div className="modal-footer">
             <button
@@ -130,9 +131,12 @@ const FinishMatchupModal = ({ onClose, match }) => {
           className="finish-confirm-content"
           onClick={(e) => e.stopPropagation()}
         >
-          <button className="finish-modal-close" onClick={handleSuccessClose}>
-            &times;
-          </button>
+          <img
+            src={closeIcon}
+            alt="close"
+            className="finish-modal-close"
+            onClick={handleSuccessClose}
+          />
           <div className="confirm-title">매치업이 마무리 되었습니다</div>
           <p className="confirm-subtitle">
             작성한 글은 대시보드&gt;매치업 히스토리에서 확인 가능합니다
@@ -153,9 +157,12 @@ const FinishMatchupModal = ({ onClose, match }) => {
         className="finish-modal-content"
         onClick={(e) => e.stopPropagation()}
       >
-        <button className="finish-modal-close" onClick={onClose}>
-          &times;
-        </button>
+        <img
+          src={closeIcon}
+          alt="close"
+          className="finish-modal-close"
+          onClick={onClose}
+        />
 
         <div className="finish-modal-header">
           <div>마무리하기</div>

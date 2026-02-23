@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./MatchupHistoryModal.css";
+import closeIcon from "../../../../assets/close.svg";
 
 const MatchupHistoryModal = ({ mode, historyData, onClose, onSuccess }) => {
   const [matchDate, setMatchDate] = useState(historyData?.matchDate || "");
@@ -273,12 +274,12 @@ const MatchupHistoryModal = ({ mode, historyData, onClose, onSuccess }) => {
           >
             <div className="search-modal-header">
               <h3>동아리 찾기</h3>
-              <button
+              <img
+                src={closeIcon}
+                alt="close"
                 className="search-modal-close"
                 onClick={() => setIsSearchModalOpen(false)}
-              >
-                ✕
-              </button>
+              />
             </div>
             <div className="search-modal-input-row">
               <input
