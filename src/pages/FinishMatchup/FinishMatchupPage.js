@@ -13,7 +13,10 @@ const FinishMatchupPage = () => {
   const [selectedDetailMatch, setSelectedDetailMatch] = useState(null);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+
   const itemsPerPage = 10;
+  const pagesPerBlock = 10; // 페이지 번호 최대 10개 표시
+
   useEffect(() => {
     fetchEndedMatchups();
   }, []);
@@ -28,13 +31,12 @@ const FinishMatchupPage = () => {
           headers: {
             Authorization: token || "",
           },
-        },
+        }
       );
 
       if (response.ok) {
         const data = await response.json();
-        setMatchups(data.List || data);
-        console.log(data);
+        setMatchups(data.List || data || []);
       } else {
         console.error("Failed to fetch ended matchups");
       }
@@ -53,7 +55,7 @@ const FinishMatchupPage = () => {
           headers: {
             Authorization: token || "",
           },
-        },
+        }
       );
 
       if (response.ok) {
@@ -74,142 +76,190 @@ const FinishMatchupPage = () => {
     setIsDetailModalOpen(true);
   };
 
+  /* ---------------- pagination logic ---------------- */
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(matchups.length / itemsPerPage)
+  );
+
+  const currentBlock = Math.floor((currentPage - 1) / pagesPerBlock);
+
+  const startPage = currentBlock * pagesPerBlock + 1;
+
+  const endPage = Math.min(startPage + pagesPerBlock - 1, totalPages);
+
+  const pageNumbers = [];
+  for (let i = startPage; i <= endPage; i++) {
+    pageNumbers.push(i);
+  }
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
+  const currentItems = matchups.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
+
+  const goFirstBlock = () => setCurrentPage(startPage - pagesPerBlock);
+  const goLastBlock = () => setCurrentPage(startPage + pagesPerBlock);
+
+  const goPrev = () =>
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+
+  const goNext = () =>
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+
+  /* -------------------------------------------------- */
+
   return (
     <div className="finish-matchup-container">
       <div className="sidebar">
         <Sidebar />
       </div>
+
       <div className="finish-matchup-content">
         <div className="finish-matchup-header">
-          <div className="finish-matchup-title">종료된 매치업</div>
+          <div className="finish-matchup-title">
+            종료된 매치업
+          </div>
           <div className="finish-matchup-subtitle">
             마무리하기를 눌러 매치업 히스토리를 작성해주세요
           </div>
         </div>
 
         <div className="matchup-list-container">
-          <>
-            <div className="matchup-table-wrapper">
-              <table className="matchup-table">
-                <thead>
+
+          <div className="matchup-table-wrapper">
+            <table className="matchup-table">
+              <thead>
+                <tr>
+                  <th>
+                    날짜
+                    <img src={arrow} alt="arrow" />
+                  </th>
+                  <th>종목</th>
+                  <th>동아리/대학</th>
+                  <th>지역</th>
+                  <th>장소</th>
+                  <th>매치온도</th>
+                  <th>세부 정보 / 마무리하기</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {currentItems.length === 0 ? (
                   <tr>
-                    <th>
-                      날짜
-                      <img src={arrow} alt="arrow" />
-                    </th>
-                    <th>종목</th>
-                    <th>동아리/대학</th>
-                    <th>지역</th>
-                    <th>장소</th>
-                    <th>매치온도</th>
-                    <th>세부 정보 / 마무리하기</th>
+                    <td colSpan="7" style={{ textAlign: "center", padding: "40px" }}>
+                      종료된 매치업이 없습니다.
+                    </td>
                   </tr>
-                </thead>
-                <tbody>
-                  {(() => {
-                    const indexOfLastItem = currentPage * itemsPerPage;
-                    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-                    const currentItems = matchups.slice(
-                      indexOfFirstItem,
-                      indexOfLastItem,
-                    );
+                ) : (
+                  currentItems.map((match) => (
+                    <tr key={match.matchPostId}>
+                      <td>{match.matchDate}</td>
 
-                    return currentItems.map((match) => (
-                      <tr key={match.matchPostId}>
-                        <td>{match.matchDate}</td>
-                        <td>{match.sportCategory}</td>
-                        <td>
-                          <div className="opponent-cell">
-                            <img
-                              src={match.imageUrl || DefaultLogo}
-                              alt="logo"
-                              className="opponent-logo"
-                            />
-                            {match.clubName}/{match.university}
-                          </div>
-                        </td>
-                        <td>{match.region}</td>
-                        <td>{match.location}</td>
-                        <td>{match.mannerScore}°C</td>
-                        <td>
-                          <div className="action-buttons">
-                            <button
-                              className="detail-btn"
-                              onClick={() => handleDetailClick(match)}
-                            >
-                              세부정보
-                            </button>
-                            <button
-                              className="finish-btn"
-                              onClick={() => handleFinishClick(match)}
-                            >
-                              마무리하기
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    ));
-                  })()}
-                </tbody>
-              </table>
-            </div>
-            <div className="pagination">
-              {(() => {
-                const totalPages = Math.ceil(matchups.length / itemsPerPage);
-                return (
-                  <>
-                    <button
-                      className="page-control double"
-                      onClick={() => setCurrentPage(1)}
-                      disabled={currentPage === 1}
-                    >
-                      &lt;&lt;
-                    </button>
-                    <button
-                      className="page-control"
-                      onClick={() =>
-                        setCurrentPage((prev) => Math.max(prev - 1, 1))
-                      }
-                      disabled={currentPage === 1}
-                    >
-                      &lt;
-                    </button>
+                      <td>{match.sportCategory}</td>
 
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                      (number) => (
-                        <button
-                          key={number}
-                          className={`page-number ${
-                            currentPage === number ? "active" : ""
-                          }`}
-                          onClick={() => setCurrentPage(number)}
-                        >
-                          {number}
-                        </button>
-                      ),
-                    )}
+                      <td>
+                        <div className="opponent-cell">
+                          <img
+                            src={match.imageUrl || DefaultLogo}
+                            alt="logo"
+                            className="opponent-logo"
+                          />
+                          {match.clubName}/{match.university}
+                        </div>
+                      </td>
 
-                    <button
-                      className="page-control"
-                      onClick={() =>
-                        setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-                      }
-                      disabled={currentPage === totalPages}
-                    >
-                      &gt;
-                    </button>
-                    <button
-                      className="page-control double"
-                      onClick={() => setCurrentPage(totalPages)}
-                      disabled={currentPage === totalPages}
-                    >
-                      &gt;&gt;
-                    </button>
-                  </>
-                );
-              })()}
-            </div>
-          </>
+                      <td>{match.region}</td>
+
+                      <td>{match.location}</td>
+
+                      <td>{match.mannerScore}°C</td>
+
+                      <td>
+                        <div className="action-buttons">
+
+                          <button
+                            className="detail-btn"
+                            onClick={() =>
+                              handleDetailClick(match)
+                            }
+                          >
+                            세부정보
+                          </button>
+
+                          <button
+                            className="finish-btn"
+                            onClick={() =>
+                              handleFinishClick(match)
+                            }
+                          >
+                            마무리하기
+                          </button>
+
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+
+            </table>
+          </div>
+
+          {/* pagination */}
+
+          <div className="pagination">
+
+            <button
+              className="page-control double"
+              onClick={goFirstBlock}
+              disabled={startPage === 1}
+            >
+              &lt;&lt;
+            </button>
+
+            <button
+              className="page-control"
+              onClick={goPrev}
+              disabled={currentPage === 1}
+            >
+              &lt;
+            </button>
+
+            {pageNumbers.map((number) => (
+              <button
+                key={number}
+                className={`page-number ${
+                  currentPage === number ? "active" : ""
+                }`}
+                onClick={() => setCurrentPage(number)}
+              >
+                {number}
+              </button>
+            ))}
+
+            <button
+              className="page-control"
+              onClick={goNext}
+              disabled={currentPage === totalPages}
+            >
+              &gt;
+            </button>
+
+            <button
+              className="page-control double"
+              onClick={goLastBlock}
+              disabled={endPage === totalPages}
+            >
+              &gt;&gt;
+            </button>
+
+          </div>
+
         </div>
 
         {isModalOpen && selectedMatch && (
@@ -225,6 +275,7 @@ const FinishMatchupPage = () => {
             onClose={() => setIsDetailModalOpen(false)}
           />
         )}
+
       </div>
     </div>
   );
