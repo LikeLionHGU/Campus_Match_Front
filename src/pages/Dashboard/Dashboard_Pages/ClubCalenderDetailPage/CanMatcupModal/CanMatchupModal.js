@@ -200,6 +200,8 @@ const CanMatchupModal = ({
                     type="time"
                     value={applyStartTime}
                     onChange={(e) => setApplyStartTime(e.target.value)}
+                    min={detail?.startTime||undefined}
+                    max={applyEndTime||undefined}
                     />
 
                     <span>~</span>
@@ -208,6 +210,8 @@ const CanMatchupModal = ({
                     type="time"
                     value={applyEndTime}
                     onChange={(e) => setApplyEndTime(e.target.value)}
+                    min={applyStartTime||undefined}
+                    max={detail?.endTime||undefined}
                     />
                 </div>
 

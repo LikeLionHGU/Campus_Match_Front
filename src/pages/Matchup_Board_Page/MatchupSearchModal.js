@@ -118,12 +118,14 @@ const MatchupSearchModal = ({ filters, setFilters, onClose }) => {
                                 value={tempStartDate || ""}
                                 onChange={(e) => setTempStartDate(e.target.value)}
                                 placeholder="0000"
+                                max={tempEndDate || undefined}
                             />
                             <span>~</span>
                             <input
                                 type="date"
                                 value={tempEndDate || ""}
                                 onChange={(e) => setTempEndDate(e.target.value)}
+                                min={tempStartDate || undefined}
                             />
                         </div>
                     </div>

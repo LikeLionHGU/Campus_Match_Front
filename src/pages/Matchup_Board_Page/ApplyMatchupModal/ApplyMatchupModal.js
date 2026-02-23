@@ -10,7 +10,7 @@ const ApplyMatchupModal = ({ onClose, onSuccess, matchPostId, matchDate}) => {
     const handleApply = async () => {
 
         if (!startTime || !endTime) {
-            alert("신청 시간을 입력해주세요.");
+            
             return;
         }
 
@@ -32,8 +32,7 @@ const ApplyMatchupModal = ({ onClose, onSuccess, matchPostId, matchDate}) => {
             );
 
             if (!res.ok) throw new Error();
-            console.log(startTime);
-            console.log(endTime);
+          
             onSuccess();
 
         } catch (e) {
@@ -85,6 +84,7 @@ const ApplyMatchupModal = ({ onClose, onSuccess, matchPostId, matchDate}) => {
                             type="time"
                             value={endTime}
                             onChange={(e) => setEndTime(e.target.value)}
+                            min={startTime || undefined}
                         />
 
                     </div>

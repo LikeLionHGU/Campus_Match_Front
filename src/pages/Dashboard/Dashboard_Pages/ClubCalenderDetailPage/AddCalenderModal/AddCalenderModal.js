@@ -13,7 +13,6 @@ const AddCalenderModal = ({ onClose, date, onSuccess }) => {
   const [startTime, setStartTime] = useState("00:00");
   const [endTime, setEndTime] = useState("23:59");
 
-  // 날짜 들어오면 자동 세팅
   useEffect(() => {
     if (date) {
       setStartDate(date);
@@ -24,7 +23,6 @@ const AddCalenderModal = ({ onClose, date, onSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // ✅ 제목 validation
     if (!title.trim()) {
       setTitleError("제목을 입력해주세요.");
       return;
@@ -116,6 +114,7 @@ const AddCalenderModal = ({ onClose, date, onSuccess }) => {
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
+                max={endDate|| undefined}
               />
 
               <input
@@ -123,6 +122,7 @@ const AddCalenderModal = ({ onClose, date, onSuccess }) => {
                 lang="ko-KR"
                 value={startTime}
                 onChange={(e) => setStartTime(e.target.value)}
+                max={endTime|| undefined}
               />
             </div>
 
@@ -133,6 +133,7 @@ const AddCalenderModal = ({ onClose, date, onSuccess }) => {
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
+                min={startDate|| undefined}
               />
 
               <input
@@ -140,6 +141,7 @@ const AddCalenderModal = ({ onClose, date, onSuccess }) => {
                 lang="ko-KR"
                 value={endTime}
                 onChange={(e) => setEndTime(e.target.value)}
+                min={startTime|| undefined}
               />
             </div>
 

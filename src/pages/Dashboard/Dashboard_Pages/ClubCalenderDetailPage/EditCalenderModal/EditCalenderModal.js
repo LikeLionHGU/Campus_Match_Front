@@ -168,11 +168,13 @@ const EditCalenderModal = ({ onClose, onSuccess, onDelete, scheduleId }) => {
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
+                max={endDate|| undefined}
               />
               <input
                 type="time"
                 value={startTime}
                 onChange={(e) => setStartTime(e.target.value)}
+                max={endTime|| undefined}
               />
             </div>
 
@@ -182,11 +184,13 @@ const EditCalenderModal = ({ onClose, onSuccess, onDelete, scheduleId }) => {
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
+                min={startDate|| undefined}
               />
               <input
                 type="time"
                 value={endTime}
                 onChange={(e) => setEndTime(e.target.value)}
+                min={startTime|| undefined}
               />
             </div>
 
