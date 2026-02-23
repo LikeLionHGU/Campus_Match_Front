@@ -122,8 +122,7 @@ const ClubSearchBoardPage = () => {
     setCurrentPage((prev) => Math.min(totalPages, prev + 10));
   };
   const hasActiveFilter =
-  filters.regions.length > 0 ||
-  filters.sports.length > 0;
+    filters.regions.length > 0 || filters.sports.length > 0;
 
   return (
     <>
@@ -252,7 +251,11 @@ const ClubSearchBoardPage = () => {
                               src={item.imageUrl || DefaultClubIcon}
                               alt="club-icon"
                             />
-                            <span>{item.clubName}</span>
+                            <span>
+                              {item.clubName?.length > 10
+                                ? `${item.clubName.slice(0, 10)}...`
+                                : item.clubName}
+                            </span>
                           </div>
                         </td>
                         <td>{item.sportCategory}</td>
