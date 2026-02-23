@@ -187,6 +187,12 @@
   
 }
 
+.matchup-board-pagination-mono:hover,
+.matchup-board-pagination-double:hover,
+.pagination-numbers button:hover {
+  color: #333;
+  background-color: #eee;
+}
 .matchup-board-table-wrapper table {
   width: 1533px;
   border-collapse: collapse;
@@ -252,10 +258,12 @@
   width: 11px;
   height: 11px;
   margin-top: 2.8px;
+  cursor: pointer;
 }
 .matchup-board-pagination-mono {
   width: 16px;
   height: 16px;
+  cursor: pointer;
 }
 .pagination-numbers {
   display: flex;

@@ -225,6 +225,11 @@
     color: #16C0CC;
     font-weight: 600;
 }
+.clubsearch-board-pagination-mono:hover,
+.clubsearch-board-pagination-double:hover{
+    color: #333;
+    background-color: #eee;
+}
 
 .thead-date{
     display:grid;
