@@ -10,7 +10,7 @@ import ArrowRightDouble from "../../../../../assets/arrow_right_double.svg";
 import ArrowDown from "../../../../../assets/arrow_down.svg";
 import MatchupDetailModal from "../Modal/MatchupDetailModal/MatchupDetailModal";
 import MatchupFinishModal from "../Modal/MatchupFinishModal/MatchupFinishModal";
-import SuccessModal from "../../ClubCalenderDetailPage/SuccessModal/SuccessModal";
+import FinishSuccessModal from "../Modal/MatchupFinishModal/FinishSuccessModal";
 import DefaultLogo from "../../../../../assets/Main_Icon_Gray.svg";
 const OngoingMatchupPage = () => {
   const navigate = useNavigate();
@@ -235,7 +235,7 @@ const OngoingMatchupPage = () => {
       )}
 
       {successModalOpen && (
-        <SuccessModal
+        <FinishSuccessModal
           message="취소 요청이 완료되었습니다"
           onConfirm={() => setSuccessModalOpen(false)}
         />

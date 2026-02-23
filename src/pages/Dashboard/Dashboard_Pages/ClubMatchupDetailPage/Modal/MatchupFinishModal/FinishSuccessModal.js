@@ -1,5 +1,5 @@
 import "./FinishSuccessModal.css";
-import closeIcon from "../../../assets/close.svg"
+import closeIcon from "../../../../../../assets/close.svg"
 
 const FinishSuccessModal = ({ onConfirm }) => {
   return (
