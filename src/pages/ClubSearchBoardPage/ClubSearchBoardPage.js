@@ -121,6 +121,18 @@ const ClubSearchBoardPage = () => {
   const goLastBlock = () => {
     setCurrentPage((prev) => Math.min(totalPages, prev + 10));
   };
+
+  const getPageNumbers = () => {
+    const currentBlock = Math.ceil(currentPage / 10);
+    const startPage = (currentBlock - 1) * 10 + 1;
+    const endPage = Math.min(startPage + 9, totalPages);
+
+    const pages = [];
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(i);
+    }
+    return pages;
+  };
   const hasActiveFilter =
     filters.regions.length > 0 || filters.sports.length > 0;
 
@@ -297,13 +309,13 @@ const ClubSearchBoardPage = () => {
                 </div>
 
                 <div className="pagination-numbers">
-                  {Array.from({ length: totalPages }).map((_, i) => (
+                  {getPageNumbers().map((pageNum) => (
                     <button
-                      key={i}
-                      className={currentPage === i + 1 ? "active" : ""}
-                      onClick={() => setCurrentPage(i + 1)}
+                      key={pageNum}
+                      className={currentPage === pageNum ? "active" : ""}
+                      onClick={() => setCurrentPage(pageNum)}
                     >
-                      {i + 1}
+                      {pageNum}
                     </button>
                   ))}
                 </div>
