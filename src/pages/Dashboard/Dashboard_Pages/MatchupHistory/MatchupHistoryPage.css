@@ -284,7 +284,7 @@
 .history-edit-btn,
 .history-delete-btn {
   padding: 8px 12px;
-  border-radius: 8px;
+  border-radius: 2px;
   font-size: 13px;
   cursor: pointer;
   border: none;

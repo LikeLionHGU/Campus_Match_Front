@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./GalleryUploadModal.css";
+import closeIcon from "../../../../assets/close.svg";
 
 const GalleryUploadModal = ({
   onClose,
@@ -72,9 +73,12 @@ const GalleryUploadModal = ({
           className="modal-success-content"
           onClick={(e) => e.stopPropagation()}
         >
-          <button className="close-btn" onClick={handleSuccessClose}>
-            &times;
-          </button>
+          <img
+            src={closeIcon}
+            alt="close"
+            className="close-btn"
+            onClick={handleSuccessClose}
+          />
           <h3 className="success-title">저장되었습니다</h3>
           <button className="submit-btn" onClick={handleSuccessClose}>
             확인
@@ -90,9 +94,12 @@ const GalleryUploadModal = ({
         className="gallery-modal-content"
         onClick={(e) => e.stopPropagation()}
       >
-        <button className="close-btn" onClick={onClose}>
-          &times;
-        </button>
+        <img
+          src={closeIcon}
+          alt="close"
+          className="close-btn"
+          onClick={onClose}
+        />
 
         <form onSubmit={handleSubmit}>
           <div className="upload-area">

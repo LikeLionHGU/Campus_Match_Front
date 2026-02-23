@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MainLogo from "../../../../assets/mainLogo.png";
 import "./GalleryDetailModal.css";
+import closeIcon from "../../../../assets/close.svg";
 
 const GalleryDetailModal = ({ item, onClose, onUpdate }) => {
   const [title, setTitle] = useState(item.title);
@@ -116,9 +117,12 @@ const GalleryDetailModal = ({ item, onClose, onUpdate }) => {
           className="gd-success-content"
           onClick={(e) => e.stopPropagation()}
         >
-          <button className="gd-close-btn" onClick={handleSuccessClose}>
-            &times;
-          </button>
+          <img
+            src={closeIcon}
+            alt="close"
+            className="gd-close-btn"
+            onClick={handleSuccessClose}
+          />
           <h3 className="gd-success-title">저장되었습니다</h3>
           <button className="gd-confirm-btn" onClick={handleSuccessClose}>
             확인
@@ -171,9 +175,12 @@ const GalleryDetailModal = ({ item, onClose, onUpdate }) => {
   return (
     <div className="gd-overlay" onClick={onClose}>
       <div className="gd-content" onClick={(e) => e.stopPropagation()}>
-        <button className="gd-close-btn" onClick={onClose}>
-          &times;
-        </button>
+        <img
+          src={closeIcon}
+          alt="close"
+          className="gd-close-btn"
+          onClick={onClose}
+        />
 
         <div className="gd-image-area">
           {imageList.length > 1 && (

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./FinishMatchupDetailModal.css";
+import closeIcon from "../../assets/close.svg";
 
 const FinishMatchupDetailModal = ({ match, onClose }) => {
   const [detailData, setDetailData] = useState(null);
@@ -84,9 +85,12 @@ const FinishMatchupDetailModal = ({ match, onClose }) => {
         className="detail-modal-content"
         onClick={(e) => e.stopPropagation()}
       >
-        <button className="detail-modal-close" onClick={onClose}>
-          &times;
-        </button>
+        <img
+          src={closeIcon}
+          alt="close"
+          className="detail-modal-close"
+          onClick={onClose}
+        />
         <h2 className="detail-modal-title">세부 정보</h2>
 
         {loading ? (
