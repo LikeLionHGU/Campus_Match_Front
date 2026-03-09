@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route,useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import MakeClub from "./pages/makeClub/makeClub";
@@ -18,12 +19,21 @@ import SendMatchupPage from "./pages/Dashboard/Dashboard_Pages/ClubMatchupDetail
 import FinishMatchupPage from "./pages/FinishMatchup/FinishMatchupPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 function App() {
   function Layout() {
     const location = useLocation();
     const isLanding = location.pathname === "/";
     return (
       <>
+        <ScrollToTop />
         <Header />
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -33,9 +43,18 @@ function App() {
           <Route path="/myPage" element={<MyPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/record" element={<MatchupHistoryPage />} />
-          <Route path="/dashboard/upcoming-matchup" element={<UpcomingMatchupPage />} />
-          <Route path="/dashboard/ongoing-matchup" element={<OngoingMatchupPage />} />
-          <Route path="/dashboard/receive-matchup" element={<ReceiveMatchupPage />} />
+          <Route
+            path="/dashboard/upcoming-matchup"
+            element={<UpcomingMatchupPage />}
+          />
+          <Route
+            path="/dashboard/ongoing-matchup"
+            element={<OngoingMatchupPage />}
+          />
+          <Route
+            path="/dashboard/receive-matchup"
+            element={<ReceiveMatchupPage />}
+          />
           <Route path="/dashboard/send-matchup" element={<SendMatchupPage />} />
           <Route path="/dashboard/calender" element={<DetailCalender />} />
           <Route path="/dashboard/gallery" element={<DetailGallery />} />
@@ -43,13 +62,16 @@ function App() {
           <Route path="/club-board" element={<ClubSearchBoardPage />} />
           <Route path="/finish-matchup" element={<FinishMatchupPage />} />
           <Route path="/club-board/dashboard/:clubId" element={<Dashboard />} />
-          <Route path="/club-board/dashboard/:clubId/calender" element={<DetailCalender />} />
+          <Route
+            path="/club-board/dashboard/:clubId/calender"
+            element={<DetailCalender />}
+          />
         </Routes>
         {!isLanding && <Footer />}
       </>
     );
   }
-  
+
   return (
     <BrowserRouter>
       <Layout />
