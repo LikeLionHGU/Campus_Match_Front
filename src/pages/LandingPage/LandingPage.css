@@ -1,9 +1,6 @@
-
-
 .landing-wrapper {
-  
-  background: var(--Ash-Blue, #F5F9FC);
-  overflow-x: hidden;
+  background: var(--Ash-Blue, #f5f9fc);
+  overflow-x: clip;
 }
 
 .landing-section {

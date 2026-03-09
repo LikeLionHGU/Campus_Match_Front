@@ -9,7 +9,6 @@
 
 .inner {
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.05);
-  position: sticky;
   display: flex;
   padding: 1.302vw 4.167vw;
   justify-content: space-between;
@@ -66,6 +65,6 @@
 .logo {
   cursor: pointer;
 }
-.user span{
+.user span {
   cursor: pointer;
 }
