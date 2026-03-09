@@ -1,27 +1,27 @@
 .container {
   display: grid;
-  grid-template-columns: 229px 1fr;
+  grid-template-columns: 11.927vw 1fr;
 }
 
 .ongoing-matchup-container {
   display: grid;
-  grid-template-rows: 24px 1fr;
+  grid-template-rows: 1.25vw 1fr;
   background-color: #f7fafa;
-  padding: 34px 80px 106px 78px;
-  gap: 50px;
+  padding: 1.771vw 4.167vw 5.521vw 4.062vw;
+  gap: 2.604vw;
 }
 
 .ongoing-club-info {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 10px;
-  gap: 25px;
+  padding-left: 0.521vw;
+  gap: 1.302vw;
 }
 
 .ongoing-club-info img {
-  width: 35px;
-  height: 35px;
+  width: 1.823vw;
+  height: 1.823vw;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -29,24 +29,24 @@
 
 .ongoing-matchup-header {
   cursor: pointer;
-  width: 140px;
+  width: 7.292vw;
   display: grid;
-  grid-template-columns: 20px 52px;
+  grid-template-columns: 1.042vw 2.708vw;
   text-align: center;
 
   align-items: center;
-  gap: 10px;
+  gap: 0.521vw;
 }
 .ongoing-matchup-header img {
-  width: 20px;
-  height: 20px;
+  width: 1.042vw;
+  height: 1.042vw;
   aspect-ratio: 1/1;
 }
 .ongoing-matchup-header span {
-  width: 140px;
+  width: 7.292vw;
   color: var(--Text, #1f1f1f);
   font-family: Pretendard;
-  font-size: 20px;
+  font-size: 1.042vw;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -54,15 +54,15 @@
 .ongoing-match-content {
   display: flex;
   flex-direction: column;
-  height: 813px;
-  width: 1533px;
+  height: 42.344vw;
+  width: 79.844vw;
 }
 
 .ongoing-match-table-wrapper {
   flex: 1;
   overflow-y: auto;
-  border-radius: 8px;
-  width: 1533px;
+  border-radius: 0.417vw;
+  width: 79.844vw;
 }
 
 .ongoing-match-table-wrapper table tr {
@@ -70,7 +70,7 @@
 }
 
 .ongoing-match-table-wrapper table {
-  width: 1533px;
+  width: 79.844vw;
   border-collapse: collapse;
   overflow: hidden;
 }
@@ -82,25 +82,25 @@
   align-self: stretch;
   color: var(--white, #fff);
   font-family: Pretendard;
-  font-size: 18px;
+  font-size: 0.938vw;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
 }
 .ongoing-match-table-wrapper table thead tr {
-  height: 61px;
+  height: 3.177vw;
 }
 .ongoing-match-table-wrapper table tbody {
   color: var(--Text, #1f1f1f);
   font-family: Pretendard;
-  font-size: 15px;
+  font-size: 0.781vw;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
 }
 .ongoing-match-table-wrapper table tbody td {
-  height: 58px;
-  width: 219px;
+  height: 3.021vw;
+  width: 11.406vw;
   text-align: center;
 }
 .ongoing-match-table-wrapper tbody tr:nth-child(odd) {
@@ -112,13 +112,13 @@
 }
 .ongoing-match-table-wrapper tbody button {
   border: none;
-  border-radius: 2px;
+  border-radius: 0.104vw;
   background: #d6fbff;
-  width: 62px;
-  height: 24px;
+  width: 3.229vw;
+  height: 1.25vw;
   color: var(--Text, #1f1f1f);
   font-family: Pretendard;
-  font-size: 12px;
+  font-size: 0.625vw;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -130,31 +130,31 @@
   align-items: center;
 }
 .ongoing-pagination-double {
-  width: 11px;
-  height: 11px;
-  margin-top: 2.8px;
+  width: 0.573vw;
+  height: 0.573vw;
+  margin-top: 0.146vw;
 }
 .ongoing-pagination-mono {
-  width: 16px;
-  height: 16px;
+  width: 0.833vw;
+  height: 0.833vw;
 }
 .pagination-numbers {
   display: flex;
-  gap: 25px;
-  margin: 0 40px;
+  gap: 1.302vw;
+  margin: 0 2.083vw;
 }
 .pagination-move {
   display: flex;
-  gap: 15px;
+  gap: 0.781vw;
 }
 .ongoing-pagination button {
   border: none;
   background: none;
   cursor: pointer;
-  height: 18px;
+  height: 0.938vw;
   text-align: center;
   font-family: Pretendard;
-  font-size: 15px;
+  font-size: 0.781vw;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -167,8 +167,8 @@
 
 .thead-date {
   display: grid;
-  grid-template-columns: 32px 14px;
-  gap: 10px;
+  grid-template-columns: 1.667vw 0.729vw;
+  gap: 0.521vw;
   align-items: center;
   justify-content: center;
 }

@@ -14,31 +14,31 @@
 }
 
 .badge-modal {
-  width: 1192px;;
-  height: 611px;
+  width: 62.083vw;;
+  height: 31.823vw;
   display: inline-flex;
-  padding: 100px 50px 50px 50px;
+  padding: 5.208vw 2.604vw 2.604vw 2.604vw;
   flex-direction: column;
   position: relative; 
-  border-radius: 20px;
+  border-radius: 1.042vw;
   background: #FFF;
 }
 .badge-modal-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 1.042vw;
+  right: 1.042vw;
 
-  width: 15.8px;
-  height: 15.8px;
+  width: 0.823vw;
+  height: 0.823vw;
   cursor: pointer;
 }
 
 .badge-modal-text{
   color: var(--Text, #1F1F1F);
   font-family: Pretendard;
-  font-size: 20px;
+  font-size: 1.042vw;
   font-style: normal;
   font-weight: 500;
   line-height: 20px; /* 100% */
-  margin-bottom: 20px;
+  margin-bottom: 1.042vw;
 }

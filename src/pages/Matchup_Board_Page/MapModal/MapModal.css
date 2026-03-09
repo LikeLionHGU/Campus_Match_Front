@@ -9,18 +9,18 @@
 }
 
 .map-modal {
-    width: 1000px;
-    height: 800px;
+    width: 52.083vw;
+    height: 41.667vw;
     background: white;
-    border-radius: 8px;
+    border-radius: 0.417vw;
     display: flex;
     flex-direction: column;
     overflow: hidden;
 }
 
 .map-modal-header {
-    height: 50px;
-    padding: 0 20px;
+    height: 2.604vw;
+    padding: 0 1.042vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,16 +30,16 @@
 
 .map-search {
     display: flex;
-    gap: 10px;
-    padding: 12px 20px;
+    gap: 0.521vw;
+    padding: 0.625vw 1.042vw;
     border-bottom: 1px solid #eee;
 }
 
 .map-search input {
     flex: 1;
-    height: 40px;
-    padding: 0 12px;
-    border-radius: 6px;
+    height: 2.083vw;
+    padding: 0 0.625vw;
+    border-radius: 0.312vw;
     border: 1.5px solid #D6D6D6;
 }
 
@@ -49,22 +49,22 @@
 }
 
 .map-search button {
-    width: 80px;
+    width: 4.167vw;
     border: none;
     background: #16C0CC;
     color: white;
-    border-radius: 6px;
+    border-radius: 0.312vw;
     cursor: pointer;
 }
 
 .map-search-result {
-    max-height: 140px;
+    max-height: 7.292vw;
     overflow-y: auto;
     border-bottom: 1px solid #eee;
 }
 
 .map-search-result li {
-    padding: 10px 20px;
+    padding: 0.521vw 1.042vw;
     cursor: pointer;
 }
 
@@ -74,11 +74,11 @@
 
 .place-name {
     font-weight: 600;
-    font-size: 14px;
+    font-size: 0.729vw;
 }
 
 .place-address {
-    font-size: 12px;
+    font-size: 0.625vw;
     color: #888;
 }
 
@@ -87,8 +87,8 @@
 }
 
 .map-footer {
-    height: 100px;
-    padding: 0 20px;
+    height: 5.208vw;
+    padding: 0 1.042vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -96,12 +96,12 @@
 }
 
 .map-footer button {
-    width: 66px;
-    height: 36px;
+    width: 3.438vw;
+    height: 1.875vw;
     background: #16C0CC;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 0.312vw;
     cursor: pointer;
 }
 
@@ -112,7 +112,7 @@
 .map-modal button{
     color: #FFF;
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 600;
     line-height: 100%; /* 15px */

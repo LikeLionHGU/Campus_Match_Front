@@ -1,28 +1,28 @@
 .container {
   display: grid;
-  grid-template-columns: 229px 1fr;
+  grid-template-columns: 11.927vw 1fr;
 }
 
 .dashboard-right {
   display: grid;
-  grid-template-columns: 560px 560px 361px;
-  grid-template-rows: 213px 591px;
-  gap: 25px;
+  grid-template-columns: 29.167vw 29.167vw 18.802vw;
+  grid-template-rows: 11.094vw 30.781vw;
+  gap: 1.302vw;
   background-color: #fbffff;
-  padding: 80px 80px 83px 80px;
+  padding: 4.167vw 4.167vw 4.323vw 4.167vw;
   position: relative;
 }
 
 .club-intro {
   display: grid;
-  grid-template-columns: 125px 1fr;
-  padding: 44px 43px;
+  grid-template-columns: 6.51vw 1fr;
+  padding: 2.292vw 2.24vw;
   justify-content: center;
 
-  border-radius: 20px;
+  border-radius: 1.042vw;
   background: #fff;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.05);
-  gap: 20px;
+  gap: 1.042vw;
 }
 .club-intro:hover {
   box-shadow: 0 0 15px 0 rgba(22, 192, 204, 0.35);
@@ -30,12 +30,12 @@
 
 .club-record {
   display: grid;
-  grid-row: 20px 1fr;
-  padding: 15px 35px;
+  grid-row: 1.042vw 1fr;
+  padding: 0.781vw 1.823vw;
   background-color: #fff;
-  border-radius: 20px;
+  border-radius: 1.042vw;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.05);
-  gap: 10px;
+  gap: 0.521vw;
 }
 
 .club-record:hover {
@@ -44,11 +44,11 @@
 
 .club-badge {
   display: grid;
-  padding: 24px 48px;
+  padding: 1.25vw 2.5vw;
   background-color: #fff;
   justify-content: center;
   align-items: center;
-  border-radius: 20px;
+  border-radius: 1.042vw;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.05);
 }
 
@@ -58,16 +58,16 @@
 
 .badge-frame {
   display: grid;
-  grid-template-rows: 72.47px 72.47px;
-  grid-template-columns: 67px 67px 67px;
+  grid-template-rows: 3.774vw 3.774vw;
+  grid-template-columns: 3.49vw 3.49vw 3.49vw;
   justify-content: center;
   align-items: center;
   align-content: center;
 
   width: 100%;
   height: 100%;
-  row-gap: 20px;
-  column-gap: 34px;
+  row-gap: 1.042vw;
+  column-gap: 1.771vw;
 }
 
 .badge-item {
@@ -94,9 +94,9 @@
   transform: translateX(-50%);
   background-color: #bdbdbd;
   color: var(--Text, #1f1f1f);
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-size: 14px;
+  padding: 0.417vw 0.625vw;
+  border-radius: 0.417vw;
+  font-size: 0.729vw;
   white-space: nowrap;
   opacity: 0;
   transition:
@@ -111,7 +111,7 @@
   position: absolute;
   top: 100%;
   left: 50%;
-  margin-left: -5px;
+  margin-left: -0.26vw;
   border-width: 5px;
   border-style: solid;
   border-color: #bdbdbd transparent transparent transparent;
@@ -124,13 +124,13 @@
 
 .club-intro-right {
   display: grid;
-  grid-template-rows: 20px 1fr;
-  gap: 10px;
+  grid-template-rows: 1.042vw 1fr;
+  gap: 0.521vw;
 }
 .club-intro-right span {
   color: #1f1f1f;
   font-family: Pretendard;
-  font-size: 20px;
+  font-size: 1.042vw;
   font-style: normal;
   font-weight: 600;
   line-height: 20px; /* 100% */
@@ -141,7 +141,7 @@
   color: var(--Text, #1f1f1f);
   text-overflow: ellipsis;
   font-family: Inter;
-  font-size: 15px;
+  font-size: 0.781vw;
   font-style: normal;
   font-weight: 400;
   line-height: 180%; /* 27px */
@@ -149,14 +149,14 @@
 }
 
 .club-matchup {
-  border-radius: 20px;
+  border-radius: 1.042vw;
   background: linear-gradient(180deg, #eefff5 0%, #eafdff 100%);
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.05);
 }
 
 .club-calender {
-  border-radius: 20px;
-  padding: 41px 50px;
+  border-radius: 1.042vw;
+  padding: 2.135vw 2.604vw;
   background-color: #fff;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.05);
 }
@@ -168,7 +168,7 @@
 .club-gallery {
   position: relative;
   background-color: #fff;
-  border-radius: 20px;
+  border-radius: 1.042vw;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
   overflow: hidden;
 }
@@ -184,8 +184,8 @@
 .dashboard_back{
   display: flex;
   position: absolute;
-  left: 80px;
-  top: 30px;
+  left: 4.167vw;
+  top: 1.562vw;
   align-items: center;
   cursor: pointer;
   

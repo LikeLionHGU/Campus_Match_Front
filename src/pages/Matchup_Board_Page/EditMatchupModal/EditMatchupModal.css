@@ -17,27 +17,27 @@
     transform: translateY(-80px);
     position: relative;
     background: #fff;
-    padding: 70px 60px 60px 60px;
-    width: 422px;
-    height: 644px;
-    border-radius: 20px;
+    padding: 3.646vw 3.125vw 3.125vw 3.125vw;
+    width: 21.979vw;
+    height: 33.542vw;
+    border-radius: 1.042vw;
     display: flex;
 }
 
 .edit-matchup-modal-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 1.042vw;
+  right: 1.042vw;
 
-  width: 15.8px;
-  height: 15.8px;
+  width: 0.823vw;
+  height: 0.823vw;
   cursor: pointer;
 }
 
 .edit-matchup-modal-main{
     display:grid;
-    grid-template-rows: 20px 494px 35px;
-    gap:50px;
+    grid-template-rows: 1.042vw 25.729vw 1.823vw;
+    gap:2.604vw;
     align-items: center;
     justify-content: center;
 }
@@ -45,35 +45,35 @@
     color: var(--Text, #1F1F1F);
     text-align: center;
     font-family: Pretendard;
-    font-size: 20px;
+    font-size: 1.042vw;
     font-style: normal;
     font-weight: 500;
     line-height: 100%; /* 20px */
 }
 .edit-matchup-modal-body{
     display:grid;
-    grid-template-rows: 34px 34px 34px 34px 273px; 
-    gap:20px;
+    grid-template-rows: 1.771vw 1.771vw 1.771vw 1.771vw 14.219vw; 
+    gap:1.042vw;
     align-items: center;
 }
 .edit-matchup-modal-body span{
     color: var(--Text, #1F1F1F);
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 500;
     line-height: 100%; /* 15px */
 }
 .edit-matchup-modal-body textarea{
-    width: 422px;
-    height: 222px;
-    border-radius: 8px;
+    width: 21.979vw;
+    height: 11.562vw;
+    border-radius: 0.417vw;
     border: 1.5px solid var(--Gray-2, #D6D6D6);
     background: #FFF;
-    padding: 10px;
+    padding: 0.521vw;
     outline: none;
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 400;
     line-height: 100%; /* 15px */
@@ -86,23 +86,23 @@
     color: var(--Gray-3, #BDBDBD);
     text-align: right;
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 400;
     line-height: 100%; /* 15px */
 }
 .edit-matchup-modal-button {
   display: grid;
-  grid-template-columns: 66px 66px;
-  gap:12px;
+  grid-template-columns: 3.438vw 3.438vw;
+  gap:0.625vw;
   justify-content: center;
 }
 .edit-matchup-left-button{
     border: 0px;
-    margin-top: 20px;
-    width: 66px;
-    height: 35px;
-    border-radius: 5px;
+    margin-top: 1.042vw;
+    width: 3.438vw;
+    height: 1.823vw;
+    border-radius: 0.26vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -110,7 +110,7 @@
     background-color: #fff;
     color: var(--Primary, #16C0CC);
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 600;
     line-height: 100%; /* 15px */
@@ -130,18 +130,18 @@
 }
 .edit-matchup-right-button{
     border: 0px;
-    margin-top: 20px;
-    width: 66px;
-    height: 35px;
+    margin-top: 1.042vw;
+    width: 3.438vw;
+    height: 1.823vw;
     
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 0.26vw;
     background: var(--Primary, #16C0CC);
     color: #fff;
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 600;
     line-height: 100%; /* 15px */
@@ -156,27 +156,27 @@
 .edit-matchup-modal-category,
 .edit-matchup-modal-date{
     display: grid;
-    grid-template-columns: 93px 215px;
-    gap: 40px;
+    grid-template-columns: 4.844vw 11.198vw;
+    gap: 2.083vw;
     color: var(--Text, #1F1F1F);
     font-family: Pretendard;
-    font-size: 18px;
+    font-size: 0.938vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     align-items: center;
 }
 .edit-matchup-modal-date input{
-    border-radius: 8px;
+    border-radius: 0.417vw;
     border: 1.5px solid var(--Gray-2, #D6D6D6);
     background: var(--white, #FFF);
-    padding: 8px 15px;
-    width: 185px;
-    height: 18px;
+    padding: 0.417vw 0.781vw;
+    width: 9.635vw;
+    height: 0.938vw;
     color: var(--Text, #1F1F1F);
 
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -187,11 +187,11 @@
 }
 .edit-matchup-modal-place{
     display: grid;
-    grid-template-columns: 93px 290px;
-    gap: 40px;
+    grid-template-columns: 4.844vw 15.104vw;
+    gap: 2.083vw;
     color: var(--Text, #1F1F1F);
     font-family: Pretendard;
-    font-size: 18px;
+    font-size: 0.938vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -199,12 +199,12 @@
 }
 .edit-matchup-modal-place div{
     display: grid;
-    grid-template-columns: 215px 64px;
-    gap: 14px;
+    grid-template-columns: 11.198vw 3.333vw;
+    gap: 0.729vw;
 }
 .edit-matchup-modal-place button{
     cursor: pointer;
-    border-radius: 4.857px;
+    border-radius: 0.253vw;
     background: var(--Primary, #16C0CC);
     border: 1.5px solid #16C0CC;
     color:#FFF;
@@ -216,12 +216,12 @@
     background: #007F88;
 }
 .edit-matchup-modal-place input{
-    border-radius: 8px;
+    border-radius: 0.417vw;
     border: 1.5px solid var(--Gray-2, #D6D6D6);
     background: var(--white, #FFF);
-    padding: 8px 15px;
-    width: 185px;
-    height: 18px;
+    padding: 0.417vw 0.781vw;
+    width: 9.635vw;
+    height: 0.938vw;
     
 }
 .edit-matchup-sport-dropdown {
@@ -229,21 +229,21 @@
 }
 .edit-matchup-sport-dropdown-list {
     position: absolute;
-    max-height: 200px;
+    max-height: 10.417vw;
     overflow-y: auto;
 }
 .edit-matchup-modal-time{
     
     display: grid;
-    grid-template-columns: 93px 170px;
-    gap:40px;
+    grid-template-columns: 4.844vw 8.854vw;
+    gap:2.083vw;
     align-items: center;
     
 }
 .edit-matchup-modal-time div{
     display: grid;
-    grid-template-columns: 129px 13px 129px;
-    gap:10px;
+    grid-template-columns: 6.719vw 0.677vw 6.719vw;
+    gap:0.521vw;
     align-items: center;
 
 }
@@ -251,41 +251,41 @@
     
     color: var(--Text, #1F1F1F);
     font-family: Pretendard;
-    font-size: 20px;
+    font-size: 1.042vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
 }
 .edit-matchup-modal-time div input{
-    border-radius: 8px;
+    border-radius: 0.417vw;
     border: 1.5px solid var(--Gray-2, #D6D6D6);
     background: var(--white, #FFF);
-    padding: 8px 15px;
-    width: 99px;
-    height: 18px;
+    padding: 0.417vw 0.781vw;
+    width: 5.156vw;
+    height: 0.938vw;
     color: var(--Text, #1F1F1F);
     text-align: center;
     font-family: Pretendard;
-    font-size: 14px;
+    font-size: 0.729vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
 }
 .edit-matchup-modal-content{
     display: grid;
-    grid-template-rows: 20px 1fr;
-    gap: 10px;
+    grid-template-rows: 1.042vw 1fr;
+    gap: 0.521vw;
     align-items: center;
 }
 .edit-matchup-sport-dropdown{
     position: relative;
 
     display: flex;
-    width: 185px;
-    height: 18px;
-    padding: 8px 15px;
+    width: 9.635vw;
+    height: 0.938vw;
+    padding: 0.417vw 0.781vw;
 
-    border-radius: 8px;
+    border-radius: 0.417vw;
     border: 1.5px solid var(--Gray-2, #D6D6D6);
     background: #FFF;
 }
@@ -294,7 +294,7 @@
     width: 100%; 
     color: var(--Gray-2, #D6D6D6);
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -303,19 +303,19 @@
     cursor: pointer;
 }
 .edit-matchup-sport-dropdown-selected img{
-    width: 15px;
-    height: 15px;
+    width: 0.781vw;
+    height: 0.781vw;
     transition: transform 0.2s ease;
 }
 .edit-matchup-sport-dropdown-list{
     position: absolute;
-    top: calc(100% + 6px); 
-    border-radius: 8px;
+    top: calc(100% + 0.312vw); 
+    border-radius: 0.417vw;
     border: 1.5px solid var(--Gray-2, #D6D6D6);
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10);
     color: var(--Gray-4, #9E9E9E);
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -325,7 +325,7 @@
     padding: 0;
     margin: 0;
     z-index: 9999;
-    left: -1px;
+    left: -0.052vw;
 }
 .edit-matchup-sport-dropdown.open{
     box-shadow: 0 0 0 2px rgba(22,192,204,0.15);
@@ -333,10 +333,10 @@
     outline: none;
 }
 .edit-matchup-sport-dropdown-list li {
-    height: 49px;
+    height: 2.552vw;
     display: flex;
     align-items: center;
-    padding-left: 20px;
+    padding-left: 1.042vw;
     cursor: pointer;
 }
 .edit-matchup-sport-dropdown-list li:hover {

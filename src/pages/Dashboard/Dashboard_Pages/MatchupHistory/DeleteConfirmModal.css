@@ -13,9 +13,9 @@
 
 .delete-modal-content {
   background: white;
-  border-radius: 16px;
-  padding: 40px;
-  width: 400px;
+  border-radius: 0.833vw;
+  padding: 2.083vw;
+  width: 20.833vw;
   max-width: 90%;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   text-align: center;
@@ -23,32 +23,32 @@
 
 .delete-modal-title {
   font-family: Pretendard;
-  font-size: 20px;
+  font-size: 1.042vw;
   font-weight: 600;
   color: #333;
-  margin-bottom: 12px;
+  margin-bottom: 0.625vw;
 }
 
 .delete-modal-subtitle {
   font-family: Pretendard;
-  font-size: 14px;
+  font-size: 0.729vw;
   color: #888;
-  margin-bottom: 32px;
+  margin-bottom: 1.667vw;
 }
 
 .delete-modal-buttons {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 0.625vw;
 }
 
 .delete-modal-cancel {
-  padding: 10px 24px;
+  padding: 0.521vw 1.25vw;
   border: 1px solid #16c0cc;
   background: white;
   color: #16c0cc;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: 0.417vw;
+  font-size: 0.729vw;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
@@ -59,12 +59,12 @@
 }
 
 .delete-modal-confirm {
-  padding: 10px 24px;
+  padding: 0.521vw 1.25vw;
   border: none;
   background: #16c0cc;
   color: white;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: 0.417vw;
+  font-size: 0.729vw;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;

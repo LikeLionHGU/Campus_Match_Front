@@ -18,26 +18,26 @@
   transform: translateY(-50px);
   position: relative;
   background: #fff;
-  padding: 70px 60px 50px 60px;
-  width: 422px;
-  height: 867px;
-  border-radius: 20px;
+  padding: 3.646vw 3.125vw 2.604vw 3.125vw;
+  width: 21.979vw;
+  height: 45.156vw;
+  border-radius: 1.042vw;
 }
 
 .can-matchup-modal-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 1.042vw;
+  right: 1.042vw;
 
-  width: 15.8px;
-  height: 15.8px;
+  width: 0.823vw;
+  height: 0.823vw;
   cursor: pointer;
 }
 
 .can-matchup-modal-main {
   display: grid;
-  grid-template-rows: 30px 712px 35px;
-  gap: 50px 20px;
+  grid-template-rows: 1.562vw 37.083vw 1.823vw;
+  gap: 2.604vw 1.042vw;
   align-items: center;
 }
 
@@ -45,42 +45,42 @@
   color: var(--Text, #1F1F1F);
   text-align: center;
   font-family: Pretendard;
-  font-size: 25px;
+  font-size: 1.302vw;
   font-weight: 500;
 }
 
 .can-matchup-modal-body {
   display: grid;
-  grid-template-rows: 34px 34px 34px 34px 34px 423px;
-  gap: 20px;
+  grid-template-rows: 1.771vw 1.771vw 1.771vw 1.771vw 1.771vw 22.031vw;
+  gap: 1.042vw;
 }
 
 .can-matchup-modal-body-time {
   display: grid;
-  grid-template-columns: 102px 170px;
-  gap: 90px;
+  grid-template-columns: 5.312vw 8.854vw;
+  gap: 4.688vw;
   align-items: center;
 }
 
 .can-matchup-modal-body-time div {
   display: grid;
-  grid-template-columns: 127px 13px 127px;
-  gap: 10px;
+  grid-template-columns: 6.615vw 0.677vw 6.615vw;
+  gap: 0.521vw;
   align-items: center;
   justify-content: center;
 }
 
 .can-matchup-modal-body-time2 {
   display: grid;
-  grid-template-columns: 102px 170px;
-  gap: 90px;
+  grid-template-columns: 5.312vw 8.854vw;
+  gap: 4.688vw;
   align-items: center;
 }
 
 .can-matchup-modal-body-time2 div {
   display: grid;
-  grid-template-columns: 127px 13px 127px;
-  gap: 10px;
+  grid-template-columns: 6.615vw 0.677vw 6.615vw;
+  gap: 0.521vw;
   align-items: center;
   justify-content: center;
   color: var(--Text, #1F1F1F);
@@ -91,7 +91,7 @@
 
     text-align: center;
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -99,36 +99,36 @@
 
 .can-matchup-modal-body-phone {
   display: grid;
-  grid-template-columns: 94px 265px;
-  gap: 40px;
+  grid-template-columns: 4.896vw 13.802vw;
+  gap: 2.083vw;
   align-items: center;
 }
 
 .can-matchup-modal-body-place {
   display: grid;
-  grid-template-columns: 94px 265px;
-  gap: 40px;
+  grid-template-columns: 4.896vw 13.802vw;
+  gap: 2.083vw;
   align-items: center;
 }
 
 .can-matchup-modal-body span {
   color: var(--Text, #1F1F1F);
   font-family: Pretendard;
-  font-size: 20px;
+  font-size: 1.042vw;
   font-weight: 500;
 }
 
 .can-matchup-modal-body input {
-  padding: 0px 10px;
-  height: 34px;
-  border-radius: 8px;
+  padding: 0px 0.521vw;
+  height: 1.771vw;
+  border-radius: 0.417vw;
   border: 1.5px solid var(--Gray-2, #D6D6D6);
   background: #FFF;
   outline: none;
   color: var(--Text, #1F1F1F);
   text-align: center;
   font-family: Pretendard;
-  font-size: 15px;
+  font-size: 0.781vw;
   font-weight: 500;
 }
 
@@ -147,8 +147,8 @@
 }
 .can-matchup-modal-body-date{
     display: grid;
-    grid-template-columns: 94px 265px;
-    gap: 40px;
+    grid-template-columns: 4.896vw 13.802vw;
+    gap: 2.083vw;
     align-items: center;
 }
 .can-matchup-modal-body-date input{
@@ -157,16 +157,16 @@
 }
 .can-matchup-modal-bottom{
   display: grid;
-  grid-template-columns: 66px 66px;
-  gap:12px;
+  grid-template-columns: 3.438vw 3.438vw;
+  gap:0.625vw;
   justify-content: center;
 }
 .can-matchup-bottom-left-button{
     border: 0px;
-    margin-top: 20px;
-    width: 66px;
-    height: 35px;
-    border-radius: 5px;
+    margin-top: 1.042vw;
+    width: 3.438vw;
+    height: 1.823vw;
+    border-radius: 0.26vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -174,7 +174,7 @@
     background-color: #fff;
     color: var(--Primary, #16C0CC);
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 600;
     line-height: 100%; /* 15px */
@@ -194,18 +194,18 @@
 }
 .can-matchup-bottom-right-button{
     border: 0px;
-    margin-top: 20px;
-    width: 66px;
-    height: 35px;
+    margin-top: 1.042vw;
+    width: 3.438vw;
+    height: 1.823vw;
     
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 0.26vw;
     background: var(--Primary, #16C0CC);
     color: #fff;
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 600;
     line-height: 100%; /* 15px */

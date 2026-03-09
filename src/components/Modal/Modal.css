@@ -13,37 +13,37 @@
 
 .modal-content {
   background: white;
-  border-radius: 10px;
-  padding: 40px 50px;
+  border-radius: 0.521vw;
+  padding: 2.083vw 2.604vw;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   text-align: center;
 }
 
 .modal-message {
-  font-size: 18px;
+  font-size: 0.938vw;
   font-weight: 500;
   color: #1f1f1f;
-  margin: 0 0 10px 0;
+  margin: 0 0 0.521vw 0;
 }
 
 .modal-subtitle {
-  font-size: 14px;
+  font-size: 0.729vw;
   color: #9e9e9e;
-  margin: 0 0 30px 0;
+  margin: 0 0 1.562vw 0;
 }
 
 .modal-buttons {
   display: flex;
-  gap: 10px;
+  gap: 0.521vw;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 1.562vw;
 }
 
 .modal-btn {
-  padding: 12px 30px;
+  padding: 0.625vw 1.562vw;
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 0.417vw;
+  font-size: 0.833vw;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;

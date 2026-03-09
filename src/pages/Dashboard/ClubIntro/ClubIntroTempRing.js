@@ -12,10 +12,10 @@ const ClubIntroTempRing = ({ temperature = 0 }) => {
   const offset = circumference * (1 - percent);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "0.781vw" }}>
       <div
         style={{
-          fontSize: "20px",
+          fontSize: "1.042vw",
           fontWeight: "600",
           color: "#1f1f1f",
           fontFamily: "Pretendard",
@@ -65,7 +65,7 @@ const ClubIntroTempRing = ({ temperature = 0 }) => {
         </svg>
 
         <div className="temp-text">
-          <strong style={{ fontSize: "22px", fontWeight: "600" }}>
+          <strong style={{ fontSize: "1.146vw", fontWeight: "600" }}>
             {clampedTemp}°C
           </strong>
         </div>

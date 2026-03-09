@@ -18,33 +18,33 @@
     transform: translateY(-300px);
     position: relative;
     background: #fff;
-    padding: 20px;
-    width: 334px;
-    height: 297px;
-    padding: 70px 69px 50px 69px;
-    border-radius: 20px;
+    padding: 1.042vw;
+    width: 17.396vw;
+    height: 15.469vw;
+    padding: 3.646vw 3.594vw 2.604vw 3.594vw;
+    border-radius: 1.042vw;
 }
 
 .edit-calender-modal-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 1.042vw;
+  right: 1.042vw;
 
-  width: 15.8px;
-  height: 15.8px;
+  width: 0.823vw;
+  height: 0.823vw;
   cursor: pointer;
 }
 
 .edit-calender-modal-main{
     display: grid;
-    grid-template-rows: 30px 145px;
+    grid-template-rows: 1.562vw 7.552vw;
     gap:50px
 }
 .edit-calender-modal-title{
     color: var(--Text, #1F1F1F);
     text-align: center;
     font-family: Pretendard;
-    font-size: 25px;
+    font-size: 1.302vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -52,8 +52,8 @@
 
 .edit-calender-modal-detail{
     display: grid;
-    grid-template-rows: 34px 34px 34px 35px;
-    gap:20px;
+    grid-template-rows: 1.771vw 1.771vw 1.771vw 1.823vw;
+    gap:1.042vw;
     align-items: center;
     justify-items: center;
 }
@@ -61,7 +61,7 @@
 .edit-calender-modal-detail span{
     color: var(--Text, #1F1F1F);
     font-family: Pretendard;
-    font-size: 18px;
+    font-size: 0.938vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -69,46 +69,46 @@
 }
 .edit-calender-modal-detail-name{
     display: grid;
-    grid-template-columns: 32px 1fr;
-    gap:10px;
+    grid-template-columns: 1.667vw 1fr;
+    gap:0.521vw;
     align-items: center;
 }
 .edit-calender-modal-detail-name input{
-    height: 34px;
-    width: 276px;
-    border-radius: 8px;
+    height: 1.771vw;
+    width: 14.375vw;
+    border-radius: 0.417vw;
     border: 1.5px solid var(--Gray-2, #D6D6D6);
     background: var(--white, #FFF);
-    padding-left: 15px;
+    padding-left: 0.781vw;
 }
 
 .edit-calender-modal-detail-start{
     display: grid;
-    grid-template-columns: 32px 144px 144px;
-    gap:10px;
+    grid-template-columns: 1.667vw 7.5vw 7.5vw;
+    gap:0.521vw;
     align-items: center;
 }
 
 .edit-calender-modal-detail-start input{
-    height: 34px;
-    width: 140px;
-    border-radius: 8px;
+    height: 1.771vw;
+    width: 7.292vw;
+    border-radius: 0.417vw;
     border: 1.5px solid var(--Gray-2, #D6D6D6);
     background: var(--white, #FFF);
 }
 
 .edit-calender-modal-detail-end{
     display: grid;
-    grid-template-columns: 32px 144px 144px;
-    gap:10px;
+    grid-template-columns: 1.667vw 7.5vw 7.5vw;
+    gap:0.521vw;
     align-items: center;
 }  
 
 .edit-calender-modal-detail-end input{
     
-    height: 34px;
-    width: 140px;
-    border-radius: 8px;
+    height: 1.771vw;
+    width: 7.292vw;
+    border-radius: 0.417vw;
     border: 1.5px solid var(--Gray-2, #D6D6D6);
     background: var(--white, #FFF);
 }
@@ -118,7 +118,7 @@
 .edit-calender-modal-detail-name input{
    color: var(--Text, #1F1F1F);
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -128,7 +128,7 @@
 .edit-calender-modal-detail-start input,.edit-calender-modal-detail-end input {
     color: var(--Text, #1F1F1F);
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -149,34 +149,34 @@
 }
 .edit-calender-modal-buttons {
   display: grid;
-  grid-template-columns: 66px 66px;
+  grid-template-columns: 3.438vw 3.438vw;
   gap:12px
 }
 
 .edit-calender-edit-button{
     border: 0px;
-    margin-top: 20px;
-    width: 66px;
-    height: 35px;
+    margin-top: 1.042vw;
+    width: 3.438vw;
+    height: 1.823vw;
     
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 0.26vw;
     background: var(--Primary, #16C0CC);
     color: #fff;
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 600;
     line-height: 100%; /* 15px */
 }
 .edit-calender-delete-button{
     border: 0px;
-    margin-top: 20px;
-    width: 66px;
-    height: 35px;
-    border-radius: 5px;
+    margin-top: 1.042vw;
+    width: 3.438vw;
+    height: 1.823vw;
+    border-radius: 0.26vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -184,7 +184,7 @@
     background-color: #fff;
     color: var(--Primary, #16C0CC);
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 600;
     line-height: 100%; /* 15px */

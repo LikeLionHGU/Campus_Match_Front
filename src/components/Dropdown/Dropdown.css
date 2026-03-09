@@ -5,12 +5,12 @@
 
 .custom-select-trigger {
   width: 100%;
-  height: 50px;
-  padding: 0 15px;
+  height: 2.604vw;
+  padding: 0 0.781vw;
   border: 1px solid var(--Gray-2);
   background: var(--bg-color);
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 0.417vw;
+  font-size: 0.833vw;
   font-family: Pretendard;
   color: var(--txt-color);
   cursor: pointer;
@@ -48,25 +48,25 @@
 
 .custom-select-dropdown {
   position: absolute;
-  top: calc(100% + 5px);
+  top: calc(100% + 0.26vw);
   left: 0;
   right: 0;
-  max-height: calc(50px * 6);
+  max-height: calc(2.604vw * 6);
   overflow-y: auto;
   background: white;
   border: 1px solid var(--Gray-2);
-  border-radius: 8px;
+  border-radius: 0.417vw;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 100;
 }
 
 .custom-select-option {
-  height: 50px;
-  padding: 0 15px;
+  height: 2.604vw;
+  padding: 0 0.781vw;
   display: flex;
   align-items: center;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 0.833vw;
   font-family: Pretendard;
   color: var(--txt-color);
   transition: background-color 0.2s ease;
@@ -84,7 +84,7 @@
 
 /* 스크롤바 스타일 */
 .custom-select-dropdown::-webkit-scrollbar {
-  width: 6px;
+  width: 0.312vw;
 }
 
 .custom-select-dropdown::-webkit-scrollbar-track {
@@ -93,7 +93,7 @@
 
 .custom-select-dropdown::-webkit-scrollbar-thumb {
   background: var(--Gray-3);
-  border-radius: 3px;
+  border-radius: 0.156vw;
 }
 
 .custom-select-dropdown::-webkit-scrollbar-thumb:hover {

@@ -18,25 +18,25 @@
     transform: translateY(-300px);
     position: relative;
     background: #fff;
-    padding: 20px;
-    width: 347px;
-    height: 219px;
-    padding: 70px 70px 30px 70px;
-    border-radius: 10px;
+    padding: 1.042vw;
+    width: 18.073vw;
+    height: 11.406vw;
+    padding: 3.646vw 3.646vw 1.562vw 3.646vw;
+    border-radius: 0.521vw;
     align-items: center;
     justify-items: center;
     display: grid;
-    grid-template-rows: 34px 34px 35px;
-    gap: 20px 40px;
+    grid-template-rows: 1.771vw 1.771vw 1.823vw;
+    gap: 1.042vw 2.083vw;
 }
 
 .apply-matchup-close{
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 1.042vw;
+    right: 1.042vw;
 
-    width: 15.8px;
-    height: 15.8px;
+    width: 0.823vw;
+    height: 0.823vw;
     cursor: pointer;
 }
 
@@ -44,27 +44,27 @@
     color: var(--Text, #1F1F1F);
     text-align: center;
     font-family: Pretendard;
-    font-size: 20px;
+    font-size: 1.042vw;
     font-style: normal;
     font-weight: 500;
     line-height: 100%; /* 20px */
-    margin-bottom: 30px;
+    margin-bottom: 1.562vw;
 }
 
 .apply-matchup-modal-button{
     display: grid;
-    grid-template-columns: 66px 66px;
-    gap:12px;
+    grid-template-columns: 3.438vw 3.438vw;
+    gap:0.625vw;
 }
 
 .apply-matchup-modal-button-confirm{
     border: 0px;
-    width: 66px;
-    height: 35px;
+    width: 3.438vw;
+    height: 1.823vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 0.26vw;
     background: var(--Primary, #16C0CC);
     color: #fff;
     cursor: pointer;
@@ -77,12 +77,12 @@
 }
 .apply-matchup-modal-button-cancel{
     border: 0px;
-    width: 66px;
-    height: 35px;
+    width: 3.438vw;
+    height: 1.823vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 0.26vw;
     background: #fff;
     border: 1.5px solid var(--Primary, #16C0CC);
     color:#16C0CC;
@@ -102,12 +102,12 @@
 }
 .apply-matchup-modal-time{
     display: grid;
-    grid-template-columns: 63px 258px;
-    gap: 10px;
+    grid-template-columns: 3.281vw 13.438vw;
+    gap: 0.521vw;
     align-items: center;
     color: var(--Text, #1F1F1F);
     font-family: Pretendard;
-    font-size: 18px;
+    font-size: 0.938vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -115,11 +115,11 @@
 }
 .apply-matchup-modal-time-inputs{
     display: grid;
-    grid-template-columns: 120px 13px 120px;
-    gap: 10px;
+    grid-template-columns: 6.25vw 0.677vw 6.25vw;
+    gap: 0.521vw;
     color: var(--Text, #1F1F1F);
     font-family: Pretendard;
-    font-size: 18px;
+    font-size: 0.938vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -127,28 +127,28 @@
     
 }
 .apply-matchup-modal-time-inputs input{
-    padding: 10px;
-    width: 95px;
-    height: 18px;
+    padding: 0.521vw;
+    width: 4.948vw;
+    height: 0.938vw;
     color: var(--Text, #1F1F1F);
     font-family: Pretendard;
-    font-size: 13px;
+    font-size: 0.677vw;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     align-items: center;
-    border-radius: 8px;
+    border-radius: 0.417vw;
     border: 1.5px solid var(--Gray-2, #D6D6D6);
     background: var(--white, #FFF);
 }
 .apply-matchup-modal-date{
     display: grid;
-    grid-template-columns: 63px 258px;
-    gap: 10px;
+    grid-template-columns: 3.281vw 13.438vw;
+    gap: 0.521vw;
     align-items: center;
     color: var(--Text, #1F1F1F);
     font-family: Pretendard;
-    font-size: 18px;
+    font-size: 0.938vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -156,17 +156,17 @@
 }
 
 .apply-matchup-modal-date input{
-    padding: 10px;
-    width: 247px;
-    height: 18px;
+    padding: 0.521vw;
+    width: 12.865vw;
+    height: 0.938vw;
     color: var(--Text, #1F1F1F);
     font-family: Pretendard;
-    font-size: 14px;
+    font-size: 0.729vw;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     align-items: center;
-    border-radius: 8px;
+    border-radius: 0.417vw;
     border: 1.5px solid var(--Gray-2, #D6D6D6);
     background: var(--white, #FFF);
 }

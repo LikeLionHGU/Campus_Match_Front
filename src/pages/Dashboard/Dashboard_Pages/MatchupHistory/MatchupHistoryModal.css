@@ -13,51 +13,51 @@
 
 .history-modal-content {
   background: #fff;
-  border-radius: 16px;
-  padding: 40px;
-  width: 480px;
+  border-radius: 0.833vw;
+  padding: 2.083vw;
+  width: 25vw;
   max-width: 90%;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
 .history-modal-title {
   font-family: Pretendard;
-  font-size: 20px;
+  font-size: 1.042vw;
   font-weight: 600;
   color: #333;
-  margin-bottom: 32px;
+  margin-bottom: 1.667vw;
   text-align: center;
 }
 
 .history-modal-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-bottom: 32px;
+  gap: 1.042vw;
+  margin-bottom: 1.667vw;
 }
 
 .history-modal-row {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 0.833vw;
 }
 
 .history-modal-row label {
   font-family: Pretendard;
-  font-size: 14px;
+  font-size: 0.729vw;
   font-weight: 500;
   color: #333;
-  min-width: 80px;
+  min-width: 4.167vw;
   flex-shrink: 0;
 }
 
 .history-modal-row input[type="text"],
 .history-modal-row input[type="date"] {
   flex: 1;
-  padding: 10px 14px;
+  padding: 0.521vw 0.729vw;
   border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: 0.417vw;
+  font-size: 0.729vw;
   font-family: Pretendard;
   outline: none;
   transition: border-color 0.2s;
@@ -80,7 +80,7 @@
 .history-modal-row input[type="date"]:required:invalid::before {
   content: "0000-00-00";
   position: absolute;
-  left: 14px;
+  left: 0.729vw;
   color: #d6d6d6;
   pointer-events: none;
 }
@@ -96,7 +96,7 @@
 .history-modal-search-input {
   display: flex;
   flex: 1;
-  gap: 8px;
+  gap: 0.417vw;
 }
 
 .history-modal-search-input input[type="text"] {
@@ -108,10 +108,10 @@
   background-color: #16c0cc;
   color: white;
   border: none;
-  border-radius: 8px;
-  padding: 0 16px;
+  border-radius: 0.417vw;
+  padding: 0 0.833vw;
   font-family: Pretendard;
-  font-size: 14px;
+  font-size: 0.729vw;
   font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
@@ -129,39 +129,39 @@
 .history-modal-radio-group {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 1.25vw;
 }
 
 .history-radio-label {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.312vw;
   font-family: Pretendard;
-  font-size: 14px;
+  font-size: 0.729vw;
   color: #333;
   cursor: pointer;
 }
 
 .history-radio-label input[type="radio"] {
   accent-color: #16c0cc;
-  width: 16px;
-  height: 16px;
+  width: 0.833vw;
+  height: 0.833vw;
   cursor: pointer;
 }
 
 .history-modal-buttons {
   display: flex;
   justify-content: flex-end;
-  gap: 12px;
+  gap: 0.625vw;
 }
 
 .history-modal-cancel {
-  padding: 10px 24px;
+  padding: 0.521vw 1.25vw;
   border: 1px solid #16c0cc;
   background: white;
   color: #16c0cc;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: 0.417vw;
+  font-size: 0.729vw;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
@@ -172,12 +172,12 @@
 }
 
 .history-modal-submit {
-  padding: 10px 24px;
+  padding: 0.521vw 1.25vw;
   border: none;
   background: #16c0cc;
   color: white;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: 0.417vw;
+  font-size: 0.729vw;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
@@ -207,14 +207,14 @@
 
 .search-modal-content {
   background: #fff;
-  border-radius: 16px;
-  padding: 30px;
-  width: 400px;
+  border-radius: 0.833vw;
+  padding: 1.562vw;
+  width: 20.833vw;
   max-width: 90%;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.042vw;
 }
 
 .search-modal-header {
@@ -226,14 +226,14 @@
 .search-modal-header h3 {
   margin: 0;
   font-family: Pretendard;
-  font-size: 18px;
+  font-size: 0.938vw;
   color: #333;
 }
 
 .search-modal-close {
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: 1.042vw;
   color: #999;
   cursor: pointer;
 }
@@ -244,15 +244,15 @@
 
 .search-modal-input-row {
   display: flex;
-  gap: 10px;
+  gap: 0.521vw;
 }
 
 .search-modal-input-row input {
   flex: 1;
-  padding: 10px 14px;
+  padding: 0.521vw 0.729vw;
   border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: 0.417vw;
+  font-size: 0.729vw;
   font-family: Pretendard;
   outline: none;
 }
@@ -261,10 +261,10 @@
   background-color: #16c0cc;
   color: white;
   border: none;
-  border-radius: 8px;
-  padding: 0 16px;
+  border-radius: 0.417vw;
+  padding: 0 0.833vw;
   font-family: Pretendard;
-  font-size: 14px;
+  font-size: 0.729vw;
   font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
@@ -276,14 +276,14 @@
 }
 
 .search-modal-results {
-  max-height: 250px;
+  max-height: 13.021vw;
   overflow-y: auto;
   border: 1px solid #eee;
-  border-radius: 8px;
+  border-radius: 0.417vw;
 }
 
 .search-modal-result-item {
-  padding: 12px 16px;
+  padding: 0.625vw 0.833vw;
   cursor: pointer;
   border-bottom: 1px solid #eee;
   transition: background-color 0.2s;
@@ -300,26 +300,26 @@
 .search-modal-result-item .club-info {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.417vw;
 }
 
 .search-modal-result-item .club-name {
   font-family: Pretendard;
-  font-size: 14px;
+  font-size: 0.729vw;
   font-weight: 500;
   color: #333;
 }
 
 .search-modal-result-item .club-univ {
   font-family: Pretendard;
-  font-size: 12px;
+  font-size: 0.625vw;
   color: #888;
 }
 
 .search-modal-empty {
-  padding: 30px;
+  padding: 1.562vw;
   text-align: center;
   font-family: Pretendard;
-  font-size: 14px;
+  font-size: 0.729vw;
   color: #888;
 }

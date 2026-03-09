@@ -151,7 +151,7 @@ const FinishMatchupPage = () => {
               <tbody>
                 {currentItems.length === 0 ? (
                   <tr>
-                    <td colSpan="7" style={{ textAlign: "center", padding: "40px" }}>
+                    <td colSpan="7" style={{ textAlign: "center", padding: "2.083vw" }}>
                       종료된 매치업이 없습니다.
                     </td>
                   </tr>

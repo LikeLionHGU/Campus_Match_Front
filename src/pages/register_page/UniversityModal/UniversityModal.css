@@ -15,27 +15,27 @@
 }
 
 .univ-modal {
-  width: 500px;
-  height: 600px;
+  width: 26.042vw;
+  height: 31.25vw;
 
   background: white;
-  border-radius: 12px;
+  border-radius: 0.625vw;
   position: relative;
   display: flex;
   flex-direction: column;
 
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
-  padding: 50px 20px 50px 20px;
+  padding: 2.604vw 1.042vw 2.604vw 1.042vw;
 }
 
 .univ-modal-close{
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 1.042vw;
+    right: 1.042vw;
 
-    width: 15.8px;
-    height: 15.8px;
+    width: 0.823vw;
+    height: 0.823vw;
     cursor: pointer;
 }
 
@@ -44,24 +44,24 @@
   justify-content: space-between;
   align-items: center;
 
-  font-size: 18px;
+  font-size: 0.938vw;
   font-weight: bold;
 
-  margin-bottom: 15px;
+  margin-bottom: 0.781vw;
 }
 
 .univ-search {
-  width: 450px;
-  height: 50px;
+  width: 23.438vw;
+  height: 2.604vw;
 
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 0.417vw;
 
-  padding: 0 10px;
+  padding: 0 0.521vw;
 
-  margin-bottom: 15px;
+  margin-bottom: 0.781vw;
 
-  font-size: 14px;
+  font-size: 0.729vw;
 }
 
 .univ-list {
@@ -77,29 +77,29 @@
   justify-content: space-between;
   align-items: center;
 
-  padding: 10px;
+  padding: 0.521vw;
 
   border-bottom: 1px solid #f0f0f0;
 }
 
 
 .univ-name {
-  font-size: 14px;
+  font-size: 0.729vw;
 }
 
 
 .univ-select-btn {
-  padding: 6px 12px;
+  padding: 0.312vw 0.625vw;
 
   border: none;
-  border-radius: 6px;
+  border-radius: 0.312vw;
 
   background: #16C0CC;
   color: white;
 
   cursor: pointer;
 
-  font-size: 13px;
+  font-size: 0.677vw;
 }
 
 .univ-select-btn:hover {
@@ -111,7 +111,7 @@
 
 .univ-loading,
 .univ-empty {
-  padding: 20px;
+  padding: 1.042vw;
   text-align: center;
   color: #888;
 }

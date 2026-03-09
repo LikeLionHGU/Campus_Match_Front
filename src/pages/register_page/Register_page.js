@@ -347,9 +347,9 @@ export default function RegisterPage() {
                       ? {
                           backgroundColor: "#d6d6d6",
                           cursor: "default",
-                          fontSize: "16px",
+                          fontSize: "0.833vw",
                         }
-                      : { fontSize: "16px" }
+                      : { fontSize: "0.833vw" }
                   }
                 >
                   {isEmailVerified
@@ -360,7 +360,7 @@ export default function RegisterPage() {
                 </button>
               </div>
               {isEmailSent && !isEmailVerified && (
-                <div className="row" style={{ marginTop: "10px" }}>
+                <div className="row" style={{ marginTop: "0.521vw" }}>
                   <input
                     className="register-input"
                     placeholder="인증 코드를 입력하세요"
@@ -371,7 +371,7 @@ export default function RegisterPage() {
                     onClick={handleEmailConfirm}
                     className="register-btn"
                     type="button"
-                    style={{ fontSize: "16px" }}
+                    style={{ fontSize: "0.833vw" }}
                   >
                     확인
                   </button>

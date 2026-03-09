@@ -1,7 +1,7 @@
 .temp-ring {
   position: relative;
-  width: 125px;
-  height: 125px;
+  width: 6.51vw;
+  height: 6.51vw;
 }
 
 circle {
@@ -37,13 +37,13 @@ circle {
 }
 
 .temp-text span {
-  font-size: 12px;
+  font-size: 0.625vw;
   color: #666;
-  margin-bottom: 2px;
+  margin-bottom: 0.104vw;
 }
 
 .temp-text strong {
-  font-size: 22px;
+  font-size: 1.146vw;
   font-weight: 600;
   color: #000;
 }

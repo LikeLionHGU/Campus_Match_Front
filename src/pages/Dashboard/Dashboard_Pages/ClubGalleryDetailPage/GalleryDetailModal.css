@@ -13,11 +13,11 @@
 
 .gd-content {
   background: #fff;
-  width: 500px;
+  width: 26.042vw;
   max-width: 90%;
-  height: 780px;
-  border-radius: 20px;
-  padding: 70px 60px 50px 60px;
+  height: 40.625vw;
+  border-radius: 1.042vw;
+  padding: 3.646vw 3.125vw 2.604vw 3.125vw;
   position: relative;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -25,11 +25,11 @@
 
 .gd-close-btn {
   position: absolute;
-  top: 16px;
-  right: 20px;
+  top: 0.833vw;
+  right: 1.042vw;
   background: none;
   border: none;
-  font-size: 26px;
+  font-size: 1.354vw;
   cursor: pointer;
   color: #333;
   z-index: 10;
@@ -37,12 +37,12 @@
 
 .gd-image-area {
   position: relative;
-  width: 500px;
-  height: 616px;
+  width: 26.042vw;
+  height: 32.083vw;
   background: #dcdcdc;
-  border-radius: 12px;
+  border-radius: 0.625vw;
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 1.042vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,57 +56,57 @@
 
 .gd-no-image {
   color: #888;
-  font-size: 14px;
+  font-size: 0.729vw;
 }
 
 .gd-pagination {
   position: absolute;
-  top: 12px;
-  left: 12px;
+  top: 0.625vw;
+  left: 0.625vw;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.312vw;
   background: rgba(255, 255, 255, 0.85);
-  border-radius: 20px;
-  padding: 4px 10px;
+  border-radius: 1.042vw;
+  padding: 0.208vw 0.521vw;
   z-index: 5;
 }
 
 .gd-page-arrow {
   background: none;
   border: none;
-  font-size: 14px;
+  font-size: 0.729vw;
   cursor: pointer;
   color: #333;
-  padding: 0 2px;
+  padding: 0 0.104vw;
   font-weight: bold;
 }
 
 .gd-page-number {
-  font-size: 13px;
+  font-size: 0.677vw;
   font-weight: 600;
   color: #333;
 }
 
 .gd-official-logo {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 32px;
-  height: 32px;
+  top: 0.625vw;
+  right: 0.625vw;
+  width: 1.667vw;
+  height: 1.667vw;
   z-index: 5;
 }
 
 .gd-info-row {
   display: flex;
-  gap: 12px;
-  margin-bottom: 70px;
+  gap: 0.625vw;
+  margin-bottom: 3.646vw;
 }
 
 .gd-field {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.417vw;
 }
 
 .gd-field:last-child {
@@ -114,17 +114,17 @@
 }
 
 .gd-field label {
-  font-size: 14px;
+  font-size: 0.729vw;
   font-weight: 600;
   color: #333;
   white-space: nowrap;
 }
 
 .gd-field input {
-  padding: 8px 12px;
+  padding: 0.417vw 0.625vw;
   border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 14px;
+  border-radius: 0.312vw;
+  font-size: 0.729vw;
   width: 100%;
   outline: none;
   font-family: inherit;
@@ -133,7 +133,7 @@
 .gd-field input[type="date"] {
   color: #333;
   position: relative;
-  width: 150px;
+  width: 7.812vw;
 }
 
 .gd-field input[type="date"]:required:invalid::-webkit-datetime-edit {
@@ -142,7 +142,7 @@
 .gd-field input[type="date"]:required:invalid::before {
   content: "연도. 월. 일.";
   position: absolute;
-  left: 12px;
+  left: 0.625vw;
   color: #d6d6d6;
   pointer-events: none;
 }
@@ -162,13 +162,13 @@
 .gd-button-group {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 0.625vw;
 }
 
 .gd-btn {
-  padding: 8px 28px;
-  border-radius: 6px;
-  font-size: 14px;
+  padding: 0.417vw 1.458vw;
+  border-radius: 0.312vw;
+  font-size: 0.729vw;
   font-weight: 600;
   cursor: pointer;
   border: none;
@@ -195,33 +195,33 @@
 
 .gd-success-content {
   background: #fff;
-  width: 213px;
-  min-height: 85px;
-  border-radius: 16px;
-  padding: 45px 70px 30px 70px;
+  width: 11.094vw;
+  min-height: 4.427vw;
+  border-radius: 0.833vw;
+  padding: 2.344vw 3.646vw 1.562vw 3.646vw;
   position: relative;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 15px;
+  gap: 0.781vw;
 }
 
 .gd-success-title {
-  font-size: 18px;
+  font-size: 0.938vw;
   font-weight: bold;
   color: #333;
   margin: 0;
 }
 
 .gd-confirm-btn {
-  padding: 10px 32px;
+  padding: 0.521vw 1.667vw;
   background-color: #16c0cc;
   color: white;
   border: none;
-  border-radius: 6px;
-  font-size: 14px;
+  border-radius: 0.312vw;
+  font-size: 0.729vw;
   font-weight: 600;
   cursor: pointer;
 }

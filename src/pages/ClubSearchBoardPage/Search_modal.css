@@ -14,16 +14,16 @@
 }
 
 .modal {
-  width: 978px;
+  width: 50.938vw;
 
   background: #e5e5e5;
-  border-radius: 50px;
-  padding: 20px;
+  border-radius: 2.604vw;
+  padding: 1.042vw;
 }
 .filter-modal {
-  width: 878px;
+  width: 45.729vw;
   background: #e5e5e5;
-  padding: 50px;
+  padding: 2.604vw;
   
 }
 
@@ -31,16 +31,16 @@
   display: flex;
   border: 1px solid #cfcfcf;
   background: #f0f0f0;
-  margin-bottom: 12px;
-  width: 830px;
-  height: 244.224px;
+  margin-bottom: 0.625vw;
+  width: 43.229vw;
+  height: 12.72vw;
   align-items: center;
   justify-content: center;
   
 }
 
 .filter-title {
-  width: 80px;
+  width: 4.167vw;
   background: #f0f0f0;
   border-right: 1px solid #000000;
   height: 100%;
@@ -52,29 +52,29 @@
 }
 
 .filter-options {
-  margin-left: 21px;
-  margin-right: 21px;
+  margin-left: 1.094vw;
+  margin-right: 1.094vw;
   flex: 1;
-  padding: 10px;
+  padding: 0.521vw;
   background-color: #fff;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px 12px;
-  width: 633px;
-  height: 167px;
+  gap: 0.417vw 0.625vw;
+  width: 32.969vw;
+  height: 8.698vw;
   overflow-y: auto;
 }
 
 .filter-options input[type="checkbox"] {
   transform: scale(2.0);
-  margin-right: 4px;
+  margin-right: 0.208vw;
 }
 
 .filter-options label {
-  font-size: 13px;
+  font-size: 0.677vw;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.312vw;
 }
 
 .filter-footer {
@@ -83,12 +83,12 @@
 }
 
 .confirm-btn {
-  width: 80px;
-  height: 36px;
+  width: 4.167vw;
+  height: 1.875vw;
 
   background: #b5b5b5;
   border: none;
 
-  font-size: 14px;
+  font-size: 0.729vw;
   cursor: pointer;
 }

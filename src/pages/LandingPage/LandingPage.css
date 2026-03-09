@@ -7,7 +7,7 @@
 }
 
 .landing-section {
-  min-height: calc(100vh - 90px);
+  min-height: calc(100vh - 4.688vw);
 
   display: flex;
   justify-content: center;
@@ -28,7 +28,7 @@
 }
 .section5-container {
   position: relative;
-  min-height: calc(100vh - 90px);
+  min-height: calc(100vh - 4.688vw);
   display: flex;
   align-items: center;
   justify-content: center;

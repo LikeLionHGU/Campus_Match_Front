@@ -1,6 +1,6 @@
 .footer {
   width: 100%;
-  height: 319px;
+  height: 16.615vw;
   display: flex;
   justify-content: center;
   box-sizing: border-box;
@@ -12,43 +12,43 @@
   display: flex;
   justify-content: space-between;
   border-top: 1px solid var(--Gray-2, #d6d6d6);
-  padding: 50px 80px;
+  padding: 2.604vw 4.167vw;
   box-sizing: border-box;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 1.042vw;
 }
 
 .footer-left {
   display: flex;
-  width: 438px;
-  height: 219px;
+  width: 22.812vw;
+  height: 11.406vw;
   flex-direction: column;
 }
 
 .footer-left img {
-  width: 207.4px;
+  width: 10.802vw;
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 1.042vw;
 }
 
 .footer-intro {
   color: var(--Gray-4, #9e9e9e);
   font-family: Pretendard;
-  font-size: 18px;
+  font-size: 0.938vw;
   font-weight: 600;
   margin-top: 0;
-  margin-bottom: 67px;
+  margin-bottom: 3.49vw;
 }
 
 .footer-contact-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  gap: 0.573vw;
 }
 .footer-contact {
   color: var(--Gray-3, #bdbdbd);
   font-family: Pretendard;
-  font-size: 15px;
+  font-size: 0.781vw;
   font-weight: 400;
   margin: 0;
 }
@@ -61,7 +61,7 @@
 .teamname {
   color: var(--Gray-3, #bdbdbd);
   font-family: Pretendard;
-  font-size: 15px;
+  font-size: 0.781vw;
   font-weight: 500;
   margin: 0;
 }

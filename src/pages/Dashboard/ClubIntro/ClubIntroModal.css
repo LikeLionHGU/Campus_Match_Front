@@ -12,38 +12,38 @@
 }
 
 .club-intro-modal {
-  width: 480px;
+  width: 25vw;
   max-width: 90%;
-  height: 880px;
+  height: 45.833vw;
   overflow-y: auto;
   background: #fff;
-  border-radius: 20px;
-  padding: 70px 60px 50px 60px;
+  border-radius: 1.042vw;
+  padding: 3.646vw 3.125vw 2.604vw 3.125vw;
   position: relative;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 2.083vw;
   box-sizing: border-box;
 }
 
 .club-intro-modal-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 16px;
-  height: 16px;
+  top: 1.042vw;
+  right: 1.042vw;
+  width: 0.833vw;
+  height: 0.833vw;
   cursor: pointer;
 }
 
 .club-intro-modal-header {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.625vw;
 }
 
 .club-intro-modal-temp-label {
-  font-size: 20px;
+  font-size: 1.042vw;
   font-weight: 600;
   color: #1f1f1f;
 }
@@ -54,25 +54,25 @@
 }
 
 .club-intro-modal-label {
-  font-size: 16px;
+  font-size: 0.833vw;
   font-weight: 600;
   color: #1f1f1f;
-  margin-bottom: 20px;
+  margin-bottom: 1.042vw;
 }
 
 .award-list-container {
   background: #f6f6f6;
-  border-radius: 8px;
-  padding: 10px;
+  border-radius: 0.417vw;
+  padding: 0.521vw;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.26vw;
 }
 
 .award-list {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.26vw;
   margin: 0;
   padding: 0;
   border: none;
@@ -80,7 +80,7 @@
 .award-item {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 0.26vw;
   padding: 0;
   background: transparent;
 }
@@ -88,26 +88,26 @@
 .award-text {
   flex: 1;
   background: #fff;
-  border-radius: 4px;
-  height: 35px;
+  border-radius: 0.208vw;
+  height: 1.823vw;
   display: flex;
   align-items: center;
-  padding: 0 14px;
-  font-size: 14px;
+  padding: 0 0.729vw;
+  font-size: 0.729vw;
   color: #333;
 }
 
 .award-delete-btn {
   background: #e0f7fa;
   border: none;
-  border-radius: 4px;
-  width: 35px;
-  height: 35px;
+  border-radius: 0.208vw;
+  width: 1.823vw;
+  height: 1.823vw;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #000;
-  font-size: 14px;
+  font-size: 0.729vw;
   cursor: pointer;
   padding: 0;
   flex-shrink: 0;
@@ -115,17 +115,17 @@
 
 .award-add-row {
   display: flex;
-  gap: 5px;
+  gap: 0.26vw;
   margin-top: 0;
 }
 
 .award-add-row input {
   flex: 1;
-  padding: 0 14px;
-  height: 35px;
+  padding: 0 0.729vw;
+  height: 1.823vw;
   border: 1px solid #16c0cc;
-  border-radius: 4px;
-  font-size: 14px;
+  border-radius: 0.208vw;
+  font-size: 0.729vw;
   outline: none;
   background: #fff;
   box-sizing: border-box;
@@ -138,13 +138,13 @@
 }
 
 .award-add-btn {
-  width: 35px;
-  height: 35px;
+  width: 1.823vw;
+  height: 1.823vw;
   border: none;
-  border-radius: 4px;
+  border-radius: 0.208vw;
   background: #16c0cc;
   color: #fff;
-  font-size: 18px;
+  font-size: 0.938vw;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -154,11 +154,11 @@
 
 .club-intro-textarea {
   width: 100%;
-  min-height: 140px;
-  padding: 16px;
+  min-height: 7.292vw;
+  padding: 0.833vw;
   border: 1px solid #d6d6d6;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: 0.417vw;
+  font-size: 0.729vw;
   line-height: 1.7;
   color: #333;
   resize: vertical;
@@ -166,7 +166,7 @@
   font-family: inherit;
   box-sizing: border-box;
   background: #fff;
-  margin-bottom: 5px;
+  margin-bottom: 0.26vw;
 }
 
 .club-intro-textarea:focus {
@@ -181,23 +181,23 @@
 
 .club-intro-textarea-count {
   text-align: right;
-  font-size: 12px;
+  font-size: 0.625vw;
   color: #999;
 }
 
 .club-intro-submit-row {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 2.083vw;
 }
 
 .club-intro-submit-btn {
-  padding: 10px 20px;
+  padding: 0.521vw 1.042vw;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.26vw;
   background: #16c0cc;
   color: #fff;
-  font-size: 15px;
+  font-size: 0.781vw;
   font-weight: 600;
   cursor: pointer;
 }

@@ -16,10 +16,10 @@
 }
 
 .mypage-content {
-  margin-top: 109px;
-  margin-bottom: 92px;
+  margin-top: 5.677vw;
+  margin-bottom: 4.792vw;
   display: flex;
-  width: 1166px;
+  width: 60.729vw;
   flex-direction: column;
   align-items: flex-start;
   box-sizing: content-box;
@@ -28,13 +28,13 @@
 .mypage-header {
   display: flex;
   align-items: center;
-  gap: 109px;
+  gap: 5.677vw;
 }
 
 .mypage-body {
   display: flex;
   align-items: center;
-  gap: 51px;
+  gap: 2.656vw;
   width: 100%;
 }
 
@@ -46,13 +46,13 @@
 
 .profile-image-wrapper {
   position: relative;
-  width: 126px;
-  height: 126px;
+  width: 6.562vw;
+  height: 6.562vw;
 }
 
 .profile-circle {
-  width: 126px;
-  height: 126px;
+  width: 6.562vw;
+  height: 6.562vw;
   border-radius: 50%;
   background-color: var(--Gray-1);
   border: 2px solid var(--Gray-2);
@@ -63,8 +63,8 @@
 }
 
 .profile-logo-placeholder {
-  width: 50px;
-  height: 51.538px;
+  width: 2.604vw;
+  height: 2.684vw;
   opacity: 0.4;
   filter: grayscale(100%);
 }
@@ -77,10 +77,10 @@
 
 .edit-icon-btn {
   position: absolute;
-  bottom: 5px;
-  right: 5px;
-  width: 26px;
-  height: 26px;
+  bottom: 0.26vw;
+  right: 0.26vw;
+  width: 1.354vw;
+  height: 1.354vw;
   border-radius: 50%;
   background-color: var(--Gray-3);
   border: 2px solid #fff;
@@ -96,8 +96,8 @@
 }
 
 .profile-edit-icon {
-  width: 14px;
-  height: 14px;
+  width: 0.729vw;
+  height: 0.729vw;
   filter: brightness(0) invert(1);
 }
 
@@ -106,7 +106,7 @@
 }
 
 .title {
-  font-size: 30px;
+  font-size: 1.562vw;
   font-weight: 400;
   color: var(--txt-color);
   margin: 0;
@@ -114,9 +114,9 @@
 
 .divider {
   width: 100%;
-  height: 1px;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  height: 0.052vw;
+  margin-top: 2.083vw;
+  margin-bottom: 2.083vw;
   background: var(--Gray-2);
 }
 
@@ -134,45 +134,45 @@
 .col {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  width: 422px;
+  gap: 1.562vw;
+  width: 21.979vw;
 }
 
 .field {
-  width: 422px;
+  width: 21.979vw;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 7px;
+  gap: 0.365vw;
 }
 
 .label {
   position: relative;
   display: inline-flex;
   width: fit-content;
-  font-size: 18px;
+  font-size: 0.938vw;
   font-weight: 400;
   color: var(--txt-color);
 }
 
 .required {
   position: absolute;
-  width: 7.871px;
-  height: 8.273px;
-  top: -1.5px;
-  right: -10px;
+  width: 0.41vw;
+  height: 0.431vw;
+  top: -0.078vw;
+  right: -0.521vw;
   color: var(--primary-color);
 }
 
 .control {
-  width: 422px;
-  height: 50px;
+  width: 21.979vw;
+  height: 2.604vw;
   border: 1px solid var(--Gray-2);
   background: var(--bg-color);
   outline: none;
   box-sizing: border-box;
-  border-radius: 8px;
-  padding: 0 15px;
+  border-radius: 0.417vw;
+  padding: 0 0.781vw;
 }
 
 .control:focus-within {
@@ -183,7 +183,7 @@
   width: 100%;
   height: 100%;
   border: none;
-  font-size: 16px;
+  font-size: 0.833vw;
   box-sizing: border-box;
   outline: none;
   background: transparent;
@@ -192,29 +192,29 @@
 }
 
 .phoneSection {
-  margin-top: 30px;
-  margin-bottom: 145px;
+  margin-top: 1.562vw;
+  margin-bottom: 7.552vw;
   width: 100%;
 }
 
 .phoneRow {
   width: 100%;
   display: grid;
-  grid-template-columns: 110px 20px 110px 20px 110px;
-  column-gap: 13px;
+  grid-template-columns: 5.729vw 1.042vw 5.729vw 1.042vw 5.729vw;
+  column-gap: 0.677vw;
   align-items: center;
 }
 
 .phoneRow input.phone {
-  width: 110px;
-  height: 50px;
+  width: 5.729vw;
+  height: 2.604vw;
   border: 1px solid var(--Gray-2);
   background: var(--bg-color);
   outline: none;
   box-sizing: border-box;
   text-align: center;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 0.417vw;
+  font-size: 0.833vw;
   font-family: Pretendard;
   color: var(--txt-color);
 }
@@ -224,8 +224,8 @@
 }
 
 .dash {
-  width: 20px;
-  height: 1.5px;
+  width: 1.042vw;
+  height: 0.078vw;
   background-color: #bdbdbd;
   justify-self: center;
 }
@@ -238,12 +238,12 @@
 }
 
 .unregisterBtn {
-  padding: 10px 20px;
+  padding: 0.521vw 1.042vw;
   background: transparent;
   color: var(--Gray-4);
   border: 1.5px solid var(--Gray-3);
-  border-radius: 5px;
-  font-size: 15px;
+  border-radius: 0.26vw;
+  font-size: 0.781vw;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -258,13 +258,13 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 422px;
-  height: 50px;
+  width: 21.979vw;
+  height: 2.604vw;
   border: 0;
-  border-radius: 8px;
+  border-radius: 0.417vw;
   color: #ffffff;
   background: var(--Gray-2);
-  font-size: 20px;
+  font-size: 1.042vw;
   font-weight: 600;
   cursor: not-allowed;
   transition: all 0.3s ease;

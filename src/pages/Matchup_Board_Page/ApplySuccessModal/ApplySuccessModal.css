@@ -18,22 +18,22 @@
     transform: translateY(-300px);
     position: relative;
     background: #fff;
-    padding: 20px;
-    width: 385px;
-    height: 108px;
-    padding: 45px 70px 30px 70px;
-    border-radius: 10px;
+    padding: 1.042vw;
+    width: 20.052vw;
+    height: 5.625vw;
+    padding: 2.344vw 3.646vw 1.562vw 3.646vw;
+    border-radius: 0.521vw;
     align-items: center;
     justify-items: center;
 }
 
 .apply-success-modal-close{
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 1.042vw;
+    right: 1.042vw;
 
-    width: 15.8px;
-    height: 15.8px;
+    width: 0.823vw;
+    height: 0.823vw;
     cursor: pointer;
 }
 
@@ -41,18 +41,18 @@
     color: var(--Text, #1F1F1F);
     text-align: center;
     font-family: Pretendard;
-    font-size: 20px;
+    font-size: 1.042vw;
     font-style: normal;
     font-weight: 500;
     line-height: 100%; /* 20px */
-    margin-bottom: 5px;
+    margin-bottom: 0.26vw;
 }
 
 .apply-success-modal-span{
     color: var(--Text, #1F1F1F);
     text-align: center;
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 400;
     line-height: 100%; /* 15px */
@@ -61,14 +61,14 @@
 
 
 .apply-success-modal-button{
-    margin-top: 30px;
+    margin-top: 1.562vw;
     border: 0px;
-    width: 66px;
-    height: 35px;
+    width: 3.438vw;
+    height: 1.823vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 0.26vw;
     background: var(--Primary, #16C0CC);
     color: #fff;
     cursor: pointer;

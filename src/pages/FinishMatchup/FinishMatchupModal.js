@@ -202,17 +202,17 @@ const FinishMatchupModal = ({ onClose, match }) => {
                   className="upload-box"
                   style={{
                     width: "100%",
-                    height: "60px",
+                    height: "3.125vw",
                     flexDirection: "row",
-                    gap: "10px",
-                    marginTop: "10px",
+                    gap: "0.521vw",
+                    marginTop: "0.521vw",
                     backgroundColor: "#fafafa",
                     border: "2px dashed #ddd",
                   }}
                 >
                   <div
                     className="upload-placeholder-content"
-                    style={{ flexDirection: "row", gap: "8px" }}
+                    style={{ flexDirection: "row", gap: "0.417vw" }}
                   >
                     <span
                       className="upload-icon"
@@ -221,7 +221,7 @@ const FinishMatchupModal = ({ onClose, match }) => {
                     <span
                       className="upload-text"
                       style={{
-                        fontSize: "14px",
+                        fontSize: "0.729vw",
                         fontWeight: "500",
                         color: "#333",
                       }}
@@ -230,7 +230,7 @@ const FinishMatchupModal = ({ onClose, match }) => {
                     </span>
                     <span
                       className="upload-text"
-                      style={{ fontSize: "12px", color: "#bbb" }}
+                      style={{ fontSize: "0.625vw", color: "#bbb" }}
                     >
                       {images.length}/5
                     </span>
@@ -323,7 +323,7 @@ const FinishMatchupModal = ({ onClose, match }) => {
             </div>
             <div
               className="radio-group"
-              style={{ marginTop: "8px", marginLeft: "96px" }}
+              style={{ marginTop: "0.417vw", marginLeft: "5vw" }}
             >
               <label className="radio-label">
                 단순 교류

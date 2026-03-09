@@ -1,16 +1,16 @@
 .section2{
     
     display: grid;
-    grid-template-columns: 361px 700px;
-    gap:116px;
+    grid-template-columns: 18.802vw 36.458vw;
+    gap:6.042vw;
     position: relative;
     z-index: 2;
 }
 .section2-left-main{
-    padding-top: 25px;
+    padding-top: 1.302vw;
     text-align: right;
     font-family: Pretendard;
-    font-size: 45px;
+    font-size: 2.344vw;
     font-style: normal;
     font-weight: 700;
     line-height: 130%; /* 58.5px */
@@ -21,8 +21,8 @@
 }
 .section2-left{
     display: grid;
-    grid-template-rows:140px 64px;
-    gap:70px;
+    grid-template-rows:7.292vw 3.333vw;
+    gap:3.646vw;
     align-items: center;
 }
 .section2-left-sub{
@@ -30,13 +30,13 @@
     text-align: right !important;
     color: var(--Gray-4, #9E9E9E);
     font-family: Pretendard;
-    font-size: 25px;
+    font-size: 1.302vw;
     font-style: normal;
     font-weight: 600;
     line-height: 130%; /* 32.5px */
 }
 .section2-back{
-    right: -300px;
+    right: -15.625vw;
     z-index: 0;
     position: absolute;
 }

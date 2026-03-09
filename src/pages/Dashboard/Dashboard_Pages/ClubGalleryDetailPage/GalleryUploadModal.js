@@ -110,7 +110,7 @@ const GalleryUploadModal = ({
                   flexDirection: "column",
                   width: "100%",
                   height: "100%",
-                  padding: "15px",
+                  padding: "0.781vw",
                   boxSizing: "border-box",
                 }}
               >
@@ -136,19 +136,19 @@ const GalleryUploadModal = ({
                         type="button"
                         style={{
                           position: "absolute",
-                          top: "5px",
-                          right: "5px",
+                          top: "0.26vw",
+                          right: "0.26vw",
                           background: "rgba(0,0,0,0.5)",
                           color: "white",
                           border: "none",
                           borderRadius: "50%",
-                          width: "20px",
-                          height: "20px",
+                          width: "1.042vw",
+                          height: "1.042vw",
                           cursor: "pointer",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          fontSize: "12px",
+                          fontSize: "0.625vw",
                         }}
                         onClick={(e) => {
                           e.stopPropagation();
@@ -171,26 +171,26 @@ const GalleryUploadModal = ({
                     style={{
                       cursor: "pointer",
                       width: "100%",
-                      height: "100px",
+                      height: "5.208vw",
                       justifyContent: "center",
                       alignItems: "center",
                       display: "flex",
                       flexDirection: "column",
                       border: "2px dashed #ddd",
-                      borderRadius: "8px",
+                      borderRadius: "0.417vw",
                       background: "#fafafa",
                       flexShrink: 0,
                       pointerEvents: "auto",
-                      marginTop: "15px",
+                      marginTop: "0.781vw",
                     }}
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div
                       className="camera-icon"
-                      style={{ marginBottom: "8px" }}
+                      style={{ marginBottom: "0.417vw" }}
                     ></div>
                     <span>추가하기</span>
-                    <span style={{ fontSize: "12px", color: "#bbb" }}>
+                    <span style={{ fontSize: "0.625vw", color: "#bbb" }}>
                       {images.length}/5
                     </span>
                     <input
@@ -227,7 +227,7 @@ const GalleryUploadModal = ({
               >
                 <div className="camera-icon"></div>
                 <span>사진 올리기</span>
-                <span style={{ fontSize: "12px", color: "#bbb" }}>0/5</span>
+                <span style={{ fontSize: "0.625vw", color: "#bbb" }}>0/5</span>
                 <input
                   type="file"
                   multiple

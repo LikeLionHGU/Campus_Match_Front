@@ -17,26 +17,26 @@
   transform: translateY(-150px);
   position: relative;
   background: #fff;
-  padding: 70px 60px 60px 60px;
-  width: 422px;
-  height: 422px;
-  border-radius: 20px;
+  padding: 3.646vw 3.125vw 3.125vw 3.125vw;
+  width: 21.979vw;
+  height: 21.979vw;
+  border-radius: 1.042vw;
 }
 
 .matchup-cancel-modal-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 1.042vw;
+  right: 1.042vw;
 
-  width: 15.8px;
-  height: 15.8px;
+  width: 0.823vw;
+  height: 0.823vw;
   cursor: pointer;
 }
 
 .matchup-cancel-modal-main {
   display: grid;
-  grid-template-rows: 20px 267px 35px;
-  gap: 50px;
+  grid-template-rows: 1.042vw 13.906vw 1.823vw;
+  gap: 2.604vw;
   align-items: center;
   justify-content: center;
 }
@@ -44,34 +44,34 @@
   color: var(--Text, #1f1f1f);
   text-align: center;
   font-family: Pretendard;
-  font-size: 20px;
+  font-size: 1.042vw;
   font-style: normal;
   font-weight: 500;
   line-height: 100%; /* 20px */
 }
 .matchup-cancel-modal-body {
   display: grid;
-  grid-template-rows: 15px 242px;
-  gap: 10px;
+  grid-template-rows: 0.781vw 12.604vw;
+  gap: 0.521vw;
 }
 .matchup-cancel-modal-body span {
   color: var(--Text, #1f1f1f);
   font-family: Pretendard;
-  font-size: 15px;
+  font-size: 0.781vw;
   font-style: normal;
   font-weight: 500;
   line-height: 100%; /* 15px */
 }
 .matchup-cancel-modal-body textarea {
-  width: 422px;
-  height: 222px;
-  border-radius: 8px;
+  width: 21.979vw;
+  height: 11.562vw;
+  border-radius: 0.417vw;
   border: 1.5px solid var(--Gray-2, #d6d6d6);
   background: #fff;
-  padding: 10px;
+  padding: 0.521vw;
   outline: none;
   font-family: Pretendard;
-  font-size: 15px;
+  font-size: 0.781vw;
   font-style: normal;
   font-weight: 400;
   line-height: 100%; /* 15px */
@@ -84,23 +84,23 @@
   color: var(--Gray-3, #bdbdbd);
   text-align: right;
   font-family: Pretendard;
-  font-size: 15px;
+  font-size: 0.781vw;
   font-style: normal;
   font-weight: 400;
   line-height: 100%; /* 15px */
 }
 .matchup-cancel-modal-button {
   display: grid;
-  grid-template-columns: 66px 66px;
-  gap: 12px;
+  grid-template-columns: 3.438vw 3.438vw;
+  gap: 0.625vw;
   justify-content: center;
 }
 .matchup-cancel-left-button {
   border: 0px;
-  margin-top: 20px;
-  width: 66px;
-  height: 35px;
-  border-radius: 5px;
+  margin-top: 1.042vw;
+  width: 3.438vw;
+  height: 1.823vw;
+  border-radius: 0.26vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,7 +108,7 @@
   background-color: #fff;
   color: var(--Primary, #16c0cc);
   font-family: Pretendard;
-  font-size: 15px;
+  font-size: 0.781vw;
   font-style: normal;
   font-weight: 600;
   line-height: 100%; /* 15px */
@@ -116,18 +116,18 @@
 }
 .matchup-cancel-right-button {
   border: 0px;
-  margin-top: 20px;
-  width: 66px;
-  height: 35px;
+  margin-top: 1.042vw;
+  width: 3.438vw;
+  height: 1.823vw;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
+  border-radius: 0.26vw;
   background: var(--Primary, #16c0cc);
   color: #fff;
   font-family: Pretendard;
-  font-size: 15px;
+  font-size: 0.781vw;
   font-style: normal;
   font-weight: 600;
   line-height: 100%; /* 15px */

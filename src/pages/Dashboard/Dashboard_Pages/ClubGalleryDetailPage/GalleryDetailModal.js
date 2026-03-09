@@ -139,22 +139,22 @@ const GalleryDetailModal = ({ item, onClose, onUpdate }) => {
           className="gd-success-content"
           onClick={(e) => e.stopPropagation()}
         >
-          <h3 className="gd-success-title" style={{ marginTop: "20px" }}>
+          <h3 className="gd-success-title" style={{ marginTop: "1.042vw" }}>
             정말 삭제하시겠습니까?
           </h3>
           <p
             style={{
               textAlign: "center",
               color: "#666",
-              marginBottom: "20px",
-              fontSize: "14px",
+              marginBottom: "1.042vw",
+              fontSize: "0.729vw",
               fontFamily: "Pretendard",
             }}
           >
             삭제된 항목은 복구할 수 없습니다.
           </p>
           <div
-            style={{ display: "flex", gap: "10px", justifyContent: "center" }}
+            style={{ display: "flex", gap: "0.521vw", justifyContent: "center" }}
           >
             <button
               className="gd-confirm-btn"

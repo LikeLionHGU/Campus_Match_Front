@@ -18,22 +18,22 @@
     transform: translateY(-200px);
     position: relative;
     background: #fff;
-    padding: 20px;
-    width: 213px;
-    height: 108px;
-    padding: 45px 70px 20px 70px;
-    border-radius: 10px;
+    padding: 1.042vw;
+    width: 11.094vw;
+    height: 5.625vw;
+    padding: 2.344vw 3.646vw 1.042vw 3.646vw;
+    border-radius: 0.521vw;
     align-items: center;
     justify-items: center;
 }
 
 .accept-modal-close{
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 1.042vw;
+    right: 1.042vw;
 
-    width: 15.8px;
-    height: 15.8px;
+    width: 0.823vw;
+    height: 0.823vw;
     cursor: pointer;
 }
 
@@ -41,32 +41,32 @@
     color: var(--Text, #1F1F1F);
     text-align: center;
     font-family: Pretendard;
-    font-size: 20px;
+    font-size: 1.042vw;
     font-style: normal;
     font-weight: 500;
     line-height: 100%; /* 20px */
-    margin-bottom: 8px;
+    margin-bottom: 0.417vw;
 }
 
 .accept-modal-text-sub{
     color: var(--Text, #1F1F1F);
     text-align: center;
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 400;
     line-height: 100%; /* 15px */
-    margin-bottom: 30px;
+    margin-bottom: 1.562vw;
 }
 
 .accept-modal-button{
     border: 0px;
-    width: 66px;
-    height: 35px;
+    width: 3.438vw;
+    height: 1.823vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 0.26vw;
     background: var(--Primary, #16C0CC);
     color: #fff;
     cursor: pointer;

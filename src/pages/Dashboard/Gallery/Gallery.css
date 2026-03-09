@@ -28,7 +28,7 @@
   color: #fff;
   text-align: center;
   font-family: Pretendard;
-  font-size: 20px;
+  font-size: 1.042vw;
   font-style: normal;
   font-weight: 500;
   line-height: 50px;
@@ -36,20 +36,20 @@
 
 .gallery-img-overlay img {
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 1.562vw;
+  right: 1.562vw;
 
-  width: 35px;
-  height: 36px;
+  width: 1.823vw;
+  height: 1.875vw;
 }
 
 .gallery-img-overlay-main {
   position: absolute;
-  left: 30px;
-  bottom: 128px;
+  left: 1.562vw;
+  bottom: 6.667vw;
   color: #fff;
   font-family: Pretendard;
-  font-size: 30px;
+  font-size: 1.562vw;
   font-style: normal;
   font-weight: 500;
   line-height: 50px;
@@ -57,11 +57,11 @@
 
 .gallery-img-overlay-date {
   position: absolute;
-  left: 30px;
-  bottom: 64px;
+  left: 1.562vw;
+  bottom: 3.333vw;
   color: #fff;
   font-family: Inter;
-  font-size: 20px;
+  font-size: 1.042vw;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -69,11 +69,11 @@
 
 .gallery-img-overlay-name {
   position: absolute;
-  left: 30px;
-  bottom: 30px;
+  left: 1.562vw;
+  bottom: 1.562vw;
   color: #fff;
   font-family: Inter;
-  font-size: 20px;
+  font-size: 1.042vw;
   font-style: normal;
   font-weight: 400;
   line-height: normal;

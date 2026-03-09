@@ -181,12 +181,12 @@ const MatchupHistoryModal = ({ mode, historyData, onClose, onSuccess }) => {
               className="history-modal-row"
               style={{ alignItems: "flex-start" }}
             >
-              <label style={{ marginTop: "6px" }}>결과</label>
+              <label style={{ marginTop: "0.312vw" }}>결과</label>
               <div
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  gap: "10px",
+                  gap: "0.521vw",
                 }}
               >
                 <div className="history-modal-radio-group">

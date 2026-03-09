@@ -1,34 +1,34 @@
 .container{
     display: grid;
-    grid-template-columns: 229px 1fr;
+    grid-template-columns: 11.927vw 1fr;
 
 }
 
 .clubsearch-board-container {
     display: grid;
-    grid-template-rows: 50px 1fr;
+    grid-template-rows: 2.604vw 1fr;
     background-color: #F7FAFA;
-    padding: 34px 80px 106px 78px;
-    gap: 50px;
+    padding: 1.771vw 4.167vw 5.521vw 4.062vw;
+    gap: 2.604vw;
 }
 .clubsearch-board-header{
     
 }
 .clubsearch-board-header-search{
      display: grid;
-     grid-template-columns: 355px 1128px;
-     gap: 50px;
+     grid-template-columns: 18.49vw 58.75vw;
+     gap: 2.604vw;
 }
 
 .clubsearch-board-header-search-input input{
-    width: 315px;
-    height: 15px;
-    padding: 17.5px 20px;
-    border-radius: 8px;
+    width: 16.406vw;
+    height: 0.781vw;
+    padding: 0.911vw 1.042vw;
+    border-radius: 0.417vw;
     border: 1.5px solid var(--Primary, #d6d6d6);
     background: #FFF;
     font-family: Pretendard;
-    font-size: 13px;
+    font-size: 0.677vw;
     font-style: normal;
     font-weight: 400;
     line-height: 100%;
@@ -47,31 +47,31 @@
 
 .clubsearch-board-header-search-input img {
     position: absolute;
-    right: 12px;
+    right: 0.625vw;
     top: 50%;
     transform: translateY(-50%);
-    width: 25px;
-    height: 25px;
+    width: 1.302vw;
+    height: 1.302vw;
     pointer-events: none;
 }
 
 .clubsearch-board-search-condition{
-    width: 1085px;
-    padding: 12px 20px;
-    border-radius: 8px;
+    width: 56.51vw;
+    padding: 0.625vw 1.042vw;
+    border-radius: 0.417vw;
     border: 1.5px solid var(--Primary, #d6d6d6);
     background: #FFF;
     justify-content: center;
     align-items: center;
     display: grid;
-    grid-template-columns: 82px 884px 72px ;
-    gap: 25px;
+    grid-template-columns: 4.271vw 46.042vw 3.75vw ;
+    gap: 1.302vw;
 }
 
 .clubsearch-board-search-condition-left{
     color: var(--Gray-4, #9E9E9E);
     font-family: Pretendard;
-    font-size: 13px;
+    font-size: 0.677vw;
     font-style: normal;
     font-weight: 400;
     line-height: 100%; /* 15px */
@@ -80,16 +80,16 @@
     align-items: center;
 }
 .clubsearch-board-search-condition-left img{
-    width: 12px;
-    margin-left: 12px;
-    margin-bottom: 1px;
+    width: 0.625vw;
+    margin-left: 0.625vw;
+    margin-bottom: 0.052vw;
 }
 
 .clubsearch-board-search-condition-right{
     display: flex;
     color: var(--Gray-4, #9E9E9E);
     font-family: Pretendard;
-    font-size: 12px;
+    font-size: 0.625vw;
     font-style: normal;
     font-weight: 400;
     line-height: 100%; /* 12px */
@@ -99,25 +99,25 @@
 }
 
 .clubsearch-board-search-condition-right img{
-    margin-left: 6px;
-    width: 12px;
-    height: 12px;
+    margin-left: 0.312vw;
+    width: 0.625vw;
+    height: 0.625vw;
 }
 
 .clubsearch-board-content{
     display: flex;
     flex-direction: column;
-    height: 730px;
-    width:1533px;
+    height: 38.021vw;
+    width:79.844vw;
 }
 
 .clubsearch-board-table-wrapper {
     flex: 1;
     overflow-y: auto;
-    border-radius: 8px;
-    width: 1533px;
+    border-radius: 0.417vw;
+    width: 79.844vw;
     box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.08);
-    margin-bottom: 50px;
+    margin-bottom: 2.604vw;
 }
 
 .clubsearch-board-table-wrapper table tr{
@@ -126,7 +126,7 @@
 }
 
 .clubsearch-board-table-wrapper table{
-    width: 1533px;
+    width: 79.844vw;
     border-collapse: collapse;
     overflow: hidden;
     
@@ -140,27 +140,27 @@
     align-self: stretch;
     color: var(--white, #FFF);
     font-family: Pretendard;
-    font-size: 18px;
+    font-size: 0.938vw;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
 }
 .clubsearch-board-table-wrapper table thead tr{
-    height: 61px;
+    height: 3.177vw;
     
 }
 .clubsearch-board-table-wrapper table tbody{
     
     color: var(--Text, #1F1F1F);
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 }
 .clubsearch-board-table-wrapper table tbody td{
-    height: 58px;
-    width: 219px;
+    height: 3.021vw;
+    width: 11.406vw;
     text-align: center;
     
 }
@@ -173,13 +173,13 @@
 }
 .clubsearch-board-table-wrapper tbody button{
     border: none;
-    border-radius: 2px;
+    border-radius: 0.104vw;
     background: #D6FBFF;
-    width: 62px;
-    height: 24px;
+    width: 3.229vw;
+    height: 1.25vw;
     color: var(--Text, #1F1F1F);
     font-family: Pretendard;
-    font-size: 12px;
+    font-size: 0.625vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -191,31 +191,31 @@
     align-items: center;
 }
 .clubsearch-board-pagination-double{
-    width: 11px;
-    height: 11px;
-    margin-top: 2.8px;
+    width: 0.573vw;
+    height: 0.573vw;
+    margin-top: 0.146vw;
 }
 .clubsearch-board-pagination-mono{
-    width: 16px;
-    height: 16px;
+    width: 0.833vw;
+    height: 0.833vw;
 }
 .pagination-numbers {
     display: flex;
-    gap: 25px;
-    margin: 0 40px;
+    gap: 1.302vw;
+    margin: 0 2.083vw;
 }
 .pagination-move {
     display: flex;
-    gap: 15px;
+    gap: 0.781vw;
 }
 .clubsearch-board-pagination button {
     border: none;
     background: none;
     cursor: pointer;
-    height: 18px;
+    height: 0.938vw;
     text-align: center;
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -233,8 +233,8 @@
 
 .thead-date{
     display:grid;
-    grid-template-columns: 32px 14px;
-    gap:10px;
+    grid-template-columns: 1.667vw 0.729vw;
+    gap:0.521vw;
     align-items: center;
     justify-content: center;
 }
@@ -248,26 +248,26 @@
   table-layout: fixed;
 }
 .clubsearch-board-filter-chip{
-  width: 70px;
-  height: 20px;
-  border-radius: 2px;
+  width: 3.646vw;
+  height: 1.042vw;
+  border-radius: 0.104vw;
   background: #EAFDFF;
   color: var(--Text, #1F1F1F);
   font-family: Pretendard;
-  font-size: 15px;
+  font-size: 0.781vw;
   font-style: normal;
   font-weight: 400;
   line-height: 100%; /* 15px */
   display: grid;
-  grid-template-columns: 52px 10px;
-  gap: 3px;
+  grid-template-columns: 2.708vw 0.521vw;
+  gap: 0.156vw;
   align-items: center;
   justify-content: center;
-  padding: 5px;
+  padding: 0.26vw;
 }
 .clubsearch-board-filter-chip img{
-  width: 8px;
-  height: 8px;
+  width: 0.417vw;
+  height: 0.417vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -276,13 +276,13 @@
 .clubsearch-board-search-condition-middle{
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 0.26vw;
     justify-content: flex-start;
     overflow-x: auto;
 }
 .club-small-icon {
-  width: 34px;
-  height: 34px;
+  width: 1.771vw;
+  height: 1.771vw;
   border-radius: 50%;
   object-fit: cover;
   display: block;
@@ -291,11 +291,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 0.417vw;
 }
 .club-board-clubName{
     justify-content:initial !important;
-    padding-left: 50px;
+    padding-left: 2.604vw;
 }
 .clubsearch-board-search-condition.active {
   border: 1.5px solid #16C0CC;

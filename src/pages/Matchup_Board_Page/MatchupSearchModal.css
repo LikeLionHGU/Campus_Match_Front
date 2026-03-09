@@ -10,34 +10,34 @@
 
 .matchup-search-modal {
     position: relative;
-    width: 568px;
-    height: 759px;
+    width: 29.583vw;
+    height: 39.531vw;
     background: #fff;
-    border-radius: 12px;
+    border-radius: 0.625vw;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
     overflow: hidden;
 }
 
 .matchup-search-modal-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 1.042vw;
+  right: 1.042vw;
 
-  width: 15.8px;
-  height: 15.8px;
+  width: 0.823vw;
+  height: 0.823vw;
   cursor: pointer;
 }
 
 .matchup-search-filter-modal {
   display: grid;
-  grid-template-rows: 200px 300px 74px;
-  padding: 70px 60px 50px 60px;
+  grid-template-rows: 10.417vw 15.625vw 3.854vw;
+  padding: 3.646vw 3.125vw 2.604vw 3.125vw;
 
 }
 
 .matchup-search-filter-section {
   display: grid;
-  grid-template-columns:46px 402px;
+  grid-template-columns:2.396vw 20.938vw;
 
 }
 
@@ -47,7 +47,7 @@
   background: var(--Primary, #16C0CC);
   color: var(--white, #FFF);
   font-family: Pretendard;
-  font-size: 15px;
+  font-size: 0.781vw;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -56,38 +56,38 @@
 }
 
 .matchup-search-filter-options-region {
-  padding: 20px 10px;
+  padding: 1.042vw 0.521vw;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px 12px;
+  gap: 0.521vw 0.625vw;
   border-bottom: 1.5px solid #16C0CC;;
   border-top :1.5px solid #16C0CC;;
 
 }
 .matchup-search-filter-options {
-  padding: 20px 10px;
+  padding: 1.042vw 0.521vw;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px 12px;
+  gap: 0.521vw 0.625vw;
   border-bottom: 1.5px solid #16C0CC;;
 }
 
 .matchup-search-filter-date {
-  padding: 20px 10px;
+  padding: 1.042vw 0.521vw;
   border-bottom: 1.5px solid #16C0CC;
   display: grid;
-  grid-template-columns: 121px 13px 121px;
-  gap: 10px;
+  grid-template-columns: 6.302vw 0.677vw 6.302vw;
+  gap: 0.521vw;
   align-items: center;
   
   
 }
 .matchup-search-filter-date input{
-  padding: 10px;
+  padding: 0.521vw;
   border: 1.5px solid #D6D6D6;
-  border-radius: 8px;
+  border-radius: 0.417vw;
   font-family: Pretendard;
-  font-size: 12px;
+  font-size: 0.625vw;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -102,10 +102,10 @@
 .matchup-search-filter-options label,.matchup-search-filter-options-region label {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 0.26vw;
   color: var(--Text, #1F1F1F);
   font-family: Pretendard;
-  font-size: 15px;
+  font-size: 0.781vw;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -114,8 +114,8 @@
 }
 
 .matchup-search-filter-options input[type="checkbox"] {
-  width: 14.17px;
-  height: 14.17px;
+  width: 0.738vw;
+  height: 0.738vw;
   accent-color: #16C0CC;
   appearance: none;
   border: 1.5px solid #16C0CC;
@@ -123,8 +123,8 @@
 }
 
 .matchup-search-filter-options-region input[type="checkbox"] {
-  width: 14.17px;
-  height: 14.17px;
+  width: 0.738vw;
+  height: 0.738vw;
   accent-color: #16C0CC;
   appearance: none;
   border: 1.5px solid #16C0CC;
@@ -139,22 +139,22 @@
 }
 
 .matchup-search-filter-footer {
-  margin-top: 50px;
+  margin-top: 2.604vw;
   display: flex;
   justify-content: center;
-  padding-top: 6px;
+  padding-top: 0.312vw;
 }
 
 .matchup-search-confirm-btn {
-  width: 66px;
-  height: 35px;
-  padding: 0 16px;
+  width: 3.438vw;
+  height: 1.823vw;
+  padding: 0 0.833vw;
   border: none;
-  border-radius: 8px;
+  border-radius: 0.417vw;
   background: #16C0CC;
   color: #fff;
   font-family: Pretendard;
-  font-size: 14px;
+  font-size: 0.729vw;
   font-weight: 600;
   cursor: pointer;
 }

@@ -1,13 +1,13 @@
 .finish-matchup-container {
   display: grid;
-  grid-template-columns: 229px 1fr;
+  grid-template-columns: 11.927vw 1fr;
   background-color: #fbffff;
   min-height: 100vh;
 }
 
 .finish-matchup-content {
   flex: 1;
-  padding: 34px 80px 106px 78px;
+  padding: 1.771vw 4.167vw 5.521vw 4.062vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,8 +15,8 @@
 
 .finish-matchup-header {
   text-align: center;
-  gap: 10px;
-  margin-bottom: 40px;
+  gap: 0.521vw;
+  margin-bottom: 2.083vw;
   display: flex;
   flex-direction: column;
 }
@@ -25,7 +25,7 @@
   color: #000;
   text-align: center;
   font-family: Pretendard;
-  font-size: 25px;
+  font-size: 1.302vw;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -35,7 +35,7 @@
   color: #000;
   text-align: center;
   font-family: Inter;
-  font-size: 20px;
+  font-size: 1.042vw;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -43,19 +43,19 @@
 
 .matchup-list-container {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 0.417vw;
   display: flex;
   flex-direction: column;
   height: 100%;
-  gap: 20px;
+  gap: 1.042vw;
 }
 
 .matchup-table-wrapper {
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.08);
-  border-radius: 8px;
+  border-radius: 0.417vw;
   background-color: white;
   width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 2.083vw;
   overflow: hidden;
 }
 
@@ -72,8 +72,8 @@
 
 .matchup-table th {
   color: white;
-  padding: 16px;
-  font-size: 14px;
+  padding: 0.833vw;
+  font-size: 0.729vw;
   font-weight: 500;
   text-align: center;
   white-space: nowrap;
@@ -90,8 +90,8 @@
 
 .matchup-table th img {
   vertical-align: middle;
-  margin-left: 8px;
-  margin-top: -2px;
+  margin-left: 0.417vw;
+  margin-top: -0.104vw;
 }
 
 .matchup-table tbody tr {
@@ -117,11 +117,11 @@
 }
 
 .matchup-table td {
-  padding: 16px;
+  padding: 0.833vw;
   text-align: center;
   color: var(--Text, #1f1f1f);
   font-family: Pretendard;
-  font-size: 15px;
+  font-size: 0.781vw;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -132,13 +132,13 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 10px;
-  gap: 25px;
+  padding-left: 0.521vw;
+  gap: 1.302vw;
 }
 
 .opponent-logo {
-  width: 35px;
-  height: 35px;
+  width: 1.823vw;
+  height: 1.823vw;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -148,19 +148,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 0.312vw;
 }
 
 .separator {
   color: #ccc;
-  font-size: 12px;
+  font-size: 0.625vw;
 }
 
 .detail-btn,
 .finish-btn {
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-size: 13px;
+  padding: 0.417vw 0.625vw;
+  border-radius: 0.417vw;
+  font-size: 0.677vw;
   cursor: pointer;
   border: none;
   font-weight: 600;
@@ -178,7 +178,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 25px;
+  gap: 1.302vw;
 }
 
 .page-control,
@@ -186,10 +186,10 @@
   background: none;
   border: none;
   color: #888;
-  font-size: 15px;
+  font-size: 0.781vw;
   cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 4px;
+  padding: 0.208vw 0.417vw;
+  border-radius: 0.208vw;
   transition:
     color 0.2s,
     background-color 0.2s;

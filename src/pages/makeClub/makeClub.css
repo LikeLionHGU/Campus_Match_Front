@@ -10,23 +10,23 @@
 }
 
 .club-container {
-  margin-top: 102px;
-  margin-bottom: 70px;
+  margin-top: 5.312vw;
+  margin-bottom: 3.646vw;
   display: grid;
   place-items: center;
 }
 
 .club-content {
-  width: 508px;
+  width: 26.458vw;
 }
 
 .club-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
-  margin: 0 0 70px;
-  font-size: 25px;
+  gap: 0.781vw;
+  margin: 0 0 3.646vw;
+  font-size: 1.302vw;
   font-family: Pretendard;
   font-weight: 400;
   color: var(--txt-color);
@@ -34,17 +34,17 @@
 }
 
 .club-title-logo {
-  width: 24.254px;
-  height: 25px;
-  margin-top: 2px;
+  width: 1.263vw;
+  height: 1.302vw;
+  margin-top: 0.104vw;
 }
 
 .club-form {
-  width: 422px;
+  width: 21.979vw;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 2.083vw;
 }
 
 .club-field {
@@ -52,37 +52,37 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 7px;
+  gap: 0.365vw;
 }
 
 .club-label {
   position: relative;
   display: inline-flex;
   width: fit-content;
-  font-size: 18px;
+  font-size: 0.938vw;
   font-weight: 400;
   color: var(--txt-color--);
 }
 
 .club-req {
   position: absolute;
-  width: 7.871px;
-  height: 8.273px;
-  top: -1.5px;
-  right: -10px;
+  width: 0.41vw;
+  height: 0.431vw;
+  top: -0.078vw;
+  right: -0.521vw;
   color: var(--primary-color);
 }
 
 .club-input {
   width: 100%;
-  height: 50px;
-  padding: 0 15px;
+  height: 2.604vw;
+  padding: 0 0.781vw;
   border: 1px solid var(--Gray-2);
   background: var(--bg-color);
   outline: none;
   box-sizing: border-box;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 0.417vw;
+  font-size: 0.833vw;
   font-family: Pretendard;
   color: var(--txt-color);
   transition: border-color 0.2s ease;
@@ -104,7 +104,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  gap: 0.781vw;
 }
 
 select.club-input {
@@ -113,19 +113,19 @@ select.club-input {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%239e9e9e' d='M1.41 0L6 4.59L10.59 0L12 1.41l-6 6l-6-6z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 15px center;
-  padding-right: 40px;
+  padding-right: 2.083vw;
 }
 
 .club-textarea {
   width: 100%;
-  min-height: 150px;
-  padding: 15px;
+  min-height: 7.812vw;
+  padding: 0.781vw;
   border: 1px solid var(--Gray-2);
   background: var(--bg-color);
   outline: none;
   box-sizing: border-box;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 0.417vw;
+  font-size: 0.833vw;
   font-family: Pretendard;
   color: var(--txt-color);
   resize: none;
@@ -146,12 +146,12 @@ select.club-input {
 
 .club-submit {
   width: 100%;
-  margin-top: 20px;
-  height: 50px;
+  margin-top: 1.042vw;
+  height: 2.604vw;
   border: 0;
-  border-radius: 8px;
+  border-radius: 0.417vw;
   background: var(--Gray-2);
-  font-size: 20px;
+  font-size: 1.042vw;
   font-weight: 600;
   color: #fff;
   cursor: not-allowed;
@@ -175,18 +175,18 @@ select.club-input {
 .profile-image-section {
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
+  margin-bottom: 2.604vw;
 }
 
 .profile-image-wrapper {
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 7.812vw;
+  height: 7.812vw;
 }
 
 .profile-circle {
-  width: 150px;
-  height: 150px;
+  width: 7.812vw;
+  height: 7.812vw;
   border-radius: 50%;
   background-color: var(--Gray-1);
   border: 2px solid var(--Gray-2);
@@ -197,7 +197,7 @@ select.club-input {
 }
 
 .profile-logo-placeholder {
-  width: 60px;
+  width: 3.125vw;
   height: auto;
   opacity: 0.4;
   filter: grayscale(100%);
@@ -211,10 +211,10 @@ select.club-input {
 
 .profile-edit-btn {
   position: absolute;
-  bottom: 5px;
-  right: 5px;
-  width: 26px;
-  height: 26px;
+  bottom: 0.26vw;
+  right: 0.26vw;
+  width: 1.354vw;
+  height: 1.354vw;
   border-radius: 50%;
   background-color: var(--Gray-3);
   border: 2px solid #fff;

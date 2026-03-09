@@ -2,12 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin-top: 87px;
-  margin-bottom: 590px;
+  margin-top: 4.531vw;
+  margin-bottom: 30.729vw;
 }
 
 .login-frame {
-  width: 422px;
+  width: 21.979vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,34 +17,34 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 70px;
-  font-size: 25px;
+  gap: 0.521vw;
+  margin-bottom: 3.646vw;
+  font-size: 1.302vw;
   font-weight: 400;
   color: #1f1f1f;
 }
 
 .login-title-logo {
-  width: 24.254px;
-  height: 25px;
+  width: 1.263vw;
+  height: 1.302vw;
 }
 
 .login-form {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.26vw;
 }
 
 .login-input {
-  height: 50px;
-  padding: 0 18px;
+  height: 2.604vw;
+  padding: 0 0.938vw;
   border: 1px solid #d6d6d6;
   background: #fbffff;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 0.833vw;
   outline: none;
-  border-radius: 8px;
+  border-radius: 0.417vw;
 }
 
 .login-input:focus {
@@ -57,13 +57,13 @@
 
 .login-button {
   width: 100%;
-  height: 50px;
-  margin-top: 50px;
+  height: 2.604vw;
+  margin-top: 2.604vw;
   border: none;
-  border-radius: 8px;
+  border-radius: 0.417vw;
   background: #d6d6d6;
   color: #fff;
-  font-size: 20px;
+  font-size: 1.042vw;
   font-weight: 600;
   cursor: not-allowed;
   transition: all 0.3s ease;

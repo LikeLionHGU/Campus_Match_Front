@@ -235,7 +235,7 @@ const MyMatchupModal = ({
                     style={{
                     width: "100%",
                     height: "100%",
-                    borderRadius: "8px",
+                    borderRadius: "0.417vw",
                     }}
                 />
 

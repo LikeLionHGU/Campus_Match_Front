@@ -1,11 +1,11 @@
 .club-intro-temp-ring {
   position: relative;
-  width: 183px;
-  height: 183px;
+  width: 9.531vw;
+  height: 9.531vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: -13px 0 -13px -13px; /* Compensate for shadow padding (Top, Left, Bottom) */
+  margin: -0.677vw 0 -0.677vw -0.677vw; /* Compensate for shadow padding (Top, Left, Bottom) */
 }
 
 /* SVG fills the container */
@@ -33,7 +33,7 @@
   font-family: Pretendard;
   font-weight: 600;
   color: #1f1f1f;
-  font-size: 20px;
+  font-size: 1.042vw;
   text-align: center;
   line-height: normal;
 }

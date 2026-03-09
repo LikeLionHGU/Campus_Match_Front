@@ -5,36 +5,36 @@
 }
 
 .sidebar {
-  width: 337px;
+  width: 17.552vw;
   background: #fafafa;
   border-right: 1px solid #eaeaea;
   
 
-  padding: 35px;
+  padding: 1.823vw;
   box-sizing: border-box;
 }
 
 .main {
   flex: 1;
-  padding: 24px;
+  padding: 1.25vw;
   box-sizing: border-box;
 }
 
 .search-frame {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 45px;
+  gap: 0.521vw;
+  margin-bottom: 2.344vw;
 }
 
 .search-input {
-    height: 50px;
+    height: 2.604vw;
 }
 
 .search-condition-box {
   width: 100%;
   background-color: #e5e5e5;
-  border-radius: 4px;
+  border-radius: 0.208vw;
   overflow: hidden;
 
   display: flex;
@@ -42,8 +42,8 @@
 }
 
 .search-condition-header {
-  height: 36px;
-  padding: 0 12px;
+  height: 1.875vw;
+  padding: 0 0.625vw;
 
   display: flex;
   align-items: center;
@@ -52,7 +52,7 @@
   background-color: #dcdcdc;
   border-bottom: 1px solid #bfbfbf;
 
-  font-size: 14px;
+  font-size: 0.729vw;
   font-weight: 500;
   color: #000;
 
@@ -60,15 +60,15 @@
 }
 
 .search-condition-header .arrow {
-  font-size: 18px;
+  font-size: 0.938vw;
 }
 
 .search-condition-body {
   display: flex;
-  min-height: 90px;
-  padding: 10px;
+  min-height: 4.688vw;
+  padding: 0.521vw;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.417vw;
   background-color: #e5e5e5;
 }
 
@@ -76,29 +76,29 @@
 .filter-chip {
   display: flex;
   align-items: center;
-  gap: 6px;
-  height: 10px;
+  gap: 0.312vw;
+  height: 0.521vw;
 
-  padding: 6px 10px;
+  padding: 0.312vw 0.521vw;
   background: #fff;
   border: 1px solid #bfbfbf;
-  border-radius: 6px;
+  border-radius: 0.312vw;
 
-  font-size: 12px;
+  font-size: 0.625vw;
 }
 
 .chip-remove {
   border: none;
   background: none;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 0.729vw;
   line-height: 1;
 }
 
 .search-condition-footer {
-  padding: 6px 10px;
+  padding: 0.312vw 0.521vw;
 
-  font-size: 11px;
+  font-size: 0.573vw;
   color: #666;
   text-align: right;
 }

@@ -17,25 +17,25 @@
     transform: translateY(-50px);
     position: relative;
     background: #fff;
-    padding: 70px 60px 30px 60px;
-    width: 422px;
-    height: 684px;
-    border-radius: 20px;
+    padding: 3.646vw 3.125vw 1.562vw 3.125vw;
+    width: 21.979vw;
+    height: 35.625vw;
+    border-radius: 1.042vw;
 }
 
 .matchup-detail-modal-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 1.042vw;
+  right: 1.042vw;
 
-  width: 15.8px;
-  height: 15.8px;
+  width: 0.823vw;
+  height: 0.823vw;
   cursor: pointer;
 }
 .matchup-detail-modal-main{
     display:grid;
-    grid-template-rows: 30px 604px;
-    gap:50px;
+    grid-template-rows: 1.562vw 31.458vw;
+    gap:2.604vw;
     align-items: center;
     
 }
@@ -43,62 +43,62 @@
     color: var(--Text, #1F1F1F);
     text-align: center;
     font-family: Pretendard;
-    font-size: 25px;
+    font-size: 1.302vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
 }
 .matchup-detail-modal-body{
     display: grid;
-    grid-template-rows: 34px 34px 34px 423px;
-    gap:20px;
+    grid-template-rows: 1.771vw 1.771vw 1.771vw 22.031vw;
+    gap:1.042vw;
 
 }
 .matchup-detail-modal-body-time{
     display: grid;
-    grid-template-columns: 94px 170px;
-    gap:40px;
+    grid-template-columns: 4.896vw 8.854vw;
+    gap:2.083vw;
     align-items: center;
 }
 .matchup-detail-modal-body-time div{
     display: grid;
-    grid-template-columns:70px 13px 70px;
-    gap:10px;
+    grid-template-columns:3.646vw 0.677vw 3.646vw;
+    gap:0.521vw;
     align-items: center;
     justify-content: center;
 }
 .matchup-detail-modal-body-phone{
     display: grid;
-    grid-template-columns: 94px 269px;
-    gap:40px;
+    grid-template-columns: 4.896vw 14.01vw;
+    gap:2.083vw;
     align-items: center;
 }
 .matchup-detail-modal-body-place{
     display: grid;
-    grid-template-columns: 94px 269px;
-    gap:40px;
+    grid-template-columns: 4.896vw 14.01vw;
+    gap:2.083vw;
     align-items: center;
 }
 .matchup-detail-modal-body span{
     color: var(--Text, #1F1F1F);
     font-family: Pretendard;
-    font-size: 20px;
+    font-size: 1.042vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
 }
 
 .matchup-detail-modal-body input{
-    padding: 0px 10px 0px 10px;
-    height: 34px;
-    border-radius: 8px;
+    padding: 0px 0.521vw 0px 0.521vw;
+    height: 1.771vw;
+    border-radius: 0.417vw;
     border: 1.5px solid var(--Gray-2, #D6D6D6);
     background: var(--white, #FFF);
     outline: none;
     color: var(--Text, #1F1F1F);
     text-align: center;
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 0.781vw;
     font-style: normal;
     font-weight: 500;
     line-height: normal;

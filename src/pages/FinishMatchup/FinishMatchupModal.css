@@ -13,10 +13,10 @@
 
 .finish-modal-content {
   background: #fff;
-  width: 380px;
+  width: 19.792vw;
   max-width: 90%;
-  border-radius: 20px;
-  padding: 70px 60px 50px 60px;
+  border-radius: 1.042vw;
+  padding: 3.646vw 3.125vw 2.604vw 3.125vw;
   position: relative;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   background-color: #fff;
@@ -24,18 +24,18 @@
 }
 
 .finish-modal-header {
-  font-size: 25px;
-  margin-bottom: 60px;
+  font-size: 1.302vw;
+  margin-bottom: 3.125vw;
   color: var(--text-color);
 }
 
 .finish-modal-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 1.042vw;
+  right: 1.042vw;
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: 1.042vw;
   cursor: pointer;
   color: var(--text-color);
   outline: none;
@@ -44,15 +44,15 @@
 .upload-section {
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 1.562vw;
 }
 
 .upload-box {
-  width: 150px;
-  height: 150px;
+  width: 7.812vw;
+  height: 7.812vw;
   background-color: #dcdcdc;
 
-  border-radius: 8px;
+  border-radius: 0.417vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -66,17 +66,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 0.781vw;
   width: 100%;
 }
 
 .image-preview-container {
   display: flex;
-  gap: 10px;
+  gap: 0.521vw;
   overflow-x: auto;
-  padding: 5px 0;
+  padding: 0.26vw 0;
   width: 100%;
-  height: 150px;
+  height: 7.812vw;
   align-items: center;
   justify-content: flex-start;
 }
@@ -85,50 +85,50 @@
   position: relative;
   height: 100%;
   flex-shrink: 0;
-  width: 150px;
+  width: 7.812vw;
 }
 
 .upload-preview {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 0.417vw;
 }
 
 .remove-img-btn {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 0.26vw;
+  right: 0.26vw;
   background: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  width: 1.042vw;
+  height: 1.042vw;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 0.625vw;
 }
 
 .upload-placeholder-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 0.208vw;
 }
 
 .upload-icon {
-  width: 30px;
-  height: 30px;
-  margin-bottom: 8px;
+  width: 1.562vw;
+  height: 1.562vw;
+  margin-bottom: 0.417vw;
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>')
     no-repeat center;
 }
 
 .upload-text {
-  font-size: 10px;
+  font-size: 0.521vw;
   color: #666;
 }
 
@@ -142,8 +142,8 @@
 }
 
 .form-label {
-  width: 80px;
-  font-size: 14px;
+  width: 4.167vw;
+  font-size: 0.729vw;
   font-weight: 500;
   color: #333;
   text-align: left;
@@ -151,10 +151,10 @@
 
 .form-input {
   flex: 1;
-  padding: 8px 12px;
+  padding: 0.417vw 0.625vw;
   border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 14px;
+  border-radius: 0.312vw;
+  font-size: 0.729vw;
   background-color: rgba(255, 255, 255, 0.8);
   outline: none;
 }
@@ -165,23 +165,23 @@
 
 .radio-group {
   display: flex;
-  gap: 16px;
-  width: calc(100% - 96px);
+  gap: 0.833vw;
+  width: calc(100% - 5vw);
 }
 
 .radio-label {
   display: flex;
   align-content: center;
-  gap: 6px;
-  font-size: 14px;
+  gap: 0.312vw;
+  font-size: 0.729vw;
   cursor: pointer;
 }
 
 .radio-label input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
+  width: 0.938vw;
+  height: 0.938vw;
   border: 1.5px solid #16c0cc;
   border-radius: 50%;
   background-color: #fff;
@@ -203,14 +203,14 @@
 .modal-footer {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-top: 30px;
+  gap: 0.625vw;
+  margin-top: 1.562vw;
 }
 
 .modal-btn {
-  padding: 8px 24px;
-  border-radius: 6px;
-  font-size: 14px;
+  padding: 0.417vw 1.25vw;
+  border-radius: 0.312vw;
+  font-size: 0.729vw;
   cursor: pointer;
   border: none;
 }
@@ -236,34 +236,34 @@
 
 .finish-confirm-content {
   background: #fff;
-  width: 400px;
+  width: 20.833vw;
   max-width: 90%;
-  border-radius: 16px;
-  padding: 30px;
+  border-radius: 0.833vw;
+  padding: 1.562vw;
   position: relative;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
 .confirm-title {
-  font-size: 18px;
+  font-size: 0.938vw;
   font-weight: bold;
   color: #333;
-  margin: 20px 0 8px;
+  margin: 1.042vw 0 0.417vw;
 }
 
 .confirm-subtitle {
-  font-size: 13px;
+  font-size: 0.677vw;
   color: #888;
-  margin-bottom: 10px;
+  margin-bottom: 0.521vw;
 }
 
 .form-row {
   display: flex;
   align-items: flex-start;
-  gap: 16px;
+  gap: 0.833vw;
   flex-wrap: wrap;
-  padding: 20px 0;
+  padding: 1.042vw 0;
 }
 
 .form-row:first-child {

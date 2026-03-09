@@ -1,5 +1,5 @@
 .calendar {
-  width: 460px;
+  width: 23.958vw;
   margin: auto;
   font-family: Pretendard;
 }
@@ -8,29 +8,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 1.562vw;
 
-  font-size: 22px;
+  font-size: 1.146vw;
   font-weight: 600;
-  margin-bottom: 40px;
+  margin-bottom: 2.083vw;
 }
 
 .arrow {
-  width: 18px;
+  width: 0.938vw;
   cursor: pointer;
 }
 
 .calendar-week {
     display: grid;
-    grid-template-columns: repeat(7, 32px);
-    gap:40px;
+    grid-template-columns: repeat(7, 1.667vw);
+    gap:2.083vw;
 
-    margin-bottom: 33px;
+    margin-bottom: 1.719vw;
 
     color: var(--Primary, #424041);
     text-align: center;
     font-family: Pretendard;
-    font-size: 20px;
+    font-size: 1.042vw;
     font-style: normal;
     font-weight: 500;
     line-height: 20px; /* 100% */
@@ -44,15 +44,15 @@
 
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 32px);
+  grid-template-columns: repeat(7, 1.667vw);
 
-  column-gap: 40px;
-  row-gap: 33px;
+  column-gap: 2.083vw;
+  row-gap: 1.719vw;
 }
 
 .calendar-cell {
-  height: 32px;
-  width: 32px;
+  height: 1.667vw;
+  width: 1.667vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,8 +60,8 @@
 }
 
 .date-circle {
-  width: 32px;
-  height: 32px;
+  width: 1.667vw;
+  height: 1.667vw;
   border-radius: 50%;
 
   display: flex;
@@ -72,7 +72,7 @@
   color: var(--Primary, #424041);
     text-align: center;
     font-family: Pretendard;
-    font-size: 20px;
+    font-size: 1.042vw;
     font-style: normal;
     font-weight: 500;
     line-height: 20px; /* 100% */
@@ -89,7 +89,7 @@
   color: var(--white, #FFF);
     text-align: center;
     font-family: Pretendard;
-    font-size: 20px;
+    font-size: 1.042vw;
     font-style: normal;
     font-weight: 500;
     line-height: 20px; /* 100% */
@@ -102,7 +102,7 @@
     color: var(--Primary, #424041);
     text-align: center;
     font-family: Pretendard;
-    font-size: 20px;
+    font-size: 1.042vw;
     font-style: normal;
     font-weight: 500;
     line-height: 20px; /* 100% */
@@ -113,7 +113,7 @@
     color: var(--Gray-2, #D6D6D6);
     text-align: center;
     font-family: Pretendard;
-    font-size: 20px;
+    font-size: 1.042vw;
     font-style: normal;
     font-weight: 500;
     line-height: 20px; /* 100% */

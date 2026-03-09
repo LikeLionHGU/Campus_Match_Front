@@ -1,35 +1,35 @@
 .section4{
     display: grid;
-    grid-template-rows: 50px 620px;
+    grid-template-rows: 2.604vw 32.292vw;
     gap:122px
 }
 .section4-header{
     color: var(--Text, #1F1F1F);
     text-align: center;
     font-family: Pretendard;
-    font-size: 50px;
+    font-size: 2.604vw;
     font-style: normal;
     font-weight: 700;
     line-height: 100%; /* 50px */
 }
 .section4-main{
     display: grid;
-    grid-template-columns: 331px 524px 361px;
-    gap:135px;
+    grid-template-columns: 17.24vw 27.292vw 18.802vw;
+    gap:7.031vw;
 }
 .section4-main-top{
     display: grid;
-    grid-template-rows: 26px 52px 52px;
-    gap: 20px 10px;
+    grid-template-rows: 1.354vw 2.708vw 2.708vw;
+    gap: 1.042vw 0.521vw;
     justify-content: center;
     justify-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 1.562vw;
 }
 .section4-title{
     color: var(--Text, #1F1F1F);
     text-align: center;
     font-family: Pretendard;
-    font-size: 40px;
+    font-size: 2.083vw;
     font-style: normal;
     font-weight: 600;
     line-height: 130%; /* 52px */
@@ -38,7 +38,7 @@
    color: var(--Gray-4, #9E9E9E);
     text-align: center;
     font-family: Pretendard;
-    font-size: 20px;
+    font-size: 1.042vw;
     font-style: normal;
     font-weight: 600;
     line-height: 130%; /* 26px */ 
