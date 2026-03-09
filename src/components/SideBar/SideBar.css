@@ -62,17 +62,19 @@
 }
 
 .sidebar-bottom div {
+  box-sizing: border-box;
   border-radius: 0.521vw;
   background: #fff;
-  padding: 0.781vw 0.521vw 0.781vw 1.562vw;
-  width: 7.604vw;
-  height: 1.042vw;
+  padding: 0.781vw 0.521vw 0.781vw 1.042vw;
+  width: 9vw;
 
   color: #1f1f1f;
   font-family: Pretendard;
   font-size: 1.042vw;
   font-weight: 600;
-  line-height: 20px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
 
   cursor: pointer;
   transition:

@@ -24,7 +24,7 @@ const ClubIntroTempRing = ({ temperature = 0 }) => {
         매치온도
       </div>
       <div className="temp-ring">
-        <svg width="125" height="125">
+        <svg viewBox="0 0 125 125" width="100%" height="100%">
           <defs>
             <linearGradient
               id="tempGradientClub"

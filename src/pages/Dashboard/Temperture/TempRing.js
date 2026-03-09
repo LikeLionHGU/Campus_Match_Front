@@ -12,27 +12,15 @@ const TempRing = ({ temperature = 75 }) => {
 
   return (
     <div className="temp-ring">
-      <svg width="125" height="125">
-
+      <svg viewBox="0 0 125 125" width="100%" height="100%">
         <defs>
-          <linearGradient
-            id="tempGradient"
-            x1="0%"
-            y1="0%"
-            x2="100%"
-            y2="100%"
-          >
+          <linearGradient id="tempGradient" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#16C0CC" />
             <stop offset="100%" stopColor="#41DF82" />
           </linearGradient>
         </defs>
 
-        <circle
-          className="bg"
-          cx="62.5"
-          cy="62.5"
-          r={radius}
-        />
+        <circle className="bg" cx="62.5" cy="62.5" r={radius} />
 
         <circle
           className="progress"
