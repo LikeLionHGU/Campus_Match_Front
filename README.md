@@ -42,18 +42,6 @@
 
 ---
 
-## 💻 화면 스크린샷
-
-|                                   메인 페이지                                    |                                     동아리 탐색                                      |                                        매칭 신청                                         |
-| :------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------: |
-| <img src="https://via.placeholder.com/300x200?text=Main+Page" alt="Main Page" /> | <img src="https://via.placeholder.com/300x200?text=Search+Club" alt="Search Club" /> | <img src="https://via.placeholder.com/300x200?text=Match+Request" alt="Match Request" /> |
-
-|                           마이페이지 (온도 시스템)                           |                                     매치업 기록                                      |                                    갤러리                                    |
-| :--------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: | :--------------------------------------------------------------------------: |
-| <img src="https://via.placeholder.com/300x200?text=My+Page" alt="My Page" /> | <img src="https://via.placeholder.com/300x200?text=Matchup+History" alt="History" /> | <img src="https://via.placeholder.com/300x200?text=Gallery" alt="Gallery" /> |
-
----
-
 ## 🚀 실행 방법 (How to run)
 
 본 프로젝트는 React 프레임워크 기반으로 구축되었습니다.
