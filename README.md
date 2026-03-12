@@ -42,40 +42,6 @@
 
 ---
 
-## 🚀 실행 방법 (How to run)
-
-본 프로젝트는 React 프레임워크 기반으로 구축되었습니다.
-
-### 사전 요구사항
-
-- Node.js (v14 이상 권장)
-- npm
-
-### 설치 및 실행 절차
-
-1. 레포지토리를 클론합니다.
-
-```bash
-git clone https://github.com/LikeLionHGU/Campus_Match_Front.git
-cd Campus_Match_Front
-```
-
-2. 필요 패키지를 설치합니다.
-
-```bash
-npm install
-```
-
-3. 로컬 개발 서버를 실행합니다.
-
-```bash
-npm start
-```
-
-서버 구동 완료 시 브라우저에서 `http://localhost:3000` 주소로 접속하여 확인할 수 있습니다.
-
----
-
 ## 🌟 기대 효과
 
 1. **공정성 보장**: 개인 인맥에 의존하지 않는 누구나 접근 가능한 공정한 교류 시스템 형성
