@@ -1,7 +1,7 @@
 .section4{
     display: grid;
     grid-template-rows: 2.604vw 32.292vw;
-    gap:122px
+    gap:6.354vw
 }
 .section4-header{
     color: var(--Text, #1F1F1F);
