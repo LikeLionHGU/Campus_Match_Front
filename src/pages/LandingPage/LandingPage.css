@@ -1,10 +1,26 @@
 .landing-wrapper {
   background: var(--Ash-Blue, #f5f9fc);
+  height: 100vh;
+  overflow-y: scroll;
   overflow-x: clip;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.landing-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.snap-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .landing-section {
-  min-height: calc(100vh - 4.688vw);
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 
   display: flex;
   justify-content: center;
@@ -23,10 +39,18 @@
   opacity: 1;
   transform: translateY(0);
 }
+
 .section5-container {
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
   position: relative;
-  min-height: calc(100vh - 4.688vw);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.snap-footer {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }

@@ -38,7 +38,9 @@ const LandingPage = () => {
 
   return (
     <div className="landing-wrapper">
-      <Section1 />
+      <section className="snap-section">
+        <Section1 />
+      </section>
       {sections.map((SectionComponent, i) => (
         <section
           key={i}
@@ -53,7 +55,9 @@ const LandingPage = () => {
       <section className="section5-container">
         <Section5 />
       </section>
-      <Footer />
+      <div className="snap-footer">
+        <Footer />
+      </div>
     </div>
   );
 };
