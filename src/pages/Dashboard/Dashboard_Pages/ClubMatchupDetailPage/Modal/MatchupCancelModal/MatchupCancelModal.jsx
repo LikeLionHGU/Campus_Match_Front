@@ -1,0 +1,76 @@
+import { useState } from "react";
+import "./MatchupCancelModal.css";
+import closeIcon from "../../../../../../assets/close.svg";
+
+const MatchupCancelModal = ({ onClose, onSuccess, matchPostId }) => {
+  const [reason, setReason] = useState("");
+  const handleCancelConfirm = async () => {
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_HOST_URL}/api/matchPost/upcoming/${matchPostId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: localStorage.getItem("Authorization"),
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            content: reason,
+          }),
+        },
+      );
+
+      if (!res.ok) throw new Error();
+
+      onSuccess();
+    } catch (e) {
+      console.error("cancel fail", e);
+    }
+  };
+  return (
+    <>
+      <div className="matchup-cancel-modal-backdrop" onClick={onClose}>
+        <div
+          className="matchup-cancel-modal"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <img
+            src={closeIcon}
+            alt="close"
+            className="matchup-cancel-modal-close"
+            onClick={onClose}
+          />
+          <div className="matchup-cancel-modal-main">
+            <div className="matchup-cancel-modal-header">
+              <span>해당 매치업을 취소 요청 하시겠습니까?</span>
+            </div>
+            <div className="matchup-cancel-modal-body">
+              <div>
+                <textarea
+                  value={reason}
+                  onChange={(e) => setReason(e.target.value)}
+                  maxLength={200}
+                  placeholder="취소 사유를 입력해주세요."
+                />
+
+                <div className="typing-count">{reason.length} / 200</div>
+              </div>
+            </div>
+            <div className="matchup-cancel-modal-button">
+              <button className="matchup-cancel-left-button" onClick={onClose}>
+                취소
+              </button>
+              <button
+                className="matchup-cancel-right-button"
+                onClick={handleCancelConfirm}
+              >
+                확인
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+export default MatchupCancelModal;

@@ -15,15 +15,14 @@
 }
 
 .add-calender-modal {
-    transform: translateY(-300px);
-    position: relative;
-    background: #fff;
-    padding: 1.042vw;
-    width: 17.396vw;
-    height: 15.469vw;
-    padding: 3.646vw 3.594vw 2.604vw 3.594vw;
-    border-radius: 1.042vw;
-} 
+  position: relative;
+  background: #fff;
+  padding: 1.042vw;
+  width: 17.396vw;
+  height: 15.469vw;
+  padding: 3.646vw 3.594vw 2.604vw 3.594vw;
+  border-radius: 1.042vw;
+}
 
 .add-calender-modal-close {
   position: absolute;
@@ -35,127 +34,141 @@
   cursor: pointer;
 }
 
-.add-calender-modal-main{
-    display: grid;
-    grid-template-rows: 1.562vw 7.552vw;
-    gap:50px
+.add-calender-modal-main {
+  display: grid;
+  grid-template-rows: 1.562vw 7.552vw;
+  gap: 50px;
 }
-.add-calender-modal-title{
-    color: var(--Text, #1F1F1F);
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 1.302vw;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-}
-
-.add-calender-modal-detail{
-    display: grid;
-    grid-template-rows: 1.771vw 1.771vw 1.771vw 1.823vw;
-    gap:1.042vw;
-    align-items: center;
-    justify-items: center;
+.add-calender-modal-title {
+  color: var(--Text, #1f1f1f);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.302vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
-.add-calender-modal-detail span{
-    color: var(--Text, #1F1F1F);
-    font-family: Pretendard;
-    font-size: 0.938vw;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    
-}
-.add-calender-modal-detail-name{
-    display: grid;
-    grid-template-columns: 1.667vw 1fr;
-    gap:0.521vw;
-    align-items: center;
-}
-.add-calender-modal-detail-name input{
-    height: 1.771vw;
-    width: 14.375vw;
-    border-radius: 0.417vw;
-    border: 1.5px solid var(--Gray-2, #D6D6D6);
-    background: var(--white, #FFF);
-    padding-left: 0.781vw;
+.add-calender-modal-detail {
+  display: grid;
+  grid-template-rows: 1.771vw 1.771vw 1.771vw 1.823vw;
+  gap: 1.042vw;
+  align-items: center;
+  justify-items: center;
 }
 
-.add-calender-modal-detail-start{
-    display: grid;
-    grid-template-columns: 1.667vw 7.5vw 7.5vw;
-    gap:0.521vw;
-    align-items: center;
+.add-calender-modal-detail span {
+  color: var(--Text, #1f1f1f);
+  font-family: Pretendard;
+  font-size: 0.938vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.add-calender-modal-detail-name {
+  display: grid;
+  grid-template-columns: 1.667vw 1fr;
+  gap: 0.521vw;
+  align-items: center;
+}
+.add-calender-modal-detail-name input {
+  height: 1.771vw;
+  width: 14.375vw;
+  border-radius: 0.417vw;
+  border: 1.5px solid var(--Gray-2, #d6d6d6);
+  background: var(--white, #fff);
+  padding-left: 0.781vw;
 }
 
-.add-calender-modal-detail-start input{
-    height: 1.771vw;
-    width: 7.292vw;
-    border-radius: 0.417vw;
-    border: 1.5px solid var(--Gray-2, #D6D6D6);
-    background: var(--white, #FFF);
+.add-calender-modal-detail-start {
+  display: grid;
+  grid-template-columns: 1.667vw 7.5vw 7.5vw;
+  gap: 0.521vw;
+  align-items: center;
 }
 
-.add-calender-modal-detail-end{
-    display: grid;
-    grid-template-columns: 1.667vw 7.5vw 7.5vw;
-    gap:0.521vw;
-    align-items: center;
-}  
-
-.add-calender-modal-detail-end input{
-    
-    height: 1.771vw;
-    width: 7.292vw;
-    border-radius: 0.417vw;
-    border: 1.5px solid var(--Gray-2, #D6D6D6);
-    background: var(--white, #FFF);
+.add-calender-modal-detail-start input {
+  height: 1.771vw;
+  width: 7.292vw;
+  border-radius: 0.417vw;
+  border: 1.5px solid var(--Gray-2, #d6d6d6);
+  background: var(--white, #fff);
 }
 
-.add-calender-modal-detail button{
-    border: 0px;
-    margin-top: 1.042vw;
-    width: 3.438vw;
-    height: 1.823vw;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.26vw;
-    background: var(--Primary, #16C0CC);
-    color: #fff;
+.add-calender-modal-detail-end {
+  display: grid;
+  grid-template-columns: 1.667vw 7.5vw 7.5vw;
+  gap: 0.521vw;
+  align-items: center;
 }
 
-.add-calender-modal-detail-name input{
-   color: var(--Text, #1F1F1F);
-    font-family: Pretendard;
-    font-size: 0.781vw;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    
+.add-calender-modal-detail-end input {
+  height: 1.771vw;
+  width: 7.292vw;
+  border-radius: 0.417vw;
+  border: 1.5px solid var(--Gray-2, #d6d6d6);
+  background: var(--white, #fff);
 }
 
-.add-calender-modal-detail-start input,.add-calender-modal-detail-end input {
-    color: var(--Text, #1F1F1F);
-    font-family: Pretendard;
-    font-size: 0.781vw;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    text-align: center;
+.add-calender-modal-detail button {
+  border: 0px;
+  margin-top: 1.042vw;
+  width: 3.438vw;
+  height: 1.823vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.26vw;
+  background: var(--Primary, #16c0cc);
+  color: #fff;
+}
+
+.add-calender-modal-detail-name input {
+  color: var(--Text, #1f1f1f);
+  font-family: Pretendard;
+  font-size: 0.781vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.add-calender-modal-detail-start input,
+.add-calender-modal-detail-end input {
+  color: var(--Text, #1f1f1f);
+  font-family: Pretendard;
+  font-size: 0.781vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+}
+
+.add-calender-modal-detail input[type="time"] {
+  border: 1.5px solid #B2E8EC !important;
+  background: linear-gradient(135deg, #F5FEFF 0%, #EAF9FB 100%) !important;
+  border-radius: 0.521vw;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+  letter-spacing: 0.03em;
+}
+
+.add-calender-modal-detail input[type="time"]:focus {
+  border: 1.5px solid #16C0CC !important;
+  box-shadow: 0 0 0 2px rgba(22, 192, 204, 0.15);
+  outline: none;
 }
 
 .add-calender-modal-detail input {
-  border: 1px solid #DADADA;
+  border: 1px solid #dadada;
   transition: border 0.2s ease;
 }
 
 .add-calender-modal-detail input.input-error {
-  border: 1px solid #FF4D4F;
+  border: 1px solid #ff4d4f;
 }
 
 .add-calender-modal-detail input::placeholder {
-  color: #FF4D4F;
+  color: #ff4d4f;
 }

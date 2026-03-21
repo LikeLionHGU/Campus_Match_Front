@@ -6,7 +6,7 @@
 }
 
 .history-content {
-  flex: 1;
+  min-width: 0;
   padding: 1.771vw 4.167vw 5.521vw 4.062vw;
   display: flex;
   flex-direction: column;
@@ -181,11 +181,12 @@
   border-radius: 0.417vw;
   background-color: white;
   width: 100%;
-  overflow: hidden;
+  overflow-x: auto;
 }
 
 .history-table {
   width: 100%;
+  min-width: 50vw;
   border-collapse: collapse;
   border: none;
   table-layout: fixed;
@@ -335,4 +336,36 @@
 .history-pagination .page-number.active {
   color: #16c0cc;
   font-weight: bold;
+}
+
+.history-pagination .pagination-numbers button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: Pretendard;
+  font-size: 0.781vw;
+  font-weight: 500;
+  color: #1f1f1f;
+}
+
+.history-pagination .pagination-numbers button.active {
+  color: #16C0CC;
+  font-weight: 600;
+}
+
+.history-pagination-double {
+  width: 0.573vw;
+  height: 0.573vw;
+  cursor: pointer;
+}
+
+.history-pagination-mono {
+  width: 0.833vw;
+  height: 0.833vw;
+  cursor: pointer;
+}
+
+.history-pagination-mono:hover,
+.history-pagination-double:hover {
+  background-color: #eee;
 }

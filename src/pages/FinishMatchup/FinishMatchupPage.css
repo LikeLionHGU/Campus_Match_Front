@@ -205,3 +205,35 @@
   color: #16c0cc;
   font-weight: bold;
 }
+
+.pagination .pagination-numbers button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: Pretendard;
+  font-size: 0.781vw;
+  font-weight: 500;
+  color: #1f1f1f;
+}
+
+.pagination .pagination-numbers button.active {
+  color: #16C0CC;
+  font-weight: 600;
+}
+
+.finish-pagination-double {
+  width: 0.573vw;
+  height: 0.573vw;
+  cursor: pointer;
+}
+
+.finish-pagination-mono {
+  width: 0.833vw;
+  height: 0.833vw;
+  cursor: pointer;
+}
+
+.finish-pagination-mono:hover,
+.finish-pagination-double:hover {
+  background-color: #eee;
+}

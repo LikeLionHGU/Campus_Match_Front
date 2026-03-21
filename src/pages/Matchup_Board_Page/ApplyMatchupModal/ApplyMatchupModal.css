@@ -15,7 +15,6 @@
 }
 
 .apply-matchup-modal {
-    transform: translateY(-300px);
     position: relative;
     background: #fff;
     padding: 1.042vw;
@@ -127,19 +126,23 @@
     
 }
 .apply-matchup-modal-time-inputs input{
-    padding: 0.521vw;
+    padding: 0.417vw 0.521vw;
     width: 4.948vw;
-    height: 0.938vw;
+    height: 1.563vw;
     color: var(--Text, #1F1F1F);
     font-family: Pretendard;
-    font-size: 0.677vw;
+    font-size: 0.729vw;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     line-height: normal;
-    align-items: center;
-    border-radius: 0.417vw;
-    border: 1.5px solid var(--Gray-2, #D6D6D6);
-    background: var(--white, #FFF);
+    text-align: center;
+    border-radius: 0.521vw;
+    border: 1.5px solid #B2E8EC;
+    background: linear-gradient(135deg, #F5FEFF 0%, #EAF9FB 100%);
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+    letter-spacing: 0.03em;
 }
 .apply-matchup-modal-date{
     display: grid;
@@ -176,5 +179,6 @@
 }
 .apply-matchup-modal-time-inputs input:focus{
     outline: none;
-    border: 1.5px solid  #16C0CC;
+    border: 1.5px solid #16C0CC;
+    box-shadow: 0 0 0 2px rgba(22, 192, 204, 0.15);
 }

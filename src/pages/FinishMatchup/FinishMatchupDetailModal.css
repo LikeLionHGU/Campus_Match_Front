@@ -76,11 +76,16 @@
 
 .time-box {
   flex: 1;
-  background-color: rgba(255, 255, 255, 0.6);
-  border: 1px solid #dcdcdc;
-  border-radius: 0.417vw;
-  padding: 0.521vw;
+  background: linear-gradient(135deg, #F5FEFF 0%, #EAF9FB 100%);
+  border: 1.5px solid #B2E8EC;
+  border-radius: 0.521vw;
+  padding: 0.417vw 0.625vw;
   text-align: center;
+  font-size: 0.781vw;
+  font-family: Pretendard;
+  font-weight: 500;
+  color: #1F1F1F;
+  letter-spacing: 0.05em;
 }
 
 .map-placeholder {

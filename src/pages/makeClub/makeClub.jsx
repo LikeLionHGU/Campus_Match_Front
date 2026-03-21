@@ -1,0 +1,302 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./makeClub.css";
+import mainLogo from "../../assets/mainLogo.png";
+import editIcon from "../../assets/Edit.svg";
+import Modal from "../../components/Modal/Modal";
+import CustomSelect from "../../components/Dropdown/Dropdown";
+
+export default function MakeClub() {
+  const navigate = useNavigate();
+  const [modal, setModal] = useState({
+    isOpen: false,
+    message: "",
+    subtitle: "",
+    onConfirm: null,
+  });
+
+  const [form, setForm] = useState({
+    clubName: "",
+    description: "",
+    region: "",
+    sportCategory: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [profileImage, setProfileImage] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const isFormValid =
+    form.clubName && form.description && form.region && form.sportCategory;
+
+  const onImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setProfileImage(file);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreviewUrl(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    if (
+      !form.clubName ||
+      !form.description ||
+      !form.region ||
+      !form.sportCategory
+    ) {
+      setModal({
+        isOpen: true,
+        message: "모든 필수 항목을 입력해주세요.",
+      });
+      return;
+    }
+
+    const userInfoStr = localStorage.getItem("userRegistrationInfo");
+    if (!userInfoStr) {
+      setModal({
+        isOpen: true,
+        message: "개인정보가 없습니다.",
+        subtitle: "회원가입 첫 단계부터 다시 진행해주세요.",
+        onConfirm: () => navigate("/register"),
+      });
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const userInfo = JSON.parse(userInfoStr);
+
+      const registrationData = {
+        ...userInfo,
+        clubName: form.clubName,
+        description: form.description,
+        region: form.region,
+        sportCategory: form.sportCategory,
+      };
+
+      const formData = new FormData();
+      const requestBlob = new Blob([JSON.stringify(registrationData)], {
+        type: "application/json",
+      });
+      formData.append("request", requestBlob, "request.json");
+
+      if (profileImage) {
+        formData.append("image", profileImage);
+      }
+
+      const token = localStorage.getItem("Authorization");
+      const response = await fetch(
+        `${import.meta.env.VITE_HOST_URL}/api/club/signup`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: token || "",
+          },
+          body: formData,
+        },
+      );
+
+      const data = await response.json().catch(() => ({}));
+
+      if (response.ok) {
+        localStorage.removeItem("userRegistrationInfo");
+        setModal({
+          isOpen: true,
+          message: "동아리 등록이 완료되었습니다!",
+          onConfirm: () => navigate("/login"),
+        });
+      } else {
+        setModal({
+          isOpen: true,
+          message: "동아리 등록이 실패했습니다!",
+          subtitle: data.message || "다시 시도해주세요.",
+        });
+      }
+    } catch (error) {
+      setModal({
+        isOpen: true,
+        message: "동아리 등록이 실패했습니다!",
+        subtitle: "네트워크 오류가 발생했습니다. 다시 시도해주세요.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="club-container">
+      <Modal
+        isOpen={modal.isOpen}
+        message={modal.message}
+        subtitle={modal.subtitle}
+        onConfirm={
+          modal.onConfirm ||
+          (() =>
+            setModal({
+              isOpen: false,
+              message: "",
+              subtitle: "",
+              onConfirm: null,
+            }))
+        }
+      />
+
+      <div className="club-content">
+        <div className="club-title">
+          <img src={mainLogo} alt="mainLogo" className="club-title-logo" />
+          <span>동아리 생성</span>
+        </div>
+
+        <div className="profile-image-section">
+          <div className="profile-image-wrapper">
+            <div className="profile-circle">
+              {previewUrl ? (
+                <img
+                  src={previewUrl}
+                  alt="프로필 미리보기"
+                  className="profile-preview"
+                />
+              ) : (
+                <img
+                  src={mainLogo}
+                  alt="기본 로고"
+                  className="profile-logo-placeholder"
+                />
+              )}
+            </div>
+            <label htmlFor="profile-upload" className="profile-edit-btn">
+              <img
+                src={editIcon}
+                alt="프로필 편집"
+                className="profile-edit-icon"
+              />
+            </label>
+          </div>
+          <input
+            type="file"
+            id="profile-upload"
+            accept="image/*"
+            onChange={onImageChange}
+            className="profile-upload-input"
+          />
+        </div>
+
+        <form className="club-form" onSubmit={onSubmit}>
+          <div className="club-field">
+            <label className="club-label">
+              동아리 이름<span className="club-req">*</span>
+            </label>
+            <input
+              className="club-input"
+              name="clubName"
+              value={form.clubName}
+              onChange={onChange}
+              placeholder=" "
+            />
+          </div>
+
+          <div className="club-field">
+            <label className="club-label">
+              동아리 소개<span className="club-req">*</span>
+            </label>
+            <textarea
+              className="club-textarea"
+              name="description"
+              value={form.description}
+              onChange={onChange}
+              placeholder=" "
+              rows={5}
+            />
+          </div>
+
+          <div className="club-field-row">
+            <CustomSelect
+              label="동아리 지역"
+              name="region"
+              value={form.region}
+              onChange={onChange}
+              required={true}
+              options={[
+                { value: "", label: "지역 선택" },
+                { value: "강원", label: "강원" },
+                { value: "경기", label: "경기" },
+                { value: "경남", label: "경남" },
+                { value: "경북", label: "경북" },
+                { value: "광주", label: "광주" },
+                { value: "대전", label: "대전" },
+                { value: "대구", label: "대구" },
+                { value: "부산", label: "부산" },
+                { value: "서울", label: "서울" },
+                { value: "세종", label: "세종" },
+                { value: "울산", label: "울산" },
+                { value: "인천", label: "인천" },
+                { value: "전남", label: "전남" },
+                { value: "전북", label: "전북" },
+                { value: "제주", label: "제주" },
+                { value: "충남", label: "충남" },
+                { value: "충북", label: "충북" },
+              ]}
+            />
+
+            <CustomSelect
+              label="동아리 종목"
+              name="sportCategory"
+              value={form.sportCategory}
+              onChange={onChange}
+              required={true}
+              options={[
+                { value: "", label: "종목 선택" },
+                { value: "검도", label: "검도" },
+                { value: "골프", label: "골프" },
+                { value: "농구", label: "농구" },
+                { value: "당구", label: "당구" },
+                { value: "등산", label: "등산" },
+                { value: "러닝", label: "러닝" },
+                { value: "레슬링", label: "레슬링" },
+                { value: "미식축구", label: "미식축구" },
+                { value: "무에타이", label: "무에타이" },
+                { value: "배구", label: "배구" },
+                { value: "복싱", label: "복싱" },
+                { value: "사이클", label: "사이클" },
+                { value: "수영", label: "수영" },
+                { value: "야구", label: "야구" },
+                { value: "양궁", label: "양궁" },
+                { value: "유도", label: "유도" },
+                { value: "족구", label: "족구" },
+                { value: "주짓수", label: "주짓수" },
+                { value: "축구", label: "축구" },
+                { value: "탁구", label: "탁구" },
+                { value: "태권도", label: "태권도" },
+                { value: "테니스", label: "테니스" },
+                { value: "티볼", label: "티볼" },
+                { value: "풋살", label: "풋살" },
+                { value: "E스포츠", label: "E스포츠" },
+                { value: "MMA", label: "MMA" },
+              ]}
+            />
+          </div>
+
+          <button
+            className={`club-submit ${isFormValid && !isLoading ? "active" : ""}`}
+            type="submit"
+            disabled={!isFormValid || isLoading}
+          >
+            {isLoading ? "생성 중..." : "동아리 생성"}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}

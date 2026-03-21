@@ -15,7 +15,6 @@
 }
 
 .delete-matchup-modal {
-    transform: translateY(-200px);
     position: relative;
     background: #fff;
     padding: 1.042vw;

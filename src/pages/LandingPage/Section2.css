@@ -40,3 +40,8 @@
     z-index: 0;
     position: absolute;
 }
+.section2-right-img{
+    width: 36.458vw;
+    height: auto;
+    display: block;
+}

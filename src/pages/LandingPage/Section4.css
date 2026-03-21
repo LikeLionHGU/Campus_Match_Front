@@ -41,5 +41,10 @@
     font-size: 1.042vw;
     font-style: normal;
     font-weight: 600;
-    line-height: 130%; /* 26px */ 
+    line-height: 130%; /* 26px */
+}
+.section4-img{
+    max-width: 100%;
+    height: auto;
+    display: block;
 }

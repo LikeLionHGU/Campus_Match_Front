@@ -15,7 +15,6 @@
 }
 
 .can-matchup-modal {
-  transform: translateY(-50px);
   position: relative;
   background: #fff;
   padding: 3.646vw 3.125vw 2.604vw 3.125vw;
@@ -130,6 +129,16 @@
   font-family: Pretendard;
   font-size: 0.781vw;
   font-weight: 500;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.can-matchup-modal-body input[type="time"] {
+  border: 1.5px solid #B2E8EC;
+  background: linear-gradient(135deg, #F5FEFF 0%, #EAF9FB 100%);
+  border-radius: 0.521vw;
+  box-sizing: border-box;
+  cursor: pointer;
+  letter-spacing: 0.03em;
 }
 
 .can-matchup-modal-body-phone input,
@@ -140,6 +149,7 @@
 
 .can-matchup-modal-body input:focus {
   border: 1.5px solid var(--Primary, #16C0CC);
+  box-shadow: 0 0 0 2px rgba(22, 192, 204, 0.15);
 }
 
 .can-matchup-modal-body-map {

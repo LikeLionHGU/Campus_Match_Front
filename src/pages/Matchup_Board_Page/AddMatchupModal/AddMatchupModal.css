@@ -14,7 +14,6 @@
   z-index: 2000;
 }
 .add-matchup-modal {
-    transform: translateY(-80px);
     position: relative;
     background: #fff;
     padding: 3.646vw 3.125vw 3.125vw 3.125vw;
@@ -171,6 +170,7 @@
 .add-matchup-modal input:focus{
     border-color: #16C0CC;
     outline: none;
+    box-shadow: 0 0 0 2px rgba(22, 192, 204, 0.15);
 }
 .add-matchup-modal-place{
     display: grid;
@@ -244,12 +244,12 @@
     line-height: normal;
 }
 .add-matchup-modal-time div input{
-    border-radius: 0.417vw;
-    border: 1.5px solid var(--Gray-2, #D6D6D6);
-    background: var(--white, #FFF);
-    padding: 0.417vw 0.781vw;
+    border-radius: 0.521vw;
+    border: 1.5px solid #B2E8EC;
+    background: linear-gradient(135deg, #F5FEFF 0%, #EAF9FB 100%);
+    padding: 0.417vw 0.521vw;
     width: 5.156vw;
-    height: 0.938vw;
+    height: 1.563vw;
     color: var(--Text, #1F1F1F);
     text-align: center;
     font-family: Pretendard;
@@ -257,6 +257,10 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+    letter-spacing: 0.03em;
 }
 .add-matchup-modal-content{
     display: grid;

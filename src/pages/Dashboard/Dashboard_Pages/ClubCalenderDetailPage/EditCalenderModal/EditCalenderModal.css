@@ -15,7 +15,6 @@
 }
 
 .edit-calender-modal {
-    transform: translateY(-300px);
     position: relative;
     background: #fff;
     padding: 1.042vw;
@@ -133,6 +132,22 @@
     font-weight: 500;
     line-height: normal;
     text-align: center;
+}
+
+.edit-calender-modal-detail input[type="time"] {
+  border: 1.5px solid #B2E8EC !important;
+  background: linear-gradient(135deg, #F5FEFF 0%, #EAF9FB 100%) !important;
+  border-radius: 0.521vw;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+  letter-spacing: 0.03em;
+}
+
+.edit-calender-modal-detail input[type="time"]:focus {
+  border: 1.5px solid #16C0CC !important;
+  box-shadow: 0 0 0 2px rgba(22, 192, 204, 0.15);
+  outline: none;
 }
 
 .edit-calender-modal-detail input {
