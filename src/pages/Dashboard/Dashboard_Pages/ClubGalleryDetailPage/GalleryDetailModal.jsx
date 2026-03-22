@@ -123,7 +123,7 @@ const GalleryDetailModal = ({ item, onClose, onUpdate }) => {
             className="gd-close-btn"
             onClick={handleSuccessClose}
           />
-          <h3 className="gd-success-title">저장되었습니다</h3>
+          <div className="gd-success-title">저장되었습니다</div>
           <button className="gd-confirm-btn" onClick={handleSuccessClose}>
             확인
           </button>
@@ -139,9 +139,9 @@ const GalleryDetailModal = ({ item, onClose, onUpdate }) => {
           className="gd-success-content"
           onClick={(e) => e.stopPropagation()}
         >
-          <h3 className="gd-success-title" style={{ marginTop: "1.042vw" }}>
+          <div className="gd-success-title" style={{ marginTop: "1.042vw" }}>
             정말 삭제하시겠습니까?
-          </h3>
+          </div>
           <p
             style={{
               textAlign: "center",

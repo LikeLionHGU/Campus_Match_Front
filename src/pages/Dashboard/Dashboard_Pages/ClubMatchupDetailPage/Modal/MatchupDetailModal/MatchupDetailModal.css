@@ -14,13 +14,12 @@
   z-index: 2000;
 }
 .matchup-detail-modal {
-    transform: translateY(-50px);
-    position: relative;
-    background: #fff;
-    padding: 3.646vw 3.125vw 1.562vw 3.125vw;
-    width: 21.979vw;
-    height: 35.625vw;
-    border-radius: 1.042vw;
+  position: relative;
+  background: #fff;
+  padding: 3.646vw 3.125vw 1.562vw 3.125vw;
+  width: 21.979vw;
+  height: 35.625vw;
+  border-radius: 1.042vw;
 }
 
 .matchup-detail-modal-close {
@@ -32,87 +31,83 @@
   height: 0.823vw;
   cursor: pointer;
 }
-.matchup-detail-modal-main{
-    display:grid;
-    grid-template-rows: 1.562vw 31.458vw;
-    gap:2.604vw;
-    align-items: center;
-    
+.matchup-detail-modal-main {
+  display: grid;
+  grid-template-rows: 1.562vw 31.458vw;
+  gap: 2.604vw;
+  align-items: center;
 }
-.matchup-detail-modal-header{
-    color: var(--Text, #1F1F1F);
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 1.302vw;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+.matchup-detail-modal-header {
+  color: var(--Text, #1f1f1f);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.302vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
-.matchup-detail-modal-body{
-    display: grid;
-    grid-template-rows: 1.771vw 1.771vw 1.771vw 22.031vw;
-    gap:1.042vw;
-
+.matchup-detail-modal-body {
+  display: grid;
+  grid-template-rows: 1.771vw 1.771vw 1.771vw 22.031vw;
+  gap: 1.042vw;
 }
-.matchup-detail-modal-body-time{
-    display: grid;
-    grid-template-columns: 4.896vw 8.854vw;
-    gap:2.083vw;
-    align-items: center;
+.matchup-detail-modal-body-time {
+  display: grid;
+  grid-template-columns: 4.896vw 8.854vw;
+  gap: 2.083vw;
+  align-items: center;
 }
-.matchup-detail-modal-body-time div{
-    display: grid;
-    grid-template-columns:3.646vw 0.677vw 3.646vw;
-    gap:0.521vw;
-    align-items: center;
-    justify-content: center;
+.matchup-detail-modal-body-time div {
+  display: grid;
+  grid-template-columns: 3.646vw 0.677vw 3.646vw;
+  gap: 0.521vw;
+  align-items: center;
+  justify-content: center;
 }
-.matchup-detail-modal-body-phone{
-    display: grid;
-    grid-template-columns: 4.896vw 14.01vw;
-    gap:2.083vw;
-    align-items: center;
+.matchup-detail-modal-body-phone {
+  display: grid;
+  grid-template-columns: 4.896vw 14.01vw;
+  gap: 2.083vw;
+  align-items: center;
 }
-.matchup-detail-modal-body-place{
-    display: grid;
-    grid-template-columns: 4.896vw 14.01vw;
-    gap:2.083vw;
-    align-items: center;
+.matchup-detail-modal-body-place {
+  display: grid;
+  grid-template-columns: 4.896vw 14.01vw;
+  gap: 2.083vw;
+  align-items: center;
 }
-.matchup-detail-modal-body span{
-    color: var(--Text, #1F1F1F);
-    font-family: Pretendard;
-    font-size: 1.042vw;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+.matchup-detail-modal-body span {
+  color: var(--Text, #1f1f1f);
+  font-family: Pretendard;
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
-.matchup-detail-modal-body input{
-    padding: 0px 0.521vw 0px 0.521vw;
-    height: 1.771vw;
-    border-radius: 0.417vw;
-    border: 1.5px solid var(--Gray-2, #D6D6D6);
-    background: var(--white, #FFF);
-    outline: none;
-    color: var(--Text, #1F1F1F);
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 0.781vw;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+.matchup-detail-modal-body input {
+  padding: 0px 0.521vw 0px 0.521vw;
+  height: 1.771vw;
+  border-radius: 0.417vw;
+  border: 1.5px solid var(--Gray-2, #d6d6d6);
+  background: var(--white, #fff);
+  outline: none;
+  color: var(--Text, #1f1f1f);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 0.781vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
-.matchup-detail-modal-body-phone input, .matchup-detail-modal-body-place input{
-    width: 100%;
-    text-align: left;
+.matchup-detail-modal-body-phone input,
+.matchup-detail-modal-body-place input {
+  width: 100%;
+  text-align: left;
 }
 .matchup-detail-modal-body input:focus {
-
-    border: 1.5px solid var(--Primary, #16C0CC);
-
+  border: 1.5px solid var(--Primary, #16c0cc);
 }
-.matchup-detail-modal-body-map{
-    background-color: #D6D6D6;
-
+.matchup-detail-modal-body-map {
+  background-color: #d6d6d6;
 }

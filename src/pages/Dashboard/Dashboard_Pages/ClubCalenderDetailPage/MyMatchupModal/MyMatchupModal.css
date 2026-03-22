@@ -15,7 +15,6 @@
 }
 
 .my-matchup-modal {
-  transform: translateY(-50px);
   position: relative;
   background: #fff;
   padding: 3.646vw 3.125vw 2.604vw 3.125vw;
@@ -42,7 +41,7 @@
 }
 
 .my-matchup-modal-header {
-  color: var(--Text, #1F1F1F);
+  color: var(--Text, #1f1f1f);
   text-align: center;
   font-family: Pretendard;
   font-size: 1.302vw;
@@ -83,18 +82,16 @@
   gap: 0.521vw;
   align-items: center;
   justify-content: center;
-  color: var(--Text, #1F1F1F);
-    
+  color: var(--Text, #1f1f1f);
 }
 
-.my-matchup-modal-body-time2 div input{
-
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 0.781vw;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+.my-matchup-modal-body-time2 div input {
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 0.781vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .my-matchup-modal-body-phone {
@@ -112,7 +109,7 @@
 }
 
 .my-matchup-modal-body span {
-  color: var(--Text, #1F1F1F);
+  color: var(--Text, #1f1f1f);
   font-family: Pretendard;
   font-size: 1.042vw;
   font-weight: 500;
@@ -122,10 +119,10 @@
   padding: 0px 0.521vw;
   height: 1.771vw;
   border-radius: 0.417vw;
-  border: 1.5px solid var(--Gray-2, #D6D6D6);
-  background: #FFF;
+  border: 1.5px solid var(--Gray-2, #d6d6d6);
+  background: #fff;
   outline: none;
-  color: var(--Text, #1F1F1F);
+  color: var(--Text, #1f1f1f);
   text-align: center;
   font-family: Pretendard;
   font-size: 0.781vw;
@@ -139,79 +136,78 @@
 }
 
 .my-matchup-modal-body input:focus {
-  border: 1.5px solid var(--Primary, #16C0CC);
+  border: 1.5px solid var(--Primary, #16c0cc);
 }
 
 .my-matchup-modal-body-map {
-  background-color: #D6D6D6;
+  background-color: #d6d6d6;
 }
-.my-matchup-modal-body-date{
-    display: grid;
-    grid-template-columns: 4.896vw 13.802vw;
-    gap: 2.083vw;
-    align-items: center;
+.my-matchup-modal-body-date {
+  display: grid;
+  grid-template-columns: 4.896vw 13.802vw;
+  gap: 2.083vw;
+  align-items: center;
 }
-.my-matchup-modal-body-date input{
-    width: 100%;
-    text-align: left;
+.my-matchup-modal-body-date input {
+  width: 100%;
+  text-align: left;
 }
-.my-matchup-modal-bottom{
+.my-matchup-modal-bottom {
   display: flex;
   justify-content: center;
 }
-.my-matchup-bottom-left-button{
-    border: 0px;
-    margin-top: 1.042vw;
-    width: 3.438vw;
-    height: 1.823vw;
-    border-radius: 0.26vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1.5px solid var(--Primary, #16C0CC);
-    background-color: #fff;
-    color: var(--Primary, #16C0CC);
-    font-family: Pretendard;
-    font-size: 0.781vw;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 100%; /* 15px */
-    cursor: pointer;
+.my-matchup-bottom-left-button {
+  border: 0px;
+  margin-top: 1.042vw;
+  width: 3.438vw;
+  height: 1.823vw;
+  border-radius: 0.26vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1.5px solid var(--Primary, #16c0cc);
+  background-color: #fff;
+  color: var(--Primary, #16c0cc);
+  font-family: Pretendard;
+  font-size: 0.781vw;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100%; /* 15px */
+  cursor: pointer;
 }
-.my-matchup-bottom-left-button:hover{
-    color: #8BF7FF;
-    border: 1.5px solid #8BF7FF;
-    background: #EAFDFF;
-    
+.my-matchup-bottom-left-button:hover {
+  color: #8bf7ff;
+  border: 1.5px solid #8bf7ff;
+  background: #eafdff;
 }
-.my-matchup-bottom-left-button:active{
-    border: 1.5px solid #007F88;
-    background: rgba(0, 127, 136, 0.30);
-    color: #007F88;
-    outline: none;
+.my-matchup-bottom-left-button:active {
+  border: 1.5px solid #007f88;
+  background: rgba(0, 127, 136, 0.3);
+  color: #007f88;
+  outline: none;
 }
-.my-matchup-bottom-button{
-    border: 0px;
-    margin-top: 1.042vw;
-    width: 3.438vw;
-    height: 1.823vw;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.26vw;
-    background: var(--Primary, #16C0CC);
-    color: #fff;
-    font-family: Pretendard;
-    font-size: 0.781vw;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 100%; /* 15px */
-    cursor: pointer;
+.my-matchup-bottom-button {
+  border: 0px;
+  margin-top: 1.042vw;
+  width: 3.438vw;
+  height: 1.823vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.26vw;
+  background: var(--Primary, #16c0cc);
+  color: #fff;
+  font-family: Pretendard;
+  font-size: 0.781vw;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100%; /* 15px */
+  cursor: pointer;
 }
-.my-matchup-bottom-button:hover{
-    background: #9CE2E7;
+.my-matchup-bottom-button:hover {
+  background: #9ce2e7;
 }
-.my-matchup-bottom-button:active{
-    background: #007F88;
+.my-matchup-bottom-button:active {
+  background: #007f88;
 }

@@ -15,53 +15,52 @@
 }
 
 .success-modal {
-    transform: translateY(-300px);
-    position: relative;
-    background: #fff;
-    padding: 1.042vw;
-    width: 13.021vw;
-    height: 4.427vw;
-    padding: 2.344vw 3.646vw 1.042vw 3.646vw;
-    border-radius: 0.521vw;
-    align-items: center;
-    justify-items: center;
+  position: relative;
+  background: #fff;
+  padding: 1.042vw;
+  width: 13.021vw;
+  height: 4.427vw;
+  padding: 2.344vw 3.646vw 1.042vw 3.646vw;
+  border-radius: 0.521vw;
+  align-items: center;
+  justify-items: center;
 }
 
-.success-modal-close{
-    position: absolute;
-    top: 1.042vw;
-    right: 1.042vw;
+.success-modal-close {
+  position: absolute;
+  top: 1.042vw;
+  right: 1.042vw;
 
-    width: 0.823vw;
-    height: 0.823vw;
-    cursor: pointer;
-}
-
-.success-modal-text{
-    color: var(--Text, #1F1F1F);
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 1.042vw;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 100%; /* 20px */
-    margin-bottom: 1.562vw;
+  width: 0.823vw;
+  height: 0.823vw;
+  cursor: pointer;
 }
 
-.success-modal-button{
-    border: 0px;
-    width: 3.438vw;
-    height: 1.823vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.26vw;
-    background: var(--Primary, #16C0CC);
-    color: #fff; 
+.success-modal-text {
+  color: var(--Text, #1f1f1f);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 20px */
+  margin-bottom: 1.562vw;
 }
-.success-modal-button:hover{
-    background: #9CE2E7;
+
+.success-modal-button {
+  border: 0px;
+  width: 3.438vw;
+  height: 1.823vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.26vw;
+  background: var(--Primary, #16c0cc);
+  color: #fff;
 }
-.success-modal-button:active{
-    background: #007F88;
+.success-modal-button:hover {
+  background: #9ce2e7;
+}
+.success-modal-button:active {
+  background: #007f88;
 }

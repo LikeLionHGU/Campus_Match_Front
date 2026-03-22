@@ -15,62 +15,59 @@
 }
 
 .finish-success-modal {
-    transform: translateY(-300px);
-    position: relative;
-    background: #fff;
-    padding: 1.042vw;
-    width: 14.844vw;
-    height: 5.625vw;
-    padding: 2.344vw 3.646vw 1.562vw 3.646vw;
-    border-radius: 0.521vw;
-    align-items: center;
-    justify-items: center;
-    text-align: center;
+  position: relative;
+  background: #fff;
+  padding: 1.042vw;
+  width: 14.844vw;
+  height: 5.625vw;
+  padding: 2.344vw 3.646vw 1.562vw 3.646vw;
+  border-radius: 0.521vw;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
 }
 
-.finish-success-modal-close{
-    position: absolute;
-    top: 1.042vw;
-    right: 1.042vw;
+.finish-success-modal-close {
+  position: absolute;
+  top: 1.042vw;
+  right: 1.042vw;
 
-    width: 0.823vw;
-    height: 0.823vw;
-    cursor: pointer;
+  width: 0.823vw;
+  height: 0.823vw;
+  cursor: pointer;
 }
 
-.finish-success-modal-text{
-    color: var(--Text, #1F1F1F);
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 1.042vw;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 100%; /* 20px */
-    margin-bottom: 0.26vw;
+.finish-success-modal-text {
+  color: var(--Text, #1f1f1f);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 20px */
+  margin-bottom: 0.26vw;
 }
 
-.finish-success-modal-span{
-    color: var(--Text, #1F1F1F);
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 0.781vw;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 100%; /* 15px */
-    
+.finish-success-modal-span {
+  color: var(--Text, #1f1f1f);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 0.781vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%; /* 15px */
 }
 
-
-.finish-success-modal-button{
-    margin-top: 1.562vw;
-    border: 0px;
-    width: 3.438vw;
-    height: 1.823vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.26vw;
-    background: var(--Primary, #16C0CC);
-    color: #fff;
-    cursor: pointer;
+.finish-success-modal-button {
+  margin-top: 1.562vw;
+  border: 0px;
+  width: 3.438vw;
+  height: 1.823vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.26vw;
+  background: var(--Primary, #16c0cc);
+  color: #fff;
+  cursor: pointer;
 }

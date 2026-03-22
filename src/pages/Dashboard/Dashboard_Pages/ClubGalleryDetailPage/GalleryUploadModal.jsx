@@ -79,7 +79,7 @@ const GalleryUploadModal = ({
             className="close-btn"
             onClick={handleSuccessClose}
           />
-          <h3 className="success-title">저장되었습니다</h3>
+          <div className="success-title">저장되었습니다</div>
           <button className="submit-btn" onClick={handleSuccessClose}>
             확인
           </button>

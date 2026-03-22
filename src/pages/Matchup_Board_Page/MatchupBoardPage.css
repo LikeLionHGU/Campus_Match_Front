@@ -109,7 +109,6 @@
   position: absolute;
   right: 0.625vw;
   top: 50%;
-  transform: translateY(-50%);
   width: 1.302vw;
   height: 1.302vw;
   pointer-events: none;
@@ -171,7 +170,6 @@
   overflow: visible;
   height: 38.021vw;
   width: 79.844vw;
-  
 }
 
 .matchup-board-table-wrapper {
@@ -184,7 +182,6 @@
 }
 
 .matchup-board-table-wrapper table tr {
-  
 }
 
 .matchup-board-pagination-mono:hover,
@@ -252,7 +249,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 .matchup-board-pagination-double {
   width: 0.573vw;
