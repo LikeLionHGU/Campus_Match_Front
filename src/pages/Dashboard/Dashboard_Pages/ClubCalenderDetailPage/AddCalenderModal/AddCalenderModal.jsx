@@ -11,7 +11,7 @@ const AddCalenderModal = ({ onClose, date, onSuccess }) => {
   const [endDate, setEndDate] = useState(date);
 
   const [startTime, setStartTime] = useState("00:00");
-  const [endTime, setEndTime] = useState("23:59");
+  const [endTime, setEndTime] = useState("23:50");
 
   useEffect(() => {
     if (date) {
@@ -35,9 +35,8 @@ const AddCalenderModal = ({ onClose, date, onSuccess }) => {
       startDate,
       endDate,
       startTime,
-      endTime
+      endTime,
     };
-    console.log(body);
 
     try {
       const res = await fetch(
@@ -63,8 +62,6 @@ const AddCalenderModal = ({ onClose, date, onSuccess }) => {
       alert("저장 중 오류가 발생했습니다.");
     }
   };
-
-  
 
   return (
     <div className="add-calender-modal-backdrop" onClick={onClose}>
@@ -94,11 +91,7 @@ const AddCalenderModal = ({ onClose, date, onSuccess }) => {
               <input
                 type="text"
                 value={title}
-                placeholder={
-                  titleError
-                    ? "제목을 입력해주세요."
-                    : ""
-                }
+                placeholder={titleError ? "제목을 입력해주세요." : ""}
                 className={titleError ? "input-error" : ""}
                 onChange={(e) => {
                   setTitle(e.target.value);
@@ -114,15 +107,13 @@ const AddCalenderModal = ({ onClose, date, onSuccess }) => {
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
-                max={endDate|| undefined}
+                max={endDate || undefined}
               />
 
               <input
                 type="time"
-                lang="ko-KR"
                 value={startTime}
                 onChange={(e) => setStartTime(e.target.value)}
-                max={endTime|| undefined}
               />
             </div>
 
@@ -133,19 +124,17 @@ const AddCalenderModal = ({ onClose, date, onSuccess }) => {
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
-                min={startDate|| undefined}
+                min={startDate || undefined}
               />
 
               <input
                 type="time"
-                lang="ko-KR"
                 value={endTime}
                 onChange={(e) => setEndTime(e.target.value)}
-                min={startTime|| undefined}
               />
             </div>
 
-            <button type="submit" >저장</button>
+            <button type="submit">저장</button>
           </form>
         </div>
       </div>

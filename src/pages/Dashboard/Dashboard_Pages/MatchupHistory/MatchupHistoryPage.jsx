@@ -25,6 +25,7 @@ const MatchupHistoryPage = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [editData, setEditData] = useState(null);
   const [deleteTarget, setDeleteTarget] = useState(null);
+  const [isEditSuccess, setIsEditSuccess] = useState(false);
 
   const fetchHistory = useCallback(async () => {
     try {
@@ -114,10 +115,20 @@ const MatchupHistoryPage = () => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
 
-  const handleSuccess = () => {
+  const handleAddSuccess = () => {
     fetchHistory();
     setIsAddModalOpen(false);
+    setDeleteTarget(null);
+  };
+
+  const handleEditSuccess = () => {
+    fetchHistory();
     setEditData(null);
+    setIsEditSuccess(true);
+  };
+
+  const handleDeleteSuccess = () => {
+    fetchHistory();
     setDeleteTarget(null);
   };
 
@@ -336,7 +347,7 @@ const MatchupHistoryPage = () => {
           <MatchupHistoryModal
             mode="add"
             onClose={() => setIsAddModalOpen(false)}
-            onSuccess={handleSuccess}
+            onSuccess={handleAddSuccess}
           />
         )}
 
@@ -345,7 +356,7 @@ const MatchupHistoryPage = () => {
             mode="edit"
             historyData={editData}
             onClose={() => setEditData(null)}
-            onSuccess={handleSuccess}
+            onSuccess={handleEditSuccess}
           />
         )}
 
@@ -355,8 +366,22 @@ const MatchupHistoryPage = () => {
               deleteTarget.matchHistoryId || deleteTarget.historyMatchId
             }
             onClose={() => setDeleteTarget(null)}
-            onSuccess={handleSuccess}
+            onSuccess={handleDeleteSuccess}
           />
+        )}
+
+        {isEditSuccess && (
+          <div className="history-modal-overlay" onClick={() => setIsEditSuccess(false)}>
+            <div className="history-success-modal" onClick={(e) => e.stopPropagation()}>
+              <div className="history-success-text">수정이 완료되었습니다.</div>
+              <button
+                className="history-modal-submit"
+                onClick={() => setIsEditSuccess(false)}
+              >
+                확인
+              </button>
+            </div>
+          </div>
         )}
       </div>
     </div>

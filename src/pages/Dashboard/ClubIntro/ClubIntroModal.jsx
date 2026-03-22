@@ -122,7 +122,7 @@ const ClubIntroModal = ({ clubId, onClose, onUpdate }) => {
         />
 
         <div className="club-intro-modal-header">
-          <div className="club-intro-modal-label">매치온도</div>
+
           <ClubIntroTempRing temperature={mannerScore} />
         </div>
 

@@ -9,8 +9,8 @@ const EditCalenderModal = ({ onClose, onSuccess, onDelete, scheduleId }) => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
-  const [startTime, setStartTime] = useState("");
-  const [endTime, setEndTime] = useState("");
+  const [startTime, setStartTime] = useState("00:00");
+  const [endTime, setEndTime] = useState("00:00");
 
   const [loading, setLoading] = useState(true);
 
@@ -20,7 +20,7 @@ const EditCalenderModal = ({ onClose, onSuccess, onDelete, scheduleId }) => {
   };
 
   const formatTime = (timeStr) => {
-    if (!timeStr) return "";
+    if (!timeStr) return "00:00";
     return timeStr.slice(0, 5);
   };
 
@@ -89,10 +89,7 @@ const EditCalenderModal = ({ onClose, onSuccess, onDelete, scheduleId }) => {
 
       if (!res.ok) throw new Error();
 
-
       onSuccess();
-
-
 
     } catch (err) {
       console.error(err);
@@ -101,8 +98,6 @@ const EditCalenderModal = ({ onClose, onSuccess, onDelete, scheduleId }) => {
   };
 
   const handleDelete = async () => {
-
-
     try {
       const res = await fetch(
         `${import.meta.env.VITE_HOST_URL}/api/schedule/${scheduleId}`,
@@ -116,11 +111,7 @@ const EditCalenderModal = ({ onClose, onSuccess, onDelete, scheduleId }) => {
 
       if (!res.ok) throw new Error();
 
-
       onDelete();
-      
-
-
 
     } catch (err) {
       console.error(err);
@@ -168,13 +159,12 @@ const EditCalenderModal = ({ onClose, onSuccess, onDelete, scheduleId }) => {
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
-                max={endDate|| undefined}
+                max={endDate || undefined}
               />
               <input
                 type="time"
                 value={startTime}
                 onChange={(e) => setStartTime(e.target.value)}
-                max={endTime|| undefined}
               />
             </div>
 
@@ -184,13 +174,12 @@ const EditCalenderModal = ({ onClose, onSuccess, onDelete, scheduleId }) => {
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
-                min={startDate|| undefined}
+                min={startDate || undefined}
               />
               <input
                 type="time"
                 value={endTime}
                 onChange={(e) => setEndTime(e.target.value)}
-                min={startTime|| undefined}
               />
             </div>
 

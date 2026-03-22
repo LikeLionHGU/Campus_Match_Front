@@ -17,9 +17,7 @@
 .add-calender-modal {
   position: relative;
   background: #fff;
-  padding: 1.042vw;
   width: 17.396vw;
-  height: 15.469vw;
   padding: 3.646vw 3.594vw 2.604vw 3.594vw;
   border-radius: 1.042vw;
 }
@@ -35,9 +33,9 @@
 }
 
 .add-calender-modal-main {
-  display: grid;
-  grid-template-rows: 1.562vw 7.552vw;
-  gap: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vw;
 }
 .add-calender-modal-title {
   color: var(--Text, #1f1f1f);
@@ -50,11 +48,10 @@
 }
 
 .add-calender-modal-detail {
-  display: grid;
-  grid-template-rows: 1.771vw 1.771vw 1.771vw 1.823vw;
+  display: flex;
+  flex-direction: column;
   gap: 1.042vw;
   align-items: center;
-  justify-items: center;
 }
 
 .add-calender-modal-detail span {
@@ -144,21 +141,6 @@
   text-align: center;
 }
 
-.add-calender-modal-detail input[type="time"] {
-  border: 1.5px solid #B2E8EC !important;
-  background: linear-gradient(135deg, #F5FEFF 0%, #EAF9FB 100%) !important;
-  border-radius: 0.521vw;
-  box-sizing: border-box;
-  cursor: pointer;
-  transition: border 0.2s ease, box-shadow 0.2s ease;
-  letter-spacing: 0.03em;
-}
-
-.add-calender-modal-detail input[type="time"]:focus {
-  border: 1.5px solid #16C0CC !important;
-  box-shadow: 0 0 0 2px rgba(22, 192, 204, 0.15);
-  outline: none;
-}
 
 .add-calender-modal-detail input {
   border: 1px solid #dadada;
