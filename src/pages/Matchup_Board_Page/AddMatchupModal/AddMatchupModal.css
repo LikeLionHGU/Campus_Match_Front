@@ -220,19 +220,16 @@
     overflow-y: auto;
 }
 .add-matchup-modal-time{
-    
     display: grid;
-    grid-template-columns: 4.844vw 8.854vw;
+    grid-template-columns: 4.844vw 11.198vw;
     gap:2.083vw;
     align-items: center;
-    
 }
 .add-matchup-modal-time div{
     display: grid;
-    grid-template-columns: 6.719vw 0.677vw 6.719vw;
+    grid-template-columns: 1fr 0.677vw 1fr;
     gap:0.521vw;
     align-items: center;
-
 }
 .add-matchup-modal-time div span{
     
@@ -244,11 +241,11 @@
     line-height: normal;
 }
 .add-matchup-modal-time div input{
-    border-radius: 0.521vw;
-    border: 1.5px solid #B2E8EC;
-    background: linear-gradient(135deg, #F5FEFF 0%, #EAF9FB 100%);
+    border-radius: 0.417vw;
+    border: 1.5px solid var(--Gray-2, #D6D6D6);
+    background: var(--white, #FFF);
     padding: 0.417vw 0.521vw;
-    width: 5.156vw;
+    width: 100%;
     height: 1.563vw;
     color: var(--Text, #1F1F1F);
     text-align: center;
@@ -258,9 +255,12 @@
     font-weight: 500;
     line-height: normal;
     box-sizing: border-box;
-    cursor: pointer;
+    outline: none;
     transition: border 0.2s ease, box-shadow 0.2s ease;
-    letter-spacing: 0.03em;
+}
+.add-matchup-modal-time div input:focus {
+    border: 1.5px solid var(--Primary, #16C0CC);
+    box-shadow: 0 0 0 2px rgba(22, 192, 204, 0.15);
 }
 .add-matchup-modal-content{
     display: grid;

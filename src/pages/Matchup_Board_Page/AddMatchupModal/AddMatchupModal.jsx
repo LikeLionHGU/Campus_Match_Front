@@ -9,8 +9,8 @@ const AddMatchupModal = ({ onClose, onSuccess }) => {
     const [matchDate, setMatchDate] = useState("");
     const [location, setLocation] = useState("");
     const [locationDetail, setLocationDetail] = useState("");
-    const [startTime, setStartTime] = useState("");
-    const [endTime, setEndTime] = useState("");
+    const [startTime, setStartTime] = useState("00:00");
+    const [endTime, setEndTime] = useState("23:59");
     const [reason, setReason] = useState("");
 
     const [sportDropdownOpen, setSportDropdownOpen] = useState(false);
@@ -168,7 +168,6 @@ const AddMatchupModal = ({ onClose, onSuccess }) => {
                                     <input
                                         type="text"
                                         value={startTime}
-                                        placeholder="HH:MM"
                                         maxLength={5}
                                         onChange={(e) => {
                                             setStartTime(e.target.value);
@@ -180,7 +179,6 @@ const AddMatchupModal = ({ onClose, onSuccess }) => {
                                     <input
                                         type="text"
                                         value={endTime}
-                                        placeholder="HH:MM"
                                         maxLength={5}
                                         onChange={(e) => {
                                             const val = e.target.value;
