@@ -183,7 +183,12 @@ const AddMatchupModal = ({ onClose, onSuccess }) => {
                                         placeholder="HH:MM"
                                         maxLength={5}
                                         onChange={(e) => {
-                                            setEndTime(e.target.value);
+                                            const val = e.target.value;
+                                            if (val.length === 5 && startTime.length === 5 && val < startTime) {
+                                                setEndTime(startTime);
+                                            } else {
+                                                setEndTime(val);
+                                            }
                                             setErrors(prev => ({ ...prev, endTime: false }));
                                         }}
                                         className={errors.endTime ? "error-input" : ""}

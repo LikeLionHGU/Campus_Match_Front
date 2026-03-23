@@ -211,7 +211,14 @@ const CanMatchupModal = ({
                     value={applyEndTime}
                     placeholder="HH:MM"
                     maxLength={5}
-                    onChange={(e) => setApplyEndTime(e.target.value)}
+                    onChange={(e) => {
+                        const val = e.target.value;
+                        if (val.length === 5 && applyStartTime.length === 5 && val < applyStartTime) {
+                            setApplyEndTime(applyStartTime);
+                        } else {
+                            setApplyEndTime(val);
+                        }
+                    }}
                     />
                 </div>
 

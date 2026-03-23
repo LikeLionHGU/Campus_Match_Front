@@ -183,7 +183,14 @@ const EditCalenderModal = ({ onClose, onSuccess, onDelete, scheduleId }) => {
                 value={endTime}
                 placeholder="HH:MM"
                 maxLength={5}
-                onChange={(e) => setEndTime(e.target.value)}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val.length === 5 && startTime.length === 5 && val < startTime) {
+                    setEndTime(startTime);
+                  } else {
+                    setEndTime(val);
+                  }
+                }}
               />
             </div>
 
