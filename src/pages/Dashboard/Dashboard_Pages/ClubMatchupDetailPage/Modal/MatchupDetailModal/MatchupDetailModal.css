@@ -20,6 +20,8 @@
   width: 21.979vw;
   height: 35.625vw;
   border-radius: 1.042vw;
+  display: flex;
+  flex-direction: column;
 }
 
 .matchup-detail-modal-close {
@@ -32,10 +34,11 @@
   cursor: pointer;
 }
 .matchup-detail-modal-main {
-  display: grid;
-  grid-template-rows: 1.562vw 31.458vw;
+  display: flex;
+  flex-direction: column;
   gap: 2.604vw;
-  align-items: center;
+  flex: 1;
+  min-height: 0;
 }
 .matchup-detail-modal-header {
   color: var(--Text, #1f1f1f);
@@ -47,9 +50,16 @@
   line-height: normal;
 }
 .matchup-detail-modal-body {
-  display: grid;
-  grid-template-rows: 1.771vw 1.771vw 1.771vw 22.031vw;
+  display: flex;
+  flex-direction: column;
   gap: 1.042vw;
+  flex: 1;
+  min-height: 0;
+}
+
+.matchup-detail-modal-body-map {
+  flex: 1;
+  min-height: 0;
 }
 .matchup-detail-modal-body-time {
   display: grid;

@@ -362,14 +362,16 @@
 
 .right-schedule-item{
     width: 11.094vw;
-    height: 1.042vw;
     color: var(--Text, #1F1F1F);
     font-family: Pretendard;
     font-size: 0.781vw;
     font-style: normal;
     font-weight: 500;
-    line-height: 20px; /* 133.333% */
+    line-height: 20px;
     text-transform: capitalize;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .calender-detail-right-bottom-second-title{
     width: 11.094vw;

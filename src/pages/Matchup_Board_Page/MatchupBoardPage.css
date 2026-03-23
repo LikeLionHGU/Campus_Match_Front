@@ -109,6 +109,7 @@
   position: absolute;
   right: 0.625vw;
   top: 50%;
+  transform: translateY(-50%);
   width: 1.302vw;
   height: 1.302vw;
   pointer-events: none;
