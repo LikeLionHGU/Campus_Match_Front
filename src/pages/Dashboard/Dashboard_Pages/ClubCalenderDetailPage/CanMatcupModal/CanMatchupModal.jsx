@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import "./CanMatchupModal.css";
 import closeIcon from "../../../../../assets/close.svg";
-import ApplyMatchupModal2 from "./ApplyMatchupModal2";
+import ConfirmMatchupModal from "./ConfirmMatchupModal";
 import ApplySuccessModal from "../../../../Matchup_Board_Page/ApplySuccessModal/ApplySuccessModal";
 
 const CanMatchupModal = ({
@@ -197,21 +197,21 @@ const CanMatchupModal = ({
 
                 <div>
                     <input
-                    type="time"
+                    type="text"
                     value={applyStartTime}
+                    placeholder="HH:MM"
+                    maxLength={5}
                     onChange={(e) => setApplyStartTime(e.target.value)}
-                    min={detail?.startTime||undefined}
-                    max={applyEndTime||undefined}
                     />
 
                     <span>~</span>
 
                     <input
-                    type="time"
+                    type="text"
                     value={applyEndTime}
+                    placeholder="HH:MM"
+                    maxLength={5}
                     onChange={(e) => setApplyEndTime(e.target.value)}
-                    min={applyStartTime||undefined}
-                    max={detail?.endTime||undefined}
                     />
                 </div>
 
@@ -280,7 +280,7 @@ const CanMatchupModal = ({
 
         </div>
         {applyModalOpen && (
-            <ApplyMatchupModal2
+            <ConfirmMatchupModal
                 matchPostId={matchPostId}
                 matchDate={detail?.matchDate}
 

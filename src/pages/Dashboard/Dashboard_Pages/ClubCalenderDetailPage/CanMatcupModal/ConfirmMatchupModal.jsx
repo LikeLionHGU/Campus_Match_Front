@@ -1,14 +1,10 @@
 
-import "./ApplyMatchupModal2.css";
+import "./ConfirmMatchupModal.css";
 import closeIcon from "../../../../../assets/close.svg";
 
-const ApplyMatchupModal = ({ onClose, onSuccess, matchPostId, matchDate,start,end}) => {
-
-    
+const ConfirmMatchupModal = ({ onClose, onSuccess, matchPostId, matchDate, start, end }) => {
 
     const handleApply = async () => {
-
-        
 
         try {
 
@@ -26,11 +22,10 @@ const ApplyMatchupModal = ({ onClose, onSuccess, matchPostId, matchDate,start,en
                     })
                 }
             );
-            console.log(start,end);
+
             if (!res.ok) throw new Error();
-    
+
             onSuccess();
-            
 
         } catch (e) {
 
@@ -54,7 +49,7 @@ const ApplyMatchupModal = ({ onClose, onSuccess, matchPostId, matchDate,start,en
                 <div className="apply-matchup-modal-text">
                     해당 매치업에 신청하시겠습니까?
                 </div>
-                
+
                 <div className="apply-matchup-modal-date">
                     <span>가능날짜</span>
                     <input
@@ -62,7 +57,6 @@ const ApplyMatchupModal = ({ onClose, onSuccess, matchPostId, matchDate,start,en
                         readOnly
                     />
                 </div>
-                
 
                 <div className="apply-matchup-modal-time">
                     <span>신청시간</span>
@@ -70,7 +64,7 @@ const ApplyMatchupModal = ({ onClose, onSuccess, matchPostId, matchDate,start,en
                     <div className="apply-matchup-modal-time-inputs">
 
                         <input
-                            type="time"
+                            type="text"
                             value={start}
                             readOnly
                         />
@@ -78,7 +72,7 @@ const ApplyMatchupModal = ({ onClose, onSuccess, matchPostId, matchDate,start,en
                         <span>~</span>
 
                         <input
-                            type="time"
+                            type="text"
                             value={end}
                             readOnly
                         />
@@ -109,4 +103,4 @@ const ApplyMatchupModal = ({ onClose, onSuccess, matchPostId, matchDate,start,en
     );
 };
 
-export default ApplyMatchupModal;
+export default ConfirmMatchupModal;

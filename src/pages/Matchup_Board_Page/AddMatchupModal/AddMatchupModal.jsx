@@ -166,8 +166,10 @@ const AddMatchupModal = ({ onClose, onSuccess }) => {
                                 <span>가능 시간</span>
                                 <div>
                                     <input
-                                        type="time"
+                                        type="text"
                                         value={startTime}
+                                        placeholder="HH:MM"
+                                        maxLength={5}
                                         onChange={(e) => {
                                             setStartTime(e.target.value);
                                             setErrors(prev => ({ ...prev, startTime: false }));
@@ -176,8 +178,10 @@ const AddMatchupModal = ({ onClose, onSuccess }) => {
                                     />
                                     <span>~</span>
                                     <input
-                                        type="time"
+                                        type="text"
                                         value={endTime}
+                                        placeholder="HH:MM"
+                                        maxLength={5}
                                         onChange={(e) => {
                                             setEndTime(e.target.value);
                                             setErrors(prev => ({ ...prev, endTime: false }));

@@ -132,7 +132,7 @@
   transition: border 0.2s ease, box-shadow 0.2s ease;
 }
 
-.can-matchup-modal-body input[type="time"] {
+.can-matchup-modal-body-time2 input {
   border: 1.5px solid #B2E8EC;
   background: linear-gradient(135deg, #F5FEFF 0%, #EAF9FB 100%);
   border-radius: 0.521vw;

@@ -73,18 +73,21 @@ const ApplyMatchupModal = ({ onClose, onSuccess, matchPostId, matchDate}) => {
                     <div className="apply-matchup-modal-time-inputs">
 
                         <input
-                            type="time"
+                            type="text"
                             value={startTime}
+                            placeholder="HH:MM"
+                            maxLength={5}
                             onChange={(e) => setStartTime(e.target.value)}
                         />
 
                         <span>~</span>
 
                         <input
-                            type="time"
+                            type="text"
                             value={endTime}
+                            placeholder="HH:MM"
+                            maxLength={5}
                             onChange={(e) => setEndTime(e.target.value)}
-                            min={startTime || undefined}
                         />
 
                     </div>

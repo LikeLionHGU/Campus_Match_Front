@@ -220,8 +220,10 @@ const EditMatchupModal = ({ onClose, onSuccess, matchData, matchPostId}) => {
                                 <div>
 
                                     <input
-                                        type="time"
+                                        type="text"
                                         value={startTime}
+                                        placeholder="HH:MM"
+                                        maxLength={5}
                                         onChange={(e) => {
 
                                             setStartTime(e.target.value);
@@ -234,8 +236,10 @@ const EditMatchupModal = ({ onClose, onSuccess, matchData, matchPostId}) => {
                                     <span>~</span>
 
                                     <input
-                                        type="time"
+                                        type="text"
                                         value={endTime}
+                                        placeholder="HH:MM"
+                                        maxLength={5}
                                         onChange={(e) => {
 
                                             setEndTime(e.target.value);
