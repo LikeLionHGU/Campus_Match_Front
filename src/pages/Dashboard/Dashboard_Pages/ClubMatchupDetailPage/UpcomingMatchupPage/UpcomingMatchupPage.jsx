@@ -10,7 +10,7 @@ import ArrowRightDouble from "../../../../../assets/arrow_right_double.svg";
 import ArrowDown from "../../../../../assets/arrow_down.svg";
 import MatchupCancelModal from "../Modal/MatchupCancelModal/MatchupCancelModal";
 import MatchupDetailModal from "../Modal/MatchupDetailModal/MatchupDetailModal";
-import SuccessModal from "../../ClubCalenderDetailPage/SuccessModal/SuccessModal";
+import SuccessModal from "../../ClubCalendarDetailPage/SuccessModal/SuccessModal";
 import DefaultLogo from "../../../../../assets/Main_Icon_Gray.svg";
 
 const UpcomingMatchupPage = () => {

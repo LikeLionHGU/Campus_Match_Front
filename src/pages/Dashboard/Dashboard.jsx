@@ -5,7 +5,7 @@ import TempRing from "./Temperture/TempRing";
 import ClubIntroModal from "./ClubIntro/ClubIntroModal";
 import empty_badge from "../../assets/empty_badge.png";
 import { useState, useEffect, useCallback } from "react";
-import Calender from "./Calendaer/Calender";
+import Calendar from "./Calendar/Calendar";
 import Matchup from "./Matchup/Matchup";
 import Gallery from "./Gallery/Gallery";
 import { useNavigate, useParams } from "react-router-dom";
@@ -177,16 +177,16 @@ const Dashboard = () => {
             />
           </div>
           <div
-            className="club-calender"
+            className="club-calendar"
             onClick={() => {
               if (isMyDashboard) {
-                navigate("/dashboard/calender");
+                navigate("/dashboard/calendar");
               } else {
-                navigate(`/club-board/dashboard/${clubId}/calender`);
+                navigate(`/club-board/dashboard/${clubId}/calendar`);
               }
             }}
           >
-            <Calender
+            <Calendar
               schedules={dashboardData?.scheduleResDtoList || []}
               upcomingMatches={dashboardData?.upcomingResDtoList || []}
               ongoingMatches={dashboardData?.ongoingResDtoList || []}

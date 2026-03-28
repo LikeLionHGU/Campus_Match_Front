@@ -1,4 +1,4 @@
-.add-calender-modal-backdrop {
+.add-calendar-modal-backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -14,7 +14,7 @@
   z-index: 2000;
 }
 
-.add-calender-modal {
+.add-calendar-modal {
   position: relative;
   background: #fff;
   width: 17.396vw;
@@ -22,7 +22,7 @@
   border-radius: 1.042vw;
 }
 
-.add-calender-modal-close {
+.add-calendar-modal-close {
   position: absolute;
   top: 1.042vw;
   right: 1.042vw;
@@ -32,12 +32,12 @@
   cursor: pointer;
 }
 
-.add-calender-modal-main {
+.add-calendar-modal-main {
   display: flex;
   flex-direction: column;
   gap: 1.5vw;
 }
-.add-calender-modal-title {
+.add-calendar-modal-title {
   color: var(--Text, #1f1f1f);
   text-align: center;
   font-family: Pretendard;
@@ -47,14 +47,14 @@
   line-height: normal;
 }
 
-.add-calender-modal-detail {
+.add-calendar-modal-detail {
   display: flex;
   flex-direction: column;
   gap: 1.042vw;
   align-items: center;
 }
 
-.add-calender-modal-detail span {
+.add-calendar-modal-detail span {
   color: var(--Text, #1f1f1f);
   font-family: Pretendard;
   font-size: 0.938vw;
@@ -62,13 +62,13 @@
   font-weight: 500;
   line-height: normal;
 }
-.add-calender-modal-detail-name {
+.add-calendar-modal-detail-name {
   display: grid;
   grid-template-columns: 1.667vw 1fr;
   gap: 0.521vw;
   align-items: center;
 }
-.add-calender-modal-detail-name input {
+.add-calendar-modal-detail-name input {
   height: 1.771vw;
   width: 14.375vw;
   border-radius: 0.417vw;
@@ -77,14 +77,14 @@
   padding-left: 0.781vw;
 }
 
-.add-calender-modal-detail-start {
+.add-calendar-modal-detail-start {
   display: grid;
   grid-template-columns: 1.667vw 7.5vw 7.5vw;
   gap: 0.521vw;
   align-items: center;
 }
 
-.add-calender-modal-detail-start input {
+.add-calendar-modal-detail-start input {
   height: 1.771vw;
   width: 7.292vw;
   border-radius: 0.417vw;
@@ -92,14 +92,14 @@
   background: var(--white, #fff);
 }
 
-.add-calender-modal-detail-end {
+.add-calendar-modal-detail-end {
   display: grid;
   grid-template-columns: 1.667vw 7.5vw 7.5vw;
   gap: 0.521vw;
   align-items: center;
 }
 
-.add-calender-modal-detail-end input {
+.add-calendar-modal-detail-end input {
   height: 1.771vw;
   width: 7.292vw;
   border-radius: 0.417vw;
@@ -107,7 +107,7 @@
   background: var(--white, #fff);
 }
 
-.add-calender-modal-detail button {
+.add-calendar-modal-detail button {
   border: 0px;
   margin-top: 1.042vw;
   width: 3.438vw;
@@ -121,7 +121,7 @@
   color: #fff;
 }
 
-.add-calender-modal-detail-name input {
+.add-calendar-modal-detail-name input {
   color: var(--Text, #1f1f1f);
   font-family: Pretendard;
   font-size: 0.781vw;
@@ -130,8 +130,8 @@
   line-height: normal;
 }
 
-.add-calender-modal-detail-start input,
-.add-calender-modal-detail-end input {
+.add-calendar-modal-detail-start input,
+.add-calendar-modal-detail-end input {
   color: var(--Text, #1f1f1f);
   font-family: Pretendard;
   font-size: 0.781vw;
@@ -142,15 +142,15 @@
 }
 
 
-.add-calender-modal-detail input {
+.add-calendar-modal-detail input {
   border: 1px solid #dadada;
   transition: border 0.2s ease;
 }
 
-.add-calender-modal-detail input.input-error {
+.add-calendar-modal-detail input.input-error {
   border: 1px solid #ff4d4f;
 }
 
-.add-calender-modal-detail input::placeholder {
+.add-calendar-modal-detail input::placeholder {
   color: #ff4d4f;
 }

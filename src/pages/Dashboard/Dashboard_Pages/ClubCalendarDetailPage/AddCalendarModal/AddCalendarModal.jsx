@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import "./AddCalenderModal.css";
+import "./AddCalendarModal.css";
 import closeIcon from "../../../../../assets/close.svg";
 
-const AddCalenderModal = ({ onClose, date, onSuccess }) => {
+const AddCalendarModal = ({ onClose, date, onSuccess }) => {
 
   const [title, setTitle] = useState("");
   const [titleError, setTitleError] = useState("");
@@ -64,28 +64,28 @@ const AddCalenderModal = ({ onClose, date, onSuccess }) => {
   };
 
   return (
-    <div className="add-calender-modal-backdrop" onClick={onClose}>
+    <div className="add-calendar-modal-backdrop" onClick={onClose}>
       <div
-        className="add-calender-modal"
+        className="add-calendar-modal"
         onClick={(e) => e.stopPropagation()}
       >
         <img
           src={closeIcon}
           alt="close"
-          className="add-calender-modal-close"
+          className="add-calendar-modal-close"
           onClick={onClose}
         />
 
-        <div className="add-calender-modal-main">
-          <div className="add-calender-modal-title">
+        <div className="add-calendar-modal-main">
+          <div className="add-calendar-modal-title">
             <span>일정 추가</span>
           </div>
 
           <form
-            className="add-calender-modal-detail"
+            className="add-calendar-modal-detail"
             onSubmit={handleSubmit}
           >
-            <div className="add-calender-modal-detail-name">
+            <div className="add-calendar-modal-detail-name">
               <span>이름</span>
 
               <input
@@ -100,7 +100,7 @@ const AddCalenderModal = ({ onClose, date, onSuccess }) => {
               />
             </div>
 
-            <div className="add-calender-modal-detail-start">
+            <div className="add-calendar-modal-detail-start">
               <span>시작</span>
 
               <input
@@ -119,7 +119,7 @@ const AddCalenderModal = ({ onClose, date, onSuccess }) => {
               />
             </div>
 
-            <div className="add-calender-modal-detail-end">
+            <div className="add-calendar-modal-detail-end">
               <span>종료</span>
 
               <input
@@ -153,4 +153,4 @@ const AddCalenderModal = ({ onClose, date, onSuccess }) => {
   );
 };
 
-export default AddCalenderModal;
+export default AddCalendarModal;

@@ -11,7 +11,7 @@ import SearchIcon from "../../assets/search.svg";
 import SearchGrayIcon from "../../assets/search_gray.svg";
 import DefaultClubIcon from "../../assets/Main_Icon_Gray.svg";
 import AddMatchupModal from "./AddMatchupModal/AddMatchupModal";
-import SuccessModal from "../Dashboard/Dashboard_Pages/ClubCalenderDetailPage/SuccessModal/SuccessModal";
+import SuccessModal from "../Dashboard/Dashboard_Pages/ClubCalendarDetailPage/SuccessModal/SuccessModal";
 import DeleteMatchupModal from "./DeleteMatchupModal/DeleteMatchupModal";
 import ArrowDownGray from "../../assets/arrow_down_gray.svg";
 import ResetIcon from "../../assets/reset.svg";

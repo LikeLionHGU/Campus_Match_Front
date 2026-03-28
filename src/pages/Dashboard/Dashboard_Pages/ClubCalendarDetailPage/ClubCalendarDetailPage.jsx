@@ -1,6 +1,6 @@
 import { useState, useEffect,useCallback } from "react";
 import BackArrow from "../../../../assets/arrow_left.svg";
-import "./ClubCalenderDetailPage.css";
+import "./ClubCalendarDetailPage.css";
 import Sidebar from "../../../../components/SideBar/SideBar";
 import leftArrow from "../../../../assets/arrow_left.svg";
 import rightArrow from "../../../../assets/arrow_right.svg";
@@ -10,15 +10,15 @@ import FilledCircle from "../../../../assets/filled_circle.svg";
 import TodayRectangle from "../../../../assets/today_rectangle.svg";
 import AddIcon from "../../../../assets/add_icon.svg";
 import { useNavigate } from "react-router-dom";
-import AddCalenderModal from "./AddCalenderModal/AddCalenderModal";
-import EditCalenderModal from "./EditCalenderModal/EditCalenderModal";
-// import MatchupCalenderModal from "./MatchupCalenderModal/MatchupCalenderModal";
+import AddCalendarModal from "./AddCalendarModal/AddCalendarModal";
+import EditCalendarModal from "./EditCalendarModal/EditCalendarModal";
+// import MatchupCalendarModal from "./MatchupCalendarModal/MatchupCalendarModal";
 import SuccessModal from "./SuccessModal/SuccessModal";
 import EditIcon from "../../../../assets/edit_gray.svg";
 import CanMatchupModal from "./CanMatcupModal/CanMatchupModal";
 import MyMatchupModal from "./MyMatchupModal/MyMatchupModal";
 
-const ClubCalenderDetailPage = () => {
+const ClubCalendarDetailPage = () => {
 
     const today = new Date();
     const [currentDate, setCurrentDate] = useState(today);
@@ -204,30 +204,30 @@ const ClubCalenderDetailPage = () => {
                     <Sidebar />
                 </div>
 
-                <div className="calender-detail-container">
+                <div className="calendar-detail-container">
 
-                    <div className="calender-detail-header" onClick={() => navigate(-1)}>
+                    <div className="calendar-detail-header" onClick={() => navigate(-1)}>
                         <img src={BackArrow} alt="back-arrow" />
                         <span>스케줄</span>
                     </div>
 
-                    <div className="calender-detail-main">
+                    <div className="calendar-detail-main">
 
-                        <div className="calender-detail-left">
+                        <div className="calendar-detail-left">
 
-                            <div className="calender-detail-left-header">
+                            <div className="calendar-detail-left-header">
                                 <img src={leftArrow} alt="prev" className="arrow" onClick={prevMonth}/>
                                 <span>{year}년 {month + 1}월</span>
                                 <img src={rightArrow} alt="next" className="arrow" onClick={nextMonth}/>
                             </div>
 
-                            <div className="calender-detail-left-week">
+                            <div className="calendar-detail-left-week">
                                 {["일","월","화","수","목","금","토"].map((day) => (
                                     <div key={day}>{day}</div>
                                 ))}
                             </div>
 
-                            <div className="calender-detail-left-grid">
+                            <div className="calendar-detail-left-grid">
                                 {dates.map((item, idx) => {
 
                                     // const cellDate = new Date(year, month, item.date);
@@ -275,7 +275,7 @@ const ClubCalenderDetailPage = () => {
                                         <div
                                             key={idx}
                                             className={`
-                                                calender-detail-left-cell
+                                                calendar-detail-left-cell
                                                 ${isToday ? 'today' : ""}
                                                 ${!item.isCurrentMonth ? "other-month" : ""}
                                             `}
@@ -300,7 +300,7 @@ const ClubCalenderDetailPage = () => {
                                         >
 
                                             <div
-                                                className={`calender-detail-left-date ${dateClass}`}
+                                                className={`calendar-detail-left-date ${dateClass}`}
                                                 onClick={(e) => {
 
                                                     e.stopPropagation();
@@ -339,7 +339,7 @@ const ClubCalenderDetailPage = () => {
                                                 {item.date}
                                             </div>
 
-                                            <div className="calender-detail-left-schedules">
+                                            <div className="calendar-detail-left-schedules">
                                                 {daySchedules.slice(0,4).map((schedule) => (
                                                     <div
                                                         key={schedule.scheduleId}
@@ -367,18 +367,18 @@ const ClubCalenderDetailPage = () => {
                                             </div>
 
                                             {isMine && (
-                                                <div className="calender-detail-left-add-wrapper">
+                                                <div className="calendar-detail-left-add-wrapper">
 
                                                     <img
                                                         src={AddIcon}
                                                         alt="add_icon"
-                                                        className="calender-detail-left-add add-icon"
+                                                        className="calendar-detail-left-add add-icon"
                                                     />
 
                                                     <img
                                                         src={EditIcon}
                                                         alt="edit_icon"
-                                                        className="calender-detail-left-add edit-icon"
+                                                        className="calendar-detail-left-add edit-icon"
                                                     />
 
                                                 </div>
@@ -389,8 +389,8 @@ const ClubCalenderDetailPage = () => {
                             </div>
                         </div>
 
-                        <div className="calender-detail-right">
-                            <div className="calender-detail-right-top">
+                        <div className="calendar-detail-right">
+                            <div className="calendar-detail-right-top">
                                 <div>
                                     <img src={GreenCircle} alt="green_circle" />
                                     <span>동아리 일정</span>
@@ -409,13 +409,13 @@ const ClubCalenderDetailPage = () => {
                                 </div>
                             </div>
 
-                            <div className="calender-detail-right-bottom">
-                                <div className="calender-detail-right-bottom-first">
-                                    <div className="calender-detail-right-bottom-first-title">
+                            <div className="calendar-detail-right-bottom">
+                                <div className="calendar-detail-right-bottom-first">
+                                    <div className="calendar-detail-right-bottom-first-title">
                                         <span >동아리 일정</span>
                                     </div>
                                     
-                                    <div className="calender-detail-right-bottom-first-item">
+                                    <div className="calendar-detail-right-bottom-first-item">
                                         {currentMonthSchedules.map((schedule) => (
                                             <div
                                                 key={schedule.scheduleId}
@@ -436,11 +436,11 @@ const ClubCalenderDetailPage = () => {
                                         ))}
                                     </div>
                                 </div>
-                                <div className="calender-detail-right-bottom-second">
-                                    <div className="calender-detail-right-bottom-second-title">
+                                <div className="calendar-detail-right-bottom-second">
+                                    <div className="calendar-detail-right-bottom-second-title">
                                         <span >매치업 가능</span>
                                     </div>
-                                    <div className="calender-detail-right-bottom-first-item">
+                                    <div className="calendar-detail-right-bottom-first-item">
                                         {currentMonthOutlineSchedules.map((post) => (
                                             <div
                                                 key={post.matchPostId}
@@ -458,11 +458,11 @@ const ClubCalenderDetailPage = () => {
                                         ))}
                                     </div>
                                 </div>
-                                <div className="calender-detail-right-bottom-third">
-                                    <div className="calender-detail-right-bottom-third-title">
+                                <div className="calendar-detail-right-bottom-third">
+                                    <div className="calendar-detail-right-bottom-third-title">
                                         <span >매치업</span>
                                     </div>
-                                    <div className="calender-detail-right-bottom-first-item">
+                                    <div className="calendar-detail-right-bottom-first-item">
                                         {currentMonthMatchSchedules.map((post) => (
                                             <div
                                                 key={post.matchPostId}
@@ -491,7 +491,7 @@ const ClubCalenderDetailPage = () => {
             </div>
 
             {modalType === "add" && (
-                <AddCalenderModal
+                <AddCalendarModal
                     date={selectedDate}
                     onClose={() => setModalType(null)}
                     onSuccess={() => {
@@ -502,7 +502,7 @@ const ClubCalenderDetailPage = () => {
             )}
 
             {modalType === "edit" && (
-                <EditCalenderModal
+                <EditCalendarModal
                     scheduleId={selectedScheduleId}
                     onClose={() => {setModalType(null)}}
                     onSuccess={() => {
@@ -579,4 +579,4 @@ const ClubCalenderDetailPage = () => {
     );
 };
 
-export default ClubCalenderDetailPage;
+export default ClubCalendarDetailPage;

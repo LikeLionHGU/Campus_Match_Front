@@ -1,10 +1,10 @@
 import { useState, useMemo } from "react";
-import "./Calender.css";
+import "./Calendar.css";
 
 import leftArrow from "../../../assets/arrow_left.svg";
 import rightArrow from "../../../assets/arrow_right.svg";
 
-const Calender = ({
+const Calendar = ({
   schedules = [],
   upcomingMatches = [],
   ongoingMatches = [],
@@ -199,4 +199,4 @@ const Calender = ({
   );
 };
 
-export default Calender;
+export default Calendar;

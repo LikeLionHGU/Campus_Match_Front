@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import "./EditCalenderModal.css";
+import "./EditCalendarModal.css";
 import closeIcon from "../../../../../assets/close.svg";
 
-const EditCalenderModal = ({ onClose, onSuccess, onDelete, scheduleId }) => {
+const EditCalendarModal = ({ onClose, onSuccess, onDelete, scheduleId }) => {
 
   const [title, setTitle] = useState("");
 
@@ -122,29 +122,29 @@ const EditCalenderModal = ({ onClose, onSuccess, onDelete, scheduleId }) => {
   if (loading) return null;
 
   return (
-    <div className="edit-calender-modal-backdrop" onClick={onClose}>
+    <div className="edit-calendar-modal-backdrop" onClick={onClose}>
       <div
-        className="edit-calender-modal"
+        className="edit-calendar-modal"
         onClick={(e) => e.stopPropagation()}
       >
         <img
           src={closeIcon}
           alt="close"
-          className="edit-calender-modal-close"
+          className="edit-calendar-modal-close"
           onClick={onClose}
         />
 
-        <div className="edit-calender-modal-main">
-          <div className="edit-calender-modal-title">
+        <div className="edit-calendar-modal-main">
+          <div className="edit-calendar-modal-title">
             <span>일정 수정</span>
           </div>
 
           <form
-            className="edit-calender-modal-detail"
+            className="edit-calendar-modal-detail"
             onSubmit={handleSubmit}
           >
 
-            <div className="edit-calender-modal-detail-name">
+            <div className="edit-calendar-modal-detail-name">
               <span>이름</span>
               <input
                 type="text"
@@ -153,7 +153,7 @@ const EditCalenderModal = ({ onClose, onSuccess, onDelete, scheduleId }) => {
               />
             </div>
 
-            <div className="edit-calender-modal-detail-start">
+            <div className="edit-calendar-modal-detail-start">
               <span>시작</span>
               <input
                 type="date"
@@ -170,7 +170,7 @@ const EditCalenderModal = ({ onClose, onSuccess, onDelete, scheduleId }) => {
               />
             </div>
 
-            <div className="edit-calender-modal-detail-end">
+            <div className="edit-calendar-modal-detail-end">
               <span>종료</span>
               <input
                 type="date"
@@ -194,16 +194,16 @@ const EditCalenderModal = ({ onClose, onSuccess, onDelete, scheduleId }) => {
               />
             </div>
 
-            <div className="edit-calender-modal-buttons">
+            <div className="edit-calendar-modal-buttons">
               <button
                 type="button"
-                className="edit-calender-delete-button"
+                className="edit-calendar-delete-button"
                 onClick={handleDelete}
               >
                 삭제
               </button>
 
-              <button className="edit-calender-edit-button" type="submit">
+              <button className="edit-calendar-edit-button" type="submit">
                 저장
               </button>
             </div>
@@ -215,4 +215,4 @@ const EditCalenderModal = ({ onClose, onSuccess, onDelete, scheduleId }) => {
   );
 };
 
-export default EditCalenderModal;
+export default EditCalendarModal;

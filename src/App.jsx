@@ -13,7 +13,7 @@ const MatchupBoardPage = lazy(() => import("./pages/Matchup_Board_Page/MatchupBo
 const ClubSearchBoardPage = lazy(() => import("./pages/ClubSearchBoardPage/ClubSearchBoardPage"));
 const DetailGallery = lazy(() => import("./pages/Dashboard/Dashboard_Pages/ClubGalleryDetailPage/ClubGalleryDetailPage"));
 const MatchupHistoryPage = lazy(() => import("./pages/Dashboard/Dashboard_Pages/MatchupHistory/MatchupHistoryPage"));
-const DetailCalender = lazy(() => import("./pages/Dashboard/Dashboard_Pages/ClubCalenderDetailPage/ClubCalenderDetailPage"));
+const DetailCalendar = lazy(() => import("./pages/Dashboard/Dashboard_Pages/ClubCalendarDetailPage/ClubCalendarDetailPage"));
 const UpcomingMatchupPage = lazy(() => import("./pages/Dashboard/Dashboard_Pages/ClubMatchupDetailPage/UpcomingMatchupPage/UpcomingMatchupPage"));
 const OngoingMatchupPage = lazy(() => import("./pages/Dashboard/Dashboard_Pages/ClubMatchupDetailPage/OngoingMatchupPage/OngoingMatchupPage"));
 const ReceiveMatchupPage = lazy(() => import("./pages/Dashboard/Dashboard_Pages/ClubMatchupDetailPage/RecieveMatchupPage/ReceiveMatchupPage"));
@@ -58,15 +58,15 @@ function App() {
             element={<ReceiveMatchupPage />}
           />
           <Route path="/dashboard/send-matchup" element={<SendMatchupPage />} />
-          <Route path="/dashboard/calender" element={<DetailCalender />} />
+          <Route path="/dashboard/calendar" element={<DetailCalendar />} />
           <Route path="/dashboard/gallery" element={<DetailGallery />} />
           <Route path="/matchup-board" element={<MatchupBoardPage />} />
           <Route path="/club-board" element={<ClubSearchBoardPage />} />
           <Route path="/finish-matchup" element={<FinishMatchupPage />} />
           <Route path="/club-board/dashboard/:clubId" element={<Dashboard />} />
           <Route
-            path="/club-board/dashboard/:clubId/calender"
-            element={<DetailCalender />}
+            path="/club-board/dashboard/:clubId/calendar"
+            element={<DetailCalendar />}
           />
         </Routes>
         </Suspense>

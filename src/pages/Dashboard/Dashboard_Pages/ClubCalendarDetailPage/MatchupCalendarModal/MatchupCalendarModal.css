@@ -1,4 +1,4 @@
-.matchup-calender-modal-backdrop {
+.matchup-calendar-modal-backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -14,7 +14,7 @@
   z-index: 2000;
 }
 
-.matchup-calender-modal {
+.matchup-calendar-modal {
   background: #fff;
   padding: 1.042vw;
 }

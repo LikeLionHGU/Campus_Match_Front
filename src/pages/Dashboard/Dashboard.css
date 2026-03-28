@@ -154,14 +154,14 @@
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.05);
 }
 
-.club-calender {
+.club-calendar {
   border-radius: 1.042vw;
   padding: 2.135vw 2.604vw;
   background-color: #fff;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.05);
 }
 
-.club-calender:hover {
+.club-calendar:hover {
   box-shadow: 0 0 15px 0 rgba(22, 192, 204, 0.35);
 }
 
