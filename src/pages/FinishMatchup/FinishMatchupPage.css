@@ -104,7 +104,6 @@
 .finish-date-sort-arrow {
   width: clamp(8px, 0.625vw, 12px);
   height: clamp(8px, 0.625vw, 12px);
-  vertical-align: middle;
   transition: transform 0.2s ease;
 }
 
@@ -199,30 +198,6 @@
   gap: 1.302vw;
 }
 
-.page-control,
-.page-number {
-  background: none;
-  border: none;
-  color: #888;
-  font-size: 0.781vw;
-  cursor: pointer;
-  padding: 0.208vw 0.417vw;
-  border-radius: 0.208vw;
-  transition:
-    color 0.2s,
-    background-color 0.2s;
-}
-
-.page-control:hover,
-.page-number:hover {
-  color: #333;
-  background-color: #eee;
-}
-
-.page-number.active {
-  color: #16c0cc;
-  font-weight: bold;
-}
 
 .pagination .pagination-numbers button {
   background: none;

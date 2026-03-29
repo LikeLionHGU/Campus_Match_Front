@@ -199,12 +199,14 @@
 .history-table th {
   color: white;
   padding: 0.833vw;
-  font-size: 0.729vw;
-  font-weight: 500;
+  font-family: Pretendard;
+  font-size: 0.938vw;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  width: 20%;
 }
 
 .history-table th img {
@@ -216,7 +218,6 @@
 .history-date-sort-arrow {
   width: clamp(8px, 0.625vw, 12px);
   height: clamp(8px, 0.625vw, 12px);
-  vertical-align: middle;
   transition: transform 0.2s ease;
 }
 
@@ -319,36 +320,6 @@
   margin-top: auto;
 }
 
-.history-pagination .page-control,
-.history-pagination .page-number {
-  background: none;
-  border: none;
-  color: #888;
-  font-size: 0.729vw;
-  cursor: pointer;
-  padding: 0.208vw 0.417vw;
-  border-radius: 0.208vw;
-  transition:
-    color 0.2s,
-    background-color 0.2s;
-}
-
-.history-pagination .page-control:hover,
-.history-pagination .page-number:hover {
-  color: #333;
-  background-color: #eee;
-}
-
-.history-pagination .page-control:disabled {
-  opacity: 0.3;
-  cursor: default;
-}
-
-.history-pagination .page-number.active {
-  color: #16c0cc;
-  font-weight: bold;
-}
-
 .history-pagination .pagination-numbers button {
   background: none;
   border: none;
@@ -360,7 +331,7 @@
 }
 
 .history-pagination .pagination-numbers button.active {
-  color: #16C0CC;
+  color: #16c0cc;
   font-weight: 600;
 }
 
