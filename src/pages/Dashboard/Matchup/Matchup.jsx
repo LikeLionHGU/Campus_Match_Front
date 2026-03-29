@@ -9,6 +9,16 @@ const fillRows = (list, count) => {
   return rows.slice(0, count);
 };
 
+const formatDate = (dateStr) => {
+  if (!dateStr) return "";
+  return dateStr.replace(/-/g, ".");
+};
+
+const truncate = (str, n = 10) => {
+  if (!str) return "";
+  return str.length > n ? str.slice(0, n) + "..." : str;
+};
+
 const Matchup = ({
   upcomingList = [],
   ongoingList = [],
@@ -39,10 +49,10 @@ const Matchup = ({
                 <tbody>
                   {fillRows(upcomingList, MAX_ROWS).map((item, i) => (
                     <tr key={i} className={i === 0 ? "matchup-first-row" : ""}>
-                      <td>{item?.matchDate || ""}</td>
+                      <td>{formatDate(item?.matchDate)}</td>
                       <td>
                         {item
-                          ? `${item.clubName || ""}`
+                          ? truncate(item.clubName)
                           : ""}
                       </td>
                     </tr>
@@ -69,10 +79,10 @@ const Matchup = ({
                 <tbody>
                   {fillRows(ongoingList, MAX_ROWS).map((item, i) => (
                     <tr key={i} className={i === 0 ? "matchup-first-row" : ""}>
-                      <td>{item?.matchDate || ""}</td>
+                      <td>{formatDate(item?.matchDate)}</td>
                       <td>
                         {item
-                          ? `${item.clubName || ""}`
+                          ? truncate(item.clubName)
                           : ""}
                       </td>
                     </tr>
@@ -102,10 +112,10 @@ const Matchup = ({
               <tbody>
                 {fillRows(receiveList, MAX_ROWS).map((item, i) => (
                   <tr key={i} className={i === 0 ? "matchup-first-row" : ""}>
-                    <td>{item?.matchDate || ""}</td>
+                    <td>{formatDate(item?.matchDate)}</td>
                     <td>
                       {item
-                        ? `${item.clubName || ""}`
+                        ? truncate(item.clubName)
                         : ""}
                     </td>
                     <td>{item?.sportCategory || ""}</td>
@@ -136,10 +146,10 @@ const Matchup = ({
               <tbody>
                 {fillRows(sendList, MAX_ROWS).map((item, i) => (
                   <tr key={i} className={i === 0 ? "matchup-first-row" : ""}>
-                    <td>{item?.matchDate || ""}</td>
+                    <td>{formatDate(item?.matchDate)}</td>
                     <td>
                       {item
-                        ? `${item.clubName || ""}`
+                        ? truncate(item.clubName)
                         : ""}
                     </td>
                     <td>{item?.sportCategory || ""}</td>
