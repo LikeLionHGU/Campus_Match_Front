@@ -46,7 +46,6 @@
   font-size: 1.042vw;
   font-style: normal;
   font-weight: 500;
-  line-height: 100%; /* 20px */
 }
 .matchup-cancel-modal-body {
   display: grid;
@@ -110,7 +109,6 @@
   font-size: 0.781vw;
   font-style: normal;
   font-weight: 600;
-  line-height: 100%; /* 15px */
   cursor: pointer;
 }
 .matchup-cancel-right-button {
