@@ -5,7 +5,7 @@
   width: 100%;
   height: 100%;
 
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 9999;
 
   display: flex;
@@ -14,14 +14,14 @@
 }
 
 .badge-modal {
-  width: 62.083vw;;
+  width: 62.083vw;
   height: 31.823vw;
   display: inline-flex;
   padding: 5.208vw 2.604vw 2.604vw 2.604vw;
   flex-direction: column;
-  position: relative; 
+  position: relative;
   border-radius: 1.042vw;
-  background: #FFF;
+  background: #fff;
 }
 .badge-modal-close {
   position: absolute;
@@ -33,12 +33,11 @@
   cursor: pointer;
 }
 
-.badge-modal-text{
-  color: var(--Text, #1F1F1F);
+.badge-modal-text {
+  color: var(--Text, #1f1f1f);
   font-family: Pretendard;
   font-size: 1.042vw;
   font-style: normal;
   font-weight: 500;
-  line-height: 20px; /* 100% */
   margin-bottom: 1.042vw;
 }

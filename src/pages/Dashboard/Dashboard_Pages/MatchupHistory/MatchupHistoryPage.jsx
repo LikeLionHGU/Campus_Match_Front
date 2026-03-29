@@ -4,7 +4,7 @@ import Sidebar from "../../../../components/SideBar/SideBar";
 import MatchupHistoryModal from "./MatchupHistoryModal";
 import DeleteConfirmModal from "./DeleteConfirmModal";
 import "./MatchupHistoryPage.css";
-import arrowIcon from "../../../../assets/arrow.svg";
+import ArrowDown from "../../../../assets/arrow_down.svg";
 import backIcon from "../../../../assets/arrow_left.svg";
 import searchIcon from "../../../../assets/search.svg";
 import ArrowLeft from "../../../../assets/arrow_left.svg";
@@ -26,6 +26,7 @@ const MatchupHistoryPage = () => {
   const [editData, setEditData] = useState(null);
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [isEditSuccess, setIsEditSuccess] = useState(false);
+  const [sortOrder, setSortOrder] = useState("desc"); // "asc" | "desc"
 
   const fetchHistory = useCallback(async () => {
     try {
@@ -109,7 +110,11 @@ const MatchupHistoryPage = () => {
     return filtered;
   };
 
-  const filteredItems = getFilteredItems();
+  const filteredItems = getFilteredItems().sort((a, b) => {
+    const dateA = new Date(a.matchDate || 0);
+    const dateB = new Date(b.matchDate || 0);
+    return sortOrder === "asc" ? dateA - dateB : dateB - dateA;
+  });
   const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -168,7 +173,7 @@ const MatchupHistoryPage = () => {
                         : "추가한 매치업"}
                   </span>
                   <img
-                    src={arrowIcon}
+                    src={ArrowDown}
                     alt="arrow"
                     className={`history-dropdown-arrow ${isFilterOpen ? "open" : ""}`}
                   />
@@ -238,9 +243,16 @@ const MatchupHistoryPage = () => {
             <table className="history-table">
               <thead>
                 <tr>
-                  <th>
+                  <th
+                    onClick={() => setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"))}
+                    style={{ cursor: "pointer" }}
+                  >
                     날짜
-                    <img src={arrowIcon} alt="arrow" />
+                    <img
+                      src={ArrowDown}
+                      alt="arrow"
+                      className={`history-date-sort-arrow ${sortOrder === "asc" ? "asc" : ""}`}
+                    />
                   </th>
                   <th>동아리/대학</th>
                   <th>장소</th>

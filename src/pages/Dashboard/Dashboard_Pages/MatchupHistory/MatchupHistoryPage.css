@@ -213,6 +213,17 @@
   margin-top: -0.104vw;
 }
 
+.history-date-sort-arrow {
+  width: clamp(8px, 0.625vw, 12px);
+  height: clamp(8px, 0.625vw, 12px);
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+.history-date-sort-arrow.asc {
+  transform: rotate(180deg);
+}
+
 .history-table tbody tr {
   border-bottom: none;
 }

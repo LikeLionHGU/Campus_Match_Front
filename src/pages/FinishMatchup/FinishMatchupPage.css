@@ -66,15 +66,22 @@
   border: none;
 }
 
+.matchup-table thead tr {
+  height: 3.177vw;
+}
+
 .matchup-table thead {
-  background-color: #16c0cc;
+  background: var(--Primary, #16c0cc);
 }
 
 .matchup-table th {
   color: white;
   padding: 0.833vw;
-  font-size: 0.729vw;
-  font-weight: 500;
+  font-family: Pretendard;
+  font-size: 0.938vw;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -92,6 +99,17 @@
   vertical-align: middle;
   margin-left: 0.417vw;
   margin-top: -0.104vw;
+}
+
+.finish-date-sort-arrow {
+  width: clamp(8px, 0.625vw, 12px);
+  height: clamp(8px, 0.625vw, 12px);
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+.finish-date-sort-arrow.asc {
+  transform: rotate(180deg);
 }
 
 .matchup-table tbody tr {
@@ -217,7 +235,7 @@
 }
 
 .pagination .pagination-numbers button.active {
-  color: #16C0CC;
+  color: #16c0cc;
   font-weight: 600;
 }
 

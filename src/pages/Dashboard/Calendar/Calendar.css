@@ -21,20 +21,19 @@
 }
 
 .calendar-week {
-    display: grid;
-    grid-template-columns: repeat(7, 1.667vw);
-    gap:2.083vw;
+  display: grid;
+  grid-template-columns: repeat(7, 1.667vw);
+  gap: 2.083vw;
 
-    margin-bottom: 1.719vw;
+  margin-bottom: 1.719vw;
 
-    color: var(--Primary, #424041);
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 1.042vw;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 20px; /* 100% */
-    text-transform: capitalize;
+  color: var(--Primary, #424041);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: capitalize;
 }
 
 .week-item {
@@ -56,7 +55,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
 }
 
 .date-circle {
@@ -70,52 +68,47 @@
   box-sizing: border-box;
 
   color: var(--Primary, #424041);
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 1.042vw;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 20px; /* 100% */
-    text-transform: capitalize;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: capitalize;
 }
 
 .date-circle.schedule {
-  background-color: #41DF82;
+  background-color: #41df82;
   color: white;
 }
 
 .filled {
   background: #1fb6c1;
-  color: var(--white, #FFF);
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 1.042vw;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 20px; /* 100% */
-    text-transform: capitalize;
+  color: var(--white, #fff);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: capitalize;
 }
 
 .outline {
-    border: 2px solid #1fb6c1;
-    background-color: rgba(22, 192, 204, 0.20);;
-    color: var(--Primary, #424041);
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 1.042vw;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 20px; /* 100% */
-    text-transform: capitalize;
+  border: 2px solid #1fb6c1;
+  background-color: rgba(22, 192, 204, 0.2);
+  color: var(--Primary, #424041);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: capitalize;
 }
 
-.other-month{
-    color: var(--Gray-2, #D6D6D6);
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 1.042vw;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 20px; /* 100% */
-    text-transform: capitalize;
+.other-month {
+  color: var(--Gray-2, #d6d6d6);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.042vw;
+  font-style: normal;
+  text-transform: capitalize;
 }
