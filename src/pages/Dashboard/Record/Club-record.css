@@ -5,6 +5,8 @@
   font-style: normal;
   font-weight: 600;
   line-height: 1.042vw;
+  display: grid;
+  align-items: start;
 }
 
 .club-record-bottom {
