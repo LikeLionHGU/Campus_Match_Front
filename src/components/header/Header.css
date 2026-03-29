@@ -66,5 +66,6 @@
   cursor: pointer;
 }
 .user span {
+  font-size: 0.833vw;
   cursor: pointer;
 }

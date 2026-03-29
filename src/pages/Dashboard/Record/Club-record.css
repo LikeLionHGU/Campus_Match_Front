@@ -1,89 +1,95 @@
-.club-record-top span{
-    color: var(--Text, #1F1F1F);
-    font-family: Pretendard;
-    font-size: 0.625vw;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 1.042vw;
+.club-record-top span {
+  color: var(--Text, #1f1f1f);
+  font-family: Pretendard;
+  font-size: 0.625vw;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.042vw;
 }
 
-.club-record-bottom{
-    display: grid;
-    grid-template-columns: 5.052vw 1fr;
-    gap: 1.823vw;
+.club-record-bottom {
+  display: grid;
+  grid-template-columns: 5.052vw 1fr;
+  gap: 1.823vw;
 }
 
-.total-record{
-    display: grid;
-    align-items: center;
-    grid-template-rows: 1.042vw 1fr;
-    gap: 0.521vw;
+.total-record {
+  display: grid;
+  align-items: center;
+  grid-template-rows: 1.042vw 1fr;
+  gap: 0.521vw;
 }
 
-.detail-record{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 0.26vw;
+.detail-record {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.26vw;
 }
 
-.count-title{
-    color: var(--Primary, #16C0CC);
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 1.042vw;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 1.042vw;
-    padding-top: 1.094vw;
+.count-title {
+  color: var(--Primary, #16c0cc);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.042vw;
+  padding-top: 1.094vw;
 }
 
-.count{
-    color: var(--Primary, #16C0CC);
-    text-align: center;
-    text-shadow: 0 0 12px rgba(22, 192, 204, 0.50);
-    font-family: Pretendard;
-    font-size: 3.646vw;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 1.2;
-    padding-top: 0;
+.count {
+  color: var(--Primary, #16c0cc);
+  text-align: center;
+  text-shadow: 0 0 12px rgba(22, 192, 204, 0.5);
+  font-family: Pretendard;
+  font-size: 3.646vw;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.2;
+  padding-top: 0;
 }
 
-.win, .draw, .lose{
-    display: grid;
-    gap: 0.521vw;
-    padding: 1.042vw 2.344vw 1.562vw 2.344vw;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.521vw;
-    background: var(--Gray-1, #F7F7F7);
-    height: 5.312vw;
+.win,
+.draw,
+.lose {
+  display: grid;
+  gap: 0.521vw;
+  padding: 1.042vw 2.344vw 1.562vw 2.344vw;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.521vw;
+  background: var(--Gray-1, #f7f7f7);
+  height: 5.312vw;
 }
 
-.win{
-    background: #F2FFFC;
+.win {
+  background: #f2fffc;
 }
-.lose{
-    background: #FFF5F2;
-}
-
-.win p,.draw p,.lose p{
-    color: var(--Text, #1F1F1F);
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 2.344vw;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 1.2;
-    margin: 0;
+.lose {
+  background: #fff5f2;
 }
 
-.win span,.draw span,.lose span{
-    color: var(--Text, #1F1F1F);
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 1.042vw;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 1.2;
+.win p,
+.draw p,
+.lose p {
+  color: var(--Text, #1f1f1f);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 2.344vw;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.win span,
+.draw span,
+.lose span {
+  color: var(--Text, #1f1f1f);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.2;
 }

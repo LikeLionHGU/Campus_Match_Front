@@ -30,7 +30,7 @@
 
 .club-record {
   display: grid;
-  grid-row: 1.042vw 1fr;
+  grid-template-rows: auto 1fr;
   padding: 0.781vw 1.823vw;
   background-color: #fff;
   border-radius: 1.042vw;
@@ -133,7 +133,6 @@
   font-size: 1.042vw;
   font-style: normal;
   font-weight: 600;
-  line-height: 20px; /* 100% */
 }
 
 .club-intro-right p {
@@ -181,13 +180,11 @@
   pointer-events: none;
   cursor: default;
 }
-.dashboard_back{
+.dashboard_back {
   display: flex;
   position: absolute;
   left: 4.167vw;
   top: 1.562vw;
   align-items: center;
   cursor: pointer;
-  
 }
-

@@ -72,7 +72,7 @@ const Matchup = ({
                       <td>{item?.matchDate || ""}</td>
                       <td>
                         {item
-                          ? `${item.clubName || ""}}`
+                          ? `${item.clubName || ""}`
                           : ""}
                       </td>
                     </tr>
