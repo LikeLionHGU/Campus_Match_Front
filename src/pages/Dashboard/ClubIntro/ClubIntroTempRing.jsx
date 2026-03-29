@@ -28,24 +28,16 @@ const ClubIntroTempRing = ({ temperature = 0 }) => {
           <defs>
             <linearGradient
               id="tempGradientClub"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="100%"
+              gradientUnits="userSpaceOnUse"
+              x1="62.5"
+              y1="9"
+              x2="62.5"
+              y2="116"
             >
               <stop offset="0%" stopColor="#41DF82" />
               <stop offset="100%" stopColor="#16C0CC" />
             </linearGradient>
-            <filter
-              id="filter_glow_club"
-              x="-20%"
-              y="-20%"
-              width="140%"
-              height="140%"
-            >
-              <feGaussianBlur stdDeviation="4" result="blur" />
-              <feComposite in="SourceGraphic" in2="blur" operator="over" />
-            </filter>
+
           </defs>
 
           <circle className="bg" cx="62.5" cy="62.5" r={radius} />
@@ -59,7 +51,6 @@ const ClubIntroTempRing = ({ temperature = 0 }) => {
               stroke="url(#tempGradientClub)"
               strokeDasharray={circumference}
               strokeDashoffset={offset}
-              filter="url(#filter_glow_club)"
             />
           )}
         </svg>
